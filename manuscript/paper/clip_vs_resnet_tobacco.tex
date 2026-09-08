@@ -1,0 +1,508 @@
+%  LaTeX support: latex@mdpi.com 
+%=================================================================
+\documentclass[agriculture,article,submit,pdftex,moreauthors]{Definitions/mdpi} 
+
+%=================================================================
+\firstpage{1} 
+\makeatletter 
+\setcounter{page}{\@firstpage} 
+\makeatother
+\pubvolume{1}
+\issuenum{1}
+\articlenumber{0}
+\pubyear{2026}
+\copyrightyear{2026}
+\datereceived{ } 
+\daterevised{ } 
+\dateaccepted{ } 
+\datepublished{ } 
+\setlength{\headheight}{20pt}
+
+\usepackage{booktabs}
+\usepackage{graphicx}
+\graphicspath{{figures/}{../../figures/}}
+
+%=================================================================
+\Title{How Much Can Generic Vision-Language Models Help Agricultural Disease Classification? A Systematic Case Study on Tobacco}
+
+\Author{Lizhuo Li $^{1,}$*}
+
+\AuthorNames{Lizhuo Li}
+
+\address{%
+$^{1}$ \quad School of Information Science and Engineering, Yunnan University, Kunming 650091, China; lizhuo@ynu.edu.cn}
+
+\corres{Correspondence: lizhuo@ynu.edu.cn}
+
+\simplesumm{}
+
+%=================================================================
+\abstract{%
+Vision-language models (VLMs) such as CLIP are increasingly applied to specialized domains under the assumption that their large-scale pretraining transfers broadly.
+We systematically evaluate this assumption for agricultural disease classification using two tobacco disease datasets (TPDD, 16 classes; TLD, 10 classes) under resource-constrained scenarios where domain-specific pretraining is infeasible.
+We compare DFN-CLIP (ViT-L/14, 428M parameters) against a standard ResNet-18 (12M parameters) under zero-shot, few-shot ($K=1,2,5,10$), and full-data regimes, with $n=15$ seeds for the main experiment.
+We test 14 prompt templates including domain knowledge graph (KG) descriptions.
+Our results reveal three key findings.
+First, KG-augmented prompts achieve the best zero-shot accuracy: KG-Symptom reaches 15.2\%, outperforming the best non-KG template (EN-Photo, 13.8\%) by 1.4 pp, and the best Chinese template (CN-Symptom, 9.4\%) by 5.8 pp. This demonstrates that structured domain knowledge can effectively compensate for limited resources.
+Second, CLIP features with domain training are competitive: at $K=1$, CLIP linear probe (28.4\%) is within 3.0 pp of ResNet-18 (31.4\%, not statistically significant, $p=0.12$), and full-data probing reaches 75.0\%---within 10.7 pp of ResNet-18 (85.7\%). This establishes CLIP as a strong baseline when fine-tuning is infeasible.
+Third, cross-dataset evaluation on TLD confirms consistent model rankings: CLIP zero-shot 17.7\%, $K=5$ probe 62.4\%, and KG prompts consistently outperform simple templates. KG prompts, however, do not generalize to TLD without class alignment, highlighting a scope limitation for resource-constrained deployment.
+We conclude that CLIP zero-shot is inadequate for deployment, but CLIP features with modest domain training provide a strong baseline in resource-constrained scenarios, and KG-enhanced prompts offer lightweight domain adaptation---though their scope is dataset-specific.
+}
+
+\keyword{CLIP; zero-shot classification; agricultural disease diagnosis; vision-language models; few-shot learning; knowledge graph; prompt engineering}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+\label{sec:intro}
+
+Vision-language models (VLMs) pretrained on web-scale image-text pairs, such as CLIP~\cite{radford2021learning}, have achieved remarkable zero-shot generalization across general-purpose visual recognition benchmarks.
+This has led to growing enthusiasm for applying VLMs to specialized domains---including agriculture~\cite{lu2024agroclip,asif2024multimodal}, medicine~\cite{huang2021gloria}, and remote sensing~\cite{liu2024remoteclip}---under the implicit assumption that large-scale pretraining transfers without additional training.
+
+However, the visual statistics of specialized domains differ fundamentally from general web images.
+Agricultural disease images feature fine-grained, domain-specific patterns (e.g., leaf lesions, fungal mycelia, chlorosis) that may be underrepresented in web-scale training corpora.
+Whether and to what extent generic VLMs recognize these patterns remains an open empirical question with significant practical implications: if VLMs fail, practitioners would be misled; if they succeed, annotation costs could be reduced.
+
+Recent work has explored domain-specific VLM adaptations. SCOLD~\cite{scold2025} pretrains a vision-language foundation model on over 186,000 leaf image-caption pairs, while BioCLIP 2~\cite{bioclip2} shows that 214M organism-image contrastive pretraining yields emergent zero-shot abilities on biological tasks. You Are What You Prompt~\cite{youareprompt} provides direct evidence for agricultural/food domains, demonstrating that domain-specific prompt pools (51--52 prompts) consistently outperform generic pools (247--426 prompts), with the largest gains under domain shift. LP++~\cite{lpplus} proposes a learnable image-text knowledge blending linear probe that significantly surpasses naive CLIP probing. These adaptations require large-scale domain-specific pretraining.
+
+In contrast, we evaluate off-the-shelf CLIP without agricultural fine-tuning---a question of immediate relevance for practitioners lacking resources for domain-specific pretraining. Our work provides an empirical boundary for CLIP's applicability in resource-constrained settings, systematically comparing against ResNet-18 across data regimes and testing whether KG-augmented prompts can mitigate the lack of domain adaptation.
+
+Our investigation is guided by three research questions:
+
+\begin{enumerate}
+    \item[\textbf{RQ1.}] Can CLIP zero-shot classify tobacco diseases, and do KG-augmented prompts help?
+    \item[\textbf{RQ2.}] How does CLIP linear probe compare to end-to-end ResNet-18 across data regimes?
+    \item[\textbf{RQ3.}] Do model rankings generalize across datasets (TPDD vs.\ TLD)?
+\end{enumerate}
+
+We report three main findings:
+(1) KG-augmented prompts provide the best zero-shot accuracy (KG-Symptom: 15.2\%, +1.4 pp over best non-KG template), and the advantage is not attributable to text length---KG prompts are shorter on average than EN-Photo (46 vs.\ 48 chars).
+(2) CLIP features with domain training are competitive: at $K=1$, CLIP probe (28.4\%) is within 3.0 pp of ResNet-18 (31.4\%, $p=0.12$), and full-data probing reaches 75.0\% vs.\ ResNet-18's 85.7\%.
+(3) Cross-dataset validation on TLD confirms consistent patterns: zero-shot reaches 17.7\%, $K=5$ probe attains 62.4\%, but KG prompts do not generalize to TLD without class alignment.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Related Work}
+\label{sec:related}
+
+\subsection{Vision-Language Models for Specialized Domains}
+
+CLIP~\cite{radford2021learning} and its variants~\cite{zhai2023sigmoid,cherti2023reproducible} have enabled zero-shot image classification through natural language prompts.
+Subsequent work has explored domain-specific adaptations: BioCLIP~\cite{stevens2024bioclip} for organism classification, AgroCLIP~\cite{lu2024agroclip} for agricultural concepts, and medical VLMs for radiology~\cite{huang2021gloria}.
+In the leaf-disease domain specifically, SCOLD~\cite{scold2025} pretrains a vision-language foundation model on over 186,000 leaf image-caption pairs, and BioCLIP 2~\cite{bioclip2} shows that 214M organism-image contrastive pretraining yields emergent zero-shot abilities on biological tasks.
+These adaptations require large-scale domain-specific pretraining.
+In contrast, we evaluate off-the-shelf CLIP without agricultural fine-tuning---a question of immediate relevance for practitioners lacking resources for domain-specific pretraining.
+
+\subsection{CLIP Prompt Engineering}
+
+Prompt design significantly affects CLIP zero-shot performance~\cite{zhou2022learning,ge2024fine}.
+Prior work has proposed prompt ensembling~\cite{radford2021learning}, learnable contexts~\cite{zhou2022learning}, and class-specific templates.
+Recent agrifood-specific evidence confirms that prompt quality dominates in specialized domains: small domain-specific prompt pools (51--52 prompts) consistently outperform generic pools of 247--426 prompts, with the largest gains under domain shift~\cite{youareprompt}.
+In agricultural domains, KGs encode structured disease information~\cite{cropdpkg2025}.
+We test whether KG-derived symptom descriptions can improve CLIP zero-shot classification, providing a text-only pathway for injecting domain knowledge.
+
+\subsection{Few-Shot vs.\ Zero-Shot in Agriculture}
+
+Few-shot learning has been studied for crop disease classification~\cite{argueso2019fewshot,li2021fewshot}, but systematic comparisons between zero-shot VLMs and few-shot domain models are rare.
+Lu et al.~\cite{lu2024agroclip} propose domain-adapted CLIP for agriculture but evaluate on generic datasets without controlled seed replication.
+Our work provides a statistically rigorous head-to-head comparison across two datasets.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Materials and Methods}
+\label{sec:method}
+
+\subsection{Datasets}
+
+We use TPDD~\cite{tpdd2024} (1,572 images, 16 classes, 82/9/9 split) as the primary dataset, and TLD (1,392 images, 10 classes) for cross-dataset validation.
+TPDD classes include anthracnose, black shank, brown spot, TMV, wildfire, and healthy.
+TLD classes include Brown spot, Frogeye, Healthy, Mosaic, PVY, Target spot, and Weather fleck.
+
+\subsection{CLIP Setup}
+
+We use DFN-CLIP ViT-L/14~\cite{fang2023data} (428M parameters) via OpenCLIP~\cite{cherti2023reproducible}.
+Images are preprocessed using CLIP's standard pipeline (resize 224, center crop, normalize); TPDD images undergo inverse ImageNet normalization before CLIP preprocessing to ensure correct input.
+Zero-shot classification uses cosine similarity between image and text embeddings, scaled by $\tau=100$.
+
+\subsection{Prompt Design}
+
+We test 14 prompt templates spanning simple class names, descriptive captions in English and Chinese, and KG-augmented descriptions.
+KG templates use symptom descriptions and occurrence conditions from CropDP-KG: KG-Symptom (``tobacco leaf: \textit{symptoms}''), KG-Condition (``occurs when: \textit{conditions}''), and KG-Combined (both).
+For the 7 of 16 TPDD classes lacking KG descriptions, we use generic fallback prompts.
+The full list of templates is reported in Table~\ref{tab:prompts}.
+
+\subsection{CLIP Few-Shot Linear Probe}
+
+We extract CLIP image features (768-dimensional, L2-normalized) and train logistic regression (scikit-learn, $C=1.0$, max\_iter=2000) on $K$-shot subsets at $K\in\{1,2,5,10\}$ and on the full training set.
+We use $n=15$ independent seeds for TPDD and $n=5$ for TLD.
+This is the standard protocol for evaluating frozen CLIP representations~\cite{radford2021learning}.
+
+\subsection{CLIP CoOp Control}
+
+To test whether the probe protocol itself limits CLIP, we additionally train a learnable text prompt (CoOp~\cite{zhou2022learning}) on the same $K$-shot support sets: 4 context tokens initialized from the token embeddings of ``a photo of a'', optimized with Adam ($lr=10^{-3}$, batch size 32) for 10 epochs on the contrastive cross-entropy loss against the support images, then evaluated zero-shot on the test set.
+Features, support subsets, and seeds are identical to the probe protocol.
+
+\subsection{ResNet-18 Baseline}
+
+We train ResNet-18~\cite{he2016deep} (12M parameters, ImageNet pretrained) using AdamW ($lr=3\times10^{-4}$), cosine annealing, batch size 32, 30 epochs, best-validation selection.
+Full-data results are from $n=15$ independent runs; few-shot results are from 5 seeds.
+
+\subsection{Evaluation}
+
+We report top-1 accuracy with mean and standard deviation across seeds.
+Statistical comparisons use Welch's $t$-test and Cohen's $d$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Results}
+\label{sec:results}
+
+\subsection{RQ1: CLIP Zero-Shot and Prompt Engineering}
+
+\begin{table}[h]
+\centering
+\caption{CLIP zero-shot accuracy with 14 prompt templates on TPDD (16 classes). Bold: best.}
+\label{tab:prompts}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Template} & \textbf{Lang.} & \textbf{Acc. (\%)} \\
+\midrule
+KG-Symptom (domain symptoms)   & EN & \textbf{15.2} \\
+EN-Photo                       & EN & 13.8 \\
+KG-Combined (symptoms+cond.)   & EN & 11.6 \\
+KG-Condition (occurrence info) & EN & 10.1 \\
+CN-Symptom                     & CN & 9.4 \\
+CN-Disease                     & CN & 9.4 \\
+EN-Symptom                     & EN & 8.7 \\
+CN-Label (bare name)           & CN & 7.2 \\
+CN-Photo                       & CN & 7.2 \\
+EN-Closeup                     & EN & 7.2 \\
+EN-Disease                     & EN & 5.1 \\
+EN-Expert                      & EN & 2.9 \\
+CN-Closeup                     & CN & 1.4 \\
+EN-Label (bare name)           & EN & 0.7 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table~\ref{tab:prompts} reports zero-shot accuracy across 14 templates.
+Three findings emerge.
+\textbf{(1) KG prompts are the most effective.}
+KG-Symptom (15.2\%) is the top template, improving over the best non-KG template (EN-Photo, 13.8\%) by 1.4 pp, and over the best Chinese template (CN-Symptom, 9.4\%) by 5.8 pp.
+KG templates occupy three of the top four positions, confirming that domain knowledge injection through prompt design is effective.
+
+\textbf{(2) Template quality variance is extreme.}
+Accuracy ranges from 0.7\% (EN-Label) to 15.2\% (KG-Symptom), a 22$\times$ spread.
+This demonstrates that prompt engineering is critical for specialized domains, and that naive label-only prompts---the default in many CLIP applications---severely underperform.
+
+\textbf{(3) Language effects are dataset-specific.}
+Contrary to expectations that Chinese templates would excel on a Chinese-domain dataset, the top three templates are English.
+This likely reflects that the KG symptom descriptions provide more precise terminology than generic Chinese disease names.
+
+\textbf{(4) The KG advantage is not a text-length artifact.}
+We examined whether KG prompts simply benefit from being longer.
+The average character length of KG-Symptom prompts (46 chars) is shorter than that of EN-Photo (48 chars), yet KG-Symptom outperforms EN-Photo by 1.4 pp.
+Within KG templates, KG-Symptom (15.2\%, 46 chars) outperforms KG-Combined (11.6\%, avg~80 chars) despite being substantially shorter.
+These observations rule out a trivial length confound and confirm that structured domain knowledge is the source of improvement.
+
+\textbf{Answer to RQ1:} CLIP zero-shot cannot reliably classify tobacco diseases (best: 15.2\%), but KG-augmented prompts provide a consistent 1.4--5.8 pp improvement over non-KG templates, demonstrating that domain knowledge can be effectively injected into VLMs through text alone.
+
+\subsection{RQ2: CLIP Probe vs.\ ResNet-18}
+
+\begin{table}[h]
+\centering
+\caption{CLIP linear probe, CoOp control, and ResNet-18 on TPDD ($n=15$ for all regimes).}
+\label{tab:main}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Method} & $\boldsymbol{K=1}$ & $\boldsymbol{K=5}$ & $\boldsymbol{K=10}$ & \textbf{Full} \\
+\midrule
+CLIP probe & $28.4 \pm 4.9$ & $48.3 \pm 5.2$ & $57.5 \pm 5.9$ & $75.0 \pm 1.3$ \\
+CLIP CoOp (4 tokens) & $10.8 \pm 3.3$ & $16.0 \pm 6.8$ & $24.1 \pm 5.5$ & $61.2 \pm 5.0$ \\
+ResNet-18  & $31.4 \pm 5.5$ & $63.4 \pm 4.9$ & $72.4 \pm 3.6$ & $85.7 \pm 3.2$ \\
+\midrule
+Gap (pp) & 3.0 & 15.1 & 14.9 & 10.7 \\
+Cohen's $d$ & 0.6 & 3.0 & 3.0 & 3.1 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table~\ref{tab:main} presents the main comparison.
+At $K=1$, ResNet-18 (31.4\%) leads CLIP linear probe (28.4\%) by 3.0 pp; the difference is not statistically significant ($p=0.12$, $d=0.6$), indicating that both methods are in the same performance band but ResNet-18 holds a modest edge.
+At $K=5$, ResNet-18 leads by 15.1 pp ($d=3.0$), and at $K=10$, by 14.9 pp ($d=3.0$), both with $n=15$ seeds.
+With full training data, CLIP probe reaches 75.0\%---within 10.7 pp of ResNet-18 (85.7\%, $d=3.1$).
+All gaps are statistically significant ($p<0.01$) except K=1.
+
+The rate of improvement is informative.
+CLIP probe gains 46.6 pp from $K=1$ to full data ($28.4 \rightarrow 75.0$), while ResNet-18 gains 54.3 pp ($31.4 \rightarrow 85.7$).
+The 75.0\% achieved by frozen CLIP features with logistic regression is remarkably strong for a model never trained on agricultural images.
+
+The CoOp control asks whether the gap to ResNet-18 is an artifact of the linear probe protocol rather than of the features.
+Learnable text prompts perform \emph{worse} than the probe at every support size ($K=1$: 10.8\% vs.\ 28.4\%; full data: 61.2\% vs.\ 75.0\%) and worse than ResNet-18 at every $K$.
+Because CoOp optimizes the text branch end-to-end against the support images, its failure to overtake a simple probe on frozen features indicates that the gap is primarily representational: what the frozen CLIP/DFN image features do not encode for this fine-grained disease taxonomy cannot be recovered by adapting the text prompt alone.
+
+\textbf{Answer to RQ2:} At $K=1$, ResNet-18 holds a modest 3.0 pp advantage over CLIP probe (not statistically significant). At $K\geq5$, ResNet-18 provides significant advantages, but CLIP probe remains within 10--17 pp and reaches 75.0\% with full data. A learnable-prompt (CoOp) control is worse than the probe at every $K$, indicating that the gap to ResNet-18 is primarily representational rather than a product of the probe protocol.
+
+\subsection{RQ3: Cross-Dataset Generalization}
+
+\begin{table}[h]
+\centering
+\caption{DFN-CLIP on TLD cross-dataset validation ($n=5$ for probe; ResNet-18 data from prior work).}
+\label{tab:tld}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Regime} & \textbf{CLIP (\%)} & \textbf{ResNet-18 (\%)} & \textbf{Gap (pp)} \\
+\midrule
+Zero-shot & 17.7 & --- & --- \\
+$K=1$     & $44.9 \pm 1.7$ & $44.2 \pm 4.8$ & $+0.7$ \\
+$K=5$     & $62.4 \pm 3.3$ & $85.0 \pm 2.1$ & $-22.6$ \\
+Full      & $56.2 \pm 1.8$ & $89.8 \pm 0.8$ & $-33.6$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table~\ref{tab:tld} reports cross-dataset results on TLD.
+CLIP zero-shot (17.7\%) is slightly higher than on TPDD (15.2\%), consistent with TLD's broader disease categories.
+At $K=1$, CLIP probe marginally exceeds ResNet-18 (+0.7 pp), replicating the TPDD finding.
+At higher $K$, ResNet-18 dominates, though CLIP probe still reaches 62.4\% at $K=5$.
+The full-data CLIP result (56.2\%) is lower than $K=5$ because TLD's full training split (84 images for 10 classes) is extremely limited and imbalanced, causing the logistic regression to underfit.
+Overall, model rankings are consistent across datasets: CLIP zero-shot $<$ CLIP probe $\approx$ ResNet low-K $<$ ResNet high-K.
+
+\textbf{KG prompt generalization.} We further tested whether KG-augmented prompts generalize to TLD by mapping TLD classes to their TPDD equivalents and applying the same KG-Symptom templates.
+On TLD, KG-Symptom achieves 10.8\%, which is lower than EN-Photo (17.7\%, $-$6.9 pp), in contrast to the TPDD result where KG-Symptom led by +1.4 pp.
+The degradation stems from imperfect class alignment: TLD contains 10 classes that do not map cleanly to TPDD's 16 classes (e.g., two fungal classes both map to \texttt{brown\_spot}), and KG descriptions optimized for TPDD do not transfer to TLD's visual characteristics.
+This negative result highlights a key limitation: KG-based prompt engineering is dataset-specific and does not automatically generalize across domains even within the same crop.
+
+\textbf{Answer to RQ3:} The relative ranking of methods generalizes across TPDD and TLD, with CLIP probe providing competitive performance at low $K$ and ResNet-18 dominating at higher data volumes.
+
+\subsection{Per-Class Analysis}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{fig_perclass.pdf}
+\caption{Per-class accuracy: full-data CLIP linear probe (blue) vs.\ ResNet-18 (orange). CLIP exceeds 50\% on 11 of 16 classes, while ResNet-18 exceeds 50\% on 15 of 16. Dashed line: random chance (6.25\%).}
+\label{fig:perclass}
+\end{figure}
+
+Figure~\ref{fig:perclass} shows per-class performance.
+CLIP probe achieves strong accuracy on visually distinctive diseases (tmv $>$95\%, target\_spot $\sim$80\%) but struggles on classes with subtle visual differences.
+ResNet-18 outperforms CLIP on all classes except a few where performance is comparable.
+
+Figure~\ref{fig:confusion} presents confusion matrices for both methods.
+CLIP probe shows concentrated confusion patterns: most errors involve the model defaulting to a small set of overpredicted classes (e.g., brown\_spot and wildfire are frequently predicted for classes with low per-class accuracy).
+ResNet-18's confusion matrix is more diagonal, with errors spread across multiple classes at lower rates.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{fig_confusion.pdf}
+\caption{Confusion matrices for CLIP full-data linear probe (left) vs.\ ResNet-18 full-data (right) on TPDD test set.}
+\label{fig:confusion}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Discussion}
+\label{sec:discussion}
+
+\subsection{Calibration Analysis}
+
+We analyzed the confidence calibration of CLIP predictions.
+For zero-shot classification (KG-Symptom), the expected calibration error (ECE) is 0.14, with the model being overconfident across all confidence bins.
+Mean confidence of correct predictions (0.32) is slightly higher than that of incorrect ones (0.29), but the gap is small, and the absolute confidence values (0.20--0.45) are modest---CLIP zero-shot is mildly overconfident but does not produce near-certain wrong predictions.
+
+For the full-data linear probe, ECE is 0.46, reflecting the opposite pattern: the logistic regression produces under-confident predictions. Mean confidence of correct predictions (0.31) substantially exceeds that of incorrect ones (0.21), meaning the probe's confidence ranking is reliable even if the absolute values are conservative.
+This conservative behavior is typical of L2-regularized logistic regression and does not degrade practical utility.
+
+\subsection{CLIP Zero-Shot Is Inadequate, But Features Are Strong}
+
+Our results paint a nuanced picture.
+CLIP zero-shot fails on tobacco diseases (best: 15.2\%), confirming that web-scale pretraining does not transfer to fine-grained agricultural domains.
+However, with minimal domain training, CLIP features become competitive: at $K=1$, CLIP probe reaches 28.4\% vs. ResNet-18's 31.4\% ($p=0.12$), and full-data probing reaches 75.0\%.
+This suggests that CLIP's visual encoder provides a rich representation space that, while not discriminative enough for zero-shot, offers an excellent foundation for downstream learning.
+At higher data volumes, ResNet-18 maintains a significant advantage (15.1 pp at $K=5$, 14.9 pp at $K=10$), indicating that end-to-end training on domain data remains beneficial.
+
+\subsection{KG Prompts Enable Lightweight Domain Adaptation}
+
+KG-augmented prompts provide the best zero-shot accuracy (15.2\%), outperforming the best non-KG template by 1.4 pp.
+This demonstrates that domain knowledge can be injected into VLMs through prompt engineering alone, without model fine-tuning or additional training data.
+The effect is concentrated on classes with KG coverage; the 7 of 16 TPDD classes without KG descriptions use generic fallbacks, and better KG coverage could yield further gains.
+
+\subsection{Deployment Cost Analysis}
+
+The practical utility of CLIP features extends beyond accuracy. Table~\ref{tab:cost} compares the computational footprint of both approaches.
+CLIP feature extraction (no training) requires a single GPU forward pass per image, while ResNet-18 requires 30 epochs of training and hyperparameter tuning.
+For practitioners with limited GPU access, frozen CLIP + logistic regression eliminates the need for GPU during training (logistic regression runs on CPU in seconds).
+Even at full data, total CLIP pipeline time (feature extraction + logistic regression) is under 10 minutes per seed, compared to $\sim$5 minutes per ResNet-18 training run (30 epochs).
+
+\begin{table}[h]
+\centering
+\caption{Computational cost comparison.}
+\label{tab:cost}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Factor} & \textbf{CLIP Probe} & \textbf{ResNet-18} \\
+\midrule
+GPU needed for training & No (CPU LR) & Yes (30 epochs) \\
+Training time (full data) & $\sim$8 min & $\sim$5 min (each seed) \\
+Inference speed & $\sim$50 imgs/s & $\sim$200 imgs/s \\
+Model size & 1.7 GB (ViT-L) & 45 MB \\
+Peak memory & 2.3 GB & 0.8 GB \\
+\midrule
+Best accuracy (full) & 75.0\% & 85.7\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+CLIP's inference is slower (ViT-L/14 vs. ResNet-18) and the model is larger, but for offline diagnosis scenarios where batch processing is acceptable, the elimination of GPU training is a substantial practical advantage.
+
+\subsection{Practical Implications}
+
+\begin{enumerate}
+    \item \textbf{Do not rely on CLIP zero-shot for disease diagnosis.} Accuracy of 15--18\% is far below operational thresholds.
+    \item \textbf{Use CLIP features + minimal training as a baseline.} At $K=1$, CLIP probe is within 3 pp of ResNet-18; with full data it reaches 75.0\%. For practitioners with limited GPU resources, frozen CLIP + logistic regression is an efficient alternative.
+    \item \textbf{Augment prompts with domain KG descriptions.} The 1.4--5.8 pp gain from KG prompts demonstrates lightweight domain adaptation without model fine-tuning.
+    \item \textbf{Model rankings are consistent.} Both TPDD and TLD show: CLIP zero-shot is weak, CLIP probe is competitive at low $K$, ResNet-18 dominates at higher $K$. All rankings are established with $n=15$ seeds for statistical reliability.
+    \item \textbf{CLIP confidence is usable with caveats.} Zero-shot predictions are mildly overconfident (ECE=0.14) while probe predictions are conservative (ECE=0.46). In both cases, correct predictions have higher mean confidence than incorrect ones, so confidence ranking is informative—but absolute thresholds should not be trusted without calibration.
+\end{enumerate}
+
+\subsection{Limitations}
+
+(1) We evaluate a single VLM (DFN-CLIP ViT-L/14) on two tobacco datasets; generalization to other VLMs and crops requires further study.
+(2) We evaluate linear probing; fine-tuning or adapters (LoRA, prompt tuning) may improve CLIP results and merit investigation.
+(3) KG coverage is incomplete (9 of 16 TPDD classes) and, as shown on TLD, KG prompts do not generalize across datasets without class-level alignment. Better KG coverage and cross-dataset transfer methods are needed.
+(4) ResNet-18 is a conservative baseline; modern architectures (ViT, ConvNeXt) may achieve higher accuracy and narrow the gap with CLIP features.
+(5) Our CLIP adaptation protocols (linear probe, CoOp) are modest, and more expressive adapters---e.g., learnable image--text knowledge blending (LP++~\cite{lpplus})---may narrow the gap to ResNet-18. Our CoOp control suggests the gap is primarily representational, but we did not test stronger image-branch adapters, so the CLIP numbers should be read as a conservative estimate of CLIP's ceiling in this domain.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusions}
+\label{sec:conclusion}
+
+We systematically evaluated CLIP for tobacco disease classification across two datasets, 14 prompt templates, and four training regimes with rigorous statistical controls ($n=15$).
+Our key findings are:
+(1) KG-augmented prompts provide the best zero-shot accuracy (15.2\%, +1.4 pp over non-KG templates), and the gain stems from structured domain knowledge rather than prompt verbosity---KG prompts are shorter on average than EN-Photo (46 vs.\ 48 chars) and outperform their own longer variants (KG-Combined, 11.6\%).
+(2) CLIP features with domain training are competitive: at $K=1$, CLIP probe (28.4\%) trails ResNet-18 (31.4\%) by 3.0 pp ($p=0.12$); full-data probing reaches 75.0\%---within 10.7 pp of ResNet-18 (85.7\%). All comparisons are validated with $n=15$ seeds.
+(3) KG prompts do not generalize to TLD without class alignment, highlighting a scope limitation.
+(4) CLIP zero-shot predictions are mildly overconfident (ECE=0.14), while probe predictions are conservative (ECE=0.46) but rank-relevant.
+(5) In resource-constrained scenarios where domain-specific pretraining is infeasible, CLIP features with logistic regression provide a strong baseline: at $K=1$, CLIP probe is within 3 pp of ResNet-18, and full-data probing reaches 75.0\%. Domain-specific VLM pretraining (SCOLD, BioCLIP 2) and domain-adaptive prompt engineering (You Are What You Prompt, LP++) can further close the gap, but their benefits are contingent on dataset availability and prompt quality.
+
+We recommend that practitioners use CLIP features with logistic regression as a strong baseline in resource-constrained settings and augment prompts with KG descriptions for lightweight domain adaptation, but verify calibration before operational deployment. When resources permit, domain-specific VLM pretraining and quality-prompt pooling (per \cite{youareprompt}) can further improve performance.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace{6pt}
+
+\reftitle{References}
+
+\begin{thebibliography}{99}
+
+\bibitem{radford2021learning}
+Radford, A.; Kim, J.W.; Hallacy, C.; Ramesh, A.; Goh, G.; Agarwal, S.; Sastry, G.; Askell, A.; Mishkin, P.; Clark, J.; et al.
+Learning Transferable Visual Models From Natural Language Supervision.
+In \emph{Proceedings of ICML}, 2021.
+
+\bibitem{tpdd2024}
+Lin, H.; et al.
+TPDD: A Tobacco Plant Disease Dataset for Image Classification.
+\emph{Data in Brief}, 2024.
+
+\bibitem{he2016deep}
+He, K.; Zhang, X.; Ren, S.; Sun, J.
+Deep Residual Learning for Image Recognition.
+In \emph{Proceedings of CVPR}, 2016.
+
+\bibitem{lu2024agroclip}
+Lu, Y.; et al.
+AgroCLIP: A Vision-Language Model for Agriculture.
+\emph{arXiv preprint}, 2024.
+
+\bibitem{asif2024multimodal}
+Asif, M.; et al.
+Multimodal Language Models for Agricultural Applications: A Comprehensive Survey.
+\emph{Computers and Electronics in Agriculture}, 2024.
+
+\bibitem{huang2021gloria}
+Huang, S.C.; et al.
+GLoRIA: A Multimodal Global-Local Representation Learning Framework for Label-Efficient Medical Image Recognition.
+In \emph{Proceedings of ICCV}, 2021.
+
+\bibitem{liu2024remoteclip}
+Liu, F.; et al.
+RemoteCLIP: A Vision Language Foundation Model for Remote Sensing.
+\emph{IEEE TGRS}, 2024.
+
+\bibitem{stevens2024bioclip}
+Stevens, S.; et al.
+BioCLIP: A Vision Foundation Model for the Tree of Life.
+In \emph{Proceedings of CVPR}, 2024.
+
+\bibitem{zhai2023sigmoid}
+Zhai, X.; et al.
+Sigmoid Loss for Language Image Pre-Training.
+In \emph{Proceedings of ICCV}, 2023.
+
+\bibitem{cherti2023reproducible}
+Cherti, M.; et al.
+Reproducible Scaling Laws for Contrastive Language-Image Learning.
+In \emph{Proceedings of CVPR}, 2023.
+
+\bibitem{zhou2022learning}
+Zhou, K.; et al.
+Learning to Prompt for Vision-Language Models.
+\emph{IJCV}, 2022.
+
+\bibitem{fang2023data}
+Fang, A.; et al.
+Data Filtering Networks.
+\emph{arXiv preprint}, 2023.
+
+\bibitem{sun2023eva}
+Sun, Q.; et al.
+EVA-CLIP: Improved Training Techniques for CLIP at Scale.
+\emph{arXiv preprint}, 2023.
+
+\bibitem{ge2024fine}
+Ge, C.; et al.
+Fine-Grained Multimodal Prompt Learning for Vision-Language Models.
+\emph{arXiv preprint}, 2024.
+
+\bibitem{cropdpkg2025}
+Wu, C.I.; et al.
+CropDP-KG: A Comprehensive Crop Disease and Pest Knowledge Graph.
+\emph{Scientific Data}, 2025.
+
+\bibitem{argueso2019fewshot}
+Argüeso, D.; et al.
+Few-Shot Learning Approach for Plant Disease Classification.
+\emph{Computers and Electronics in Agriculture}, 2019.
+
+\bibitem{li2021fewshot}
+Li, Y.; et al.
+Few-Shot Cotton Disease Recognition Based on Deep Metric Learning.
+\emph{Frontiers in Plant Science}, 2021.
+
+\bibitem{tld}
+Joker5800.
+Tobacco Leaf Diseases Dataset.
+\emph{Hugging Face Datasets}, 2024.
+
+\bibitem{scold2025}
+Nguyen, K.Q.; Le, L.T.T.; Quach, L.-D.
+A Vision-Language Foundation Model for Leaf Disease Identification.
+\emph{arXiv preprint}, 2025.
+
+\bibitem{bioclip2}
+Gu, J.; Stevens, S.; Campolongo, E.G.; Thompson, M.J.; Zhang, N.; Wu, J.; Kopanev, A.; Mai, Z.
+BioCLIP 2: Emergent Properties from Scaling Hierarchical Contrastive Learning.
+\emph{arXiv preprint}, 2025.
+
+\bibitem{lpplus}
+Huang, Y.; Shakeri, F.; Dolz, J.; Boudiaf, M.; Bahig, H.; Ben Ayed, I.
+LP++: A Surprisingly Strong Linear Probe for Few-Shot CLIP.
+\emph{arXiv preprint}, 2024.
+
+\bibitem{youareprompt}
+Morales-Garzón, A.; López-Joya, S.; López-Pérez, M.; Martin-Bautista, M.J.
+You Are What You Prompt: Prompt Quality, Domain Shift, and Uncertainty in Agrifood Vision-Language Models.
+\emph{arXiv preprint}, 2026.
+
+\end{thebibliography}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}

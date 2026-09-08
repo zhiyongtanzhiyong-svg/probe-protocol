@@ -1,0 +1,10 @@
+[
+  {
+    "template": "EN-Photo (TLD)",
+    "accuracy": 17.7
+  },
+  {
+    "template": "KG-Symptom (via TPDD)",
+    "accuracy": 10.77
+  }
+]

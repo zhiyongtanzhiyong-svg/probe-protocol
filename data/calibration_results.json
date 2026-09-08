@@ -1,0 +1,180 @@
+{
+  "zero_shot": {
+    "accuracy": 15.22,
+    "ece": 0.1424,
+    "bins": [
+      {
+        "bin": 0,
+        "range": "0.0-0.1",
+        "acc": 0,
+        "conf": 0,
+        "size": 0,
+        "gap": 0
+      },
+      {
+        "bin": 1,
+        "range": "0.1-0.2",
+        "acc": 0.0,
+        "conf": 0.181,
+        "size": 7,
+        "gap": 0.181
+      },
+      {
+        "bin": 2,
+        "range": "0.2-0.3",
+        "acc": 0.12,
+        "conf": 0.262,
+        "size": 75,
+        "gap": 0.142
+      },
+      {
+        "bin": 3,
+        "range": "0.3-0.4",
+        "acc": 0.213,
+        "conf": 0.337,
+        "size": 47,
+        "gap": 0.125
+      },
+      {
+        "bin": 4,
+        "range": "0.4-0.5",
+        "acc": 0.222,
+        "conf": 0.432,
+        "size": 9,
+        "gap": 0.21
+      },
+      {
+        "bin": 5,
+        "range": "0.5-0.6",
+        "acc": 0,
+        "conf": 0,
+        "size": 0,
+        "gap": 0
+      },
+      {
+        "bin": 6,
+        "range": "0.6-0.7",
+        "acc": 0,
+        "conf": 0,
+        "size": 0,
+        "gap": 0
+      },
+      {
+        "bin": 7,
+        "range": "0.7-0.8",
+        "acc": 0,
+        "conf": 0,
+        "size": 0,
+        "gap": 0
+      },
+      {
+        "bin": 8,
+        "range": "0.8-0.9",
+        "acc": 0,
+        "conf": 0,
+        "size": 0,
+        "gap": 0
+      },
+      {
+        "bin": 9,
+        "range": "0.9-1.0",
+        "acc": 0,
+        "conf": 0,
+        "size": 0,
+        "gap": 0
+      }
+    ],
+    "mean_confidence": 0.295,
+    "correct_conf": 0.317,
+    "incorrect_conf": 0.29
+  },
+  "probe_full": {
+    "accuracy": 73.91,
+    "ece": 0.4597,
+    "bins": [
+      {
+        "bin": 0,
+        "range": "0.0-0.1",
+        "acc": 0,
+        "conf": 0,
+        "size": 0,
+        "gap": 0
+      },
+      {
+        "bin": 1,
+        "range": "0.1-0.2",
+        "acc": 0.561,
+        "conf": 0.173,
+        "size": 41,
+        "gap": 0.388
+      },
+      {
+        "bin": 2,
+        "range": "0.2-0.3",
+        "acc": 0.652,
+        "conf": 0.241,
+        "size": 46,
+        "gap": 0.411
+      },
+      {
+        "bin": 3,
+        "range": "0.3-0.4",
+        "acc": 0.935,
+        "conf": 0.352,
+        "size": 31,
+        "gap": 0.584
+      },
+      {
+        "bin": 4,
+        "range": "0.4-0.5",
+        "acc": 1.0,
+        "conf": 0.449,
+        "size": 15,
+        "gap": 0.551
+      },
+      {
+        "bin": 5,
+        "range": "0.5-0.6",
+        "acc": 1.0,
+        "conf": 0.544,
+        "size": 5,
+        "gap": 0.456
+      },
+      {
+        "bin": 6,
+        "range": "0.6-0.7",
+        "acc": 0,
+        "conf": 0,
+        "size": 0,
+        "gap": 0
+      },
+      {
+        "bin": 7,
+        "range": "0.7-0.8",
+        "acc": 0,
+        "conf": 0,
+        "size": 0,
+        "gap": 0
+      },
+      {
+        "bin": 8,
+        "range": "0.8-0.9",
+        "acc": 0,
+        "conf": 0,
+        "size": 0,
+        "gap": 0
+      },
+      {
+        "bin": 9,
+        "range": "0.9-1.0",
+        "acc": 0,
+        "conf": 0,
+        "size": 0,
+        "gap": 0
+      }
+    ],
+    "mean_confidence": 0.279,
+    "correct_conf": 0.306,
+    "incorrect_conf": 0.205
+  }
+}
