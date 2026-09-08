@@ -58,7 +58,7 @@ We conclude that CLIP zero-shot is inadequate for deployment, but CLIP features 
 \section{Introduction}
 \label{sec:intro}
 
-Vision-language models (VLMs) pretrained on web-scale image-text pairs, such as CLIP~\cite{radford2021learning}, have achieved remarkable zero-shot generalization across general-purpose visual recognition benchmarks.
+Vision-language models (VLMs) pretrained on web-scale image-text pairs, such as CLIP~\cite{radford2021learning}, have achieved strong zero-shot generalization across general-purpose visual recognition benchmarks.
 This has led to growing enthusiasm for applying VLMs to specialized domains---including agriculture~\cite{lu2024agroclip,asif2024multimodal}, medicine~\cite{huang2021gloria}, and remote sensing~\cite{liu2024remoteclip}---under the implicit assumption that large-scale pretraining transfers without additional training.
 
 However, the visual statistics of specialized domains differ fundamentally from general web images.
@@ -139,7 +139,7 @@ This is the standard protocol for evaluating frozen CLIP representations~\cite{r
 
 \subsection{CLIP CoOp Control}
 
-To test whether the probe protocol itself limits CLIP, we additionally train a learnable text prompt (CoOp~\cite{zhou2022learning}) on the same $K$-shot support sets: 4 context tokens initialized from the token embeddings of ``a photo of a'', optimized with Adam ($lr=10^{-3}$, batch size 32) for 10 epochs on the contrastive cross-entropy loss against the support images, then evaluated zero-shot on the test set.
+To test whether the probe protocol itself limits CLIP, we train a learnable text prompt (CoOp~\cite{zhou2022learning}) on the same $K$-shot support sets: 4 context tokens initialized from the token embeddings of ``a photo of a'', optimized with Adam ($lr=10^{-3}$, batch size 32) for 10 epochs on the contrastive cross-entropy loss against the support images, then evaluated zero-shot on the test set.
 Features, support subsets, and seeds are identical to the probe protocol.
 
 \subsection{ResNet-18 Baseline}
@@ -234,7 +234,7 @@ All gaps are statistically significant ($p<0.01$) except K=1.
 
 The rate of improvement is informative.
 CLIP probe gains 46.6 pp from $K=1$ to full data ($28.4 \rightarrow 75.0$), while ResNet-18 gains 54.3 pp ($31.4 \rightarrow 85.7$).
-The 75.0\% achieved by frozen CLIP features with logistic regression is remarkably strong for a model never trained on agricultural images.
+The 75.0\% achieved by frozen CLIP features with logistic regression is strong for a model never trained on agricultural images.
 
 The CoOp control asks whether the gap to ResNet-18 is an artifact of the linear probe protocol rather than of the features.
 Learnable text prompts perform \emph{worse} than the probe at every support size ($K=1$: 10.8\% vs.\ 28.4\%; full data: 61.2\% vs.\ 75.0\%) and worse than ResNet-18 at every $K$.
@@ -330,7 +330,7 @@ The effect is concentrated on classes with KG coverage; the 7 of 16 TPDD classes
 The practical utility of CLIP features extends beyond accuracy. Table~\ref{tab:cost} compares the computational footprint of both approaches.
 CLIP feature extraction (no training) requires a single GPU forward pass per image, while ResNet-18 requires 30 epochs of training and hyperparameter tuning.
 For practitioners with limited GPU access, frozen CLIP + logistic regression eliminates the need for GPU during training (logistic regression runs on CPU in seconds).
-Even at full data, total CLIP pipeline time (feature extraction + logistic regression) is under 10 minutes per seed, compared to $\sim$5 minutes per ResNet-18 training run (30 epochs).
+At full data, total CLIP pipeline time (feature extraction + logistic regression) is under 10 minutes per seed, compared to $\sim$5 minutes per ResNet-18 training run (30 epochs).
 
 \begin{table}[h]
 \centering
