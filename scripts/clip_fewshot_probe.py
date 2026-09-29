@@ -3,7 +3,7 @@ CLIP Few-Shot Linear Probe — FIXED: inverse ImageNet normalization.
 """
 import sys, json, torch, numpy as np
 from sklearn.linear_model import LogisticRegression
-sys.path.insert(0, '/home/broadsense/works/lizhuo/TobAI/Paper1-KGRegularizer/scripts')
+sys.path.insert(0, '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/scripts')
 
 import open_clip
 from dataset import TPDDDataset, TRAIN_TRANSFORM, EVAL_TRANSFORM, worker_init_fn
@@ -37,7 +37,7 @@ class KShotSubset(Dataset):
 
 def main():
     model, _, preprocess = open_clip.create_model_and_transforms(
-        'ViT-L-14', pretrained='/home/broadsense/works/lizhuo/scb5-zeroshot/ckpts/dfn_clip_vitl14/open_clip_pytorch_model.bin')
+        'ViT-L-14', pretrained='/home/lizhuo/Work/TobAI/checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin')
     model = model.eval().cuda()
 
     @torch.no_grad()
@@ -77,7 +77,7 @@ def main():
                            "accs": accs.tolist(), "n_seeds": N_SEEDS}
         print(f"CLIP probe {label:5s}: {accs.mean()*100:.1f}% ± {accs.std(ddof=1)*100:.1f}")
 
-    json.dump(results, open('/home/broadsense/works/lizhuo/TobAI/Paper2-CLIPvsResNet/data/clip_fewshot_fixed.json', 'w'), indent=2)
+    json.dump(results, open('/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/data/clip_fewshot_fixed.json', 'w'), indent=2)
     print("Saved.")
 
 if __name__ == '__main__':

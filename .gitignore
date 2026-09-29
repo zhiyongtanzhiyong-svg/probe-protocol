@@ -67,3 +67,29 @@ Thumbs.db
 
 # Environment files
 .env
+
+# ---------------------------------------------------------------------------
+# Datasets are NOT in this repository. This project is deliberately
+# self-contained (no cross-repo dependency on Paper1 / anchor-scope), but the
+# image corpora are too large to track. See README.md "Data provenance" for how
+# to obtain each one.
+# ---------------------------------------------------------------------------
+# TPDD tobacco images (52 MB; splits 1295/138/138)
+data/tpdd/
+# TLD tobacco-leaf images (178 MB)
+data/tld_images/
+# PlantVillage tomato subset (313 MB)
+data/plantvillage_tomato/
+# 828 MB archive
+data/Plant_leaf_diseases_dataset_without_augmentation.zip
+# superseded outputs, kept out of the audit trail
+data/_stale/
+*.bak
+
+# Vendored third-party reference implementations (LP++ etc). These are external
+# code, not ours to version; clone them from their own repositories.
+reference_lpp/
+
+# Generated artifacts. Regenerate with: python3 generate_figures.py
+manuscript/paper/figures/
+logs/

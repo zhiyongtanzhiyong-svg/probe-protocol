@@ -3,7 +3,7 @@ ResNet-18 K=5,10 Few-Shot Experiment (n=15 seeds).
 Addresses reviewer concern: CLIP probe n=15 vs ResNet K=5,10 n=5 misalignment.
 """
 import sys, json, torch, numpy as np, time, os, argparse
-sys.path.insert(0, '/home/broadsense/works/lizhuo/TobAI/Paper1-KGRegularizer/scripts')
+sys.path.insert(0, '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/scripts')
 
 from dataset import TPDDDataset, TRAIN_TRANSFORM, EVAL_TRANSFORM, worker_init_fn
 from torch.utils.data import DataLoader, Dataset

@@ -27,14 +27,14 @@ import numpy as np
 import torch
 import torch.nn.functional as F
 
-sys.path.insert(0, '/home/lizhuo/Work/TobAI/Paper1-KGRegularizer/scripts')
+sys.path.insert(0, '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/scripts')
 import open_clip
 
 CKPT = '/home/lizhuo/Work/TobAI/checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin'
 OUT = '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/data/zpe_experiment.json'
 FEAT_CACHE = '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/data/clip_features_clean.npz'
 ABLATION_JSON = '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/data/prompt_ablation.json'
-KG_MAP = '/home/lizhuo/Work/TobAI/Paper1-KGRegularizer/data/tpd_to_kg_map.json'
+KG_MAP = '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/data/tpd_to_kg_map.json'
 KG_DATA = '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/data/tobacco_records.json'
 
 CLASS_NAMES = ['anthracnose', 'black_shank', 'brown_spot', 'cmv', 'frog_eye',

@@ -7,7 +7,7 @@ import sys, json, torch, numpy as np, os
 from sklearn.linear_model import LogisticRegression
 from torch.utils.data import DataLoader, Dataset
 from PIL import Image
-sys.path.insert(0, '/home/broadsense/works/lizhuo/TobAI/Paper1-KGRegularizer/scripts')
+sys.path.insert(0, '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/scripts')
 
 import open_clip
 from dataset import TPDDDataset, EVAL_TRANSFORM, TRAIN_TRANSFORM, worker_init_fn
@@ -52,8 +52,8 @@ class KShotSubset(Dataset):
 
 # ===== Models to evaluate =====
 MODELS = {
-    "DFN-CLIP-ViTL14": ("open_clip", "ViT-L-14", "/home/broadsense/works/lizhuo/scb5-zeroshot/ckpts/dfn_clip_vitl14/open_clip_pytorch_model.bin"),
-    "OpenAI-CLIP-ViTL14": ("openai_clip", "ViT-L/14", "/home/broadsense/works/lizhuo/scb5-zeroshot/ckpts/clip_openai_vitl14/pytorch_model.bin"),
+    "DFN-CLIP-ViTL14": ("open_clip", "ViT-L-14", "/home/lizhuo/Work/TobAI/checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin"),
+    "OpenAI-CLIP-ViTL14": ("openai_clip", "ViT-L/14", "/home/lizhuo/Work/TobAI/checkpoints/clip_openai_vitl14/pytorch_model.bin"),
 }
 
 # ===== Datasets =====
@@ -61,7 +61,7 @@ from datasets import load_dataset
 from collections import Counter
 
 # TPDD
-tpd_map = json.load(open('/home/broadsense/works/lizhuo/TobAI/Paper1-KGRegularizer/data/tpd_to_kg_map.json'))
+tpd_map = json.load(open('/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/data/tpd_to_kg_map.json'))
 tpd_eng_names = list(tpd_map.keys())
 tpd_test = TPDDDataset('test', transform=EVAL_TRANSFORM)
 tpd_train_full = TPDDDataset('train', transform=TRAIN_TRANSFORM)
@@ -187,8 +187,8 @@ for model_name, (lib, arch, ckpt_path) in MODELS.items():
         RESULTS[f"{model_name}_{ds_name}_zero-shot"] = {"accuracy": zs_acc}
 
 # Save
-os.makedirs('/home/broadsense/works/lizhuo/TobAI/Paper2-CLIPvsResNet/data/', exist_ok=True)
-json.dump(RESULTS, open('/home/broadsense/works/lizhuo/TobAI/Paper2-CLIPvsResNet/data/multimodel_results.json', 'w'), indent=2)
+os.makedirs('/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/data/', exist_ok=True)
+json.dump(RESULTS, open('/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/data/multimodel_results.json', 'w'), indent=2)
 
 # Summary table
 print(f"\n{'='*70}")

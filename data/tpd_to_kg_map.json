@@ -1,0 +1,66 @@
+{
+  "anthracnose": {
+    "kg_entity": "D_\u70df\u8349\u70ad\u75bd\u75c5",
+    "kg_id": 17
+  },
+  "black_shank": {
+    "kg_entity": "D_\u70df\u8349\u9ed1\u80eb\u75c5",
+    "kg_id": 25
+  },
+  "brown_spot": {
+    "kg_entity": "D_\u70df\u8349\u8d64\u661f\u75c5",
+    "kg_id": 21
+  },
+  "cmv": {
+    "kg_entity": "D_\u70df\u8349\u9ec4\u74dc\u82b1\u53f6\u75c5\u6bd2\u75c5",
+    "kg_id": 24
+  },
+  "frog_eye": {
+    "kg_entity": "D_\u70df\u8349\u86d9\u773c\u75c5",
+    "kg_id": 19
+  },
+  "genetic_abnormality": {
+    "kg_entity": "D_genetic_abnormality",
+    "kg_id": 4
+  },
+  "healthy": {
+    "kg_entity": null,
+    "kg_id": -1
+  },
+  "nematodes": {
+    "kg_entity": "D_\u70df\u8349\u6839\u7ed3\u7ebf\u866b\u75c5",
+    "kg_id": 15
+  },
+  "potato_tuber_moth": {
+    "kg_entity": "D_potato_tuber_moth",
+    "kg_id": 5
+  },
+  "pvy": {
+    "kg_entity": "D_pvy",
+    "kg_id": 6
+  },
+  "sunscald": {
+    "kg_entity": "D_sunscald",
+    "kg_id": 7
+  },
+  "target_spot": {
+    "kg_entity": "D_target_spot",
+    "kg_id": 8
+  },
+  "tmv": {
+    "kg_entity": "D_\u70df\u8349\u666e\u901a\u82b1\u53f6\u75c5\u6bd2\u75c5",
+    "kg_id": 14
+  },
+  "tswv": {
+    "kg_entity": "D_tswv",
+    "kg_id": 9
+  },
+  "weather_fleck": {
+    "kg_entity": "D_weather_fleck",
+    "kg_id": 10
+  },
+  "wildfire": {
+    "kg_entity": "D_\u70df\u8349\u91ce\u706b\u75c5",
+    "kg_id": 22
+  }
+}

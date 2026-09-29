@@ -1,0 +1,137 @@
+{
+  "n_test": 138,
+  "n_classes": 16,
+  "class_names": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "class_distribution_test": {
+    "0": 1,
+    "1": 1,
+    "2": 10,
+    "3": 10,
+    "4": 10,
+    "5": 1,
+    "6": 10,
+    "7": 8,
+    "8": 10,
+    "9": 8,
+    "10": 14,
+    "11": 10,
+    "12": 14,
+    "13": 1,
+    "14": 12,
+    "15": 18
+  },
+  "majority_class": 15,
+  "majority_baseline": 0.13043478260869565,
+  "uniform_baseline": 0.0625,
+  "clip_k1": {
+    "accuracy": 0.26811594202898553,
+    "balanced_accuracy": 0.32956349206349206,
+    "macro_f1": 0.2901891739598913,
+    "n_correct": 37,
+    "n_total": 138
+  },
+  "clip_full": {
+    "accuracy": 0.7536231884057971,
+    "balanced_accuracy": 0.6747519841269841,
+    "macro_f1": 0.6284772413576762,
+    "n_correct": 104,
+    "n_total": 138
+  },
+  "resnet_k1": {
+    "accuracy": 0.3695652173913043,
+    "balanced_accuracy": 0.41225198412698416,
+    "macro_f1": 0.31394846905611745,
+    "n_correct": 51,
+    "n_total": 138
+  },
+  "resnet_full": {
+    "accuracy": 0.8840579710144928,
+    "balanced_accuracy": 0.8425099206349207,
+    "macro_f1": 0.8372505714897018,
+    "n_correct": 122,
+    "n_total": 138
+  },
+  "mcnemar_k1": {
+    "n_discordant": 56,
+    "n_clip_right_resnet_wrong": 21,
+    "n_resnet_right_clip_wrong": 35,
+    "p_value": 0.08142681460950618,
+    "significant_at_0.05": false
+  },
+  "mcnemar_full": {
+    "n_discordant": 28,
+    "n_clip_right_resnet_wrong": 5,
+    "n_resnet_right_clip_wrong": 23,
+    "p_value": 0.0009122341871261597,
+    "significant_at_0.05": true
+  },
+  "paired_bootstrap_k1": {
+    "mean_diff": -0.10153260869565217,
+    "ci_95": [
+      -0.2028985507246377,
+      0.00724637681159418
+    ],
+    "n_boot": 10000
+  },
+  "c_grid": [
+    {
+      "C": 0.01,
+      "accuracy": 0.13043478260869565
+    },
+    {
+      "C": 0.03,
+      "accuracy": 0.18115942028985507
+    },
+    {
+      "C": 0.1,
+      "accuracy": 0.3188405797101449
+    },
+    {
+      "C": 0.3,
+      "accuracy": 0.6014492753623188
+    },
+    {
+      "C": 1.0,
+      "accuracy": 0.7536231884057971
+    },
+    {
+      "C": 3.0,
+      "accuracy": 0.7971014492753623
+    },
+    {
+      "C": 10.0,
+      "accuracy": 0.8115942028985508
+    },
+    {
+      "C": 30.0,
+      "accuracy": 0.8333333333333334
+    },
+    {
+      "C": 100.0,
+      "accuracy": 0.8333333333333334
+    }
+  ],
+  "c_grid_best": {
+    "C": 30.0,
+    "accuracy": 0.8333333333333334
+  },
+  "elapsed_s": 209.860196352005,
+  "timestamp": "2026-09-12 07:57:00"
+}

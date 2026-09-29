@@ -3,7 +3,7 @@ Text-length ablation for CLIP zero-shot.
 FIXED: No truncation. Uses a common target length, pads ALL prompts to that length.
 """
 import sys, json, torch, numpy as np
-sys.path.insert(0, '/home/broadsense/works/lizhuo/TobAI/Paper1-KGRegularizer/scripts')
+sys.path.insert(0, '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/scripts')
 
 import open_clip
 from dataset import TPDDDataset, EVAL_TRANSFORM, worker_init_fn
@@ -22,12 +22,12 @@ def tensor_to_pil(img_tensor):
 
 def main():
     model, _, preprocess = open_clip.create_model_and_transforms(
-        'ViT-L-14', pretrained='/home/broadsense/works/lizhuo/scb5-zeroshot/ckpts/dfn_clip_vitl14/open_clip_pytorch_model.bin')
+        'ViT-L-14', pretrained='/home/lizhuo/Work/TobAI/checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin')
     tokenizer = open_clip.get_tokenizer('ViT-L-14')
     model = model.eval().cuda()
 
-    tpd_map = json.load(open('/home/broadsense/works/lizhuo/TobAI/Paper1-KGRegularizer/data/tpd_to_kg_map.json'))
-    kg_data = json.load(open('/home/broadsense/works/lizhuo/AutoResearchClaw/data/cropdp-kg/tobacco_records.json'))
+    tpd_map = json.load(open('/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/data/tpd_to_kg_map.json'))
+    kg_data = json.load(open('/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/data/tobacco_records.json'))
     class_names = list(tpd_map.keys())
 
     cn_map = {
@@ -144,7 +144,7 @@ def main():
     print(f"  KG advantage over padded EN-Photo       : {kg_pad - en_pad:+.1f} pp")
     print(f"{'='*60}")
 
-    json.dump(results, open('/home/broadsense/works/lizhuo/TobAI/Paper2-CLIPvsResNet/data/text_length_ablation.json', 'w'), indent=2)
+    json.dump(results, open('/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/data/text_length_ablation.json', 'w'), indent=2)
     print("\nSaved.")
 
 

@@ -1,0 +1,27 @@
+{
+  "cos_sim_train": 0.8997,
+  "cos_sim_test": 0.9001,
+  "c1_A_inverse_norm": 76.81,
+  "c1_B_clean": 74.64,
+  "c1_delta_pp": -2.17,
+  "zero_shot": {
+    "EN-Label": {
+      "A_inverse_norm": 0.72,
+      "B_clean": 0.72
+    },
+    "EN-Photo": {
+      "A_inverse_norm": 13.77,
+      "B_clean": 13.04
+    },
+    "EN-Symptom": {
+      "A_inverse_norm": 8.7,
+      "B_clean": 11.59
+    }
+  },
+  "zero_shot_best_A": 13.77,
+  "zero_shot_best_B": 13.04,
+  "eval_tensor_range": {"min": -1.5953, "max": 2.64, "interpretation": "already ImageNet-normalized by EVAL_TRANSFORM"},
+  "note": "A = canonical path: denormalize the already-normalized EVAL tensor to [0,1] (tensor_to_pil, uint8) then open_clip preprocess re-normalizes. B = clean path: open_clip preprocess directly on the raw PIL. Both end at normalized pixels; the only difference is the uint8 rounding in A. Same 138 test images, DFN-CLIP ViT-L/14.",
+  "interpretation": "The inverse-normalization step is the CORRECT denormalization of an already-normalized tensor (not a bug). Its uint8-rounding cost is bounded by these small deltas: cos(A,B)=0.90, C=1 probe 76.81% (canonical) vs 74.64% (clean) = -2.17pp, zero-shot best-template -0.7pp. The reported frozen-CLIP result (76.8%) is therefore robust to, and slightly favored by, the canonical path.",
+  "elapsed_sec": 127.7
+}

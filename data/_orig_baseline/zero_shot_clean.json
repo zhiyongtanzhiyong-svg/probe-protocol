@@ -1,0 +1,168 @@
+{
+  "n_test": 138,
+  "templates": {
+    "EN-Label": {
+      "acc": 0.0072,
+      "ci95": [
+        0.0,
+        0.0219
+      ],
+      "n_correct": 1
+    },
+    "CN-Label": {
+      "acc": 0.0942,
+      "ci95": [
+        0.0507,
+        0.1449
+      ],
+      "n_correct": 13
+    },
+    "EN-Photo": {
+      "acc": 0.1304,
+      "ci95": [
+        0.0725,
+        0.1884
+      ],
+      "n_correct": 18
+    },
+    "CN-Photo": {
+      "acc": 0.1087,
+      "ci95": [
+        0.058,
+        0.1667
+      ],
+      "n_correct": 15
+    },
+    "EN-Symptom": {
+      "acc": 0.1159,
+      "ci95": [
+        0.0652,
+        0.1739
+      ],
+      "n_correct": 16
+    },
+    "CN-Symptom": {
+      "acc": 0.0942,
+      "ci95": [
+        0.0507,
+        0.1449
+      ],
+      "n_correct": 13
+    },
+    "EN-Closeup": {
+      "acc": 0.0725,
+      "ci95": [
+        0.0362,
+        0.1159
+      ],
+      "n_correct": 10
+    },
+    "CN-Closeup": {
+      "acc": 0.0652,
+      "ci95": [
+        0.029,
+        0.1087
+      ],
+      "n_correct": 9
+    },
+    "EN-Disease": {
+      "acc": 0.087,
+      "ci95": [
+        0.0435,
+        0.1377
+      ],
+      "n_correct": 12
+    },
+    "CN-Disease": {
+      "acc": 0.0797,
+      "ci95": [
+        0.0362,
+        0.1304
+      ],
+      "n_correct": 11
+    },
+    "KG-Symptom": {
+      "acc": 0.1304,
+      "ci95": [
+        0.0725,
+        0.1884
+      ],
+      "n_correct": 18
+    },
+    "KG-Condition": {
+      "acc": 0.0942,
+      "ci95": [
+        0.0507,
+        0.1449
+      ],
+      "n_correct": 13
+    },
+    "KG-Combined": {
+      "acc": 0.0942,
+      "ci95": [
+        0.0435,
+        0.1449
+      ],
+      "n_correct": 13
+    },
+    "EN-Expert": {
+      "acc": 0.0435,
+      "ci95": [
+        0.0145,
+        0.0797
+      ],
+      "n_correct": 6
+    }
+  },
+  "ensemble_uniform": {
+    "acc": 0.087,
+    "ci95": [
+      0.0435,
+      0.1377
+    ]
+  },
+  "ensemble_zpe_signal": {
+    "acc": 0.1449,
+    "ci95": [
+      0.087,
+      0.2029
+    ]
+  },
+  "reconciliation": {
+    "prior_prompt_ablation_best": "KG-Symptom",
+    "prior_prompt_ablation": {
+      "EN-Label": 0.7246376811594203,
+      "CN-Label": 7.246376811594203,
+      "EN-Photo": 13.768115942028986,
+      "CN-Photo": 7.246376811594203,
+      "EN-Symptom": 8.695652173913043,
+      "CN-Symptom": 9.420289855072465,
+      "EN-Closeup": 7.246376811594203,
+      "CN-Closeup": 1.4492753623188406,
+      "EN-Disease": 5.072463768115942,
+      "CN-Disease": 9.420289855072465,
+      "KG-Symptom": 15.217391304347828,
+      "KG-Condition": 10.144927536231885,
+      "KG-Combined": 11.594202898550725,
+      "EN-Expert": 2.898550724637681
+    },
+    "prior_zpe_best": "KG-Condition",
+    "prior_zpe_template_acc": {
+      "EN-Label": 0.007246376811594203,
+      "CN-Label": 0.07246376811594203,
+      "EN-Photo": 0.13043478260869565,
+      "CN-Photo": 0.07971014492753623,
+      "EN-Symptom": 0.07246376811594203,
+      "CN-Symptom": 0.09420289855072464,
+      "EN-Closeup": 0.09420289855072464,
+      "CN-Closeup": 0.014492753623188406,
+      "EN-Disease": 0.057971014492753624,
+      "CN-Disease": 0.08695652173913043,
+      "KG-Symptom": 0.15217391304347827,
+      "KG-Condition": 0.15942028985507245,
+      "KG-Combined": 0.12318840579710146,
+      "EN-Expert": 0.021739130434782608
+    },
+    "note": "single re-run on 138 TPDD test imgs; CI overlap explains prior best-template disagreement"
+  }
+}

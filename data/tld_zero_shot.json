@@ -1,0 +1,336 @@
+{
+  "n_total": 1392,
+  "n_base": 232,
+  "classes": [
+    "Brown spot",
+    "Frogeye",
+    "Healthy",
+    "Mosaic",
+    "Potato virus Y",
+    "Target spot",
+    "Weather fleck",
+    "alternaria alternata",
+    "cercospora nicotianae",
+    "no cercospora nicotianae or alternaria alternata present"
+  ],
+  "class_counts": {
+    "Brown spot": 120,
+    "Frogeye": 120,
+    "Healthy": 120,
+    "Mosaic": 120,
+    "Potato virus Y": 120,
+    "Target spot": 120,
+    "Weather fleck": 120,
+    "alternaria alternata": 168,
+    "cercospora nicotianae": 120,
+    "no cercospora nicotianae or alternaria alternata present": 264
+  },
+  "templates_nonkg": {
+    "EN-Label": {
+      "acc": 0.1164,
+      "ci95": [
+        0.0733,
+        0.1552
+      ],
+      "n_correct": 27,
+      "n": 232
+    },
+    "EN-Photo": {
+      "acc": 0.0948,
+      "ci95": [
+        0.0603,
+        0.1336
+      ],
+      "n_correct": 22,
+      "n": 232
+    },
+    "EN-Symptom": {
+      "acc": 0.1552,
+      "ci95": [
+        0.1121,
+        0.2026
+      ],
+      "n_correct": 36,
+      "n": 232
+    },
+    "EN-Closeup": {
+      "acc": 0.1681,
+      "ci95": [
+        0.1207,
+        0.2155
+      ],
+      "n_correct": 39,
+      "n": 232
+    },
+    "EN-Disease": {
+      "acc": 0.1552,
+      "ci95": [
+        0.1078,
+        0.2069
+      ],
+      "n_correct": 36,
+      "n": 232
+    },
+    "EN-Expert": {
+      "acc": 0.1379,
+      "ci95": [
+        0.0948,
+        0.181
+      ],
+      "n_correct": 32,
+      "n": 232
+    },
+    "CN-Label": {
+      "acc": 0.0991,
+      "ci95": [
+        0.0603,
+        0.1379
+      ],
+      "n_correct": 23,
+      "n": 232
+    },
+    "CN-Photo": {
+      "acc": 0.125,
+      "ci95": [
+        0.0819,
+        0.1681
+      ],
+      "n_correct": 29,
+      "n": 232
+    },
+    "CN-Symptom": {
+      "acc": 0.1767,
+      "ci95": [
+        0.1293,
+        0.2284
+      ],
+      "n_correct": 41,
+      "n": 232
+    },
+    "CN-Closeup": {
+      "acc": 0.0647,
+      "ci95": [
+        0.0345,
+        0.0991
+      ],
+      "n_correct": 15,
+      "n": 232
+    },
+    "CN-Disease": {
+      "acc": 0.1724,
+      "ci95": [
+        0.125,
+        0.2198
+      ],
+      "n_correct": 40,
+      "n": 232
+    }
+  },
+  "templates_kg": {
+    "KG-Symptom": {
+      "acc": 0.0948,
+      "ci95": [
+        0.056,
+        0.1336
+      ],
+      "n_correct": 22,
+      "n": 232
+    },
+    "KG-Condition": {
+      "acc": 0.1164,
+      "ci95": [
+        0.0776,
+        0.1595
+      ],
+      "n_correct": 27,
+      "n": 232
+    },
+    "KG-Combined": {
+      "acc": 0.1293,
+      "ci95": [
+        0.0862,
+        0.1724
+      ],
+      "n_correct": 30,
+      "n": 232
+    }
+  },
+  "ensemble_uniform_nonkg": {
+    "acc": 0.1164,
+    "ci95": [
+      0.0776,
+      0.1595
+    ]
+  },
+  "ensemble_uniform_all": {
+    "acc": 0.125,
+    "ci95": [
+      0.0819,
+      0.1682
+    ]
+  },
+  "baselines": {
+    "majority": 0.1897,
+    "uniform_1overK": 0.1,
+    "largest_class": "no cercospora nicotianae or alternaria alternata present"
+  },
+  "per_class_best_nonkg": {
+    "template": "CN-Symptom",
+    "per_class": {
+      "Brown spot": {
+        "n": 20,
+        "acc": 0.0
+      },
+      "Frogeye": {
+        "n": 20,
+        "acc": 0.7
+      },
+      "Healthy": {
+        "n": 20,
+        "acc": 0.0
+      },
+      "Mosaic": {
+        "n": 20,
+        "acc": 1.0
+      },
+      "Potato virus Y": {
+        "n": 20,
+        "acc": 0.0
+      },
+      "Target spot": {
+        "n": 20,
+        "acc": 0.0
+      },
+      "Weather fleck": {
+        "n": 20,
+        "acc": 0.0
+      },
+      "alternaria alternata": {
+        "n": 28,
+        "acc": 0.0
+      },
+      "cercospora nicotianae": {
+        "n": 20,
+        "acc": 0.1
+      },
+      "no cercospora nicotianae or alternaria alternata present": {
+        "n": 44,
+        "acc": 0.1136
+      }
+    }
+  },
+  "sensitivity_augmented_inclusive": {
+    "EN-Label": {
+      "acc": 0.1092,
+      "ci95": [
+        0.0934,
+        0.1257
+      ]
+    },
+    "EN-Photo": {
+      "acc": 0.1085,
+      "ci95": [
+        0.0934,
+        0.1236
+      ]
+    },
+    "EN-Symptom": {
+      "acc": 0.1509,
+      "ci95": [
+        0.1322,
+        0.1703
+      ]
+    },
+    "EN-Closeup": {
+      "acc": 0.1652,
+      "ci95": [
+        0.1451,
+        0.1853
+      ]
+    },
+    "EN-Disease": {
+      "acc": 0.1494,
+      "ci95": [
+        0.1315,
+        0.1688
+      ]
+    },
+    "EN-Expert": {
+      "acc": 0.1128,
+      "ci95": [
+        0.097,
+        0.1293
+      ]
+    },
+    "CN-Label": {
+      "acc": 0.107,
+      "ci95": [
+        0.0912,
+        0.1228
+      ]
+    },
+    "CN-Photo": {
+      "acc": 0.143,
+      "ci95": [
+        0.1257,
+        0.1616
+      ]
+    },
+    "CN-Symptom": {
+      "acc": 0.1573,
+      "ci95": [
+        0.1386,
+        0.1753
+      ]
+    },
+    "CN-Closeup": {
+      "acc": 0.1092,
+      "ci95": [
+        0.0934,
+        0.1257
+      ]
+    },
+    "CN-Disease": {
+      "acc": 0.1552,
+      "ci95": [
+        0.1351,
+        0.1746
+      ]
+    },
+    "ensemble_uniform_nonkg": {
+      "acc": 0.0948,
+      "ci95": [
+        0.0797,
+        0.1106
+      ]
+    }
+  },
+  "notes": {
+    "label_set": "TLD own 10 classes (external vocabulary), NOT remapped onto TPDD 16",
+    "primary_split": "232 distinct base images (augmented _aug0-4 variants excluded = independent obs)",
+    "kg_mapping": {
+      "clean": {
+        "Brown spot": "brown_spot",
+        "Frogeye": "frog_eye",
+        "Healthy": "healthy",
+        "Mosaic": "tmv",
+        "Potato virus Y": "pvy",
+        "Target spot": "target_spot",
+        "Weather fleck": "weather_fleck"
+      },
+      "fallback_documented": [
+        "alternaria alternata",
+        "cercospora nicotianae",
+        "no cercospora nicotianae or alternaria alternata present"
+      ],
+      "caveat": "KG transfer to a new label set is inherently confounded -> reported as secondary"
+    },
+    "fixes": [
+      "replaces 84-image fabricated 6%-of-test split (kg_tld_validation.py:96-102)",
+      "adds bootstrap CIs",
+      "14 templates vs 2",
+      "removes lossy TLD->TPDD KG remap from primary"
+    ],
+    "prior_flawed": "kg_tld_validation.py reported only 2 templates, no CI, on a shuffled carve-out"
+  }
+}

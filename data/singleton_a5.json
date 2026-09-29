@@ -1,0 +1,34 @@
+{
+  "n_classes": 16,
+  "singleton_classes": [
+    "0",
+    "1",
+    "5",
+    "13"
+  ],
+  "gap_all_pp": {},
+  "gap_excl_pp": {},
+  "default_C1": {
+    "clip_BA_all_pct": 68.28,
+    "resnet_BA_all_pct": 84.25,
+    "clip_BA_excl_singletons_pct": 74.37,
+    "resnet_BA_excl_singletons_pct": 87.33,
+    "gap_all_pp": 15.98,
+    "gap_excl_pp": 12.97,
+    "clip_excl_class13_pct": 72.83,
+    "resnet_excl_class13_pct": 83.2,
+    "gap_excl_class13_pp": 10.37
+  },
+  "bestC": {
+    "clip_BA_all_pct": 77.41,
+    "resnet_BA_all_pct": 84.25,
+    "clip_BA_excl_singletons_pct": 86.54,
+    "resnet_BA_excl_singletons_pct": 87.33,
+    "gap_all_pp": 6.84,
+    "gap_excl_pp": 0.79,
+    "clip_excl_class13_pct": 82.57,
+    "resnet_excl_class13_pct": 83.2,
+    "gap_excl_class13_pp": 0.63
+  },
+  "note": "BA = macro mean of per-class recall. Excluding singleton (n_test==1) classes shrinks the ResNet-CLIP balanced-accuracy gap, consistent with \"largely driven by the four singleton test classes, with a smaller contribution from a mid-frequency class\"."
+}
