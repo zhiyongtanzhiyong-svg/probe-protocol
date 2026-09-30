@@ -153,6 +153,66 @@ def main():
     bad = [(l, n) for l, n, ok in checks if not ok]
     for label, needle, ok in checks:
         print(f"  {'PASS' if ok else 'FAIL'}  {label:32s} {needle}")
+
+    # ---- negative checks: superseded values must be ABSENT -------------------
+    # The positive checks above cannot catch a leftover from an earlier run --
+    # they only confirm the new number is present somewhere. These assert the
+    # numbers we replaced are gone, except where the paper deliberately cites an
+    # old figure as provenance (86.4% in the Fig. 4 caption).
+    negatives = [
+        ("stale fine-tuned CLIP (96.7)", "96.7", 0),
+        ("stale fine-tuned CLIP (94.8)", "94.8", 0),
+        ("stale C-plateau (90.4)", "90.4", 0),
+        ("stale CV ResNet (92.1)", "92.1", 0),
+        ("stale CV CLIP (87.8)", "87.8", 0),
+        # 86.4% is deliberately retained: the Fig. 4 caption cites it as the
+        # pre-rerun value to explain the 86.4 -> 87.7 shift. It must appear
+        # exactly once, in that caption, and nowhere else.
+        ("86.4 only as Fig.4 provenance", "86.4", 1),
+    ]
+    for label, needle, allowed in negatives:
+        hits = len(re.findall(r"(?<![\d.])" + re.escape(needle) + r"(?![\d])", flat))
+        in_caption = ("86.4" not in needle) or (
+            "86.4" in re.sub(r"\s+", " ", tex[tex.find(r"\caption{Confusion"):])
+        )
+        ok = hits == allowed and in_caption
+        checks.append((label, f"{hits} occurrence(s), allowed {allowed}",
+                       ok))
+
+    # ---- table cells must match the artifacts, cell by cell -----------------
+    # A stale \begin{tabular} row can silently contradict corrected prose, so the
+    # C-grid table is regenerated from the JSON and compared exactly.
+    grid = sorted(float(x) for x in can["C_grid"])
+    lines = tex.split("\n")
+
+    def table_row(prefix):
+        """The tabular row starting with `prefix` (not the prose that mentions it)."""
+        for ln in lines:
+            if ln.lstrip().startswith(prefix) and "&" in ln:
+                return re.findall(r"\d+\.\d", re.sub(r"\\textbf\{|\}", "", ln))
+        return None
+
+    got_c = table_row("CLIP val.")
+    got_r = table_row("Frozen ResNet val.")
+    want_c = [f"{can['val_accs'][str(g)] * 100:.1f}" for g in grid]
+    want_r = [f"{can['resnet_frozen_val_accs'][str(g)] * 100:.1f}" for g in grid]
+    checks.append(("C-grid CLIP row cells", " ".join(got_c or ["<missing>"]),
+                   got_c == want_c))
+    checks.append(("C-grid ResNet row cells", " ".join(got_r or ["<missing>"]),
+                   got_r == want_r))
+    # the bolded maximum must sit on an actually-tied-optimal C
+    best = [g for g in grid
+            if abs(can["val_accs"][str(g)] * 100
+                   - can["val_accs"][str(can["best_C"])] * 100) < 0.05]
+    clip_lines = [ln for ln in lines
+                  if ln.lstrip().startswith("CLIP val.") and "&" in ln]
+    nbold = sum(ln.count("\\textbf") for ln in clip_lines)
+    checks.append(("C-grid bolds exactly the tied maxima",
+                   f"{len(best)} tied, {nbold} bolded", nbold == len(best)))
+
+    bad = [(l, n) for l, n, ok in checks if not ok]
+    for label, needle, ok in checks[len(checks) - len(negatives) - 4:]:
+        print(f"  {'PASS' if ok else 'FAIL'}  {label:32s} {needle}")
     print(f"\n{len(checks) - len(bad)}/{len(checks)} consistent")
     if bad:
         print("\nSTALE / MISSING NUMBERS:")

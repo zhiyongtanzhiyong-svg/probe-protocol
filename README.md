@@ -1,69 +1,124 @@
-# Paper 2 — CLIP vs ResNet-18 on tobacco leaf disease
+# CLIP vs ResNet-18 on tobacco leaf disease
 
-A frozen large vision-language encoder (CLIP) with a training-light linear head
-versus a fully fine-tuned small CNN, on 16-class tobacco leaf disease images.
-Full-data accuracy is statistically indistinguishable between the tuned CLIP
-probe and fine-tuned ResNet-18 on the held-out test set, but the comparison
-reverses by annotation budget: fine-tuned CLIP wins decisively, and at
-K=1 with seed-paired support sets the LAION-2B probe leads.
+Does a frozen CLIP encoder with a training-light head beat a fully fine-tuned
+small CNN for classifying fine-grained leaf disease?
 
-## Layout
+Short answer: it depends on the annotation budget, and the crossover is
+reproducible. On 16-class tobacco images:
 
-| Path | Contents |
+| Regime | Result |
 |---|---|
-| `manuscript/paper/clip_vs_resnet_tobacco.tex` | the manuscript (source of truth for all prose/numbers) |
-| `scripts/` | every experiment that produced a number in the paper |
-| `data/*.json` | experiment outputs — the single source of truth for all reported numbers |
-| `generate_figures.py` | single generator for all four figures |
-| `AGENTS.md` | project discipline (read this before writing experiment code) |
+| Zero-shot, no training | CLIP sits at the majority-class baseline. 13.0% is the baseline; the best of 14 templates reaches 14.5%, which is 2 images and not significant (exact McNemar p=0.87; p=0.999 under a selection-aware permutation test across all 14). |
+| K=1 (1 image/class) | The LAION-2B probe wins: 39.8% vs ResNet-18's 33.0%, a seed-paired +6.8 pp (p=6.9e-5). The DFN-CLIP probe is not separable from the CNN (31.1%, p=0.14). |
+| K=5, K=10 | ResNet-18 wins and the gap widens with K. |
+| Full data | A validation-regularized probe on frozen CLIP is statistically indistinguishable from fine-tuned ResNet-18: 86.2% vs 87.7%, a 0.7 pp gap (11 of 15 ResNet seeds land above the probe; exact McNemar p=1.00, paired 95% CI [-5.8, +7.3] pp). The 138-image test set cannot resolve a difference this small. |
+| Full data, 5-fold CV | The better-powered comparison separates them: 89.4% vs 92.5%, ResNet ahead in all five folds. |
+| Full data, matched tuning budget | Fine-tuning CLIP itself wins by a wide margin: 96.8% (DFN) / 96.1% (LAION) over 5 seeds, +8.4 to +9.1 pp over fine-tuned ResNet-18. |
+
+Two consequences worth stating plainly. First, "CLIP or CNN" is not a property
+of the encoders; it is a property of the regime, and the paper's primary
+frozen-probe-vs-fine-tuned-CNN contrast is conservative for CLIP. Second, the
+138-image test set is too small to settle anything under about 3 pp, so
+single-split top-1 differences below that threshold are reported as
+indistinguishable rather than as wins.
+
+## Repository layout
+
+```
+manuscript/paper/clip_vs_resnet_tobacco.tex   the paper (all prose and numbers)
+data/*.json                                   experiment outputs — source of truth
+scripts/                                      every experiment behind a number
+scripts/dataset.py                            TPDD dataset (vendored; see below)
+scripts/model_zoo.py                          encoders + train/eval loops (vendored)
+generate_figures.py                           all four figures, from data/*.json only
+scripts/check_tex_vs_data.py                  consistency gate (run before committing)
+AGENTS.md                                     project working rules
+```
+
+`data/*.json` is the single source of truth. The manuscript is written against
+those files, not the other way round.
 
 ## Reproducing
 
+The figures and the consistency check need no GPU and take seconds:
+
 ```bash
-# regenerate all figures from data/*.json  (no GPU needed)
-python3 generate_figures.py
-
-# compile the paper
+python3 generate_figures.py        # writes manuscript/paper/figures/{pdf,svg,png}
+python3 scripts/check_tex_vs_data.py   # must print N/N consistent
 cd manuscript/paper && pdflatex clip_vs_resnet_tobacco.tex
-
-# verify every number in the .tex against data/*.json  <- must pass before commit
-python3 scripts/check_tex_vs_data.py
 ```
 
 `scripts/check_tex_vs_data.py` derives each headline number from the JSON
-artifacts and asserts it appears in the manuscript. It exits non-zero on a stale
-or missing value, so a re-run that changes a result cannot silently diverge from
-the prose. It also re-derives the Holm–Bonferroni adjusted p-values and fails if
-they violate the step-down formula.
+artifacts and asserts it appears in the manuscript, and it also asserts that
+superseded values are *gone* and that table rows match cell by cell. It exits
+non-zero on drift, so a re-run that changes a result cannot silently contradict
+the prose. It re-derives the Holm-adjusted p-values too, so the multiplicity
+correction cannot regress.
 
-## Data provenance
+Re-running the experiments themselves needs a CUDA GPU (an RTX 4070 Ti was
+used) plus the two model families:
 
-**The image corpora are not in this repository.** This project is
-self-contained — it has no runtime dependency on Paper 1 / `anchor-scope`, and
-the shared `dataset.py` / `model_zoo.py` modules are vendored under `scripts/`
-so the two papers can evolve independently.
+```bash
+python3 scripts/canonical_protocol.py       # frozen-feature probes, C sweep
+python3 scripts/canonical_fig_artifacts.py  # deterministic features + paired preds
+python3 scripts/cv_protocol.py              # 5-fold CV, both backbones
+python3 scripts/clip_fewshot_probe.py       # K=1/2/5/10
+python3 scripts/paired_kshot_a4.py          # seed-paired ResNet few-shot
+python3 scripts/zero_shot_clean.py          # 14 templates, saves per-image preds
+python3 scripts/clip_finetune.py --out data/clip_finetune.json   # 5 seeds x 2 ckpts
+```
 
-| Corpus | Size | How to obtain |
+`data/_orig_baseline/` holds the outputs of the pre-rerun pipeline, kept so the
+diff against current results is auditable. Do not read those numbers as current.
+
+## Data
+
+**The image corpora are not in this repository.** Obtain them as follows:
+
+| Corpus | Size | Source |
 |---|---|---|
-| TPDD (`data/tpdd/`) | 52 MB | `TamAko783/TPDD_Honglin_CLS` on the Hugging Face Hub; splits 1295 / 138 / 138, 16 classes |
-| TLD (`data/tld_images/`) | 178 MB | `data/tld_*_manifest.json` records the exact file list |
+| TPDD | 52 MB | `TamAko783/TPDD_Honglin_CLS` (Hugging Face Hub) |
+| TLD | 178 MB | see `data/tld_*_manifest.json` for the exact file list |
 | PlantVillage tomato | 313 MB | public PlantVillage release |
 
-Expected layout: `data/tpdd/{train,validation,test}/<class_name>/*.jpg` plus a
-`labels.json` in each split directory (`{"image": ..., "label": "<class>"}`).
-`scripts/dataset.py` resolves this via `TPDD_DATA_ROOT`, defaulting to
-`<repo>/data/tpdd`.
+Expected layout, which `scripts/dataset.py` expects:
 
-> **Why this matters.** The original 11 MB low-resolution TPDD images were
-> destroyed by an external process on 2026-09-28 and had never been tracked in
-> git, so no earlier run could be re-derived exactly. The dataset was re-built
-> from the public source at higher resolution, which moved the fine-tuned
-> ResNet-18 full-data number from 86.4% to 87.7% (+1.3 pp, 1.8 SEM, Welch
-> p=0.15; 86.4% lies inside the current run's 95% interval [86.3, 89.2]) — not
-> statistically separable, but no longer exactly reproducible. Paper 1 keeps its
-> own copy under git for this reason; keep a dated tarball of any corpus you
-> depend on.
+```
+data/tpdd/
+  train/       <class_name>/*.jpg  +  labels.json   (1295 images)
+  validation/  <class_name>/*.jpg  +  labels.json   ( 138 images)
+  test/        <class_name>/*.jpg  +  labels.json   ( 138 images)
+```
+
+`labels.json` is a list of `{"image": "<class>/<file>.jpg", "label": "<class>"}`.
+Override the location with the `TPDD_DATA_ROOT` environment variable if you keep
+the corpus elsewhere.
+
+The four single-image test classes matter for reading the results: balanced
+accuracy is dominated by them, and one of them (TSWV) accounts for most of the
+balanced-accuracy gap between the two frozen backbones.
+
+### A provenance problem you should know about
+
+The original 11 MB low-resolution TPDD images were destroyed by an external
+process on 2026-09-28, and they had never been tracked in git, so no earlier run
+could be re-derived from the bytes it actually used. The corpus was rebuilt from
+the public source at higher resolution. That moved the fine-tuned ResNet-18
+full-data number from 86.4% to 87.7%: +1.3 pp, 1.8 SEM, Welch p=0.15, with 86.4%
+inside the current run's 95% interval [86.3, 89.2]. Not statistically separable,
+but no longer exactly reproducible either. The manuscript says so in the Fig. 4
+caption. Paper 1 now versions its own copy of the corpus in git for this reason.
+
+If you depend on a corpus for a paper, keep a dated tarball outside the repo
+and in git, or learn this the same way.
+
+## Dependencies
+
+Python 3.8 with `torch`, `torchvision`, `open_clip_torch` (2.32.0), `transformers`,
+`huggingface_hub`, `scikit-learn`, `numpy`, `scipy`, `matplotlib`. Exact versions
+from the runs are recorded in the `date`/`gpu`/`torch`/`open_clip` fields of the
+JSON outputs.
 
 ## Citation
 
-See `manuscript/paper/clip_vs_resnet_tobacco.tex` for the bibliography.
+See the bibliography in `manuscript/paper/clip_vs_resnet_tobacco.tex`.
