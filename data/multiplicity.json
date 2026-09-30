@@ -72,5 +72,5 @@
       "bh_qvalue": 1.154445888312383e-09
     }
   ],
-  "note": "Holm-Bonferroni controls FWER; Benjamini-Hochberg controls FDR. The single borderline contrast (K=1 DFN-CLIP, p=0.064) drops out under both corrections; the other five survive. This generalises the manuscript's existing Bonferroni x2 on the K=1 pair to the full six-contrast family."
+  "note": "Holm-Bonferroni controls FWER; Benjamini-Hochberg controls FDR. 5/6 contrasts survive Holm and 5/6 survive BH; the survivors are ['K=1: CLIP (LAION-2B) vs ResNet-18', 'K=5: CLIP (LAION-2B) vs ResNet-18', 'K=5: CLIP (DFN-CLIP) vs ResNet-18', 'K=10: CLIP (LAION-2B) vs ResNet-18', 'K=10: CLIP (DFN-CLIP) vs ResNet-18']. Generated from the current p-values, so this note cannot drift from the table above it."
 }

@@ -159,12 +159,19 @@ def main():
     m2 = m2.eval().to(device)
     la_tr_f, la_tr_l = clip_extract(m2, pp2, train_full, device)
     la_te_f, _ = clip_extract(m2, pp2, test_ds, device)
+    # Accumulate per-K: assigning to la_kf/la_kl inside the loop left the
+    # variables holding the LAST iteration (K=10), which was then written out
+    # under the key 'laion_k1' -- so the reported "K=1" row was K=10 and no
+    # K=1 or K=5 row existed at all.
+    la_kshots = {}
     for K in [1, 5, 10]:
         sub = KShotSubset(train_full, K, seed=500)
-        la_kf, la_kl = clip_extract(m2, pp2, sub, device)
+        la_kshots[K] = clip_extract(m2, pp2, sub, device)
     del m2; torch.cuda.empty_cache()
 
-    for name, tf, tl in [('laion_k1', la_kf, la_kl), ('laion_full', la_tr_f, la_tr_l)]:
+    arms = [(f'laion_k{K}', tf, tl) for K, (tf, tl) in sorted(la_kshots.items())]
+    arms.append(('laion_full', la_tr_f, la_tr_l))
+    for name, tf, tl in arms:
         accs, bals, f1s = [], [], []
         for s in range(N_SEEDS):
             clf = LogisticRegression(max_iter=2000, C=1.0, random_state=s)

@@ -146,9 +146,9 @@
     }
   },
   "refs": {
-    "clip_dfn_bestC_full": 0.855,
-    "resnet18_finetuned_full": 0.864,
-    "note": "DINOv2 has NO text branch; this isolates the visual representation from CLIP's text alignment."
+    "clip_dfn_bestC_full": 0.8623188405797102,
+    "resnet18_finetuned_full": 0.8772946859903381
   },
-  "elapsed_sec": 495.9
+  "elapsed_sec": 495.9,
+  "refs_note": "cross-references refreshed from canonical_fig_artifacts.json; the measured values in this file are unchanged"
 }

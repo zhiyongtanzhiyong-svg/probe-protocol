@@ -254,13 +254,29 @@ def main():
         "full_data": full,
         "kshot": kshot,
         "geometry": geom,
-        "refs": {"clip_dfn_bestC_full": 0.855, "resnet18_finetuned_full": 0.864,
-                 "note": "DINOv2 has NO text branch; this isolates the visual representation from CLIP's text alignment."},
+        "refs": canonical_refs(),
+        "note": "DINOv2 has NO text branch; this isolates the visual representation from CLIP's text alignment.",
         "elapsed_sec": round(time.time() - t0, 1),
     }
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     json.dump(R, open(OUT, "w"), indent=2)
     print(f"\nDone in {R['elapsed_sec']}s -> {OUT}")
+
+
+
+def canonical_refs():
+    """Cross-backbone reference numbers, read from canonical_fig_artifacts.json.
+
+    Hard-coding these meant every re-run of the referenced experiment left a
+    stale number in the shipped artifact, and three of these artifacts are cited
+    by the manuscript. Read them instead.
+    """
+    import json as _json
+    from pathlib import Path as _P
+    art = _json.loads((_P(__file__).resolve().parent.parent
+                       / "data" / "canonical_fig_artifacts.json").read_text())
+    return {"clip_dfn_bestC_full": art["clip"]["linear_bestC"]["accuracy"],
+            "resnet18_finetuned_full": art["resnet"]["mean"]}
 
 
 if __name__ == "__main__":

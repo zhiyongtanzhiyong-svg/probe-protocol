@@ -42,8 +42,9 @@
   },
   "refs": {
     "dinov2_224px_bestC": 0.7754,
-    "clip_dfn_bestC_full": 0.855,
-    "resnet18_finetuned_full": 0.864
+    "clip_dfn_bestC_full": 0.8623188405797102,
+    "resnet18_finetuned_full": 0.8772946859903381
   },
-  "elapsed_sec": 219.1
+  "elapsed_sec": 219.1,
+  "refs_note": "cross-references refreshed from canonical_fig_artifacts.json; the measured values in this file are unchanged"
 }

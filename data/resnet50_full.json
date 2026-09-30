@@ -1,22 +1,30 @@
 {
-  "date": "2026-09-21T19:58:27.889322",
+  "date": "2026-09-30T23:17:49.383420",
   "backbone": "resnet50",
   "gpu": "NVIDIA GeForce RTX 4070 Ti",
   "n_seeds": 5,
   "epochs": 30,
-  "accs": [],
-  "mean": 0.8956521739130434,
-  "std": 0.021496227498828013,
-  "sem": 0.009613405189435943,
-  "min": 0.8695652173913043,
-  "max": 0.927536231884058,
-  "elapsed_s": 678.0534882545471,
+  "accs": [
+    0.8768115942028986,
+    0.9347826086956522,
+    0.8913043478260869,
+    0.8913043478260869,
+    0.8623188405797102
+  ],
+  "mean": 0.8913043478260869,
+  "std": 0.027113459324448853,
+  "sem": 0.012125507630928631,
+  "min": 0.8623188405797102,
+  "max": 0.9347826086956522,
+  "elapsed_s": 693.8087191581726,
   "protocol": "resnet50 ImageNet-pretrained, AdamW lr=3e-4, cosine, bs=32, 30ep, best-val, full TPDD train (1295)/138 test, 5 seeds",
   "refs": {
-    "resnet18_finetuned": 0.8643,
-    "clip_finetuned_dfn": 0.9667,
-    "clip_finetuned_laion": 0.9478,
-    "clip_frozen_probe_dfn": 0.8551,
-    "clip_frozen_probe_laion": 0.8623
+    "resnet18_finetuned": 0.8772946859903381,
+    "clip_finetuned_dfn": 0.95506,
+    "clip_finetuned_laion": 0.94926,
+    "clip_frozen_probe_dfn": 0.7681159420289855,
+    "clip_frozen_probe_dfn_bestC": 0.8623188405797102,
+    "clip_frozen_probe_laion": 0.7609,
+    "clip_frozen_probe_laion_bestC": 0.8768
   }
 }

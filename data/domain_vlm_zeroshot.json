@@ -360,8 +360,9 @@
           }
         }
       ],
-      "clip_best_ref": "EN-Photo 13.0%",
-      "resnet18_ref": 86.4
+      "clip_best_ref": "EN-Symptom 14.5%",
+      "resnet18_ref": 87.7,
+      "refs_note": "cross-references refreshed from canonical_fig_artifacts.json and zero_shot_clean.json; measured values unchanged"
     },
     "tld": {
       "n_test": 232,

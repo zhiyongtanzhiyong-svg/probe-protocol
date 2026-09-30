@@ -90,6 +90,7 @@ def main():
         r["bh_fdr_significant"] = bool(bh_rej[i])
         r["bh_qvalue"] = bh_q[i]
 
+    survivors = [r["contrast"] for r, ok in zip(rows, holm_rej) if ok]
     out = {
         "family": "six few-shot CLIP-probe vs fine-tuned ResNet-18 seed-paired contrasts "
                   "(K in {1,5,10} x {DFN-CLIP, LAION-2B}); paired-t p-values from "
@@ -99,10 +100,11 @@ def main():
         "n_holm_surviving": int(sum(holm_rej)),
         "n_bh_surviving": int(sum(bh_rej)),
         "rows": rows,
-        "note": "Holm-Bonferroni controls FWER; Benjamini-Hochberg controls FDR. "
-                "The single borderline contrast (K=1 DFN-CLIP, p=0.064) drops out under "
-                "both corrections; the other five survive. This generalises the manuscript's "
-                "existing Bonferroni x2 on the K=1 pair to the full six-contrast family.",
+        "note": (f"Holm-Bonferroni controls FWER; Benjamini-Hochberg controls FDR. "
+                 f"{int(sum(holm_rej))}/{len(rows)} contrasts survive Holm and "
+                 f"{int(sum(bh_rej))}/{len(rows)} survive BH; the survivors are "
+                 f"{survivors}. Generated from the current p-values, so this note "
+                 f"cannot drift from the table above it."),
     }
     json.dump(out, open(OUT, "w"), indent=2)
     print(f"family of {len(rows)} contrasts; alpha={ALPHA}")

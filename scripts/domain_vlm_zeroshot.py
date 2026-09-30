@@ -36,6 +36,25 @@ CN_MAP.update({'anthracnose':'炭疽病','brown_spot':'褐斑病','genetic_abnor
     'potato_tuber_moth':'马铃薯薯蛾','sunscald':'日灼病','target_spot':'靶斑病',
     'tmv':'烟草花叶病毒','weather_fleck':'气候斑病'})
 
+def _resnet_ref():
+    """Fine-tuned ResNet-18 full-data accuracy, read from canonical artifacts."""
+    import json as _json
+    from pathlib import Path as _P
+    return _json.loads((_P(__file__).resolve().parent.parent
+                        / "data" / "canonical_fig_artifacts.json").read_text()
+                        )["resnet"]["mean"]
+
+
+def _clip_best_ref():
+    """(template name, accuracy) of the best zero-shot CLIP template, from data."""
+    import json as _json
+    from pathlib import Path as _P
+    d = _P(__file__).resolve().parent.parent / "data"
+    zs = _json.loads((d / "zero_shot_clean.json").read_text())["templates"]
+    k = max(zs, key=lambda t: zs[t]["acc"])
+    return f"{k} {zs[k]['acc'] * 100:.1f}%"
+
+
 def get_kg():
     kg_path = os.path.join(REPO, "data/tpd_to_kg_map.json")
     kg_name_map = json.load(open(kg_path)) if os.path.exists(kg_path) else {}
@@ -46,7 +65,14 @@ def get_kg():
         kg_sym[name] = f"{CN_MAP.get(name,name)} disease symptoms on tobacco leaf"
         kg_cond[name] = f"conditions favoring {CN_MAP.get(name,name)} development"
     for name in CLASS_NAMES:
-        kg_name = kg_name_map.get(name, "")
+        # tpd_to_kg_map.json maps class -> {kg_entity, kg_id}, a dict. Assigning
+        # the dict itself and then calling .lower() on it raised AttributeError
+        # on the first class, so this script could not produce its own artifact.
+        # Sibling scripts all unwrap it as info.get('kg_entity') and strip the
+        # 'D_' prefix; do the same.
+        info = kg_name_map.get(name) or {}
+        kg_ent = info.get('kg_entity') or ''
+        kg_name = kg_ent.replace('D_', '') if kg_ent else name
         for r in kg_data:
             if kg_name.lower() in r.get('name','').lower() or name.lower() in r.get('english_name','').lower():
                 kg_sym[name] = r.get('symptoms','').split('。')[0][:100]
@@ -135,8 +161,9 @@ def main():
     out["datasets"]["tpdd"] = {"n_test":tot, "majority_baseline":bl,
         "best_template":best['template'], "best_accuracy":best['accuracy'],
         "gap_to_baseline":round(best['accuracy']-bl,2), "templates":tpdd,
-        "clip_best_ref":"EN-Photo 13.0%","resnet18_ref":86.4}
-    print(f"  TPDD best={best['template']} {best['accuracy']}%  baseline={bl}%  (CLIP best 13.0%, ResNet-18 86.4%)")
+        "clip_best_ref":_clip_best_ref(), "resnet18_ref":_resnet_ref()}
+    print(f"  TPDD best={best['template']} {best['accuracy']}%  baseline={bl}%"
+          f"  (CLIP best {_clip_best_ref()[1]}, ResNet-18 {_resnet_ref() * 100:.1f}%)")
 
     # ---- TLD (10 classes, distinct base images) ----
     print("\n=== TLD external test (10 classes) ===")

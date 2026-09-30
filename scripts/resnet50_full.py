@@ -43,6 +43,48 @@ def perclass_and_overall(model, loader, device, nc):
     return pc, (ok / n if n else float("nan"))
 
 
+def _refs():
+    """Cross-reference numbers, read from the artifacts that produced them.
+
+    These were literals here and went stale on every re-run of the referenced
+    experiment: the file still carried ResNet-18 0.8643 (pre-rerun),
+    fine-tuned CLIP 0.9667/0.9478 (pre-seed-fix) and probe 0.8551 (pre-C-reselect).
+    The manuscript cites this artifact, so a stale cross-reference is a
+    reproducibility defect, not a cosmetic one.
+    """
+    import json as _json
+    D = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data")
+
+    def _load(n):
+        with open(os.path.join(D, n)) as fh:
+            return _json.load(fh)
+
+    art = _load("canonical_fig_artifacts.json")
+    can = _load("canonical_results.json")
+    ft = _load("clip_finetune.json")
+    out = {
+        "resnet18_finetuned": art["resnet"]["mean"],
+        "clip_finetuned_dfn": _mean(ft, "dfn_clip"),
+        "clip_finetuned_laion": _mean(ft, "laion2b"),
+        "clip_frozen_probe_dfn": art["clip"]["linear_C1"]["accuracy"],
+        "clip_frozen_probe_dfn_bestC": art["clip"]["linear_bestC"]["accuracy"],
+    }
+    cb = can.get("clip_by_checkpoint", {})
+    for k, blk in cb.items():
+        if k.startswith("laion") and isinstance(blk, dict):
+            out["clip_frozen_probe_laion"] = blk["linear_C1"]["accuracy"]
+            out["clip_frozen_probe_laion_bestC"] = blk["linear_bestC"]["accuracy"]
+    return out
+
+
+def _mean(ft, key):
+    import statistics as _st
+    try:
+        return _st.mean(r["test"] for r in ft["results"][key]["seeds"])
+    except (KeyError, TypeError):
+        return None
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--backbone", type=str, default="resnet50")
@@ -97,15 +139,19 @@ def main():
         print(f"  seed {seed}: best-val={best_val*100:.2f}% -> test={ta*100:.2f}% "
               f"mean={a.mean()*100:.1f}+/-{a.std(ddof=1)*100:.1f} [{time.time()-t0:.0f}s]", flush=True)
     a = np.array(accs)
+    out["accs"] = accs          # per-seed accuracies: without these the
+                                # reported mean +/- SD cannot be checked against
+                                # the artifact, and the stored list stayed empty
+                                # because the appends went to a local variable
     out["mean"] = float(a.mean()); out["std"] = float(a.std(ddof=1))
     out["sem"] = float(a.std(ddof=1) / np.sqrt(len(accs)))
     out["min"] = float(a.min()); out["max"] = float(a.max())
     out["elapsed_s"] = float(time.time() - t0)
     out["protocol"] = (f"{args.backbone} ImageNet-pretrained, AdamW lr=3e-4, cosine, bs={args.batch}, "
                        f"{args.epochs}ep, best-val, full TPDD train (1295)/138 test, {args.seeds} seeds")
-    out["refs"] = {"resnet18_finetuned": 0.8643, "clip_finetuned_dfn": 0.9667,
-                   "clip_finetuned_laion": 0.9478, "clip_frozen_probe_dfn": 0.8551,
-                   "clip_frozen_probe_laion": 0.8623}
+    out["refs"] = _refs()      # read live; hard-coded copies of these went stale
+                                # every time the referenced experiment was re-run
+                                # (they still carried 86.43/96.67/94.78)
     os.makedirs(os.path.dirname(args.out), exist_ok=True)
     json.dump(out, open(args.out, "w"), indent=2, ensure_ascii=False)
     print(f"\n=== {args.backbone}: {a.mean()*100:.2f}% +/- {a.std(ddof=1)*100:.2f}% (n={len(accs)}) "

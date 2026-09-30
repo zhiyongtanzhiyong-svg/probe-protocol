@@ -96,8 +96,7 @@ def main():
             "knn1": {k: v for k, v in proto["knn1"].items() if k != "preds"},
             "best_C": proto["best_C"], "val_accs": proto["val_accs"],
         },
-        "refs": {"dinov2_224px_bestC": 0.7754, "clip_dfn_bestC_full": 0.855,
-                 "resnet18_finetuned_full": 0.864},
+        "refs": {**canonical_refs(), "dinov2_224px_bestC": 0.7754},
         "elapsed_sec": round(time.time() - t0, 1),
     }
     json.dump(R, open(os.path.join(REPO, "data", "dinov2_native518.json"), "w"), indent=2)
@@ -106,6 +105,22 @@ def main():
           f"MLP {proto['mlp']['accuracy']*100:.1f}% | kNN(1) {proto['knn1']['accuracy']*100:.1f}%", flush=True)
     print(f"  [ref] DINOv2@224px best-C 77.5% | CLIP 85.5% | ResNet-18 86.4%", flush=True)
     print(f"Done in {R['elapsed_sec']}s", flush=True)
+
+
+
+def canonical_refs():
+    """Cross-backbone reference numbers, read from canonical_fig_artifacts.json.
+
+    Hard-coding these meant every re-run of the referenced experiment left a
+    stale number in the shipped artifact, and three of these artifacts are cited
+    by the manuscript. Read them instead.
+    """
+    import json as _json
+    from pathlib import Path as _P
+    art = _json.loads((_P(__file__).resolve().parent.parent
+                       / "data" / "canonical_fig_artifacts.json").read_text())
+    return {"clip_dfn_bestC_full": art["clip"]["linear_bestC"]["accuracy"],
+            "resnet18_finetuned_full": art["resnet"]["mean"]}
 
 
 if __name__ == "__main__":

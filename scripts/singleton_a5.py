@@ -28,13 +28,39 @@ def ntest(c, dct):
 out = {'n_classes': len(names), 'singleton_classes': [], 'gap_all_pp': {}, 'gap_excl_pp': {}}
 singletons = [c for c in names if pc['clip_linear_C1'][c]['n_test'] == 1]
 out['singleton_classes'] = singletons
+# The ResNet arm must be the 15-seed mean per-class recall from
+# canonical_fig_artifacts, NOT canonical_results' `resnet_finetuned_seed0`:
+# that entry is a single run (88.41% top-1) produced on the LOST 11 MB images,
+# before the 2026-09-28 rebuild, so any gap computed against it mixes two
+# dataset versions. canonical_fig_artifacts resnet_artifacts() now stores
+# perclass_mean over all 15 seeds on the current images.
+_rnpc = {}
+try:
+    _art = json.load(open(os.path.join(ROOT, 'data', 'canonical_fig_artifacts.json')))['resnet']
+    _mean = _art['perclass_mean']
+    _ncls = len(_mean)
+    _names = pc['class_names']
+    for i, _nm in enumerate(_names):
+        _rnpc[_nm] = {'n_test': pc['clip_linear_C1'][_nm]['n_test'],
+                      'acc': _mean[i]}
+    out['resnet_source'] = ('15-seed mean per-class recall from '
+                            'canonical_fig_artifacts.json (current images)')
+except KeyError:
+    _rnpc = pc['resnet_finetuned_seed0']
+    out['resnet_source'] = ("FALLBACK: single run from canonical_results, which is "
+                            "the pre-rebuild image set -- do not cite")
+
 for tag, clip_key in [('default_C1', 'clip_linear_C1'), ('bestC', 'clip_linear_bestC')]:
-    cl = pc[clip_key]; rn = pc['resnet_finetuned_seed0']
+    cl = pc[clip_key]; rn = _rnpc
     all_c, all_r = ba(cl, lambda c: True), ba(rn, lambda c: True)
     ex_c = ba(cl, lambda c: cl[c]['n_test'] > 1)
     ex_r = ba(rn, lambda c: rn[c]['n_test'] > 1)
-    # remove the single worst singleton (class 13) alone
-    worst = '13'
+    # Remove the single worst singleton (class index 13) alone.
+    # `ba` iterates over class NAMES, so the filter has to be by index, not by
+    # the string '13' -- comparing a name against '13' is always True, which
+    # made the "excl_class13" fields silent duplicates of the all-class values.
+    WORST = 13
+    worst = names[WORST]
     w_c = ba(cl, lambda c: c != worst)
     w_r = ba(rn, lambda c: c != worst)
     out[tag] = {

@@ -56,6 +56,7 @@ def main():
     la = load("two_model_e4.json")["few_shot_probe"]
     pk = load("paired_kshot_a4.json")
     ft = load("clip_finetune.json")
+    r50 = load("resnet50_full.json")
 
     checks = []
 
@@ -101,6 +102,21 @@ def main():
     # the ResNet reference embedded in the fine-tune artifact must be current
     chk("clip_finetune ResNet ref is canonical", "n/a",
         abs(ft["resnet_finetuned_ref"]["accuracy"] - art["resnet"]["mean"]) < 1e-9)
+
+    # ---- ResNet-50 scale control: per-seed accuracies must be stored, otherwise
+    #      the reported mean +/- SD cannot be checked against the cited artifact --
+    chk("ResNet-50 per-seed accs stored", f"{len(r50.get('accs', []))} values",
+       len(r50.get("accs", [])) == r50.get("n_seeds"))
+    import statistics as _st50
+    if r50.get("accs"):
+        chk("ResNet-50 mean", f"{_st50.mean(r50['accs']) * 100:.1f}\\%",
+           abs(_st50.mean(r50["accs"]) - r50["mean"]) < 1e-9)
+        chk("ResNet-50 SD", f"{_st50.stdev(r50['accs']) * 100:.1f}",
+           abs(_st50.stdev(r50["accs"]) - r50["std"]) < 1e-9)
+    chk("ResNet-50 refs are current", "n/a",
+       abs(r50["refs"]["resnet18_finetuned"] - art["resnet"]["mean"]) < 1e-9
+       and abs(r50["refs"]["clip_finetuned_dfn"]
+               - _st.mean([x["test"] for x in ft["results"]["dfn_clip"]["seeds"]])) < 1e-9)
 
     # ---- zero-shot ---------------------------------------------------------
     best_name, best = max(zs["templates"].items(), key=lambda kv: kv[1]["acc"])
@@ -317,7 +333,7 @@ def main():
                            f"{len(bad_c1)} rows differ", not bad_c1))
 
     bad = [(l, n) for l, n, ok in checks if not ok]
-    for label, needle, ok in checks[len(checks) - len(negatives) - 8:]:
+    for label, needle, ok in checks[len(checks) - len(negatives) - 13:]:
         print(f"  {'PASS' if ok else 'FAIL'}  {label:32s} {needle}")
     print(f"\n{len(checks) - len(bad)}/{len(checks)} consistent")
     if bad:
