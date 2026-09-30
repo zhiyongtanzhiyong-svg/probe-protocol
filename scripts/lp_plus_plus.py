@@ -15,7 +15,8 @@ github.com/FereshteShakeri/FewShot-CLIP-Strong-Baseline):
     is commented out in the reference); trained with SGD(momentum=0.9) at the
     implicit MM step lr_w = 4n / lambda_max(X'X).
   - alpha: 16-dim vector initialized to the shared scalar
-    alpha0 = (250/shots) * mean over the per-class-mean text-logit matrix,
+    alpha0 = 250 * mean over the per-class-mean text-logit matrix (the reference's
+    *shots and /shots cancel),
     updated every 10 epochs: alpha -= lr_alpha * grad, with lr_alpha =
     n / (4 * max_c sum_i (x_i . t_c)^2).  alpha.grad is ACCUMULATED across
     epochs (the reference never zeroes it) - reproduced exactly.
@@ -204,7 +205,16 @@ def run_lp_pp(Xs, ys, Xv, yv, Xte, yte, T, shots, seed, epochs=300):
     tl = Xt @ Tt.T                                   # (n, 16) text logits
     per_cls = torch.stack([tl[yt == c].mean(0) if (yt == c).any()
                            else torch.zeros(n_cls, device=DEVICE) for c in range(n_cls)])
-    alpha0 = (250.0 / shots) * float(per_cls.mean())
+    # Reference (reference_lpp/methods/linear_probe_p2.py:24-30):
+    #     alpha_tilde = compute_centroids_alpha(...)[0] * shots
+    #     alpha_init  = 250 / shots * alpha_tilde
+    # The *shots and /shots cancel, giving 250 * mean_c(per_class_mean).
+    # This port kept only the 250/shots factor, so alpha started `shots` times
+    # too small -- identical at K=1, 5x at K=5, 10x at K=10, 80x at full data
+    # (shots = len(y)//n_classes = 1295//16 = 80). The blend term therefore began
+    # near zero and could only reach its learned value via the every-10-epoch
+    # alpha update, which is why the reported LP++ gains were lower bounds.
+    alpha0 = 250.0 * float(per_cls.mean())
     alpha = alpha0 * torch.ones(1, n_cls, device=DEVICE)
     alpha.requires_grad_(True)
     lr_alpha = n / (4.0 * float((tl ** 2).sum(0).max()))
@@ -246,7 +256,7 @@ def main():
     print(f"Val (20%, seed 42, same as canonical): {len(idx_val)}", flush=True)
 
     R = {
-        'protocol': "LP++ (arXiv:2404.02285, official code port): logit = Wx+b+alpha.(xT); W init per-class feature sum, SGD momentum 0.9 lr 4n/lam_max; alpha scalar-init (250/shots)*mean, per-class grads, updated every 10 epochs lr n/(4 max sum sq); 300 epochs, early stop on val; text side = 14-template uniform ensemble (paper's zero-shot). Full: val=20% stratified seed42 (single run). K-shot: support seed+500 (paired with probe), val disjoint K/class seed+1500, 15 seeds.",
+        'protocol': "LP++ (arXiv:2404.02285, official code port): logit = Wx+b+alpha.(xT); W init per-class feature sum, SGD momentum 0.9 lr 4n/lam_max; alpha scalar-init 250*mean (reference's *shots and /shots cancel), per-class grads, updated every 10 epochs lr n/(4 max sum sq); 300 epochs, early stop on val; text side = 14-template uniform ensemble (paper's zero-shot). Full: val=20% stratified seed42 (single run). K-shot: support seed+500 (paired with probe), val disjoint K/class seed+1500, 15 seeds.",
         'n_train': int(len(train_ds)), 'n_test': int(len(test_ds)), 'n_classes': int(n_classes),
         'checkpoints': {},
     }
