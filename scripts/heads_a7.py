@@ -12,8 +12,11 @@ from sklearn.metrics import accuracy_score, balanced_accuracy_score
 z=np.load('data/clip_features_clean.npz')
 Xtr,ytr,Xte,yte=z['train_feats'].astype(np.float32),z['train_labels'],z['test_feats'].astype(np.float32),z['test_labels']
 # nearest centroid (no tuning)
+# NOTE: `**` binds tighter than `-`, so the original `(X[:,None,:]-cent[None,:,:]**2)`
+# parsed as `X - cent**2` and reduced to argmax ||cent||^2 -- a constant predictor
+# that scored 8.7% (chance 6.25%). The parentheses below are load-bearing.
 cent=np.stack([Xtr[ytr==c].mean(0) for c in range(16)])
-def nca(X): return (X[:,None,:]-cent[None,:,:]**2).sum(-1).argmin(1)
+def nca(X): return ((X[:,None,:]-cent[None,:,:])**2).sum(-1).argmin(1)
 # RBF-SVM: select C on 20% stratified val (seed 42), refit on 100%, eval on test
 idx_sub, idx_val = train_test_split(np.arange(len(ytr)), test_size=0.2, random_state=42, stratify=ytr)
 Xs,Xv,ys,yv = Xtr[idx_sub], Xtr[idx_val], ytr[idx_sub], ytr[idx_val]

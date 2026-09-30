@@ -181,6 +181,7 @@ def resnet_artifacts():
     test_loader = DataLoader(test_ds, 32, shuffle=False, num_workers=2,
                              worker_init_fn=worker_init_fn)
     accs, seed0 = [], None
+    perclass_all, bals_all = [], []
     t0 = time.time()
     for seed in range(SEEDS):
         set_seed(seed)
@@ -234,6 +235,17 @@ def resnet_artifacts():
                      "confusion": confusion_matrix(labels, preds,
                                                    labels=range(NC)).tolist(),
                      "perclass": perclass, "best_val": best_val}
+        # Accumulate per-class recall over EVERY seed, not just seed 0. A single
+        # run is not a stable basis for a per-class table: repeated executions of
+        # "seed 0" differ by up to ~3 pp because cuDNN autotuning and DataLoader
+        # worker seeding are not deterministic, so seed-0-only per-class numbers
+        # are an arbitrary draw. The 15-seed mean is the statistic worth tabling.
+        perclass_all.append([float((preds[labels == c] == c).mean())
+                             if (labels == c).sum() else float("nan")
+                             for c in range(NC)])
+        bals_all.append(bal if seed == 0 else
+                        float(np.mean([(preds[labels == c] == c).mean() for c in range(NC)
+                                       if (labels == c).sum()])))
         a = np.array(accs)
         print(f"[resnet] seed {seed:2d}/{SEEDS}: acc={acc*100:.1f}%  "
               f"running mean={a.mean()*100:.2f}% +/- {a.std(ddof=1)*100:.2f}  "
@@ -252,6 +264,15 @@ def resnet_artifacts():
         "provenance_original_images": {"mean": ref["mean"], "std": ref["std"],
                                        "accs": ref["accs"]},
         "seed0": seed0,
+        # 15-seed per-class recall: the tabulatable statistic.
+        "perclass_mean": np.nanmean(np.array(perclass_all, dtype=float), axis=0).tolist(),
+        "perclass_sd": np.nanstd(np.array(perclass_all, dtype=float), axis=0, ddof=1).tolist(),
+        "balanced_accuracy_mean": float(np.mean(bals_all)),
+        "balanced_accuracy_sd": float(np.std(bals_all, ddof=1)),
+        "perclass_note": ("mean +/- sd over all 15 seeds; a single run is not a stable "
+                          "basis for a per-class table because repeated executions of "
+                          "'seed 0' differ by a few points (cuDNN autotuning and "
+                          "DataLoader worker seeding are not deterministic)."),
     }
 
 

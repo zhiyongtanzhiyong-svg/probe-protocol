@@ -107,11 +107,23 @@ def run_ckpt(name, ckpt, seeds, epochs, batch, vis_lr, head_lr):
           f"seeds={seeds} epochs={epochs} batch={batch} vis_lr={vis_lr} head_lr={head_lr}", flush=True)
 
     vis_params = [p for p in model.visual.parameters() if p.requires_grad]
+    # Snapshot the PRETRAINED visual weights once. Without this the encoder is
+    # never re-initialised between seeds: seed k silently continued from seed
+    # k-1's fine-tuned weights, so the "n=5 seeds" were one sequential 150-epoch
+    # run and the reported std was warm-start drift, not seed variance. The
+    # tell-tale was a monotonically non-decreasing best_val across seeds.
+    # Snapshot on CPU: the encoder is fp32 ViT-L/14 (~1.7 GB) and this card
+    # already holds weights + gradients + AdamW state. load_state_dict copies
+    # CPU->GPU for us, so there is no reason to spend VRAM on the snapshot.
+    pretrained_visual = {k: v.detach().cpu().clone()
+                         for k, v in model.visual.state_dict().items()}
     out = {"checkpoint": name, "n_seeds": seeds, "epochs": epochs, "batch": batch,
            "vis_lr": vis_lr, "head_lr": head_lr, "seeds": []}
     for seed in range(seeds):
         set_seed(seed)
-        # re-init head per seed (visual keeps its pretrained weights)
+        # Restore the encoder to its pretrained weights: each seed is an
+        # independent run from a common initialisation.
+        model.visual.load_state_dict(pretrained_visual)
         nn.init.kaiming_uniform_(head.weight, a=5)
         torch.nn.init.zeros_(head.bias)
         opt = torch.optim.AdamW([
@@ -134,7 +146,12 @@ def run_ckpt(name, ckpt, seeds, epochs, batch, vis_lr, head_lr):
                 scaler.scale(loss).backward()
                 scaler.unscale_(opt)
                 torch.nn.utils.clip_grad_norm_(vis_params + [head.weight, head.bias], 1.0)
-                scaler.step(opt); scaler.update(); sch.step()
+                scaler.step(opt); scaler.update()
+            # Step the cosine schedule ONCE PER EPOCH, matching the ResNet
+            # control in canonical_fig_artifacts.resnet_artifacts. Stepping it
+            # per batch made T_max=30 elapse in ~1 epoch (1230 steps), after
+            # which the cosine formula wraps and the LR oscillates ~50x/second.
+            sch.step()
             val_acc = evaluate(model, head, val_dl)
             test_acc = evaluate(model, head, test_dl)
             if val_acc > best_val:
@@ -174,6 +191,15 @@ def _resnet_ref():
             "protocol": r["protocol"]}
 
 
+def _resnet_sd():
+    """Seed-to-seed SD of the canonical fine-tuned ResNet-18 reference."""
+    import json as _json
+    from pathlib import Path as _Path
+    art = _json.loads((_Path(__file__).resolve().parent.parent
+                       / "data" / "canonical_fig_artifacts.json").read_text())
+    return art["resnet"]["std"]
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--seeds", type=int, default=5)
@@ -208,7 +234,9 @@ def main():
     for name in which:
         r = results["results"][name]
         print(f"  {name:9s}: fine-tuned CLIP = {r['mean']*100:.2f}% +/- {r['std']*100:.2f}% "
-              f"(n={r['n_seeds']})  vs  ResNet-18 86.43% +/- 1.9% (n=15)", flush=True)
+              f"(n={r['n_seeds']})  vs  ResNet-18 "
+              f"{results['resnet_finetuned_ref']['accuracy'] * 100:.2f}% +/- "
+              f"{_resnet_sd() * 100:.1f}% (n={results['resnet_finetuned_ref']['n_seeds']})", flush=True)
     print(f"saved {args.out}", flush=True)
 
 

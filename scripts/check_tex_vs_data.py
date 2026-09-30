@@ -180,13 +180,74 @@ def main():
                        ok))
 
     # ---- table cells must match the artifacts, cell by cell -----------------
-    # A stale \begin{tabular} row can silently contradict corrected prose, so the
-    # C-grid table is regenerated from the JSON and compared exactly.
-    grid = sorted(float(x) for x in can["C_grid"])
+    # The string-presence checks above are structurally unable to catch a wrong
+    # TABLE: they only ask whether a number appears anywhere in the .tex. That is
+    # how 11 of 14 rows of the zero-shot table and the whole ResNet column of the
+    # per-class table were wrong while this gate still reported all-pass. Every
+    # results table is therefore compared cell by cell.
     lines = tex.split("\n")
 
+    def numeric(cells):
+        return [float(re.findall(r"-?\d+\.?\d*", c)[0]) for c in cells
+                if re.search(r"-?\d+\.?\d*", c)]
+
+    def table_rows_between(start_marker, end_marker):
+        """Rows of the ONE table delimited by the given literal markers.
+
+        Scoping matters: template names like EN-Symptom also appear in the TLD
+        and BioCLIP tables, so a global prefix search silently compares cells
+        from different experiments.
+        """
+        i = tex.find(start_marker)
+        if i < 0:
+            return []
+        j = tex.find(end_marker, i)
+        if j < 0:
+            return []
+        blk = tex[i:j]
+        out = []
+        for ln in blk.split("\n"):
+            # Skip only LaTeX STRUCTURAL lines. Skipping every line starting with
+            # a backslash also drops \textbf{10} rows -- i.e. the two most
+            # important classes in the per-class table.
+            if "&" not in ln:
+                continue
+            if re.match(r"\s*\\(toprule|midrule|bottomrule|hline|cmidrule)", ln):
+                continue
+            out.append([c.strip() for c in ln.rstrip("\\").split("&")])
+        return out
+
+    # -- zero-shot template table (tab:prompts) --
+    # delimiters: the "Lang." column header, up to the uniform-baseline row
+    zs_rows = table_rows_between(r"\textbf{Lang.}", r"Uniform (1/16) baseline")
+    name_map = {}
+    for cells in zs_rows:
+        m = re.match(r"([A-Za-z\-]+)", cells[0].strip())
+        if m and m.group(1) in zs["templates"]:
+            name_map[m.group(1)] = cells
+    bad_zs = []
+    for tname, cells in name_map.items():
+        want = zs["templates"][tname]
+        lo, hi = want["ci95"]
+        got = numeric(cells[2:3])
+        got_ci = [float(x) for x in re.findall(r"-?\d+\.?\d*", cells[3])] if len(cells) > 3 else []
+        if (not got or abs(got[0] - want["acc"] * 100) > 0.05
+                or len(got_ci) < 2
+                or abs(got_ci[0] - lo * 100) > 0.05
+                or abs(got_ci[1] - hi * 100) > 0.05):
+            bad_zs.append(tname)
+    checks.append((f"zero-shot table cells ({len(name_map)}/14 templates)",
+                   f"{len(bad_zs)} wrong" + (f": {bad_zs}" if bad_zs else ""),
+                   len(name_map) == 14 and not bad_zs))
+    missing_zs = [t for t in zs["templates"] if t not in name_map]
+    checks.append(("all 14 templates present in table",
+                   f"missing {missing_zs}" if missing_zs else "none missing",
+                   not missing_zs))
+
+    # -- C-grid table --
+    grid = sorted(float(x) for x in can["C_grid"])
+
     def table_row(prefix):
-        """The tabular row starting with `prefix` (not the prose that mentions it)."""
         for ln in lines:
             if ln.lstrip().startswith(prefix) and "&" in ln:
                 return re.findall(r"\d+\.\d", re.sub(r"\\textbf\{|\}", "", ln))
@@ -200,7 +261,6 @@ def main():
                    got_c == want_c))
     checks.append(("C-grid ResNet row cells", " ".join(got_r or ["<missing>"]),
                    got_r == want_r))
-    # the bolded maximum must sit on an actually-tied-optimal C
     best = [g for g in grid
             if abs(can["val_accs"][str(g)] * 100
                    - can["val_accs"][str(can["best_C"])] * 100) < 0.05]
@@ -210,8 +270,38 @@ def main():
     checks.append(("C-grid bolds exactly the tied maxima",
                    f"{len(best)} tied, {nbold} bolded", nbold == len(best)))
 
+    # -- per-class table: the ResNet column must come from the 15-seed
+    #    statistics, not a single arbitrarily-drawn run --
+    pc_rows = []
+    for cells in table_rows_between("Class & $n$ & CLIP", "Balanced accuracy"):
+        first = re.sub(r"\\textbf\{([^}]*)\}", r"\1", cells[0]).strip()
+        if re.fullmatch(r"\d{1,2}", first) and len(cells) >= 5:
+            pc_rows.append(cells)
+    n_pc = len(pc_rows)
+    checks.append(("per-class table has 16 class rows", f"{n_pc} rows",
+                   n_pc == 16))
+    if n_pc == 16 and "perclass_mean" in art["resnet"]:
+        want_pc = [v * 100 for v in art["resnet"]["perclass_mean"]]
+        mism = []
+        for i, cells in enumerate(pc_rows):
+            vals = numeric(cells[1:5])          # n, clipC1, clipBestC, resnet
+            if len(vals) >= 4 and abs(vals[3] - want_pc[i]) > 0.6:
+                mism.append((i, round(vals[3], 1), round(want_pc[i], 1)))
+        checks.append(("per-class ResNet column = 15-seed mean",
+                       f"{len(mism)} rows differ" + (f" {mism[:3]}" if mism else ""),
+                       not mism))
+        # CLIP columns against canonical_results
+        want_c1 = [v["acc"] * 100 for v in
+                   (can["per_class"]["clip_linear_C1"].values()
+                    if isinstance(can["per_class"]["clip_linear_C1"], dict) else [])]
+        if len(want_c1) == 16:
+            bad_c1 = [i for i, cells in enumerate(pc_rows)
+                      if abs(numeric(cells[1:5])[1] - want_c1[i]) > 0.6]
+            checks.append(("per-class CLIP C=1 column",
+                           f"{len(bad_c1)} rows differ", not bad_c1))
+
     bad = [(l, n) for l, n, ok in checks if not ok]
-    for label, needle, ok in checks[len(checks) - len(negatives) - 4:]:
+    for label, needle, ok in checks[len(checks) - len(negatives) - 8:]:
         print(f"  {'PASS' if ok else 'FAIL'}  {label:32s} {needle}")
     print(f"\n{len(checks) - len(bad)}/{len(checks)} consistent")
     if bad:

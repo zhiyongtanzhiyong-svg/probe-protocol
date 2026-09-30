@@ -7,14 +7,14 @@
   "rows": [
     {
       "contrast": "K=1: CLIP (LAION-2B) vs ResNet-18",
-      "clip_acc_pct": 39.81,
+      "clip_acc_pct": 40.1,
       "resnet_acc_pct": 33.04,
-      "delta_pp": 6.76,
-      "paired_t_p": 6.88742995705353e-05,
+      "delta_pp": 7.05,
+      "paired_t_p": 0.00015012954960072996,
       "holm_significant": true,
-      "holm_adjusted_p": 0.0002066228987116059,
+      "holm_adjusted_p": 0.00045038864880218984,
       "bh_fdr_significant": true,
-      "bh_qvalue": 0.00010331144935580295
+      "bh_qvalue": 0.00022519432440109492
     },
     {
       "contrast": "K=1: CLIP (DFN-CLIP) vs ResNet-18",
@@ -29,14 +29,14 @@
     },
     {
       "contrast": "K=5: CLIP (LAION-2B) vs ResNet-18",
-      "clip_acc_pct": 59.42,
+      "clip_acc_pct": 58.41,
       "resnet_acc_pct": 65.46,
-      "delta_pp": -6.04,
-      "paired_t_p": 0.0031057754329052306,
+      "delta_pp": -7.05,
+      "paired_t_p": 0.0010014947629567229,
       "holm_significant": true,
-      "holm_adjusted_p": 0.006211550865810461,
+      "holm_adjusted_p": 0.0020029895259134458,
       "bh_fdr_significant": true,
-      "bh_qvalue": 0.0037269305194862767
+      "bh_qvalue": 0.0012017937155480675
     },
     {
       "contrast": "K=5: CLIP (DFN-CLIP) vs ResNet-18",
@@ -51,14 +51,14 @@
     },
     {
       "contrast": "K=10: CLIP (LAION-2B) vs ResNet-18",
-      "clip_acc_pct": 66.47,
+      "clip_acc_pct": 65.02,
       "resnet_acc_pct": 75.75,
-      "delta_pp": -9.28,
-      "paired_t_p": 3.370594103302847e-07,
+      "delta_pp": -10.72,
+      "paired_t_p": 1.531609645012908e-07,
       "holm_significant": true,
-      "holm_adjusted_p": 1.6852970516514234e-06,
+      "holm_adjusted_p": 7.65804822506454e-07,
       "bh_fdr_significant": true,
-      "bh_qvalue": 1.011178230990854e-06
+      "bh_qvalue": 4.594828935038724e-07
     },
     {
       "contrast": "K=10: CLIP (DFN-CLIP) vs ResNet-18",

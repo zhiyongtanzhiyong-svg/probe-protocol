@@ -71,11 +71,38 @@ def load_split(split):
     labels = np.array([name_to_idx[it['label']] for it in items])
     return paths, labels
 
+IMAGENET_MEAN = np.array([0.485, 0.456, 0.406])
+IMAGENET_STD = np.array([0.229, 0.224, 0.225])
+
+
+def tensor_to_pil(t):
+    """Undo EVAL_TRANSFORM's ImageNet normalisation back to a uint8 PIL image.
+
+    This is the canonical CLIP pixel path used by
+    canonical_fig_artifacts.extract_clip: round-trip the eval tensor through
+    uint8, then re-apply open_clip's own preprocess.
+
+    The previous implementation skipped this and fed the ImageNet-normalised
+    tensor straight to encode_image. That is a THIRD pixel path, matching
+    neither the canonical nor the clean pipeline, and it left the LAION-2B arm
+    non-comparable with the DFN-CLIP and ResNet arms in the few-shot table
+    (K=1 probe 39.8% here vs 40.1% on the canonical path).
+    """
+    a = t.permute(1, 2, 0).cpu().numpy() * IMAGENET_STD + IMAGENET_MEAN
+    return Image.fromarray((np.clip(a, 0, 1) * 255).astype(np.uint8))
+
+
 def encode(model, preprocess, paths, batch=64):
+    """Extract L2-normalised CLIP features on the canonical pixel path.
+
+    `preprocess` is now actually used; it was previously accepted and ignored.
+    """
+    assert preprocess is not None, "preprocess must be open_clip's transform"
     feats = []
     with torch.no_grad():
         for i in range(0, len(paths), batch):
-            X = torch.stack([EVAL(Image.open(p).convert('RGB')) for p in paths[i:i+batch]]).cuda()
+            X = torch.stack([preprocess(tensor_to_pil(EVAL(Image.open(p).convert('RGB'))))
+                             for p in paths[i:i+batch]]).cuda()
             f = model.encode_image(X); f = f/f.norm(dim=-1, keepdim=True)
             feats.append(f.cpu()); del X
     return torch.cat(feats, dim=0).numpy()
@@ -111,12 +138,12 @@ def kshot_idx(labels, K, seed):
 
 def main():
     print('loading LAION-2B ViT-L/14 ...')
-    model, _, _ = open_clip.create_model_and_transforms('ViT-L-14', pretrained=CKPT)
+    model, pp, _ = open_clip.create_model_and_transforms('ViT-L-14', pretrained=CKPT)
     model.cuda().eval(); tok=open_clip.get_tokenizer('ViT-L-14')
 
     tr_p, tr_l = load_split('train'); te_p, te_l = load_split('test')
     print(f'train {len(tr_p)} / test {len(te_p)}')
-    trf = encode(model, None, tr_p); tef = encode(model, None, te_p)
+    trf = encode(model, pp, tr_p); tef = encode(model, pp, te_p)
 
     # ---- zero-shot (14 templates + CIs) ----
     class_names=list(json.load(open(TPD_MAP)).keys())   # 16, alphabetical = label ids 0..15

@@ -228,6 +228,17 @@ def stars(p):
     return "n.s."
 
 
+def _laion_c1():
+    """Default-C (C=1) test accuracy of the LAION-2B probe, in percent."""
+    cb = _load("canonical_results.json").get("clip_by_checkpoint", {})
+    for key, blk in cb.items():
+        if key.startswith("laion") and isinstance(blk, dict):
+            acc = blk.get("linear_C1", {}).get("accuracy")
+            if acc is not None:
+                return acc * 100
+    raise KeyError("LAION C=1 accuracy not found in canonical_results.json")
+
+
 def _laion_bestC():
     """(accuracy in percent, best C) for the LAION-2B checkpoint.
 
@@ -303,12 +314,17 @@ def fig_fewshot_curve(formats=("pdf", "svg"), transparent=False):
             pk["K=10"]["resnet_mean"] * 100, rn_full_mean]
     rn_sd = [pk["K=1"]["resnet_std"] * 100, pk["K=5"]["resnet_std"] * 100,
              pk["K=10"]["resnet_std"] * 100, rn_full_sd]
+    # Full-data default-probe points are read, not written: the two checkpoints
+    # sit at 76.8% and 76.1%, and hard-coding 76.8 for both overstated LAION by
+    # 0.7 pp while making the script's own "nothing is hard-coded" claim false.
+    dfn_c1 = art["clip"]["linear_C1"]["accuracy"] * 100
+    la_c1 = _laion_c1()
     dfn_v = [dfn["K=1"]["mean"] * 100, dfn["K=5"]["mean"] * 100,
-             dfn["K=10"]["mean"] * 100, 76.8]
+             dfn["K=10"]["mean"] * 100, dfn_c1]
     dfn_sd = [dfn["K=1"]["std"] * 100, dfn["K=5"]["std"] * 100,
               dfn["K=10"]["std"] * 100, 0.0]
     la_v = [laion["K=1"]["mean"] * 100, laion["K=5"]["mean"] * 100,
-            laion["K=10"]["mean"] * 100, 76.8]
+            laion["K=10"]["mean"] * 100, la_c1]
     la_sd = [laion["K=1"]["std"] * 100, laion["K=5"]["std"] * 100,
              laion["K=10"]["std"] * 100, 0.0]
 
