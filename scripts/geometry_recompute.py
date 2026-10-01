@@ -92,7 +92,13 @@ def compute_geometry(X, y, n_classes):
     fisher_ratio = np.trace(S_B) / (np.trace(S_W) + 1e-8)
     n_samples = min(len(X), 2000)
     idx = np.random.RandomState(42).choice(len(X), n_samples, replace=False)
-    sil = silhouette_score(X[idx], y[idx], metric='euclidean', sample_size=min(n_samples, 1000))
+    # random_state matters: sklearn draws the subsample with
+    # check_random_state(None).permutation(n)[:sample_size], so the TRAIN split
+    # (n=1295 -> 1000 of 1295, unstratified) gave 0.0158-0.0210 across reruns of
+    # identical code, a 33% swing in the reported value. The test split (n=138)
+    # is unaffected because sample_size >= n makes the draw a no-op.
+    sil = silhouette_score(X[idx], y[idx], metric='euclidean',
+                           sample_size=min(n_samples, 1000), random_state=42)
     return {
         'mean_inter_centroid_dist': round(float(mean_inter), 4),
         'mean_intra_class_dist': round(float(mean_intra), 4),

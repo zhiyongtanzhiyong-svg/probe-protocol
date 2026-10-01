@@ -122,7 +122,14 @@ def main():
                          "per_class": {class_names[i]: per_class[i]['c']/max(per_class[i]['t'],1)*100 for i in range(16)}})
         print(f"{tname:25s} {acc:5.1f}% ({nonzero}/16 nonzero)")
 
-    json.dump(results, open('/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/data/prompt_ablation_fixed.json', 'w'), indent=2)
+    # Write both names. rigorous_analysis.py and zero_shot_clean.py read
+    # prompt_ablation.json, but this script only wrote prompt_ablation_fixed.json,
+    # so the "fixed" rerun could never reach the consumers -- and the file it
+    # writes did not exist in data/ at all, meaning the fixed pipeline had never
+    # actually been run. One producer, one canonical filename, plus the alias.
+    for _name in ("prompt_ablation.json", "prompt_ablation_fixed.json"):
+        json.dump(results, open(f'/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/data/{_name}', 'w'), indent=2)
+    print("Saved data/prompt_ablation.json (+ _fixed alias).")
     print(f"\nSaved {len(results)} templates.")
 
 if __name__ == '__main__':

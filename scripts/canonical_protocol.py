@@ -118,7 +118,13 @@ def compute_geometry(X, y, n_classes):
     fisher_ratio = np.trace(S_B) / (np.trace(S_W) + 1e-8)
     n_samples = min(len(X), 2000)
     idx = np.random.RandomState(42).choice(len(X), n_samples, replace=False)
-    sil = silhouette_score(X[idx], y[idx], metric='euclidean', sample_size=min(n_samples, 1000))
+    # random_state matters: sklearn draws the subsample with
+    # check_random_state(None).permutation(n)[:sample_size], so the TRAIN split
+    # (n=1295 -> 1000 of 1295, unstratified) gave 0.0158-0.0210 across reruns of
+    # identical code, a 33% swing in the reported value. The test split (n=138)
+    # is unaffected because sample_size >= n makes the draw a no-op.
+    sil = silhouette_score(X[idx], y[idx], metric='euclidean',
+                           sample_size=min(n_samples, 1000), random_state=42)
     return {
         'mean_inter_centroid_dist': round(float(mean_inter), 4),
         'mean_intra_class_dist': round(float(mean_intra), 4),
@@ -290,7 +296,9 @@ def main():
     try:
         rn_p = np.load(os.path.join(DATA_DIR, 'p2_resnet_full_preds.npy'))
         y_te = np.load(os.path.join(DATA_DIR, 'p2_test_labels.npy'))
-        if len(rn_p) == len(clip_te_y):
+        # Length alone is too weak: a stale p2_test_labels.npy of the same length
+        # would be silently paired with canonical features. Require identity.
+        if len(rn_p) == len(clip_te_y) and np.array_equal(y_te, clip_te_y):
             per_class['resnet_finetuned_seed0'] = _perclass(rn_p, y_te, class_names)
             print(f"  per-class: CLIP best-C {sum(1 for v in per_class['clip_linear_bestC'].values() if isinstance(v,dict) and v['acc']==1.0)} classes at 100%; ResNet seed0 loaded")
         else:

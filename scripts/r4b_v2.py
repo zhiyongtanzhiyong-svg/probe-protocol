@@ -222,7 +222,7 @@ def main():
     }
 
     RESULTS['elapsed'] = round(time.time() - t0, 1)
-    with open(f'{DATA_DIR}/r4b_results.json', 'w') as f:
+    with open(f'{DATA_DIR}/r4b_v2.json', 'w') as f:
         json.dump(RESULTS, f, indent=2)
     print(f"\nDone in {RESULTS['elapsed']}s. Saved.")
 

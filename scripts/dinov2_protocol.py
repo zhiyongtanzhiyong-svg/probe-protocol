@@ -150,7 +150,12 @@ def load_dinov2(ckpt_path):
         print("  missing sample:", missing[:5])
     if unexpected:
         print("  unexpected sample:", unexpected[:5])
-    assert not any(k.startswith("blocks") for k in missing), "core blocks not loaded!"
+    # The previous check only looked at keys starting with "blocks", so a failure
+    # to load patch_embed.proj, cls_token, pos_embed or norm would pass the
+    # assert and leave the model running on zero-initialised parameters while
+    # still producing a plausible-looking accuracy. Require an exact load.
+    assert not missing, f"DINOv2 checkpoint incomplete, missing: {missing[:8]}"
+    assert not unexpected, f"unexpected keys in checkpoint: {unexpected[:8]}"
     model.eval().to(DEVICE)
     return model
 

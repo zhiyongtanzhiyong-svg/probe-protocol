@@ -102,6 +102,10 @@ def train_resnet(train_ds, val_ds, num_classes, seed=0, epochs=RESNET_EPOCHS):
         if val_acc > best_val:
             best_val = val_acc
             best_state = {k: v.cpu().clone() for k, v in model.state_dict().items()}
+    assert best_state is not None, (
+        "best_state is None after training: validation accuracy was 0 at "
+        "every epoch, so no checkpoint was selected. Usually the validation "
+        "split is empty or misaligned, or training diverged from step 1.")
     model.load_state_dict({k: v.to(DEVICE) for k, v in best_state.items()})
     return model.eval()
 
@@ -170,12 +174,28 @@ def extract_half(model, preprocess, dataset, device, batch=8):
 def get_feats(R, name_to_idx, paths, labels, tr_i, va_i, te_i):
     if os.path.exists(FEAT_NPZ):
         z = np.load(FEAT_NPZ)
-        return z['Xtr'], z['ytr'], z['Xte'], z['yte']
+        # Fingerprint the cache against the split it must correspond to. Without
+        # it, adding or removing one file under plantvillage_tomato/ changes
+        # te_i/tr_i while the cached features stay, and the two are paired with
+        # no error and no shape change.
+        want_tr = [paths[i] for i in tr_i]
+        want_te = [paths[i] for i in te_i]
+        if ("n_train" in z and "n_test" in z
+                and int(z["n_train"]) == len(want_tr)
+                and int(z["n_test"]) == len(want_te)
+                and list(z["train_paths"]) == want_tr
+                and list(z["test_paths"]) == want_te):
+            return z['Xtr'], z['ytr'], z['Xte'], z['yte']
+        print("  [cache] plantvillage feature cache does not match the current "
+              "file listing; recomputing.", flush=True)
     m, pre = load_clip()
     Xtr, ytr = extract_half(m, pre, TomatoDataset(paths[tr_i], labels[tr_i], EVAL_TRANSFORM), DEVICE)
     Xte, yte = extract_half(m, pre, TomatoDataset(paths[te_i], labels[te_i], EVAL_TRANSFORM), DEVICE)
     del m; torch.cuda.empty_cache()
-    np.savez(FEAT_NPZ, Xtr=Xtr, ytr=ytr, Xte=Xte, yte=yte)
+    np.savez(FEAT_NPZ, Xtr=Xtr, ytr=ytr, Xte=Xte, yte=yte,
+             n_train=len(tr_i), n_test=len(te_i),
+             train_paths=np.array([paths[i] for i in tr_i]),
+             test_paths=np.array([paths[i] for i in te_i]))
     return Xtr, ytr, Xte, yte
 
 

@@ -12,7 +12,7 @@ Also:
   5. ResNet frozen MLP (completes the representation matrix)
   6. Proper TOST using validation-selected model
 
-Produces data/r4b_results.json
+Produces data/r4b_clean_protocol.json
 """
 import sys, json, torch, numpy as np, os, time
 from sklearn.linear_model import LogisticRegression
@@ -330,7 +330,7 @@ def main():
     # Save
     # ============================================================
     RESULTS['elapsed_sec'] = round(time.time() - t0, 1)
-    out_path = f'{DATA_DIR}/r4b_results.json'
+    out_path = f'{DATA_DIR}/r4b_clean_protocol.json'
     with open(out_path, 'w') as f:
         json.dump(RESULTS, f, indent=2)
     print(f"\nDone in {RESULTS['elapsed_sec']}s. Saved to {out_path}")

@@ -104,6 +104,10 @@ def train_resnet(train_ds, val_ds, num_classes, epochs=30, seed=0, device=None):
         if val_acc > best_val:
             best_val = val_acc
             best_state = {k: v.cpu().clone() for k, v in model.state_dict().items()}
+    assert best_state is not None, (
+        "best_state is None after training: validation accuracy was 0 at "
+        "every epoch, so no checkpoint was selected. Usually the validation "
+        "split is empty or misaligned, or training diverged from step 1.")
     model.load_state_dict({k: v.to(device) for k, v in best_state.items()})
     model.eval()
     return model

@@ -111,7 +111,13 @@ def main():
 
     all_logits = np.concatenate(all_logits)
     all_labels = np.concatenate(all_labels)
-    all_probs = np.exp(all_logits) / np.exp(all_logits).sum(axis=1, keepdims=True)
+    # Max-subtract before exp: logits are cosine*100 in fp32, whose overflow
+    # threshold is exp(88.7), so any cosine above ~0.887 produced inf and then
+    # inf/inf -> NaN rows. It has not overflowed at the current checkpoint, but
+    # the fix is free and the correct forms already exist elsewhere in the repo
+    # (p2_tau_sensitivity.py, verify_c2_probes.py).
+    _lg = all_logits - all_logits.max(axis=1, keepdims=True)
+    all_probs = np.exp(_lg) / np.exp(_lg).sum(axis=1, keepdims=True)
 
     ece_zs, bins_zs = compute_ece(all_probs, all_labels)
     zs_acc = (all_logits.argmax(1) == all_labels).mean() * 100
@@ -160,11 +166,15 @@ def main():
     probe_acc = (probe_preds == test_labels).mean() * 100
     probe_conf = probe_probs.max(1)
 
-    n_classes_probe = probe_probs.shape[1]
-    if n_classes_probe < 16:
-        padded = np.zeros((probe_probs.shape[0], 16))
-        padded[:, :n_classes_probe] = probe_probs
-        probe_probs = padded
+    # Pad by CLASS INDEX, not by column position: sklearn's LogisticRegression
+    # is fitted on whatever labels appear in the support set, so column j of
+    # probe_probs is class clf.classes_[j]. Padding with [:n] would fabricate
+    # zero-probability mass for absent classes. Dead today (all 16 classes are
+    # present and classes_ == 0..15) but wrong the moment a class is absent.
+    classes = getattr(clf, "classes_", np.arange(probe_probs.shape[1]))
+    padded = np.zeros((probe_probs.shape[0], 16))
+    padded[:, classes] = probe_probs
+    probe_probs = padded
 
     ece_probe, bins_probe = compute_ece(probe_probs, test_labels)
     probe_correct = probe_preds == test_labels
