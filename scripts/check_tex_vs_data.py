@@ -9,6 +9,7 @@ Run:  python3 scripts/check_tex_vs_data.py
 """
 import json
 import re
+import statistics as st
 import sys
 from pathlib import Path
 
@@ -183,6 +184,44 @@ def main():
     for label, needle, ok in checks:
         print(f"  {'PASS' if ok else 'FAIL'}  {label:32s} {needle}")
 
+    # ---- producer/consumer filename agreement -------------------------------
+    # The producer used to write clip_fewshot_fixed.json while six consumers read
+    # clip_fewshot.json; they were equal only because someone copied them by
+    # hand. If both exist they must agree, and both must exist.
+    alias = DATA / "clip_fewshot_fixed.json"
+    canon = DATA / "clip_fewshot.json"
+    chk("clip_fewshot.json exists (consumed by 6 scripts)", "present", canon.exists())
+    if canon.exists() and alias.exists():
+        c_, a_ = load("clip_fewshot.json"), load("clip_fewshot_fixed.json")
+        agree = all(abs(c_[k]["mean"] - a_[k]["mean"]) < 1e-12
+                    for k in ("K=1", "K=5", "K=10") if k in c_ and k in a_)
+        chk("clip_fewshot.json == _fixed alias", "identical" if agree else "DIVERGED", agree)
+
+    # ---- the Conclusions must quote the current numbers too ----------------
+    # A stale "best of 14 templates 13.0%" survived in the Conclusions after the
+    # Results section had been corrected, because every other check only asked
+    # whether a value appeared SOMEWHERE in the file. Conclusions are the most
+    # read part of a paper, so they are checked explicitly.
+    ci = tex.find(r"\section{Conclusions}")
+    # Conclusions is the LAST section, so there is no following \section; bound
+    # the slice at the bibliography (or end of file) instead.
+    cb = tex.find(r"\begin{thebibliography}", ci)
+    cend = cb if cb > ci else len(tex)
+    concl = norm(tex[ci:cend]) if ci > 0 else ""
+    best_acc = max(v["acc"] for v in zs["templates"].values()) * 100
+    ft_lo = min(st.mean([x["test"] for x in ft["results"][c]["seeds"]])
+                for c in ft["results"]) * 100
+    ft_hi = max(st.mean([x["test"] for x in ft["results"][c]["seeds"]])
+                for c in ft["results"]) * 100
+    for label, needle in (("conclusion: best template", f"{best_acc:.1f}"),
+                          ("conclusion: fine-tuned CLIP low", f"{ft_lo:.1f}"),
+                          ("conclusion: fine-tuned CLIP high", f"{ft_hi:.1f}"),
+                          ("conclusion: CV ResNet",
+                           f"{cv['summary']['resnet']['acc_mean'] * 100:.1f}"),
+                          ("conclusion: balanced-accuracy ResNet",
+                           f"{art['resnet']['balanced_accuracy_mean'] * 100:.1f}")):
+        chk(label, needle, bool(concl) and norm(needle) in concl)
+
     # ---- negative checks: superseded values must be ABSENT -------------------
     # The positive checks above cannot catch a leftover from an earlier run --
     # they only confirm the new number is present somewhere. These assert the
@@ -333,7 +372,7 @@ def main():
                            f"{len(bad_c1)} rows differ", not bad_c1))
 
     bad = [(l, n) for l, n, ok in checks if not ok]
-    for label, needle, ok in checks[len(checks) - len(negatives) - 13:]:
+    for label, needle, ok in checks[len(checks) - len(negatives) - 22:]:
         print(f"  {'PASS' if ok else 'FAIL'}  {label:32s} {needle}")
     print(f"\n{len(checks) - len(bad)}/{len(checks)} consistent")
     if bad:

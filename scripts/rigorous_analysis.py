@@ -118,7 +118,10 @@ def ece(probs, pred, y, nbins, strat="ew"):
         conf = probs.max(1)
         order = np.argsort(conf)
         step = max(1, n_test//nbins); idx = np.zeros(n_test, int)
-        for k in range(nbins): idx[order[k*step:(k+1)*step]] = k
+        # n_test=138, nbins=15 -> step=9 covers only order[0:135]; the last 3
+        # samples kept idx=0 and were double-counted into bin 0 while bins 13/14
+        # stayed short. Split exactly instead.
+        for k, chunk in enumerate(np.array_split(order, nbins)): idx[chunk] = k
     e = 0.0; rows = []
     for b in range(nbins):
         m = idx == b

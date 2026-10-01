@@ -82,12 +82,21 @@ def boot_ci_delta(correct_a, correct_b):
 def max_stat_permutation(corrects, baseline):
     """Selection-aware test: is ANY predictor better than the baseline?
 
-    Under H0 each predictor is exchangeable with the baseline on discordant
-    items, so we may swap credit within an image, preserving both predictors'
-    marginal accuracies. We simulate the null distribution of the maximum
-    one-sided McNemar statistic over the predictor family and compare the
-    observed maximum to it. This is valid even though the reported 'best'
-    predictor was selected on the same data.
+    Under H0 each predictor is exchangeable with the baseline on its discordant
+    items, so its n01 wins can be moved to the n10 side at random, which
+    preserves that predictor's marginal accuracy. We simulate the null
+    distribution of the maximum one-sided McNemar statistic over the predictor
+    family and compare the observed maximum to it. This is valid even though the
+    reported "best" predictor was selected on the same data.
+
+    KNOWN CONSERVATISM (deliberate, do not "fix" without re-checking the paper):
+    each predictor's swap count is drawn as an INDEPENDENT Binomial, whereas the
+    predictors share the same 138 images and are therefore negatively correlated
+    under the paired view. Ignoring that induced correlation makes the null
+    distribution WIDER, so the test is conservative: the reported p can only be
+    too large, never too small. Since the manuscript's claim is the negative one
+    ("no template beats the baseline"), a conservative test is the safe
+    direction and the conclusion does not depend on the exact value.
     """
     base = np.asarray(baseline, bool)
     n_pred = len(corrects)

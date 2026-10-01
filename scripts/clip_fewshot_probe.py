@@ -77,8 +77,15 @@ def main():
                            "accs": accs.tolist(), "n_seeds": N_SEEDS}
         print(f"CLIP probe {label:5s}: {accs.mean()*100:.1f}% ± {accs.std(ddof=1)*100:.1f}")
 
-    json.dump(results, open('/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/data/clip_fewshot_fixed.json', 'w'), indent=2)
-    print("Saved.")
+    # Write BOTH names. Six consumers (generate_figures, rigorous_analysis,
+    # two_model_e4, verify_claims, paired_kshot_a4, check_tex_vs_data) read
+    # data/clip_fewshot.json, but this script only wrote the "_fixed" variant,
+    # so the two files were kept in sync by hand. The next run would have
+    # updated only "_fixed" and every consumer would silently have kept reading
+    # a stale artifact. One producer, one canonical filename, plus the alias.
+    for _name in ("clip_fewshot.json", "clip_fewshot_fixed.json"):
+        json.dump(results, open(f'/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/data/{_name}', 'w'), indent=2)
+    print("Saved data/clip_fewshot.json (+ _fixed alias).")
 
 if __name__ == '__main__':
     main()

@@ -280,6 +280,15 @@ def main():
                                 test_feats=Xte, test_labels=yte)
             print(f"features extracted + cached: train {X.shape} test {Xte.shape}", flush=True)
         assert len(set(y.tolist())) == 16 and len(yte) == 138
+        # The assert above only validates the CACHE labels; the next line then
+        # silently replaced them with dataset-order labels, leaving X in cache
+        # order. If the two orders ever differ -- or if len(y) < n_train, since
+        # labels.json is class-grouped and a prefix would cover only the first
+        # few classes -- every downstream use of X/y would be mispaired with no
+        # error. Assert they are the SAME array instead of overwriting.
+        assert np.array_equal(y, y_full[:len(y)]), (
+            "cached feature labels differ from dataset-order labels; X and y "
+            "would be mispaired")
 
         T = text_embeddings(model, tok, class_names)
         zs_acc = float(((Xte @ T.T).argmax(1) == yte).mean())

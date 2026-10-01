@@ -15,7 +15,11 @@ Xtr,ytr,Xte,yte=z['train_feats'].astype(np.float32),z['train_labels'],z['test_fe
 # NOTE: `**` binds tighter than `-`, so the original `(X[:,None,:]-cent[None,:,:]**2)`
 # parsed as `X - cent**2` and reduced to argmax ||cent||^2 -- a constant predictor
 # that scored 8.7% (chance 6.25%). The parentheses below are load-bearing.
-cent=np.stack([Xtr[ytr==c].mean(0) for c in range(16)])
+# An absent class would yield a NaN centroid, which silently poisons nca() for
+# every point (the NaN just propagates into the argmin, no warning).
+_present = [c for c in range(16) if (ytr == c).any()]
+assert len(_present) == 16, f"expected 16 classes with training samples, got {len(_present)}"
+cent=np.stack([Xtr[ytr==c].mean(0) for c in _present])
 def nca(X): return ((X[:,None,:]-cent[None,:,:])**2).sum(-1).argmin(1)
 # RBF-SVM: select C on 20% stratified val (seed 42), refit on 100%, eval on test
 idx_sub, idx_val = train_test_split(np.arange(len(ytr)), test_size=0.2, random_state=42, stratify=ytr)

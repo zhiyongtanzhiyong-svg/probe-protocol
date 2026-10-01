@@ -198,8 +198,16 @@ def kshot_curve(model, preprocess, train_full, test_feats, test_labels, Ks=(1, 5
             accs.append(float((clf.predict(test_feats) == test_labels).mean()))
         accs = np.array(accs)
         label = f"K={K}" if K > 0 else "full"
+        # At K=-1 the support set is the whole train split and the features come
+        # from the deterministic EVAL transform, so every seed necessarily
+        # produces the SAME number. Reporting n_seeds=15 with std 0.0 implies a
+        # seed-variance measurement that was never made; report the effective
+        # count instead, as coop_official.py already does.
+        n_eff = 1 if K == -1 else n_seeds
         out[label] = {"mean": round(float(accs.mean()), 4), "std": round(float(accs.std(ddof=1)), 4),
-                      "n_seeds": n_seeds, "accs": accs.tolist()}
+                      "n_seeds": n_eff, "n_seeds_requested": n_seeds,
+                      "deterministic_full_run": K == -1,
+                      "accs": accs.tolist()}
         print(f"  DINOv2 probe {label:5s}: {accs.mean()*100:.1f}% +/- {accs.std(ddof=1)*100:.1f}")
     return out
 

@@ -49,6 +49,23 @@ class TPDDDataset(Dataset):
         self.class_names = sorted(set(self.class_labels))
         self.name_to_idx = {n: i for i, n in enumerate(self.class_names)}
         self.label_ids = [self.name_to_idx[l] for l in self.class_labels]
+
+        # The KG map's KEY ORDER is load-bearing in ~9 call sites: they take
+        # `list(tpd_map.keys())` as the text-column order and therefore as the
+        # label order, and pair column j of a zero-shot logit matrix with label
+        # j purely on the strength of this file's insertion order. Nothing
+        # checked that, so regenerating or editing the map with a different key
+        # order -- or adding/dropping a class -- would desynchronise every
+        # zero-shot prediction from its label with no error and no shape change.
+        # Assert it once, here, where every one of those scripts already loads.
+        kg_keys = list(self.tpd_map.keys())
+        assert kg_keys == sorted(kg_keys), (
+            "data/tpd_to_kg_map.json keys are not in sorted order; the scripts "
+            "that use list(tpd_map.keys()) as the label order would silently "
+            "mis-pair every prediction. Sort the file or fix the call sites.")
+        assert set(kg_keys) == set(self.class_names), (
+            f"KG map covers {len(kg_keys)} classes but this split has "
+            f"{len(self.class_names)}: {set(kg_keys) ^ set(self.class_names)}")
         self.transform = transform
 
     def __len__(self):

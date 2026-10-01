@@ -174,7 +174,7 @@ def run_ckpt(name, ckpt, seeds, epochs, batch, vis_lr, head_lr):
         f"RandomResizedCrop/flip/rotate/color-jitter for train), AdamW (vision {vis_lr}, "
         f"head {head_lr}, wd 0.01), cosine, batch {batch}, {epochs} ep, best-validation "
         f"selection, full TPDD train (1295) / 138 test, mixed precision, {seeds} seeds. "
-        f"Matched budget to ResNet-18 (AdamW, cosine, batch 32, 30 ep, best-val, 15 seeds)."
+        f"Matched budget to ResNet-18 (AdamW, cosine, batch 32, 30 ep, best-val) but with fewer seeds; see n_seeds here vs resnet_finetuned_ref.n_seeds."
     )
     return out
 
