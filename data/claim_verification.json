@@ -276,9 +276,9 @@
         7.246376811594203
       ],
       "mcnemar_p_exact": 1.0,
-      "n_seeds_ge_clip": 11,
+      "n_seeds_ge_clip": 10,
       "n_resnet_seeds": 15,
-      "empirical_tail_vs_15seed_dist": 0.75
+      "empirical_tail_vs_15seed_dist": 0.6875
     }
   },
   "Q3_few_shot": {

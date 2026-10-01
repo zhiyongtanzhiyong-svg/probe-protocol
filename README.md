@@ -9,11 +9,11 @@ reproducible. On 16-class tobacco images:
 | Regime | Result |
 |---|---|
 | Zero-shot, no training | CLIP sits at the majority-class baseline. 13.0% is the baseline; the best of 14 templates reaches 14.5%, which is 2 images and not significant (exact McNemar p=0.87; p=0.999 under a selection-aware permutation test across all 14). |
-| K=1 (1 image/class) | The LAION-2B probe wins: 39.8% vs ResNet-18's 33.0%, a seed-paired +6.8 pp (p=6.9e-5). The DFN-CLIP probe is not separable from the CNN (31.1%, p=0.14). |
+| K=1 (1 image/class) | The LAION-2B probe wins: 40.1% vs ResNet-18's 33.0%, a seed-paired +7.1 pp (p=1.5e-4). The DFN-CLIP probe is not separable from the CNN (31.1%, p=0.14). |
 | K=5, K=10 | ResNet-18 wins and the gap widens with K. |
-| Full data | A validation-regularized probe on frozen CLIP is statistically indistinguishable from fine-tuned ResNet-18: 86.2% vs 87.7%, a 0.7 pp gap (11 of 15 ResNet seeds land above the probe; exact McNemar p=1.00, paired 95% CI [-5.8, +7.3] pp). The 138-image test set cannot resolve a difference this small. |
+| Full data | A validation-regularized probe on frozen CLIP is statistically indistinguishable from fine-tuned ResNet-18: 86.2% vs the 15-seed mean 87.7% ± 2.8, a 1.5 pp gap (15-seed mean-difference 95% CI [-0.1, +3.1] pp, one-sample t-test p=0.060; 10 of 15 seeds land above the probe and one matches it exactly). The 138-image test set cannot resolve a difference this small. |
 | Full data, 5-fold CV | The better-powered comparison separates them: 89.4% vs 92.5%, ResNet ahead in all five folds. |
-| Full data, matched tuning budget | Fine-tuning CLIP itself wins by a wide margin: 96.8% (DFN) / 96.1% (LAION) over 5 seeds, +8.4 to +9.1 pp over fine-tuned ResNet-18. |
+| Full data, matched tuning budget | Fine-tuning CLIP itself wins by a wide margin: 95.5% (DFN) / 94.9% (LAION) over 5 seeds, +7.2 to +7.8 pp over fine-tuned ResNet-18. |
 
 Two consequences worth stating plainly. First, "CLIP or CNN" is not a property
 of the encoders; it is a property of the regime, and the paper's primary

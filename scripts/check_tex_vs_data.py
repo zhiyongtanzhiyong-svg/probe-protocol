@@ -13,6 +13,8 @@ import statistics as st
 import sys
 from pathlib import Path
 
+import numpy as np
+
 ROOT = Path(__file__).resolve().parent.parent
 TEX = ROOT / "manuscript" / "paper" / "clip_vs_resnet_tobacco.tex"
 DATA = ROOT / "data"
@@ -177,6 +179,59 @@ def main():
     chk("Q3 bestC delta", f"{abs(bc['delta_pp']):.1f}\\,pp")
     chk("Q3 bestC p", f"p={bc['mcnemar_p_exact']:.2f}")
     chk("Q3 bestC n_seeds", f"{bc['n_seeds_ge_clip']} of {bc['n_resnet_seeds']}")
+    # Guard against the specific confusion this repo already hit once: seed 0
+    # (86.96%) is the *lowest-but-one* ResNet run and sits 0.72 pp above the
+    # 86.23% probe, so quoting "87.0% vs 86.2% = 0.7 pp" is arithmetically
+    # correct but is a single draw, not the 15-seed mean (87.7%, gap 1.5 pp).
+    # Assert the .tex quotes the seed-MEAN gap, and that it never presents the
+    # seed-0 gap as if it were the headline difference.
+    _rn = np.array(art["resnet"]["accs"]) * 100
+    _seedmean_gap = _rn.mean() - bc["clip_acc"] * 100
+    _mean_tok = norm(f"{_seedmean_gap:.1f}\\,pp")
+    _seed0_gap_tok = norm(f"{abs(bc['delta_pp']):.1f}\\,pp")
+    chk("Q3 bestC 15-seed mean gap quoted", _mean_tok, _mean_tok in flat)
+    # Document-wide presence is not enough: other passages legitimately cite both
+    # numbers (the per-image McNemar paragraph is explicitly about seed 0). The
+    # failure mode is the *pairing*, so require that no sentence quotes the
+    # probe next to seed 0's accuracy as the headline full-data difference.
+    _probe_tok = norm(f"{bc['clip_acc'] * 100:.1f}\\%")
+    _seed0_acc_tok = norm(f"{art['resnet']['seed0']['accuracy'] * 100:.1f}\\%")
+    # Do NOT try to split into sentences here. norm() collapses whitespace and the
+    # prose is full of LaTeX em-dashes (---), which join clauses with no
+    # terminator, so any sentence split both glues real violations together and
+    # matches the MDPI preamble. Instead inspect a local window around every
+    # mention of the probe accuracy: if seed 0's accuracy and seed 0's gap show
+    # up in the same window while the seed-mean gap does not, that is the
+    # confusion being guarded against.
+    _win = 260
+    _bad = []
+    for _m in re.finditer(re.escape(_probe_tok), flat):
+        _w = flat[max(0, _m.start() - _win): _m.end() + _win]
+        if not (_seed0_acc_tok in _w and _seed0_gap_tok in _w):
+            continue
+        if _mean_tok in _w:
+            continue
+        # Co-occurrence alone is not the confusion. The MLP robustness note
+        # legitimately mentions the probe (86.2%), an MLP head 0.7 pp below it,
+        # and separately the RBF-SVM's own 87.0% -- three different models. The
+        # error is specifically attributing seed 0's gap TO the probe, i.e. the
+        # seed-0 gap must be the one that is compared against the probe. Anchor on
+        # the actual comparison: probe accuracy, seed-0 accuracy and seed-0 gap
+        # must appear as one claim, detected via the fixed phrase that introduced
+        # the mix-up.
+        if re.search(re.escape(_probe_tok) + r".{0,120}?" + re.escape(_seed0_gap_tok), _w) or \
+           re.search(re.escape(_seed0_gap_tok) + r".{0,120}?" + re.escape(_seed0_acc_tok), _w):
+            _bad.append(_w)
+    chk("Q3 bestC probe-vs-seed0 never paired as headline",
+        f"{len(_bad)} offending window(s)",
+        not _bad)
+    # The seed-mean CI must contain zero for "indistinguishable" to be honest.
+    _sem = _rn.std(ddof=1) / np.sqrt(len(_rn))
+    _tcrit = 2.145  # df=14, two-sided 95%
+    _lo = _seedmean_gap - _tcrit * _sem
+    chk("Q3 bestC 15-seed CI brackets 0 (justifies 'indistinguishable')",
+        f"CI low {_lo:.1f}",
+        _lo <= 0 <= _seedmean_gap + _tcrit * _sem)
     chk("Q2 C=1 all seeds exceed probe",
         f"all {c1['n_seeds_ge_clip']} of {c1['n_resnet_seeds']} ResNet seeds")
 
