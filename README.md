@@ -32,7 +32,7 @@ scripts/dataset.py                            TPDD dataset (vendored; see below)
 scripts/model_zoo.py                          encoders + train/eval loops (vendored)
 generate_figures.py                           all four figures, from data/*.json only
 scripts/check_tex_vs_data.py                  consistency gate (run before committing)
-AGENTS.md                                     project working rules
+RESEARCH_PROTOCOL.md                          experiment working rules
 ```
 
 `data/*.json` is the single source of truth. The manuscript is written against

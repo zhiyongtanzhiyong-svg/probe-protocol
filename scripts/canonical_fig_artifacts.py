@@ -104,7 +104,7 @@ def clip_artifacts():
         np.savez_compressed(FEAT_CACHE, train=tr, train_y=tr_y, test=te, test_y=te_y)
         print(f"[clip] features extracted and cached -> {FEAT_CACHE}")
 
-    # label alignment guard (AGENTS.md discipline: cache order == dataset order)
+    # label alignment guard (RESEARCH_PROTOCOL.md: cache order == dataset order)
     z = np.load(os.path.join(DATA, "clip_features_clean.npz"))
     assert np.array_equal(tr_y, z["train_labels"]), "train label order mismatch vs cache"
     assert np.array_equal(te_y, z["test_labels"]), "test label order mismatch vs cache"

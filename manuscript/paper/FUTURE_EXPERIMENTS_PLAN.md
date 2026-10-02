@@ -1,7 +1,7 @@
-# Future-Experiments Plan (post-review hardening)
+# Future-Experiments Plan
 
-Scope: the additions the GLM review + internal peer panel (EIC W3, R1 W2, DA M4) asked
-for that are NOT already in the manuscript. Ordered by (reviewer impact / cost).
+Scope: experiment additions identified during internal review that are NOT already
+in the manuscript. Ordered by (impact / cost).
 Grounded in the existing `scripts/` and the per-run wall-clock times already in `data/`.
 
 **What is already covered (do not redo):**
@@ -20,7 +20,7 @@ covers P1–P4 below.
 ---
 
 ## P1 — Domain-VLM zero-shot row (BioCLIP 2 *or* SCOLD) on TPDD + TLD  ⭐ do first
-**Answers:** EIC W3 (Major, corroborated 2/4), R2 W2, DA "you ignored the obvious domain model".
+**Answers:** raised in review as a Major point, corroborated independently, plus the domain-model omission.
 **Why first:** highest reviewer impact, lowest cost (zero-shot, no training), and it is the
 single biggest gap between the paper's framing (cites SCOLD/BioCLIP 2/LP++ as *the reason the
 question matters*) and its evidence (none in any table).
@@ -90,7 +90,7 @@ frozen-feature result is not an artifact of CLIP's text alignment. Reuses the *e
   fixed with `num_workers=0`, batch 16, and ran after that job finished. `python3 -u` for unbuffered progress.
 
  ## P3 — Fairness control: fine-tuned CLIP vs fine-tuned ResNet  [DONE]
-**Answers:** GLM A3 / "asymmetric tuning" — the paper compared *frozen* CLIP (probe) vs *fine-tuned*
+**Answers:** asymmetric tuning — the paper compared *frozen* CLIP (probe) vs *fine-tuned*
 ResNet-18, and probed frozen ResNet-18, but never fine-tuned CLIP. That's the "asymmetric effort" gap.
 **Done (2026-09-21):** fine-tuned both CLIP checkpoints (image encoder `model.visual` + linear head) under a
 matched budget (30 ep, cosine, best-val, native CLIP preprocessing, batch 16 mem-limited, AMP + grad-checkpointing,
@@ -133,7 +133,7 @@ closes the main "asymmetric effort" objection, since it shows CLIP is the *stron
 - **Stop condition:** one tuned ResNet config, full-data + K=1, 15 seeds, added to Table 2 as "ResNet-18 (tuned)".
 
 ## P4 — ResNet-50 full-data scale control  [DONE]
-**Answers:** R1 W2 / "428M vs 12M (~35×) without a size-disclosed baseline".
+**Answers:** the 428M-vs-12M (~35x) scale gap without a size-disclosed baseline.
 **Done (2026-09-21):** ResNet-50 (24.7M, ~2× ResNet-18, ~1/17 of CLIP) full-data, identical protocol
 (ImageNet-pretrained, AdamW lr=3e-4, cosine, batch 32, 30 ep, best-val, n=5). `scripts/resnet50_full.py`
 → `data/resnet50_full.json`.
