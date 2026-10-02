@@ -24,5 +24,10 @@
   ],
   "min": 0.14492753623188406,
   "max": 0.38405797101449274,
-  "elapsed_s": 292.21032309532166
+  "elapsed_s": 292.21032309532166,
+  "_provenance": {
+    "role": "reference_only_non_paired_run",
+    "note": "Independent ResNet-18 K-shot reference run on its OWN support draw. NOT the source of the paper's Table 1 ResNet few-shot row: that row is the seed-paired run in paired_kshot_a4.json (clip support draw seed+500), which gives 33.04%. This file gives 32.03%. Both are valid; they differ because the support draws differ. Kept for auditability of the non-paired baseline.",
+    "authoritative_source": "data/paired_kshot_a4.json"
+  }
 }

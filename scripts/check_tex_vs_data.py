@@ -426,8 +426,65 @@ def main():
             checks.append(("per-class CLIP C=1 column",
                            f"{len(bad_c1)} rows differ", not bad_c1))
 
+    # ------------------------------------------------------------------
+    # Adaptation-control rows (LP++ / CoOp) are computed on a SEPARATELY
+    # cached feature set whose pixel encoding differs from the fresh
+    # deterministic extraction behind the probe rows (feature cosine 0.83-0.97;
+    # 76.1 vs 76.8 at full data for DFN-CLIP). The head-capacity claims are
+    # therefore within-artifact, and the .tex must say so. These checks encode
+    # the two ways that disclosure previously went wrong: quoting the canonical
+    # LAION numbers as if they were the seed+500 draw, and describing the draw
+    # as uniformly higher when it is lower for DFN and higher for LAION.
+    lp_path = Path(__file__).resolve().parent.parent / "data" / "lp_plus_plus.json"
+    if lp_path.exists():
+        lp = json.loads(lp_path.read_text())
+        draw = {ck: [lp["checkpoints"][ck][f"K={k}"]["probe_C1"]["mean"] * 100
+                     for k in (1, 5, 10)]
+                for ck in ("dfn_clip", "laion2b")}
+        for ck in ("dfn_clip", "laion2b"):
+            want = "/".join(f"{v:.1f}" for v in draw[ck])
+            chk(f"LP++ {ck} seed+500 draw probe quoted",
+                want, norm(want) in flat)
+        # The direction claim must not be stated as uniform.
+        _uniform = norm("higher at every $K$ except") in flat
+        chk("LP++ draw-vs-canonical direction is not claimed uniform",
+            f"{_uniform}", not _uniform)
+        # Full-data gains must be within-artifact: LP++ minus its OWN probe.
+        for ck in ("dfn_clip", "laion2b"):
+            n = lp["checkpoints"][ck]["full"]
+            gain = (n["lp_pp"]["mean"] - n["probe_C1"]["mean"]) * 100
+            chk(f"LP++ {ck} full gain is within-artifact",
+                f"+{gain:.1f} pp",
+                norm(f"+{gain:.1f}$\\\\,pp") in flat
+                or norm(f"+{gain:.1f}$ pp") in flat)
+        chk("feature-encoding difference is disclosed",
+            "pixel encoding differs",
+            norm("pixel encoding differs") in flat)
+
+    # ------------------------------------------------------------------
+    # Two independent ResNet K-shot artifacts exist (different support draws).
+    # The paper's Table 1 row must come from the seed-paired one, and the
+    # reference-only artifact must be labelled so a reader cannot mistake it
+    # for a contradiction.
+    paired_path = Path(__file__).resolve().parent.parent / "data" / "paired_kshot_a4.json"
+    if paired_path.exists():
+        pj = json.loads(paired_path.read_text())
+        _pairs = {"K=1": 33.0, "K=5": 65.5, "K=10": 75.7}
+        for k, claim in _pairs.items():
+            chk(f"Table 1 ResNet {k} = seed-paired run",
+                f"{pj[k]['resnet_mean'] * 100:.1f}",
+                abs(pj[k]["resnet_mean"] * 100 - claim) <= 0.06)
+        for k in (1, 5, 10):
+            rp = Path(__file__).resolve().parent.parent / "data" / f"resnet_k{k}_n15.json"
+            if rp.exists():
+                rj = json.loads(rp.read_text())
+                chk(f"resnet_k{k}_n15.json labelled non-authoritative",
+                    "_provenance",
+                    rj.get("_provenance", {}).get("role")
+                    == "reference_only_non_paired_run")
+
     bad = [(l, n) for l, n, ok in checks if not ok]
-    for label, needle, ok in checks[len(checks) - len(negatives) - 22:]:
+    for label, needle, ok in checks[len(checks) - len(negatives) - 30:]:
         print(f"  {'PASS' if ok else 'FAIL'}  {label:32s} {needle}")
     print(f"\n{len(checks) - len(bad)}/{len(checks)} consistent")
     if bad:
