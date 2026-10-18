@@ -1,0 +1,101 @@
+{
+  "date": "2026-10-16",
+  "K": 5,
+  "clip_finetuned": {
+    "mean": 0.7584533333333333,
+    "std": 0.05025147995925331,
+    "n": 15,
+    "accs": [
+      0.7681,
+      0.7899,
+      0.7464,
+      0.7391,
+      0.7391,
+      0.7971,
+      0.8116,
+      0.6884,
+      0.6739,
+      0.8478,
+      0.7754,
+      0.7754,
+      0.8043,
+      0.7391,
+      0.6812
+    ],
+    "selected": {
+      "vis_lr": 2e-05,
+      "epochs": 100,
+      "mean_best_val": 0.756
+    }
+  },
+  "resnet_finetuned_matched_budget": {
+    "mean": 0.6492866666666668,
+    "std": 0.052027504630678165,
+    "n": 15,
+    "accs": [
+      0.6667,
+      0.7029,
+      0.6957,
+      0.6449,
+      0.6377,
+      0.587,
+      0.6232,
+      0.6232,
+      0.558,
+      0.6304,
+      0.7609,
+      0.7174,
+      0.6377,
+      0.6377,
+      0.6159
+    ],
+    "selected": {
+      "lr": 0.0003,
+      "epochs": 300,
+      "mean_best_val": 0.7222
+    }
+  },
+  "resnet_legacy_single_config_pct": 65.46,
+  "clip_frozen_probe_k5": 0.6019323671497584,
+  "seed_paired": {
+    "mean_diff_pp": 10.92,
+    "bootstrap_ci95_pp": [
+      8.07,
+      13.91
+    ],
+    "n_bootstrap": 10000,
+    "bootstrap_seed": 0,
+    "paired_t": 6.9862,
+    "paired_t_p": 6.385499670271131e-06,
+    "wilcoxon_p": 6.103515625e-05,
+    "wins_ties_losses": [
+      15,
+      0,
+      0
+    ],
+    "per_seed_diff_pp": [
+      10.14,
+      8.7,
+      5.07,
+      9.42,
+      10.14,
+      21.01,
+      18.84,
+      6.52,
+      11.59,
+      21.74,
+      1.45,
+      5.8,
+      16.66,
+      10.14,
+      6.53
+    ]
+  },
+  "fine_tuning_gain": {
+    "K5_pp": 15.65,
+    "full_data_pp": 7.23,
+    "note": "gain at K=5 is larger than at full data: the frozen probe is far from its ceiling in the low-data regime, so encoder adaptation has more headroom; this is the mechanism behind the K=5 overtake."
+  },
+  "branch_rule": "pre-registration section 6, committed before any result",
+  "branch": "A"
+}

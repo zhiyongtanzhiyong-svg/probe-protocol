@@ -1,0 +1,30 @@
+{
+  "K=2": {
+    "resnet_mean": 0.43381642512077295,
+    "resnet_std": 0.055786121010037056,
+    "resnet_accs": [
+      0.42028985507246375,
+      0.5072463768115942,
+      0.34782608695652173,
+      0.3695652173913043,
+      0.47101449275362317,
+      0.4420289855072464,
+      0.4420289855072464,
+      0.43478260869565216,
+      0.43478260869565216,
+      0.43478260869565216,
+      0.5507246376811594,
+      0.4420289855072464,
+      0.36231884057971014,
+      0.3695652173913043,
+      0.4782608695652174
+    ],
+    "n_seeds": 15,
+    "epochs": 30,
+    "support_transform": "TRAIN_TRANSFORM (30 epochs, genuine augmentation)",
+    "support_indices": "KShotSubset(train_full, 2, seed+500)"
+  },
+  "elapsed_s": 340.61934208869934,
+  "prior_run_elapsed_s": 1209.3304409980774,
+  "note": "K=2 added 2026-10-05 to close the crossover bracket (1,5). Same ResNet recipe and same support draws as the K in {1,5,10} rows in paired_kshot_a4.json, which are reused unchanged."
+}

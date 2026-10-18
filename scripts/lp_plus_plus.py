@@ -62,10 +62,29 @@ CKPT = {
     'dfn_clip': '/home/lizhuo/Work/TobAI/checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin',
     'laion2b': '/home/lizhuo/Work/TobAI/checkpoints/clip_vitl14_laion2b/open_clip_pytorch_model.bin',
 }
+# REPOINTED 2026-10-05. The previous DFN entry, data/clip_features_clean.npz,
+# is a stale store: max |diff| 0.1185 against the current corpus on
+# L2-normalized features (per-sample cosine 0.83--0.97), and it yields a
+# full-data C=1 of 76.09% where the canonical protocol gives 76.81%
+# (scripts/audit_feature_stores.py, data/feature_store_audit.json). It was the
+# only stale store; clip_features_laion_clean.npz matches the current corpus
+# exactly (max |diff| 0.0000) and is kept.
+#
+# The two stores use different key conventions, so the loader below normalises.
 FEAT_CACHE = {
-    'dfn_clip': os.path.join(REPO, 'data', 'clip_features_clean.npz'),
-    'laion2b': os.path.join(REPO, 'data', 'clip_features_laion_clean.npz'),
+    'dfn_clip': os.path.join(REPO, 'data', 'canonical_clip_features_dfn.npz'),
+    'laion2b': os.path.join(REPO, 'data', 'laion_clip_features_clean.npz'),
 }
+
+
+def load_feature_cache(path):
+    """Return (Xtr, ytr, Xte, yte) from either npz key convention."""
+    z = np.load(path)
+    if 'train_feats' in z:                      # legacy convention
+        return z['train_feats'], z['train_labels'], z['test_feats'], z['test_labels']
+    if 'Xtr' in z:                              # audit_feature_stores convention
+        return z['Xtr'], z['ytr'], z['Xte'], z['yte']
+    return z['train'], z['train_y'], z['test'], z['test_y']   # canonical convention
 TPD_MAP = '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/data/tpd_to_kg_map.json'
 KG_DATA = os.path.join(REPO, 'data/tobacco_records.json')
 OUT = os.path.join(REPO, 'data', 'lp_plus_plus.json')
@@ -269,10 +288,8 @@ def main():
 
         cache = FEAT_CACHE[name]
         if os.path.exists(cache):
-            z = np.load(cache)
-            X, y = z['train_feats'], z['train_labels']
-            Xte, yte = z['test_feats'], z['test_labels']
-            print(f"features from cache {cache}", flush=True)
+            X, y, Xte, yte = load_feature_cache(cache)
+            print(f"features from cache {os.path.basename(cache)}", flush=True)
         else:
             X, y = extract_clip(model, preprocess, train_ds, DEVICE)
             Xte, yte = extract_clip(model, preprocess, test_ds, DEVICE)
@@ -286,7 +303,7 @@ def main():
         # labels.json is class-grouped and a prefix would cover only the first
         # few classes -- every downstream use of X/y would be mispaired with no
         # error. Assert they are the SAME array instead of overwriting.
-        assert np.array_equal(y, y_full[:len(y)]), (
+        assert np.array_equal(y, train_labels_full[:len(y)]), (
             "cached feature labels differ from dataset-order labels; X and y "
             "would be mispaired")
 

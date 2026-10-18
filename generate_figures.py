@@ -22,10 +22,11 @@ editable text. Every series is redundantly encoded (hue + line style + marker)
 so the figures survive greyscale printing; bar plots additionally use hatching.
 
 Data sources (all under data/, committed):
-  clip_fewshot.json, two_model_e4.json, paired_kshot_a4.json   -> Fig 1a (Table 2)
+  clip_fewshot.json, laion_fewshot_canonical.json, paired_kshot_a4.json
+  p3b_resnet_kshot_matched{_k10}.json                          -> Fig 1a (Table 1: DFN-CLIP, LAION-2B, ResNet-18; K=1 seed-paired, K=5/10 matched-budget)
   lp_plus_plus.json, coop_official.json                       -> Fig 1b (Table 3)
-  multiplicity.json                                           -> Fig 1a significance
-  perclass_comparison_v2.json, clip_features_clean.npz        -> Fig 2
+  multiplicity_p3b.json                                       -> Fig 1a significance (10-family: K=1/2 seed-paired, K=5/10 matched-budget ResNet reference)
+  canonical_fig_artifacts.json, clip_features_clean.npz      -> Fig 2 (per-class values + test-class counts)
   clip_features_clean.npz                                     -> Fig 3 (CLIP) + Fig 4
   data/tpdd, scripts/dataset.py                               -> dataset (vendored locally)
 
@@ -49,8 +50,10 @@ Notes:
   * Full-data points in Fig 1 are the clean deterministic protocol values (CLIP 76.8%,
     ResNet 87.7%); error bars are 1 SD across the 15 seeds. Fig 1a additionally marks
     the validation-selected-C operating points (DFN 86.2%, LAION 87.7%).
-  * Fig 1a significance markers are Holm-Bonferroni corrected across the full family of
-    six CLIP-probe-vs-ResNet seed-paired contrasts (data/multiplicity.json).
+   * Fig 1a significance markers are Holm-Bonferroni corrected within the executed
+     ten-contrast family (data/multiplicity_p3b.json): the eight frozen-probe
+     contrasts (K=1/2 against the seed-paired ResNet, K=5/10 against the
+     matched-budget ResNet) plus the two matched-budget fine-tuned-CLIP contrasts.
   * Fig 1b uses the seed-paired support draw (seed+500) of the adaptation controls, whose
     own probe means are 30.5/49.1/57.7 (DFN) and 40.2/60.2/66.5 (LAION).
   * Fig 3's CLIP probe is the C=1 logistic probe on the frozen CLIP features; ResNet-18 is
@@ -289,11 +292,13 @@ def fig_fewshot_curve(formats=("pdf", "svg"), transparent=False):
     """Two panels: (a) frozen-feature linear probes vs fine-tuned CNN, with
     multiplicity-corrected significance; (b) head-capacity controls (LP++, CoOp)."""
     dfn = _load("clip_fewshot.json")
-    laion = _load("two_model_e4.json")["few_shot_probe"]
+    laion = _load("laion_fewshot_canonical.json")
     pk = _load("paired_kshot_a4.json")
+    p3b_r5 = _load("p3b_resnet_kshot_matched.json")
+    p3b_r10 = _load("p3b_resnet_kshot_matched_k10.json")
     lpp = _load("lp_plus_plus.json")["checkpoints"]
     coop = _load("coop_official.json")["checkpoints"]
-    mult = {r["contrast"]: r for r in _load("multiplicity.json")["rows"]}
+    mult = {r["contrast"]: r for r in _load("multiplicity_p3b.json")["rows"]}
     # Canonical single source of truth for every full-data number. Nothing below
     # is hard-coded: re-running the experiments and regenerating these JSONs
     # changes the figure, so a stale constant cannot silently reappear.
@@ -306,14 +311,21 @@ def fig_fewshot_curve(formats=("pdf", "svg"), transparent=False):
     x = np.arange(len(KLAB))
 
     # ---- (a) probes + CNN ------------------------------------------------
-    # NOTE: paired_kshot_a4.json stores FRACTIONS (0.3208 == 32.1%), unlike
-    # clip_fewshot.json / two_model_e4.json which store percentages after
-    # scaling. Converting here is mandatory -- the previous version of this
-    # figure plotted the CNN baseline at 0.3%.
-    rn_v = [pk["K=1"]["resnet_mean"] * 100, pk["K=5"]["resnet_mean"] * 100,
-            pk["K=10"]["resnet_mean"] * 100, rn_full_mean]
-    rn_sd = [pk["K=1"]["resnet_std"] * 100, pk["K=5"]["resnet_std"] * 100,
-             pk["K=10"]["resnet_std"] * 100, rn_full_sd]
+    # NOTE: every store read here -- clip_fewshot.json, laion_fewshot_canonical.json,
+    # paired_kshot_a4.json, p3b_resnet_kshot_matched{_k10}.json -- stores
+    # FRACTIONS (0.3208 == 32.1%), so the `* 100` scaling below is mandatory.
+    # The previous version of this figure plotted the CNN baseline at 0.3%.
+    # ResNet-18 reference per the executed multiplicity family (p3b): K=1 is the
+    # seed-paired point (paired_kshot_a4.json), K=5/K=10 are the matched-budget
+    # (hyperparameter-searched, 15-seed) P3b points. This is the same split the
+    # tex Table 1 reports (33.0 / 64.9 / 74.6 / 87.7) and the same ResNet
+    # reference each p3b contrast is tested against.
+    rn_v = [pk["K=1"]["resnet_mean"] * 100,
+            p3b_r5["stage2_final"]["mean"] * 100,
+            p3b_r10["stage2_final"]["mean"] * 100, rn_full_mean]
+    rn_sd = [pk["K=1"]["resnet_std"] * 100,
+             p3b_r5["stage2_final"]["std"] * 100,
+             p3b_r10["stage2_final"]["std"] * 100, rn_full_sd]
     # Full-data default-probe points are read, not written: the two checkpoints
     # sit at 76.8% and 76.1%, and hard-coding 76.8 for both overstated LAION by
     # 0.7 pp while making the script's own "nothing is hard-coded" claim false.
@@ -363,9 +375,8 @@ def fig_fewshot_curve(formats=("pdf", "svg"), transparent=False):
 
     # Holm-Bonferroni-corrected significance for the probe-vs-CNN contrasts.
     # Stars are read from the raw paired-t p-value; the multiplicity gate uses the
-    # per-row holm_significant flag. (data/multiplicity.json's holm_adjusted_p
-    # column is a constant 0.0636 and is therefore NOT used -- see the note in
-    # scripts/multiplicity.py.)
+    # per-row holm_significant flag within the executed ten-contrast family
+    # (data/multiplicity_p3b.json).
     for i, K in enumerate(["K=1", "K=5", "K=10"]):
         for tag, vals, sds in (("LAION-2B", la_v, la_sd), ("DFN-CLIP", dfn_v, dfn_sd)):
             r = mult.get(f"{K}: CLIP ({tag}) vs ResNet-18")
@@ -451,8 +462,11 @@ def fig_fewshot_curve(formats=("pdf", "svg"), transparent=False):
 def fig_perclass(formats=("pdf", "svg"), transparent=False):
     """Per-class test accuracy with Wilson 95% intervals and hatch-coded series.
 
-    Both series come from the canonical artifacts (Table 2 protocol), so the two
-    panels of Fig 2 and the two panels of Fig 3 describe the same two runs.
+    CLIP series is the single deterministic C=1 probe (Wilson 95% per-class
+    intervals); ResNet series is the 15-seed MEAN per-class recall with 15-seed
+    SD bars -- the same statistic as Table 4's fine-tuned-ResNet column (a single
+    run is not a stable basis; limitation (2)). Fig 3's confusion matrices
+    necessarily show one run (seed 0); Fig 2's per-class bars do not.
     """
     art = canonical_artifacts()
     names = class_names(short=True)
@@ -461,14 +475,19 @@ def fig_perclass(formats=("pdf", "svg"), transparent=False):
     counts = np.bincount(test_labels.astype(int), minlength=len(names))
 
     clip = np.array(art["clip"]["linear_C1"]["perclass"], dtype=float)
-    resnet = np.array(art["resnet"]["seed0"]["perclass"], dtype=float)
+    # ResNet per-class is the 15-seed MEAN -- the statistic Table 4 reports
+    # ("a single run is not a stable basis", limitation (2)). Plotting seed0
+    # here previously contradicted Table 4 (e.g. class 0: 100% vs 6.7%).
+    resnet = np.array(art["resnet"]["perclass_mean"], dtype=float)
+    resnet_sd = np.array(art["resnet"]["perclass_sd"], dtype=float)
 
     def err(acc, n):
         lo, hi = zip(*(wilson(a / 100.0 * n, n) for a, n in zip(acc, counts)))
         return np.array(acc) - np.array(lo) * 100, np.array(hi) * 100 - np.array(acc)
 
-    el_c, eu_c = err(clip, counts)
-    el_r, eu_r = err(resnet, counts)
+    el_c, eu_c = err(clip, counts)   # CLIP C=1: one deterministic run -> Wilson 95% CI
+    el_r = resnet_sd                 # ResNet 15-seed mean -> symmetric 15-seed SD
+    eu_r = resnet_sd.copy()
 
     x = np.arange(len(names))
     w = 0.38
@@ -479,7 +498,7 @@ def fig_perclass(formats=("pdf", "svg"), transparent=False):
                 label="CLIP (full-data probe, C=1)", error_kw=ec)
     br = ax.bar(x + w / 2, resnet, w, yerr=[el_r, eu_r], color=C_LAION, hatch="\\\\\\",
                 edgecolor="white", linewidth=0.0,
-                label="ResNet-18 (full-data, seed 0)", error_kw=ec)
+                 label="ResNet-18 (full-data, 15-seed mean)", error_kw=ec)
     style_bar_errors(bc)
     style_bar_errors(br)
 

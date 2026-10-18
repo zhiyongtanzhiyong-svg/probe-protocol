@@ -1,91 +1,169 @@
 """
-CLIP Few-Shot Linear Probe — FIXED: inverse ImageNet normalization.
+CLIP Few-Shot Linear Probe -- single caliber.
+
+WHY THIS FILE WAS REWRITTEN (2026-10-05)
+----------------------------------------
+The previous version had two defects that made its numbers irreconcilable with
+the rest of the repository:
+
+  1. TRANSFORM. It built the K-shot support pool with TRAIN_TRANSFORM
+     (RandomHorizontalFlip / RandomRotation / ColorJitter / RandomResizedCrop)
+     and then encoded it ONCE per seed, because sklearn's LogisticRegression is
+     a single convex fit with no epoch loop. Augmentation therefore bought
+     nothing -- it only injected one stochastic draw of noise into the
+     features. Every other script in this repo (dinov2_protocol.py,
+     coop_official.py's eval views, canonical_protocol.py) uses EVAL_TRANSFORM
+     for exactly this reason: EVAL_TRANSFORM is deterministic, so a "n_seeds"
+     spread reflects support resampling, not image noise.
+
+  2. STALE CACHE TRAP. It encoded fresh from images, while
+     lp_plus_plus.py and eight other scripts read data/clip_features_clean.npz,
+     a legacy cache whose max |diff| against the current corpus is 0.119 on
+     L2-normalized features (verify_cache_freshness.py). So the two scripts
+     disagreed on images *and* on transform at the same time.
+
+Together these produced two incompatible "DFN-CLIP probe" rows in one paper:
+31.1 / 51.3 / 58.3 here, versus 30.5 / 49.1 / 57.7 in the LP++ discussion.
+
+WHAT THIS VERSION DOES
+----------------------
+Encode train+test ONCE with EVAL_TRANSFORM, assert the result is bit-identical
+to data/canonical_clip_features_dfn.npz (the cache canonical_protocol.py uses),
+then subset support by index with the shared kshot_subset_idx helper. That
+helper is verified to draw the same indices as the KShotSubset classes in
+clip_fewshot_probe.py / paired_kshot_a4.py, because data/tpdd/*/labels.json is
+class-sorted so dict-insertion order equals sorted class order.
+
+Consequence: the full-data row becomes deterministic (std exactly 0.0) and
+every few-shot number is reproducible from this one artifact.
+
+Writes data/clip_fewshot.json (+ _fixed alias) and data/fewshot_features_dfn.npz.
 """
-import sys, json, torch, numpy as np
+import sys, json, os
+import numpy as np
+import torch
 from sklearn.linear_model import LogisticRegression
-sys.path.insert(0, '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/scripts')
+
+REPO = '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet'
+sys.path.insert(0, f'{REPO}/scripts')
 
 import open_clip
-from dataset import TPDDDataset, TRAIN_TRANSFORM, EVAL_TRANSFORM, worker_init_fn
+from dataset import TPDDDataset, EVAL_TRANSFORM, worker_init_fn
+from coop_experiment import kshot_subset_idx
+from torch.utils.data import DataLoader
 from PIL import Image
-from torch.utils.data import DataLoader, Dataset
 
 IMAGENET_MEAN = np.array([0.485, 0.456, 0.406])
-IMAGENET_STD  = np.array([0.229, 0.224, 0.225])
+IMAGENET_STD = np.array([0.229, 0.224, 0.225])
+
 
 def tensor_to_pil(img_tensor):
-    np_img = img_tensor.permute(1, 2, 0).cpu().numpy()
-    np_img = np_img * IMAGENET_STD + IMAGENET_MEAN
-    np_img = np.clip(np_img, 0, 1)
-    np_img = (np_img * 255).astype(np.uint8)
-    return Image.fromarray(np_img)
+    """Undo EVAL_TRANSFORM's ImageNet normalisation back to a uint8 PIL image.
 
-class KShotSubset(Dataset):
-    def __init__(self, full_ds, K, seed):
-        self.transform = full_ds.transform
-        rng = np.random.RandomState(seed)
-        indices_by_class = {i: [] for i in range(len(full_ds.class_names))}
-        for idx, lbl in enumerate(full_ds.label_ids):
-            indices_by_class[lbl].append(idx)
-        idxs = []
-        for c, idx_list in indices_by_class.items():
-            idxs.extend(rng.choice(idx_list, size=min(K, len(idx_list)), replace=False))
-        self.full_ds = full_ds
-        self.indices = sorted(idxs)
-    def __len__(self): return len(self.indices)
-    def __getitem__(self, idx): return self.full_ds[self.indices[idx]]
+    This is a documented deliberate step, not a bug: EVAL_TRANSFORM already
+    normalised to roughly [-1.6, 2.6], and open_clip's own preprocess expects
+    raw pixels. Sensitivity is reported in data/inverse_norm_sensitivity.json.
+    """
+    x = img_tensor.permute(1, 2, 0).cpu().numpy()
+    x = np.clip(x * IMAGENET_STD + IMAGENET_MEAN, 0, 1)
+    return Image.fromarray((x * 255).astype(np.uint8))
 
-def main():
-    model, _, preprocess = open_clip.create_model_and_transforms(
-        'ViT-L-14', pretrained='/home/lizhuo/Work/TobAI/checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin')
-    model = model.eval().cuda()
 
-    @torch.no_grad()
-    def get_features(dataset):
-        loader = DataLoader(dataset, 32, shuffle=False, num_workers=2, worker_init_fn=worker_init_fn)
-        feats, labs = [], []
+CKPT = f'{REPO}/../checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin'
+OUT_FEATS = f'{REPO}/data/fewshot_features_dfn.npz'
+CANONICAL = f'{REPO}/data/canonical_clip_features_dfn.npz'
+N_SEEDS = 15
+KS = [1, 2, 5, 10]
+
+
+def encode(model, preprocess, split):
+    ds = TPDDDataset(split, transform=EVAL_TRANSFORM)
+    loader = DataLoader(ds, 32, shuffle=False, num_workers=2,
+                        worker_init_fn=worker_init_fn)
+    feats, labs = [], []
+    with torch.no_grad():
         for batch in loader:
             imgs = batch['image']
-            clip_imgs = torch.stack([preprocess(tensor_to_pil(img)) for img in imgs]).cuda()
+            clip_imgs = torch.stack(
+                [preprocess(tensor_to_pil(img)) for img in imgs]).cuda()
             f = model.encode_image(clip_imgs)
             f = f / f.norm(dim=-1, keepdim=True)
             feats.append(f.cpu().numpy())
             labs.extend(batch['label'].numpy().tolist())
-        return np.concatenate(feats), np.array(labs)
+    return np.concatenate(feats), np.array(labs)
 
-    train_full = TPDDDataset('train', transform=TRAIN_TRANSFORM)
-    test_ds = TPDDDataset('test', transform=EVAL_TRANSFORM)
-    test_feats, test_labels = get_features(test_ds)
 
-    N_SEEDS = 15
+def main():
+    if os.path.exists(OUT_FEATS):
+        z = np.load(OUT_FEATS)
+        Xtr, ytr, Xte, yte = z['Xtr'], z['ytr'], z['Xte'], z['yte']
+        print(f'reusing {OUT_FEATS}', flush=True)
+    else:
+        model, _, preprocess = open_clip.create_model_and_transforms(
+            'ViT-L-14', pretrained=CKPT)
+        model = model.eval().cuda()
+        print('encoding train (EVAL)...', flush=True)
+        Xtr, ytr = encode(model, preprocess, 'train')
+        print('encoding test (EVAL)...', flush=True)
+        Xte, yte = encode(model, preprocess, 'test')
+        np.savez(OUT_FEATS, Xtr=Xtr, ytr=ytr, Xte=Xte, yte=yte)
+
+    # Gate: this must agree with the cache canonical_protocol.py already uses,
+    # otherwise the few-shot table and the full-data table describe different
+    # feature spaces and the paper cannot be internally consistent.
+    if os.path.exists(CANONICAL):
+        c = np.load(CANONICAL)
+        d = max(float(np.abs(Xtr - c['train']).max()),
+                float(np.abs(Xte - c['test']).max()))
+        lab = bool(np.array_equal(ytr, c['train_y']) and np.array_equal(yte, c['test_y']))
+        print(f'vs canonical_clip_features_dfn.npz: max|diff|={d:.2e} labels_match={lab}',
+              flush=True)
+        if d > 1e-5 or not lab:
+            raise SystemExit('ABORT: fresh features disagree with canonical cache')
+    else:
+        print('WARNING: canonical cache absent, cross-check skipped', flush=True)
+
+    ds = TPDDDataset('train', transform=EVAL_TRANSFORM)
+    assert np.array_equal(ytr, np.array(ds.label_ids)), 'label order drift'
+
     results = {}
-    for K in [1, 2, 5, 10, -1]:
+    for K in KS:
         accs = []
         for seed in range(N_SEEDS):
-            if K == -1:
-                train_subset = train_full
-            else:
-                train_subset = KShotSubset(train_full, K, seed + 500)
-            train_feats, train_labels = get_features(train_subset)
+            sup = kshot_subset_idx(ytr, K, seed + 500)
             clf = LogisticRegression(max_iter=2000, C=1.0, random_state=seed)
-            clf.fit(train_feats, train_labels)
-            preds = clf.predict(test_feats)
-            accs.append(float((preds == test_labels).mean()))
+            clf.fit(Xtr[sup], ytr[sup])
+            accs.append(float((clf.predict(Xte) == yte).mean()))
         accs = np.array(accs)
-        label = f"K={K}" if K > 0 else "full"
-        results[label] = {"mean": float(accs.mean()), "std": float(accs.std(ddof=1)),
-                           "accs": accs.tolist(), "n_seeds": N_SEEDS}
-        print(f"CLIP probe {label:5s}: {accs.mean()*100:.1f}% ± {accs.std(ddof=1)*100:.1f}")
+        results[f'K={K}'] = {'mean': float(accs.mean()),
+                             'std': float(accs.std(ddof=1)),
+                             'accs': accs.tolist(), 'n_seeds': N_SEEDS,
+                             'support_transform': 'EVAL',
+                             'support_indices': 'coop_experiment.kshot_subset_idx(y,K,seed+500)'}
+        print(f'CLIP probe K={K:<3d}: {accs.mean()*100:5.2f}% +- {accs.std(ddof=1)*100:.2f}',
+              flush=True)
 
-    # Write BOTH names. Six consumers (generate_figures, rigorous_analysis,
-    # two_model_e4, verify_claims, paired_kshot_a4, check_tex_vs_data) read
-    # data/clip_fewshot.json, but this script only wrote the "_fixed" variant,
-    # so the two files were kept in sync by hand. The next run would have
-    # updated only "_fixed" and every consumer would silently have kept reading
-    # a stale artifact. One producer, one canonical filename, plus the alias.
-    for _name in ("clip_fewshot.json", "clip_fewshot_fixed.json"):
-        json.dump(results, open(f'/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/data/{_name}', 'w'), indent=2)
-    print("Saved data/clip_fewshot.json (+ _fixed alias).")
+    # full-data: deterministic by construction, one fit, std is exactly 0.
+    clf = LogisticRegression(max_iter=2000, C=1.0, random_state=0)
+    clf.fit(Xtr, ytr)
+    acc = float((clf.predict(Xte) == yte).mean())
+    results['full'] = {'mean': acc, 'std': 0.0, 'accs': [acc], 'n_seeds': 1,
+                       'support_transform': 'EVAL', 'support_indices': 'all'}
+    print(f'CLIP probe full : {acc*100:5.2f}% (deterministic)', flush=True)
+
+    results['_protocol'] = (
+        'Single caliber as of 2026-10-05. Support encoded with EVAL_TRANSFORM '
+        '(deterministic); support indices from coop_experiment.kshot_subset_idx '
+        '(verified identical to the KShotSubset classes in paired_kshot_a4.py '
+        'and the previous clip_fewshot_probe.py). Previously this file used '
+        'TRAIN_TRANSFORM + fresh encoding, which produced a second, '
+        'irreconcilable DFN probe row (31.1/51.3/58.3 vs 30.5/49.1/57.7).'
+    )
+
+    for name in ('clip_fewshot.json', 'clip_fewshot_fixed.json'):
+        json.dump(results, open(f'{REPO}/data/{name}', 'w'), indent=2)
+    print('Saved data/clip_fewshot.json (+ _fixed alias).', flush=True)
+
 
 if __name__ == '__main__':
     main()

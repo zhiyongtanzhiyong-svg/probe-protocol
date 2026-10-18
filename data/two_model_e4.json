@@ -240,27 +240,27 @@
     "few_shot_acc_pct": {
       "K=1": {
         "laion2b": 40.1,
-        "dfn_clip": 31.06,
+        "dfn_clip": 30.48,
         "resnet": 32.03
       },
       "K=2": {
         "laion2b": 48.84,
-        "dfn_clip": 37.97,
+        "dfn_clip": 36.52,
         "resnet": null
       },
       "K=5": {
         "laion2b": 58.41,
-        "dfn_clip": 51.3,
+        "dfn_clip": 47.97,
         "resnet": 64.15
       },
       "K=10": {
         "laion2b": 65.02,
-        "dfn_clip": 58.31,
+        "dfn_clip": 56.43,
         "resnet": 72.42
       },
       "full": {
         "laion2b": 75.36,
-        "dfn_clip": 75.46,
+        "dfn_clip": 76.81,
         "resnet": null
       }
     },

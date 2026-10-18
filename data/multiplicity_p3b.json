@@ -1,0 +1,285 @@
+{
+  "family": "expanded multiplicity family as executed: ten seed-paired contrasts = eight frozen-probe CLIP vs fine-tuned ResNet-18 (K in {1,2,5,10} x {DFN-CLIP, LAION-2B}; K=1,2 ResNet comparators at the legacy budget, K=5,10 at the matched budget per amendment A4) plus two LAION-2B fine-tuned-CLIP vs matched-budget ResNet-18 contrasts (K in {5,10})",
+  "family_note": "Pre-registration section 7 pre-commits an expanded family of 12 (four P3b cells: K in {5,10} x {DFN-CLIP, LAION-2B}). The two DFN-CLIP fine-tune cells were not run because Branch A was decided on the LAION-2B decisive cell alone; the executed family is therefore 10. The old family of eight remains in data/multiplicity_k2.json and both are reported.",
+  "alpha": 0.05,
+  "n_tests": 10,
+  "n_holm_surviving": 10,
+  "n_bh_surviving": 10,
+  "bootstrap_resamples": 10000,
+  "bootstrap_seed": 0,
+  "rows": [
+    {
+      "clip_acc_pct": 40.14,
+      "resnet_acc_pct": 33.04,
+      "resnet_std_pct": 3.14,
+      "delta_pp": 7.1,
+      "delta_ci95_bootstrap_pp": [
+        5.07,
+        9.18
+      ],
+      "paired_t": 6.466,
+      "paired_t_p": 1.4829764542669404e-05,
+      "wilcoxon_p": 6.103515625e-05,
+      "wins_ties_losses": [
+        15,
+        0,
+        0
+      ],
+      "contrast": "K=1: CLIP (LAION-2B) vs ResNet-18",
+      "clip_kind": "frozen_probe",
+      "resnet_budget": "legacy",
+      "holm_adjusted_p": 8.897858725601643e-05,
+      "holm_significant": true,
+      "bh_qvalue": 2.9659529085338812e-05,
+      "bh_fdr_significant": true
+    },
+    {
+      "clip_acc_pct": 30.48,
+      "resnet_acc_pct": 33.04,
+      "resnet_std_pct": 3.14,
+      "delta_pp": -2.56,
+      "delta_ci95_bootstrap_pp": [
+        -4.69,
+        -0.63
+      ],
+      "paired_t": -2.404,
+      "paired_t_p": 0.030646476053462136,
+      "wilcoxon_p": 0.04711645096979023,
+      "wins_ties_losses": [
+        3,
+        3,
+        9
+      ],
+      "contrast": "K=1: CLIP (DFN-CLIP) vs ResNet-18",
+      "clip_kind": "frozen_probe",
+      "resnet_budget": "legacy",
+      "holm_adjusted_p": 0.038274944835245,
+      "holm_significant": true,
+      "bh_qvalue": 0.030646476053462136,
+      "bh_fdr_significant": true
+    },
+    {
+      "clip_acc_pct": 48.79,
+      "resnet_acc_pct": 43.38,
+      "resnet_std_pct": 5.58,
+      "delta_pp": 5.41,
+      "delta_ci95_bootstrap_pp": [
+        1.79,
+        8.89
+      ],
+      "paired_t": 2.854,
+      "paired_t_p": 0.012758314945081669,
+      "wilcoxon_p": 0.018303464690576244,
+      "wins_ties_losses": [
+        11,
+        1,
+        3
+      ],
+      "contrast": "K=2: CLIP (LAION-2B) vs ResNet-18",
+      "clip_kind": "frozen_probe",
+      "resnet_budget": "legacy",
+      "holm_adjusted_p": 0.038274944835245,
+      "holm_significant": true,
+      "bh_qvalue": 0.015947893681352087,
+      "bh_fdr_significant": true
+    },
+    {
+      "clip_acc_pct": 36.52,
+      "resnet_acc_pct": 43.38,
+      "resnet_std_pct": 5.58,
+      "delta_pp": -6.86,
+      "delta_ci95_bootstrap_pp": [
+        -9.52,
+        -4.3
+      ],
+      "paired_t": -4.945,
+      "paired_t_p": 0.00021557882582590618,
+      "wilcoxon_p": 0.00018310546875,
+      "wins_ties_losses": [
+        1,
+        0,
+        14
+      ],
+      "contrast": "K=2: CLIP (DFN-CLIP) vs ResNet-18",
+      "clip_kind": "frozen_probe",
+      "resnet_budget": "legacy",
+      "holm_adjusted_p": 0.0010778941291295309,
+      "holm_significant": true,
+      "bh_qvalue": 0.00035929804304317696,
+      "bh_fdr_significant": true
+    },
+    {
+      "clip_acc_pct": 60.19,
+      "resnet_acc_pct": 64.93,
+      "resnet_std_pct": 5.2,
+      "delta_pp": -4.74,
+      "delta_ci95_bootstrap_pp": [
+        -8.07,
+        -1.64
+      ],
+      "paired_t": -2.762,
+      "paired_t_p": 0.015291480424894734,
+      "wilcoxon_p": 0.00836181640625,
+      "wins_ties_losses": [
+        2,
+        0,
+        13
+      ],
+      "contrast": "K=5: CLIP (LAION-2B) vs ResNet-18",
+      "clip_kind": "frozen_probe",
+      "resnet_budget": "matched",
+      "holm_adjusted_p": 0.038274944835245,
+      "holm_significant": true,
+      "bh_qvalue": 0.016990533805438593,
+      "bh_fdr_significant": true
+    },
+    {
+      "clip_acc_pct": 47.97,
+      "resnet_acc_pct": 64.93,
+      "resnet_std_pct": 5.2,
+      "delta_pp": -16.96,
+      "delta_ci95_bootstrap_pp": [
+        -20.0,
+        -14.06
+      ],
+      "paired_t": -10.868,
+      "paired_t_p": 3.3000190934711245e-08,
+      "wilcoxon_p": 6.103515625e-05,
+      "wins_ties_losses": [
+        0,
+        0,
+        15
+      ],
+      "contrast": "K=5: CLIP (DFN-CLIP) vs ResNet-18",
+      "clip_kind": "frozen_probe",
+      "resnet_budget": "matched",
+      "holm_adjusted_p": 2.970017184124012e-07,
+      "holm_significant": true,
+      "bh_qvalue": 1.6500095467355623e-07,
+      "bh_fdr_significant": true
+    },
+    {
+      "clip_acc_pct": 66.47,
+      "resnet_acc_pct": 74.64,
+      "resnet_std_pct": 2.33,
+      "delta_pp": -8.17,
+      "delta_ci95_bootstrap_pp": [
+        -9.66,
+        -6.67
+      ],
+      "paired_t": -10.344,
+      "paired_t_p": 6.134248954234884e-08,
+      "wilcoxon_p": 6.103515625e-05,
+      "wins_ties_losses": [
+        0,
+        0,
+        15
+      ],
+      "contrast": "K=10: CLIP (LAION-2B) vs ResNet-18",
+      "clip_kind": "frozen_probe",
+      "resnet_budget": "matched",
+      "holm_adjusted_p": 4.907399163387907e-07,
+      "holm_significant": true,
+      "bh_qvalue": 2.0447496514116282e-07,
+      "bh_fdr_significant": true
+    },
+    {
+      "clip_acc_pct": 56.43,
+      "resnet_acc_pct": 74.64,
+      "resnet_std_pct": 2.33,
+      "delta_pp": -18.21,
+      "delta_ci95_bootstrap_pp": [
+        -19.95,
+        -16.57
+      ],
+      "paired_t": -20.178,
+      "paired_t_p": 9.539114727354018e-12,
+      "wilcoxon_p": 6.103515625e-05,
+      "wins_ties_losses": [
+        0,
+        0,
+        15
+      ],
+      "contrast": "K=10: CLIP (DFN-CLIP) vs ResNet-18",
+      "clip_kind": "frozen_probe",
+      "resnet_budget": "matched",
+      "holm_adjusted_p": 9.539114727354018e-11,
+      "holm_significant": true,
+      "bh_qvalue": 9.539114727354018e-11,
+      "bh_fdr_significant": true
+    },
+    {
+      "clip_acc_pct": 75.85,
+      "resnet_acc_pct": 64.93,
+      "resnet_std_pct": 5.2,
+      "delta_pp": 10.92,
+      "delta_ci95_bootstrap_pp": [
+        8.07,
+        13.91
+      ],
+      "paired_t": 6.986,
+      "paired_t_p": 6.385499670271131e-06,
+      "wilcoxon_p": 6.103515625e-05,
+      "wins_ties_losses": [
+        15,
+        0,
+        0
+      ],
+      "contrast": "K=5: CLIP fine-tuned (LAION-2B) vs ResNet-18 (matched budget)",
+      "clip_kind": "finetuned",
+      "resnet_budget": "matched",
+      "holm_adjusted_p": 4.469849769189792e-05,
+      "holm_significant": true,
+      "bh_qvalue": 1.5963749175677827e-05,
+      "bh_fdr_significant": true
+    },
+    {
+      "clip_acc_pct": 79.28,
+      "resnet_acc_pct": 74.64,
+      "resnet_std_pct": 2.33,
+      "delta_pp": 4.64,
+      "delta_ci95_bootstrap_pp": [
+        2.36,
+        6.91
+      ],
+      "paired_t": 3.857,
+      "paired_t_p": 0.001744681712988534,
+      "wilcoxon_p": 0.00262451171875,
+      "wins_ties_losses": [
+        12,
+        0,
+        3
+      ],
+      "contrast": "K=10: CLIP fine-tuned (LAION-2B) vs ResNet-18 (matched budget)",
+      "clip_kind": "finetuned",
+      "resnet_budget": "matched",
+      "holm_adjusted_p": 0.006978726851954136,
+      "holm_significant": true,
+      "bh_qvalue": 0.002492402447126477,
+      "bh_fdr_significant": true
+    }
+  ],
+  "crossover": {
+    "LAION-2B": "CLIP leads at K=1,2 and trails at K=5,10 under the matched-budget ResNet comparator, so the crossover is bracketed to the open interval (2,5).",
+    "DFN-CLIP": "CLIP trails at every measured K, including K=2; no crossover is bracketed because none is crossed."
+  },
+  "provenance": {
+    "clip_dfn": "data/clip_fewshot.json",
+    "clip_laion": "data/laion_fewshot_canonical.json",
+    "resnet_K_1": "data/paired_kshot_a4.json (legacy budget)",
+    "resnet_K_2": "data/paired_kshot_a4_k2.json (legacy budget)",
+    "resnet_K_5_matched": "data/p3b_resnet_kshot_matched.json",
+    "resnet_K_10_matched": "data/p3b_resnet_kshot_matched_k10.json",
+    "clip_ft_K_5": "data/p3b_clip_finetune_kshot.json",
+    "clip_ft_K_10": "data/p3b_clip_finetune_kshot_k10.json",
+    "old_family_of_8": "data/multiplicity_k2.json"
+  },
+  "validation": {
+    "k1_k2_probe_rows_reproduce_k2": true,
+    "ft_rows_reproduce_branch_decision": [
+      5,
+      10
+    ],
+    "k5_k10_probe_rows_use_matched_resnet": true
+  }
+}

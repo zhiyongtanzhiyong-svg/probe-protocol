@@ -1,0 +1,101 @@
+{
+  "date": "2026-10-17",
+  "K": 10,
+  "clip_finetuned": {
+    "mean": 0.7927533333333334,
+    "std": 0.03473447991892343,
+    "n": 15,
+    "accs": [
+      0.8406,
+      0.7899,
+      0.7754,
+      0.8116,
+      0.7609,
+      0.8043,
+      0.7391,
+      0.7971,
+      0.8478,
+      0.8261,
+      0.8043,
+      0.8116,
+      0.7681,
+      0.7246,
+      0.7899
+    ],
+    "selected": {
+      "vis_lr": 5e-05,
+      "epochs": 300,
+      "mean_best_val": 0.8212
+    }
+  },
+  "resnet_finetuned_matched_budget": {
+    "mean": 0.7463866666666665,
+    "std": 0.023258419878360068,
+    "n": 15,
+    "accs": [
+      0.7029,
+      0.7391,
+      0.7174,
+      0.7246,
+      0.7246,
+      0.7464,
+      0.7536,
+      0.7464,
+      0.7464,
+      0.7609,
+      0.7754,
+      0.7754,
+      0.7754,
+      0.7754,
+      0.7319
+    ],
+    "selected": {
+      "lr": 0.0003,
+      "epochs": 100,
+      "mean_best_val": 0.7971
+    }
+  },
+  "resnet_legacy_single_config_pct": 75.75,
+  "clip_frozen_probe_k": 0.6647342995169083,
+  "seed_paired": {
+    "mean_diff_pp": 4.64,
+    "bootstrap_ci95_pp": [
+      2.36,
+      6.91
+    ],
+    "n_bootstrap": 10000,
+    "bootstrap_seed": 0,
+    "paired_t": 3.8566,
+    "paired_t_p": 0.001744681712988534,
+    "wilcoxon_p": 0.00262451171875,
+    "wins_ties_losses": [
+      12,
+      0,
+      3
+    ],
+    "per_seed_diff_pp": [
+      13.77,
+      5.08,
+      5.8,
+      8.7,
+      3.63,
+      5.79,
+      -1.45,
+      5.07,
+      10.14,
+      6.52,
+      2.89,
+      3.62,
+      -0.73,
+      -5.08,
+      5.8
+    ]
+  },
+  "fine_tuning_gain": {
+    "K10_pp": 12.8,
+    "full_data_pp": 7.23,
+    "note": "gain at this K is larger than at full data: the frozen probe is far from its ceiling in the low-data regime, so encoder adaptation has more headroom; this is the mechanism behind the low-K overtake."
+  },
+  "branch_rule": "pre-registration section 6, committed before any result",
+  "branch": "A"
+}

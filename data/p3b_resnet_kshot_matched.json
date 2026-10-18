@@ -1,0 +1,578 @@
+{
+  "date": "2026-10-16",
+  "gpu": "NVIDIA GeForce RTX 4070 Ti",
+  "torch": "2.4.1+cu121",
+  "arch": "ResNetBaseline (ResNet-18, ImageNet-pretrained)",
+  "K": 5,
+  "n_classes": 16,
+  "seed_offset": 500,
+  "support_draw": "coop_experiment.kshot_subset_idx(y, K, seed+500); asserted index-identical to paired_kshot_a4.KShotSubset at run time",
+  "val_every_epochs": 10,
+  "grid": [
+    {
+      "lr": 0.0003,
+      "epochs": 30
+    },
+    {
+      "lr": 0.0003,
+      "epochs": 100
+    },
+    {
+      "lr": 0.0003,
+      "epochs": 300
+    },
+    {
+      "lr": 0.001,
+      "epochs": 30
+    },
+    {
+      "lr": 0.001,
+      "epochs": 100
+    },
+    {
+      "lr": 0.001,
+      "epochs": 300
+    },
+    {
+      "lr": 0.003,
+      "epochs": 30
+    },
+    {
+      "lr": 0.003,
+      "epochs": 100
+    },
+    {
+      "lr": 0.003,
+      "epochs": 300
+    }
+  ],
+  "stage1_search": [
+    {
+      "lr": 0.0003,
+      "epochs": 30,
+      "mean_best_val": 0.6642,
+      "mean_test": 0.6039,
+      "runs": [
+        {
+          "seed": 0,
+          "lr": 0.0003,
+          "epochs": 30,
+          "best_val": 0.6087,
+          "test": 0.6449,
+          "best_epoch": 20,
+          "n_support": 80,
+          "elapsed_s": 19.5
+        },
+        {
+          "seed": 1,
+          "lr": 0.0003,
+          "epochs": 30,
+          "best_val": 0.6739,
+          "test": 0.5435,
+          "best_epoch": 10,
+          "n_support": 80,
+          "elapsed_s": 17.3
+        },
+        {
+          "seed": 2,
+          "lr": 0.0003,
+          "epochs": 30,
+          "best_val": 0.7101,
+          "test": 0.6232,
+          "best_epoch": 20,
+          "n_support": 80,
+          "elapsed_s": 19.1
+        }
+      ]
+    },
+    {
+      "lr": 0.0003,
+      "epochs": 100,
+      "mean_best_val": 0.7174,
+      "mean_test": 0.6788,
+      "runs": [
+        {
+          "seed": 0,
+          "lr": 0.0003,
+          "epochs": 100,
+          "best_val": 0.6594,
+          "test": 0.6739,
+          "best_epoch": 90,
+          "n_support": 80,
+          "elapsed_s": 58.0
+        },
+        {
+          "seed": 1,
+          "lr": 0.0003,
+          "epochs": 100,
+          "best_val": 0.7536,
+          "test": 0.6812,
+          "best_epoch": 40,
+          "n_support": 80,
+          "elapsed_s": 88.7
+        },
+        {
+          "seed": 2,
+          "lr": 0.0003,
+          "epochs": 100,
+          "best_val": 0.7391,
+          "test": 0.6812,
+          "best_epoch": 50,
+          "n_support": 80,
+          "elapsed_s": 78.1
+        }
+      ]
+    },
+    {
+      "lr": 0.0003,
+      "epochs": 300,
+      "mean_best_val": 0.7222,
+      "mean_test": 0.6884,
+      "runs": [
+        {
+          "seed": 0,
+          "lr": 0.0003,
+          "epochs": 300,
+          "best_val": 0.6739,
+          "test": 0.6667,
+          "best_epoch": 220,
+          "n_support": 80,
+          "elapsed_s": 1710.7
+        },
+        {
+          "seed": 1,
+          "lr": 0.0003,
+          "epochs": 300,
+          "best_val": 0.7391,
+          "test": 0.7029,
+          "best_epoch": 180,
+          "n_support": 80,
+          "elapsed_s": 205.9
+        },
+        {
+          "seed": 2,
+          "lr": 0.0003,
+          "epochs": 300,
+          "best_val": 0.7536,
+          "test": 0.6957,
+          "best_epoch": 280,
+          "n_support": 80,
+          "elapsed_s": 177.4
+        }
+      ]
+    },
+    {
+      "lr": 0.001,
+      "epochs": 30,
+      "mean_best_val": 0.6546,
+      "mean_test": 0.6642,
+      "runs": [
+        {
+          "seed": 0,
+          "lr": 0.001,
+          "epochs": 30,
+          "best_val": 0.6159,
+          "test": 0.6304,
+          "best_epoch": 30,
+          "n_support": 80,
+          "elapsed_s": 19.2
+        },
+        {
+          "seed": 1,
+          "lr": 0.001,
+          "epochs": 30,
+          "best_val": 0.6812,
+          "test": 0.6884,
+          "best_epoch": 30,
+          "n_support": 80,
+          "elapsed_s": 20.6
+        },
+        {
+          "seed": 2,
+          "lr": 0.001,
+          "epochs": 30,
+          "best_val": 0.6667,
+          "test": 0.6739,
+          "best_epoch": 30,
+          "n_support": 80,
+          "elapsed_s": 17.6
+        }
+      ]
+    },
+    {
+      "lr": 0.001,
+      "epochs": 100,
+      "mean_best_val": 0.6232,
+      "mean_test": 0.6087,
+      "runs": [
+        {
+          "seed": 0,
+          "lr": 0.001,
+          "epochs": 100,
+          "best_val": 0.6087,
+          "test": 0.587,
+          "best_epoch": 50,
+          "n_support": 80,
+          "elapsed_s": 61.8
+        },
+        {
+          "seed": 1,
+          "lr": 0.001,
+          "epochs": 100,
+          "best_val": 0.6014,
+          "test": 0.6304,
+          "best_epoch": 90,
+          "n_support": 80,
+          "elapsed_s": 61.3
+        },
+        {
+          "seed": 2,
+          "lr": 0.001,
+          "epochs": 100,
+          "best_val": 0.6594,
+          "test": 0.6087,
+          "best_epoch": 70,
+          "n_support": 80,
+          "elapsed_s": 60.5
+        }
+      ]
+    },
+    {
+      "lr": 0.001,
+      "epochs": 300,
+      "mean_best_val": 0.6546,
+      "mean_test": 0.6329,
+      "runs": [
+        {
+          "seed": 0,
+          "lr": 0.001,
+          "epochs": 300,
+          "best_val": 0.6594,
+          "test": 0.6522,
+          "best_epoch": 180,
+          "n_support": 80,
+          "elapsed_s": 180.2
+        },
+        {
+          "seed": 1,
+          "lr": 0.001,
+          "epochs": 300,
+          "best_val": 0.6667,
+          "test": 0.6377,
+          "best_epoch": 210,
+          "n_support": 80,
+          "elapsed_s": 178.5
+        },
+        {
+          "seed": 2,
+          "lr": 0.001,
+          "epochs": 300,
+          "best_val": 0.6377,
+          "test": 0.6087,
+          "best_epoch": 140,
+          "n_support": 80,
+          "elapsed_s": 179.2
+        }
+      ]
+    },
+    {
+      "lr": 0.003,
+      "epochs": 30,
+      "mean_best_val": 0.4928,
+      "mean_test": 0.4082,
+      "runs": [
+        {
+          "seed": 0,
+          "lr": 0.003,
+          "epochs": 30,
+          "best_val": 0.5362,
+          "test": 0.4275,
+          "best_epoch": 30,
+          "n_support": 80,
+          "elapsed_s": 17.7
+        },
+        {
+          "seed": 1,
+          "lr": 0.003,
+          "epochs": 30,
+          "best_val": 0.3986,
+          "test": 0.3478,
+          "best_epoch": 30,
+          "n_support": 80,
+          "elapsed_s": 18.6
+        },
+        {
+          "seed": 2,
+          "lr": 0.003,
+          "epochs": 30,
+          "best_val": 0.5435,
+          "test": 0.4493,
+          "best_epoch": 30,
+          "n_support": 80,
+          "elapsed_s": 18.4
+        }
+      ]
+    },
+    {
+      "lr": 0.003,
+      "epochs": 100,
+      "mean_best_val": 0.4807,
+      "mean_test": 0.442,
+      "runs": [
+        {
+          "seed": 0,
+          "lr": 0.003,
+          "epochs": 100,
+          "best_val": 0.4565,
+          "test": 0.4565,
+          "best_epoch": 70,
+          "n_support": 80,
+          "elapsed_s": 58.7
+        },
+        {
+          "seed": 1,
+          "lr": 0.003,
+          "epochs": 100,
+          "best_val": 0.442,
+          "test": 0.3986,
+          "best_epoch": 100,
+          "n_support": 80,
+          "elapsed_s": 57.1
+        },
+        {
+          "seed": 2,
+          "lr": 0.003,
+          "epochs": 100,
+          "best_val": 0.5435,
+          "test": 0.471,
+          "best_epoch": 80,
+          "n_support": 80,
+          "elapsed_s": 59.4
+        }
+      ]
+    },
+    {
+      "lr": 0.003,
+      "epochs": 300,
+      "mean_best_val": 0.5338,
+      "mean_test": 0.4782,
+      "runs": [
+        {
+          "seed": 0,
+          "lr": 0.003,
+          "epochs": 300,
+          "best_val": 0.5725,
+          "test": 0.4565,
+          "best_epoch": 210,
+          "n_support": 80,
+          "elapsed_s": 170.5
+        },
+        {
+          "seed": 1,
+          "lr": 0.003,
+          "epochs": 300,
+          "best_val": 0.4928,
+          "test": 0.4565,
+          "best_epoch": 200,
+          "n_support": 80,
+          "elapsed_s": 174.2
+        },
+        {
+          "seed": 2,
+          "lr": 0.003,
+          "epochs": 300,
+          "best_val": 0.5362,
+          "test": 0.5217,
+          "best_epoch": 280,
+          "n_support": 80,
+          "elapsed_s": 147.5
+        }
+      ]
+    }
+  ],
+  "selected": {
+    "lr": 0.0003,
+    "epochs": 300,
+    "mean_best_val": 0.7222
+  },
+  "stage2_final": {
+    "n_seeds": 15,
+    "per_seed": [
+      {
+        "seed": 0,
+        "lr": 0.0003,
+        "epochs": 300,
+        "best_val": 0.6739,
+        "test": 0.6667,
+        "best_epoch": 220,
+        "n_support": 80,
+        "elapsed_s": 141.4
+      },
+      {
+        "seed": 1,
+        "lr": 0.0003,
+        "epochs": 300,
+        "best_val": 0.7391,
+        "test": 0.7029,
+        "best_epoch": 180,
+        "n_support": 80,
+        "elapsed_s": 143.5
+      },
+      {
+        "seed": 2,
+        "lr": 0.0003,
+        "epochs": 300,
+        "best_val": 0.7536,
+        "test": 0.6957,
+        "best_epoch": 280,
+        "n_support": 80,
+        "elapsed_s": 144.1
+      },
+      {
+        "seed": 3,
+        "lr": 0.0003,
+        "epochs": 300,
+        "best_val": 0.7029,
+        "test": 0.6449,
+        "best_epoch": 170,
+        "n_support": 80,
+        "elapsed_s": 143.6
+      },
+      {
+        "seed": 4,
+        "lr": 0.0003,
+        "epochs": 300,
+        "best_val": 0.7391,
+        "test": 0.6377,
+        "best_epoch": 80,
+        "n_support": 80,
+        "elapsed_s": 140.8
+      },
+      {
+        "seed": 5,
+        "lr": 0.0003,
+        "epochs": 300,
+        "best_val": 0.6812,
+        "test": 0.587,
+        "best_epoch": 70,
+        "n_support": 80,
+        "elapsed_s": 143.8
+      },
+      {
+        "seed": 6,
+        "lr": 0.0003,
+        "epochs": 300,
+        "best_val": 0.7464,
+        "test": 0.6232,
+        "best_epoch": 140,
+        "n_support": 80,
+        "elapsed_s": 146.0
+      },
+      {
+        "seed": 7,
+        "lr": 0.0003,
+        "epochs": 300,
+        "best_val": 0.6884,
+        "test": 0.6232,
+        "best_epoch": 140,
+        "n_support": 80,
+        "elapsed_s": 142.8
+      },
+      {
+        "seed": 8,
+        "lr": 0.0003,
+        "epochs": 300,
+        "best_val": 0.5942,
+        "test": 0.558,
+        "best_epoch": 190,
+        "n_support": 80,
+        "elapsed_s": 141.2
+      },
+      {
+        "seed": 9,
+        "lr": 0.0003,
+        "epochs": 300,
+        "best_val": 0.6812,
+        "test": 0.6304,
+        "best_epoch": 120,
+        "n_support": 80,
+        "elapsed_s": 140.2
+      },
+      {
+        "seed": 10,
+        "lr": 0.0003,
+        "epochs": 300,
+        "best_val": 0.7319,
+        "test": 0.7609,
+        "best_epoch": 120,
+        "n_support": 80,
+        "elapsed_s": 144.3
+      },
+      {
+        "seed": 11,
+        "lr": 0.0003,
+        "epochs": 300,
+        "best_val": 0.7174,
+        "test": 0.7174,
+        "best_epoch": 190,
+        "n_support": 80,
+        "elapsed_s": 142.6
+      },
+      {
+        "seed": 12,
+        "lr": 0.0003,
+        "epochs": 300,
+        "best_val": 0.6884,
+        "test": 0.6377,
+        "best_epoch": 230,
+        "n_support": 80,
+        "elapsed_s": 143.1
+      },
+      {
+        "seed": 13,
+        "lr": 0.0003,
+        "epochs": 300,
+        "best_val": 0.6957,
+        "test": 0.6377,
+        "best_epoch": 80,
+        "n_support": 80,
+        "elapsed_s": 139.0
+      },
+      {
+        "seed": 14,
+        "lr": 0.0003,
+        "epochs": 300,
+        "best_val": 0.6812,
+        "test": 0.6159,
+        "best_epoch": 160,
+        "n_support": 80,
+        "elapsed_s": 139.1
+      }
+    ],
+    "accs": [
+      0.6667,
+      0.7029,
+      0.6957,
+      0.6449,
+      0.6377,
+      0.587,
+      0.6232,
+      0.6232,
+      0.558,
+      0.6304,
+      0.7609,
+      0.7174,
+      0.6377,
+      0.6377,
+      0.6159
+    ],
+    "mean": 0.649287,
+    "std": 0.052028,
+    "sem": 0.013433
+  },
+  "legacy_single_config_ref": {
+    "value_pct": 65.46,
+    "source": "data/paired_kshot_a4.json (lr=3e-4, 30ep, NO hyper-parameter search)"
+  },
+  "elapsed_s": 6025.0
+}

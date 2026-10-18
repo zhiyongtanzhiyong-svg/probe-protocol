@@ -139,8 +139,14 @@ def main():
     print(f"    Correct predictions: mean conf={zs_conf[zs_correct].mean():.3f}")
     print(f"    Incorrect predictions: mean conf={zs_conf[~zs_correct].mean():.3f}")
 
-    # CLIP Full-data probe calibration
-    train_full = TPDDDataset('train', transform=TRAIN_TRANSFORM)
+    # CLIP Full-data probe calibration.
+    # CANONICAL PROTOCOL: the train split is featurised with EVAL_TRANSFORM, not
+    # TRAIN_TRANSFORM. Using the stochastic training transform here made the
+    # probe features run-dependent and put this script's accuracy at 73.9% --
+    # the frozen-ResNet number, not the 76.8% CLIP probe the paper reports
+    # (Appendix A documents the same class of bug elsewhere). The deterministic
+    # transform reproduces canonical_results.json exactly.
+    train_full = TPDDDataset('train', transform=EVAL_TRANSFORM)
     test_ds2 = TPDDDataset('test', transform=EVAL_TRANSFORM)
 
     def get_features(dataset):

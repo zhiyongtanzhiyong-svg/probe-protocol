@@ -93,3 +93,20 @@ reference_lpp/
 # Generated artifacts. Regenerate with: python3 generate_figures.py
 manuscript/paper/figures/
 logs/
+
+# ---------------------------------------------------------------------------
+# Local / non-artifact state that should not enter version control.
+# ---------------------------------------------------------------------------
+# ARIS agent tracing state
+.aris/
+# Local pre-change snapshots of data stores
+data/*.pre_*
+# Transient caches
+data/cache_freshness.json
+data/reference_audit_cache.json
+# Raw corn image subset (58 MB) -- obtain per README "Data provenance"
+data/plantvillage_corn/
+# Generated review sidecars (keep the .md / .json sources)
+manuscript/paper/KILL_ARGUMENT.html
+manuscript/paper/PAPER_CLAIM_AUDIT.html
+manuscript/paper/PAPER_CLAIM_AUDIT.html.review.json

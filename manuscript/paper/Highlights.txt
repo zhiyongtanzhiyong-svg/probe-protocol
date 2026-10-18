@@ -1,0 +1,5 @@
+- Off-the-shelf CLIP is unreliable zero-shot for fine-grained tobacco leaf-disorder diagnosis.
+- At K=1 the CLIP-vs-ResNet order is checkpoint-specific: LAION-2B leads, DFN-CLIP trails.
+- Fine-tuned ResNet-18 holds a small, sign-stable full-data edge under 5-fold cross-validation.
+- The frozen-CLIP vs fine-tuned-CNN gap is a usage-mode effect, not a capacity limit.
+- The regime-dependent ordering replicates on two cross-crops (tomato and corn, PlantVillage).
