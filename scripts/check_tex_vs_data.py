@@ -56,6 +56,7 @@ def main():
     dino518 = load("dinov2_native518.json")
     mult = load("multiplicity_k2.json")
     mult3 = load("multiplicity_p3b.json")
+    mult3c = load("multiplicity_p3c.json")
     mult_legacy = load("multiplicity.json")
     pk2 = load("paired_kshot_a4_k2.json")
     p3b_r5 = load("p3b_resnet_kshot_matched.json")
@@ -120,6 +121,14 @@ def main():
     chk("clip_finetune ResNet ref is canonical", "n/a",
         abs(ft["resnet_finetuned_ref"]["accuracy"] - art["resnet"]["mean"]) < 1e-9)
 
+    # ---- DFN-CLIP few-shot fine-tuning (P3c: the two new matched-budget cells) --
+    dfn5 = load("p3c_clip_finetune_kshot_dfn.json")
+    dfn10 = load("p3c_clip_finetune_kshot_dfn_k10.json")
+    chk("DFN FT K=5 cell (Table 1)",
+        f"${dfn5['stage2_final']['mean'] * 100:.1f} \\pm {dfn5['stage2_final']['std'] * 100:.1f}$")
+    chk("DFN FT K=10 cell (Table 1)",
+        f"${dfn10['stage2_final']['mean'] * 100:.1f} \\pm {dfn10['stage2_final']['std'] * 100:.1f}$")
+
     # ---- ResNet-50 scale control: per-seed accuracies must be stored, otherwise
     #      the reported mean +/- SD cannot be checked against the cited artifact --
     chk("ResNet-50 per-seed accs stored", f"{len(r50.get('accs', []))} values",
@@ -163,22 +172,27 @@ def main():
     chk("DINO518 bestC", f"{dino518['full_data']['linear_bestC']['accuracy'] * 100:.1f}\\%")
 
     # ---- multiplicity ------------------------------------------------------
-    # The executed ten-contrast family (P3b) is the canonical framing: the eight
-    # frozen-probe contrasts (K in {1,2,5,10} x 2 checkpoints; K=5/10 against the
-    # matched-budget ResNet, K=1/2 against the seed-paired re-run) plus the two
-    # matched-budget fine-tuned-CLIP contrasts at K=5/10. The eight-contrast
-    # seed-paired family (multiplicity_k2.json) is the reported subset.
-    chk("Holm survivors (executed 10-family)",
-        f"{mult3['n_holm_surviving']} of {mult3['n_tests']}")
-    chk("executed family has 10 tests", "n_tests=10", mult3["n_tests"] == 10)
-    chk("k2 8-family store is the reported subset", "n_tests=8", mult["n_tests"] == 8)
+    # The executed family as of P3c is the TWELVE-contrast family
+    # (data/multiplicity_p3c.json): the eight frozen-probe contrasts (K in {1,2,5,10}
+    # x 2 checkpoints; K=5/10 against the matched-budget ResNet, K=1/2 against the
+    # seed-paired re-run) plus four matched-budget fine-tuned-CLIP contrasts
+    # (K=5/10 x {LAION-2B, DFN-CLIP}). The P3b ten-contrast family
+    # (data/multiplicity_p3b.json) is now a subset of it; the k2 8-family
+    # (data/multiplicity_k2.json) is the frozen-probe subset.
+    chk("Holm survivors (executed 12-family)",
+        f"{mult3c['n_holm_surviving']} of {mult3c['n_tests']}")
+    chk("executed family has 12 tests", "n_tests=12", mult3c["n_tests"] == 12)
+    chk("12-family: all contrasts survive Holm", "12 of 12",
+        mult3c["n_holm_surviving"] == 12)
+    chk("P3b 10-family subset store intact", "n_tests=10", mult3["n_tests"] == 10)
+    chk("k2 8-family subset store intact", "n_tests=8", mult["n_tests"] == 8)
     chk("legacy 6-test multiplicity.json superseded, not cited",
         "absent", norm("data/multiplicity.json") not in flat
         or norm("data/multiplicity.json}") in flat)
     # Holm adjusted p must follow the step-down formula AND stay monotone in the
     # raw p, so the generator bug cannot come back silently:
     #   adj(r) = max_{j<=r} min(1, (m - j + 1) * p_(j))
-    for name, fam in (("10-family", mult3), ("k2 8-family", mult)):
+    for name, fam in (("12-family", mult3c), ("10-family", mult3), ("k2 8-family", mult)):
         rows = sorted(fam["rows"], key=lambda r: r["paired_t_p"])
         m = len(rows)
         ok_adj, run = True, 0.0
