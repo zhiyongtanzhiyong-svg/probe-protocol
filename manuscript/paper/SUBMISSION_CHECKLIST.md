@@ -23,8 +23,9 @@
 
 ## Abstract & Keywords
 
-- [x] Abstract unstructured (no sub-headings) — **done** (219 words)
-- [x] Abstract ≤ 250 words — **done** (219 words) **[VERIFY: confirm exact limit]**
+- [x] Abstract unstructured (no sub-headings) — **done** (238 words, measured 2026-10-24)
+- [x] Abstract ≤ 250 words — **done** (238 words, measured 2026-10-24; it had drifted to ~575 words through the revision rounds and was re-cut during the reviewer-response pass, with the removed detail already present in the Introduction and Results) **[VERIFY: confirm exact limit]**
+- [x] Highlights ≤ 85 characters each — **done** (all five were 85–95 characters; re-cut 2026-10-24, now 76–83) **[VERIFY against the live Guide for Authors]**
 - [x] Keywords: 7 (CLIP; zero-shot classification; agricultural disease diagnosis; vision-language models; few-shot learning; knowledge graph; prompt engineering) **[VERIFY: confirm C&E-in-Ag keyword range — some Elsevier journals cap at 3–6; may need to trim to 6]**
 - [x] No `\simplesumm` (MDPI-specific) — **removed**
 
@@ -45,11 +46,11 @@
 
 ## End-Matter (required by journal-guidelines skill)
 
-- [x] CRediT authorship contribution statement — **added** (single author, L.L.)
+- [x] CRediT authorship contribution statement — **added** (4 authors: Lizhuo Zhang, Feier Hao, Chenfeng Long, Xiaoyong Tang; roles L.Z./F.H./C.L./X.T. — **VERIFY role assignment with co-authors**)
 - [x] Declaration of competing interest — **added**
 - [x] Acknowledgments (with AI-use declaration) — **added**
 - [x] Data availability statement — **added** (repository URL placeholder)
-- [ ] ORCID for author — **MISSING** **[VERIFY: confirm required; add `lizhuo@ynu.edu.cn` ORCID]**
+- [ ] ORCID for authors — **MISSING** **[VERIFY: confirm required; add ORCID iDs for all four authors]**
 - [ ] Repository URL placeholder — **MUST replace before submission**
 
 ## Figures & Tables

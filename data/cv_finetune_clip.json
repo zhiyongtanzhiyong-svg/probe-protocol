@@ -1,0 +1,183 @@
+{
+  "date": "2026-10-24",
+  "gpu": "NVIDIA GeForce RTX 4070 Ti",
+  "torch": "2.4.1+cu121",
+  "open_clip": "2.32.0",
+  "protocol": "5-fold CV of fine-tuned CLIP (image encoder + linear head), mirroring cv_protocol.py: StratifiedKFold(5, seed=42) over the 1295-image training pool; per fold 80% fit / 20% validation-selection (StratifiedShuffleSplit seed=fold); recipe identical to the canonical full-data fine-tune cell (30 ep, batch 32, vis_lr 5e-06, head_lr 0.001, AdamW wd 0.01, cosine, best-validation selection, mixed precision, gradient checkpointing); one seed per fold (seed 0); test = held-out 20% of the fold.",
+  "resnet18_ref": {
+    "mean": 0.9251,
+    "sd": 0.0058,
+    "accs": [
+      0.9266,
+      0.9305,
+      0.9266,
+      0.9266,
+      0.9151
+    ]
+  },
+  "results": {
+    "dfn_clip": {
+      "checkpoint": "dfn_clip",
+      "n_folds": 5,
+      "folds": [
+        {
+          "fold": 0,
+          "n_fit": 828,
+          "n_selection": 208,
+          "n_test": 259,
+          "best_val": 0.9423,
+          "fold_acc": 0.9189,
+          "elapsed_s": 693.8
+        },
+        {
+          "fold": 1,
+          "n_fit": 828,
+          "n_selection": 208,
+          "n_test": 259,
+          "best_val": 0.9471,
+          "fold_acc": 0.9344,
+          "elapsed_s": 694.6
+        },
+        {
+          "fold": 2,
+          "n_fit": 828,
+          "n_selection": 208,
+          "n_test": 259,
+          "best_val": 0.9567,
+          "fold_acc": 0.9498,
+          "elapsed_s": 691.8
+        },
+        {
+          "fold": 3,
+          "n_fit": 828,
+          "n_selection": 208,
+          "n_test": 259,
+          "best_val": 0.9519,
+          "fold_acc": 0.9421,
+          "elapsed_s": 692.9
+        },
+        {
+          "fold": 4,
+          "n_fit": 828,
+          "n_selection": 208,
+          "n_test": 259,
+          "best_val": 0.9567,
+          "fold_acc": 0.9382,
+          "elapsed_s": 688.6
+        }
+      ],
+      "mean": 0.9367,
+      "sd": 0.0115,
+      "accs": [
+        0.9189,
+        0.9344,
+        0.9498,
+        0.9421,
+        0.9382
+      ],
+      "paired_vs_resnet": {
+        "resnet_accs": [
+          0.9266,
+          0.9305,
+          0.9266,
+          0.9266,
+          0.9151
+        ],
+        "mean_gap_pp": 1.16,
+        "t": 1.942,
+        "df": 4,
+        "p_two_sided": 0.12413,
+        "fold_gaps_pp": [
+          -0.77,
+          0.39,
+          2.32,
+          1.55,
+          2.31
+        ],
+        "note": "5 folds share ~80% of the training data; the sign is the robust part, not the magnitude (same caveat as the frozen-probe CV)."
+      }
+    },
+    "laion2b": {
+      "checkpoint": "laion2b",
+      "n_folds": 5,
+      "folds": [
+        {
+          "fold": 0,
+          "n_fit": 828,
+          "n_selection": 208,
+          "n_test": 259,
+          "best_val": 0.9615,
+          "fold_acc": 0.9382,
+          "elapsed_s": 689.4
+        },
+        {
+          "fold": 1,
+          "n_fit": 828,
+          "n_selection": 208,
+          "n_test": 259,
+          "best_val": 0.9471,
+          "fold_acc": 0.9421,
+          "elapsed_s": 688.7
+        },
+        {
+          "fold": 2,
+          "n_fit": 828,
+          "n_selection": 208,
+          "n_test": 259,
+          "best_val": 0.9712,
+          "fold_acc": 0.9653,
+          "elapsed_s": 689.1
+        },
+        {
+          "fold": 3,
+          "n_fit": 828,
+          "n_selection": 208,
+          "n_test": 259,
+          "best_val": 0.9712,
+          "fold_acc": 0.9691,
+          "elapsed_s": 689.2
+        },
+        {
+          "fold": 4,
+          "n_fit": 828,
+          "n_selection": 208,
+          "n_test": 259,
+          "best_val": 0.976,
+          "fold_acc": 0.9266,
+          "elapsed_s": 688.1
+        }
+      ],
+      "mean": 0.9483,
+      "sd": 0.0183,
+      "accs": [
+        0.9382,
+        0.9421,
+        0.9653,
+        0.9691,
+        0.9266
+      ],
+      "paired_vs_resnet": {
+        "resnet_accs": [
+          0.9266,
+          0.9305,
+          0.9266,
+          0.9266,
+          0.9151
+        ],
+        "mean_gap_pp": 2.32,
+        "t": 3.248,
+        "df": 4,
+        "p_two_sided": 0.03144,
+        "fold_gaps_pp": [
+          1.16,
+          1.16,
+          3.87,
+          4.25,
+          1.15
+        ],
+        "note": "5 folds share ~80% of the training data; the sign is the robust part, not the magnitude (same caveat as the frozen-probe CV)."
+      }
+    }
+  },
+  "elapsed_s": 6919.4
+}

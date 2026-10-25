@@ -1,0 +1,173 @@
+{
+  "date": "2026-10-22",
+  "gpu": "Tesla V100-DGXS-32GB",
+  "torch": "2.4.1+cu121",
+  "model": "siglip-so400m-patch14-384",
+  "n_params": 877960498,
+  "zero_shot": [
+    {
+      "template": "EN-Symptom",
+      "acc": 0.0145
+    },
+    {
+      "template": "KG-Symptom",
+      "acc": 0.0797
+    },
+    {
+      "template": "EN-Photo",
+      "acc": 0.0507
+    },
+    {
+      "template": "KG-Combined",
+      "acc": 0.0145
+    },
+    {
+      "template": "KG-Condition",
+      "acc": 0.0362
+    },
+    {
+      "template": "CN-Symptom",
+      "acc": 0.1304
+    },
+    {
+      "template": "EN-Closeup",
+      "acc": 0.0217
+    },
+    {
+      "template": "CN-Photo",
+      "acc": 0.0507
+    },
+    {
+      "template": "CN-Label",
+      "acc": 0.0217
+    },
+    {
+      "template": "CN-Disease",
+      "acc": 0.0217
+    },
+    {
+      "template": "CN-Closeup",
+      "acc": 0.0072
+    },
+    {
+      "template": "EN-Disease",
+      "acc": 0.0797
+    },
+    {
+      "template": "EN-Expert",
+      "acc": 0.0435
+    },
+    {
+      "template": "EN-Label",
+      "acc": 0.0217
+    },
+    {
+      "template": "Majority-class baseline",
+      "acc": 0.1304
+    }
+  ],
+  "fewshot_probe": {
+    "K=1": 0.4058,
+    "K=5": 0.6377,
+    "K=10": 0.7246
+  },
+  "finetune": {
+    "seeds": [
+      {
+        "seed": 0,
+        "best_val": 0.9565,
+        "test": 0.9565,
+        "elapsed_s": 2943.3
+      },
+      {
+        "seed": 1,
+        "best_val": 0.9493,
+        "test": 0.9565,
+        "elapsed_s": 2939.0
+      },
+      {
+        "seed": 2,
+        "best_val": 0.9493,
+        "test": 0.971,
+        "elapsed_s": 2957.9
+      },
+      {
+        "seed": 3,
+        "best_val": 0.9493,
+        "test": 0.9348,
+        "elapsed_s": 2952.9
+      },
+      {
+        "seed": 4,
+        "best_val": 0.9565,
+        "test": 0.9565,
+        "elapsed_s": 2939.7
+      },
+      {
+        "seed": 5,
+        "best_val": 0.9493,
+        "test": 0.9565,
+        "elapsed_s": 2935.8
+      },
+      {
+        "seed": 6,
+        "best_val": 0.9275,
+        "test": 0.9638,
+        "elapsed_s": 2939.9
+      },
+      {
+        "seed": 7,
+        "best_val": 0.942,
+        "test": 0.9638,
+        "elapsed_s": 2933.3
+      },
+      {
+        "seed": 8,
+        "best_val": 0.942,
+        "test": 0.9783,
+        "elapsed_s": 2938.3
+      },
+      {
+        "seed": 9,
+        "best_val": 0.9275,
+        "test": 0.9783,
+        "elapsed_s": 2924.3
+      },
+      {
+        "seed": 10,
+        "best_val": 0.9565,
+        "test": 0.971,
+        "elapsed_s": 2937.7
+      },
+      {
+        "seed": 11,
+        "best_val": 0.9348,
+        "test": 0.9638,
+        "elapsed_s": 2934.9
+      },
+      {
+        "seed": 12,
+        "best_val": 0.9203,
+        "test": 0.9348,
+        "elapsed_s": 2934.1
+      },
+      {
+        "seed": 13,
+        "best_val": 0.9565,
+        "test": 0.9638,
+        "elapsed_s": 2936.3
+      },
+      {
+        "seed": 14,
+        "best_val": 0.9275,
+        "test": 0.9348,
+        "elapsed_s": 2935.2
+      }
+    ],
+    "mean": 0.9589,
+    "std": 0.0144,
+    "sem": 0.0037,
+    "protocol": "SigLIP (SoViT-400M-14, sigmoid loss, 878M params) fine-tuned (vision_model + linear head 16 classes), AdamW (vision 5e-06, head 0.001, wd 0.01), cosine, batch 8, 30 ep, best-val selection, full TPDD train (1295) / 138 test, AMP, 15 seeds."
+  },
+  "elapsed_s": 44174.0
+}

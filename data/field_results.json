@@ -1,0 +1,29 @@
+{
+  "date": "2026-10-24",
+  "n_images": 210,
+  "n_classes": 19,
+  "zero_shot": {
+    "clip_dfn": 11.9,
+    "clip_laion": 8.6,
+    "siglip": 3.3,
+    "majority_baseline": 44.8
+  },
+  "finetune": {
+    "resnet18": {
+      "mean": 69.4,
+      "std": 2.7,
+      "seeds": 15
+    },
+    "convnext": {
+      "mean": 68.4,
+      "std": 3.0,
+      "seeds": 8
+    },
+    "clip_dfn": {
+      "mean": 66.7,
+      "std": 2.4,
+      "seeds": 8
+    }
+  },
+  "_superseded_note": "Earlier field run (2026-10-24 11:34), kept for audit trail only. Its fine-tuned values (resnet18 69.4±2.7/15 seeds, convnext 68.4±3.0/8, clip 66.7±2.4/8) were superseded: the CLIP row was re-run as field_finetune.json (69.8±2.7, 8 seeds, cited in the manuscript); the ResNet-18/ConvNeXt rows are being re-run as field_finetune_cnn.json. Do not cite values from this file."
+}

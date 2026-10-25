@@ -8,7 +8,7 @@ Computers and Electronics in Agriculture
 
 **Manuscript title:** Regime-Dependent Performance of Generic CLIP Representations for Fine-Grained Tobacco Leaf-Disorder Classification
 
-**Author:** Lizhuo Li, School of Information Science and Engineering, Yunnan University, Kunming 650091, China (lizhuo@ynu.edu.cn)
+**Authors:** Lizhuo Zhang (College of Information and Intelligence, Hunan Agricultural University, Changsha 410128, China; corresponding author, zhanglizhuo@hunau.edu.cn); Feier Hao (Hunan Agricultural University); Chenfeng Long (Hunan Agricultural University; Yuelushan Laboratory; corresponding author, elong@hunau.edu.cn); Xiaoyong Tang (Yuelushan Laboratory; School of Computer Science and Technology, Changsha University of Science and Technology, Changsha 410114, China)
 
 ---
 
@@ -22,8 +22,8 @@ We are pleased to submit the above manuscript for consideration as a Research Ar
 
 **Declarations.**
 - This manuscript is original, has not been published, and is not under consideration by any other journal or conference.
-- All authors have read and approved the submission. The author declares no conflicts of interest.
-- AI-assisted tools (an LLM coding assistant) were used for drafting and code assistance during preparation; the author critically reviewed every claim, verified all reported statistics against the underlying result files, and takes full responsibility for the content.
+- All authors have read and approved the submission. The authors declare no conflicts of interest.
+- AI-assisted tools (an LLM coding assistant) were used for drafting and code assistance during preparation; the authors critically reviewed every claim, verified all reported statistics against the underlying result files, and take full responsibility for the content.
 - The code, precomputed features, and per-seed result files supporting all findings will be made available in an anonymized repository at the review stage so that the reported statistics can be independently re-verified.
 
 **Suggested reviewers** *(to be completed before submission — names, affiliations, ORCID iDs, and emails; 3–5 recommended):*
@@ -36,7 +36,11 @@ Thank you for your consideration. We look forward to your response.
 
 Sincerely,
 
-Lizhuo Li
-School of Information Science and Engineering, Yunnan University
+Lizhuo Zhang (on behalf of all co-authors: Feier Hao, Chenfeng Long, Xiaoyong Tang)
+College of Information and Intelligence, Hunan Agricultural University
+
+Corresponding authors:
+Lizhuo Zhang, zhanglizhuo@hunau.edu.cn
+Chenfeng Long, elong@hunau.edu.cn
 Kunming 650091, China
 lizhuo@ynu.edu.cn

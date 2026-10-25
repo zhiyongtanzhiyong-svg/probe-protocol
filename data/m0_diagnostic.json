@@ -132,5 +132,6 @@
     "best_readout": "cls_mean",
     "best_beats_cls_pp": 4.49
   },
-  "elapsed_sec": 520.8
+  "elapsed_sec": 520.8,
+  "note": "best_readout / best_beats_cls_pp (per checkpoint) are the K=10 (shot10) best readout over the menu {cls, mean_patch, max_patch, cls_mean, cls_max} -- NOT the full-data best. The per-regime 'full' and 'shot10' blocks are the authoritative values (the paper cites those directly). Full-data best for reference: dfn_clip = cls_max 0.7899 (+2.18pp over CLS 0.7681); laion2b = cls_mean 0.8768 (+11.59pp over CLS 0.7609)."
 }

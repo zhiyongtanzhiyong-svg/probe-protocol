@@ -59,6 +59,7 @@ from dataset import TPDDDataset, EVAL_TRANSFORM, TRAIN_TRANSFORM, worker_init_fn
 from lp_plus_plus import (
     CKPT, FEAT_CACHE, TEMPLATES, CN_MAP, tensor_to_pil,
     extract_clip, text_embeddings, disjoint_kshot_idx,
+    load_feature_cache,
 )
 from coop_experiment import kshot_subset_idx
 
@@ -186,10 +187,10 @@ def main():
 
         cache = FEAT_CACHE[name]
         if os.path.exists(cache):
-            z = np.load(cache)
-            X, y = z['train_feats'], z['train_labels']
-            Xte, yte = z['test_feats'], z['test_labels']
-            print(f"features from cache {cache}", flush=True)
+            # canonical stores use different npz key conventions (train/train_y vs.
+            # Xtr/ytr); load_feature_cache handles both (scripts/lp_plus_plus.py)
+            X, y, Xte, yte = load_feature_cache(cache)
+            print(f"features from cache {cache} (train {X.shape})", flush=True)
         else:
             X, y = extract_clip(model, preprocess, train_ds_eval, DEVICE)
             Xte, yte = extract_clip(model, preprocess, test_ds, DEVICE)

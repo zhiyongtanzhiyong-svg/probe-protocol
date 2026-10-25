@@ -553,17 +553,18 @@ def main():
     # The positive checks above cannot catch a leftover from an earlier run --
     # they only confirm the new number is present somewhere. These assert the
     # numbers we replaced are gone, except where the paper deliberately cites an
-    # old figure as provenance (86.4% in the Fig. 4 caption).
+    # old figure as provenance (86.4% in the TPDD image-provenance paragraph).
     negatives = [
         ("stale fine-tuned CLIP (96.7)", "96.7", 0),
         ("stale fine-tuned CLIP (94.8)", "94.8", 0),
         ("stale C-plateau (90.4)", "90.4", 0),
         ("stale CV ResNet (92.1)", "92.1", 0),
         ("stale CV CLIP (87.8)", "87.8", 0),
-        # 86.4% is deliberately retained: the Fig. 4 caption cites it as the
-        # pre-rerun value to explain the 86.4 -> 87.7 shift. It must appear
-        # exactly once, in that caption, and nowhere else.
-        ("86.4 only as Fig.4 provenance", "86.4", 1),
+        # 86.4% is deliberately retained once: the Methods paragraph
+        # \textbf{TPDD image provenance} cites it as the pre-loss value that
+        # explains the 86.4 -> 87.7 shift. It must appear exactly once, inside
+        # that paragraph, and nowhere else.
+        ("86.4 only as TPDD provenance", "86.4", 1),
         # 2026 data-consistency pass: superseded zero-shot wording must stay
         # gone. The (?<![\d.]) boundary keeps "56.5\%" from satisfying "6.5\%".
         ("stale best-of-14 (13.0, intro)", "best of 14 templates (13.0", 0),
@@ -585,10 +586,12 @@ def main():
     prose_only = norm(re.sub(r"\\begin\{tabular\}.*?\\end\{tabular\}", " ", tex, flags=re.S))
     for label, needle, allowed in negatives:
         hits = len(re.findall(r"(?<![\d.])" + re.escape(norm(needle)) + r"(?![\d])", prose_only))
-        in_caption = ("86.4" not in needle) or (
-            "86.4" in re.sub(r"\s+", " ", tex[tex.find(r"\caption{Confusion"):])
+        prov = tex.find(r"TPDD image provenance")
+        in_provenance = ("86.4" not in needle) or (
+            prov != -1
+            and "86.4" in re.sub(r"\s+", " ", tex[prov:prov + 2600])
         )
-        ok = hits == allowed and in_caption
+        ok = hits == allowed and in_provenance
         checks.append((label, f"{hits} occurrence(s), allowed {allowed}",
                        ok))
 
@@ -768,7 +771,10 @@ def main():
         chk("no claim the RBF-SVM beats ResNet-18", "absent",
             not re.search(r"RBF-SVM[^.]{0,120}?(exceeds|above)[^.]{0,60}?ResNet-18",
                           tex))
-        chk("RBF-SVM reported below the ResNet mean", "not above it")
+        # Semantic guard, not a magic phrase: the prose must say the 87.0% SVM
+        # sits BELOW the 87.7% ResNet mean wherever it is compared to it.
+        chk("RBF-SVM reported below the ResNet mean", "87.0\\% below the 87.7\\% mean",
+            bool(re.search(r"RBF-SVM.{0,120}?below.{0,40}?87\.7", norm(tex))))
 
     # -- wildfire is bacterial, not abiotic ---------------------------------
     chk("wildfire classified as bacterial",

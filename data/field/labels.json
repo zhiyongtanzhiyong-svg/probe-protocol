@@ -1,0 +1,986 @@
+[
+  {
+    "image": "001.webp",
+    "label": "healthy"
+  },
+  {
+    "image": "002.webp",
+    "label": "healthy"
+  },
+  {
+    "image": "003.webp",
+    "label": "healthy"
+  },
+  {
+    "image": "004.webp",
+    "label": "healthy"
+  },
+  {
+    "image": "005_二氯喹啉酸残留药害.jpeg",
+    "label": "二氯喹啉酸残留药害"
+  },
+  {
+    "image": "006_二氯喹啉酸残留药害.jpeg",
+    "label": "二氯喹啉酸残留药害"
+  },
+  {
+    "image": "007_二氯喹啉酸残留药害.jpeg",
+    "label": "二氯喹啉酸残留药害"
+  },
+  {
+    "image": "008_二氯喹啉酸残留药害.jpeg",
+    "label": "二氯喹啉酸残留药害"
+  },
+  {
+    "image": "009.jpg",
+    "label": "healthy"
+  },
+  {
+    "image": "010.jpg",
+    "label": "healthy"
+  },
+  {
+    "image": "011.jpg",
+    "label": "healthy"
+  },
+  {
+    "image": "012.jpg",
+    "label": "healthy"
+  },
+  {
+    "image": "013.jpg",
+    "label": "healthy"
+  },
+  {
+    "image": "014.jpg",
+    "label": "healthy"
+  },
+  {
+    "image": "015.webp",
+    "label": "healthy"
+  },
+  {
+    "image": "016.webp",
+    "label": "healthy"
+  },
+  {
+    "image": "017.webp",
+    "label": "healthy"
+  },
+  {
+    "image": "018.webp",
+    "label": "healthy"
+  },
+  {
+    "image": "019.webp",
+    "label": "healthy"
+  },
+  {
+    "image": "020.webp",
+    "label": "healthy"
+  },
+  {
+    "image": "021.webp",
+    "label": "healthy"
+  },
+  {
+    "image": "022.webp",
+    "label": "healthy"
+  },
+  {
+    "image": "023.webp",
+    "label": "healthy"
+  },
+  {
+    "image": "024.webp",
+    "label": "healthy"
+  },
+  {
+    "image": "025.jpg",
+    "label": "healthy"
+  },
+  {
+    "image": "026.png",
+    "label": "healthy"
+  },
+  {
+    "image": "031.jpg",
+    "label": "healthy"
+  },
+  {
+    "image": "032.png",
+    "label": "healthy"
+  },
+  {
+    "image": "033.webp",
+    "label": "healthy"
+  },
+  {
+    "image": "034.webp",
+    "label": "healthy"
+  },
+  {
+    "image": "035.webp",
+    "label": "healthy"
+  },
+  {
+    "image": "036.webp",
+    "label": "healthy"
+  },
+  {
+    "image": "037.webp",
+    "label": "healthy"
+  },
+  {
+    "image": "039.webp",
+    "label": "healthy"
+  },
+  {
+    "image": "040.webp",
+    "label": "healthy"
+  },
+  {
+    "image": "042.jpg",
+    "label": "healthy"
+  },
+  {
+    "image": "043.jpg",
+    "label": "healthy"
+  },
+  {
+    "image": "044.jpg",
+    "label": "healthy"
+  },
+  {
+    "image": "045.jpg",
+    "label": "healthy"
+  },
+  {
+    "image": "046.jpg",
+    "label": "healthy"
+  },
+  {
+    "image": "047.jpg",
+    "label": "healthy"
+  },
+  {
+    "image": "049.jpeg",
+    "label": "healthy"
+  },
+  {
+    "image": "050.jpg",
+    "label": "healthy"
+  },
+  {
+    "image": "051.jpg",
+    "label": "healthy"
+  },
+  {
+    "image": "052.jpg",
+    "label": "healthy"
+  },
+  {
+    "image": "053.jpg",
+    "label": "healthy"
+  },
+  {
+    "image": "054.jpeg",
+    "label": "healthy"
+  },
+  {
+    "image": "055.jpg",
+    "label": "healthy"
+  },
+  {
+    "image": "059.jpg",
+    "label": "healthy"
+  },
+  {
+    "image": "060.jpg",
+    "label": "healthy"
+  },
+  {
+    "image": "061.jpg",
+    "label": "healthy"
+  },
+  {
+    "image": "062.jpg",
+    "label": "healthy"
+  },
+  {
+    "image": "063.webp",
+    "label": "healthy"
+  },
+  {
+    "image": "064.jpeg",
+    "label": "healthy"
+  },
+  {
+    "image": "065.png",
+    "label": "healthy"
+  },
+  {
+    "image": "066.png",
+    "label": "healthy"
+  },
+  {
+    "image": "067.png",
+    "label": "healthy"
+  },
+  {
+    "image": "068.jpg",
+    "label": "healthy"
+  },
+  {
+    "image": "069.webp",
+    "label": "healthy"
+  },
+  {
+    "image": "070.webp",
+    "label": "healthy"
+  },
+  {
+    "image": "071.jpg",
+    "label": "healthy"
+  },
+  {
+    "image": "072.jpg",
+    "label": "healthy"
+  },
+  {
+    "image": "073.webp",
+    "label": "healthy"
+  },
+  {
+    "image": "074.webp",
+    "label": "healthy"
+  },
+  {
+    "image": "075_轻度普通花叶病.webp",
+    "label": "烟草花叶病"
+  },
+  {
+    "image": "076.webp",
+    "label": "healthy"
+  },
+  {
+    "image": "077.webp",
+    "label": "healthy"
+  },
+  {
+    "image": "078.webp",
+    "label": "healthy"
+  },
+  {
+    "image": "079.webp",
+    "label": "healthy"
+  },
+  {
+    "image": "080.webp",
+    "label": "healthy"
+  },
+  {
+    "image": "081.webp",
+    "label": "healthy"
+  },
+  {
+    "image": "082.webp",
+    "label": "healthy"
+  },
+  {
+    "image": "083.jpg",
+    "label": "healthy"
+  },
+  {
+    "image": "084.jpg",
+    "label": "healthy"
+  },
+  {
+    "image": "085.jpg",
+    "label": "healthy"
+  },
+  {
+    "image": "086.jpg",
+    "label": "healthy"
+  },
+  {
+    "image": "087.jpg",
+    "label": "healthy"
+  },
+  {
+    "image": "088.jpg",
+    "label": "healthy"
+  },
+  {
+    "image": "089.jpg",
+    "label": "healthy"
+  },
+  {
+    "image": "090.webp",
+    "label": "healthy"
+  },
+  {
+    "image": "091.webp",
+    "label": "healthy"
+  },
+  {
+    "image": "092.jpeg",
+    "label": "healthy"
+  },
+  {
+    "image": "095.jpeg",
+    "label": "healthy"
+  },
+  {
+    "image": "096.jpeg",
+    "label": "healthy"
+  },
+  {
+    "image": "097.jpeg",
+    "label": "healthy"
+  },
+  {
+    "image": "098.webp",
+    "label": "healthy"
+  },
+  {
+    "image": "099.jpg",
+    "label": "healthy"
+  },
+  {
+    "image": "100.jpg",
+    "label": "healthy"
+  },
+  {
+    "image": "101.png",
+    "label": "healthy"
+  },
+  {
+    "image": "102.jpeg",
+    "label": "healthy"
+  },
+  {
+    "image": "103.jpeg",
+    "label": "healthy"
+  },
+  {
+    "image": "104.jpeg",
+    "label": "healthy"
+  },
+  {
+    "image": "105_烟草花叶病毒病.webp",
+    "label": "烟草花叶病"
+  },
+  {
+    "image": "106_烟草花叶病毒病.webp",
+    "label": "烟草花叶病"
+  },
+  {
+    "image": "107_烟草花叶病毒病.webp",
+    "label": "烟草花叶病"
+  },
+  {
+    "image": "108_烟草花叶病毒病.webp",
+    "label": "烟草花叶病"
+  },
+  {
+    "image": "109_烟草花叶病毒病.webp",
+    "label": "烟草花叶病"
+  },
+  {
+    "image": "110.webp",
+    "label": "healthy"
+  },
+  {
+    "image": "111.webp",
+    "label": "healthy"
+  },
+  {
+    "image": "112.webp",
+    "label": "healthy"
+  },
+  {
+    "image": "113.webp",
+    "label": "healthy"
+  },
+  {
+    "image": "114.webp",
+    "label": "healthy"
+  },
+  {
+    "image": "115.jpg",
+    "label": "healthy"
+  },
+  {
+    "image": "116.jpeg",
+    "label": "healthy"
+  },
+  {
+    "image": "117_烟叶黑胫病.webp",
+    "label": "烟叶黑胫病"
+  },
+  {
+    "image": "118_烟叶黑胫病.jpeg",
+    "label": "烟叶黑胫病"
+  },
+  {
+    "image": "119_烟叶黑胫病.webp",
+    "label": "烟叶黑胫病"
+  },
+  {
+    "image": "120_烟叶黑胫病.webp",
+    "label": "烟叶黑胫病"
+  },
+  {
+    "image": "121_烟叶黑胫病.jpeg",
+    "label": "烟叶黑胫病"
+  },
+  {
+    "image": "122_烟叶黑胫病.jpeg",
+    "label": "烟叶黑胫病"
+  },
+  {
+    "image": "123_烟叶黑胫病.jpeg",
+    "label": "烟叶黑胫病"
+  },
+  {
+    "image": "124_烟叶黑胫病.jpeg",
+    "label": "烟叶黑胫病"
+  },
+  {
+    "image": "125_烟草炭疽病.jpg",
+    "label": "烟草炭疽病"
+  },
+  {
+    "image": "126_烟草炭疽病.webp",
+    "label": "烟草炭疽病"
+  },
+  {
+    "image": "127_烟草炭疽病.webp",
+    "label": "烟草炭疽病"
+  },
+  {
+    "image": "128_烟草炭疽病.jpg",
+    "label": "烟草炭疽病"
+  },
+  {
+    "image": "129_烟草炭疽病.jpeg",
+    "label": "烟草炭疽病"
+  },
+  {
+    "image": "130_烟草炭疽病.webp",
+    "label": "烟草炭疽病"
+  },
+  {
+    "image": "131_烟草炭疽病.jpg",
+    "label": "烟草炭疽病"
+  },
+  {
+    "image": "132_烟草炭疽病.webp",
+    "label": "烟草炭疽病"
+  },
+  {
+    "image": "133_烟草炭疽病.webp",
+    "label": "烟草炭疽病"
+  },
+  {
+    "image": "134_烟草白粉病.jpg",
+    "label": "烟草白粉病"
+  },
+  {
+    "image": "135_烟草白粉病.webp",
+    "label": "烟草白粉病"
+  },
+  {
+    "image": "136_烟草白粉病.webp",
+    "label": "烟草白粉病"
+  },
+  {
+    "image": "137_烟草白粉病.webp",
+    "label": "烟草白粉病"
+  },
+  {
+    "image": "138_烟草白粉病.webp",
+    "label": "烟草白粉病"
+  },
+  {
+    "image": "139_烟草白粉病.webp",
+    "label": "烟草白粉病"
+  },
+  {
+    "image": "140_烟草白粉病.webp",
+    "label": "烟草白粉病"
+  },
+  {
+    "image": "141_烟叶赤星病.jpeg",
+    "label": "烟叶赤星病"
+  },
+  {
+    "image": "142_烟叶赤星病.jpg",
+    "label": "烟叶赤星病"
+  },
+  {
+    "image": "143_烟叶赤星病.webp",
+    "label": "烟叶赤星病"
+  },
+  {
+    "image": "144_烟叶赤星病.jpeg",
+    "label": "烟叶赤星病"
+  },
+  {
+    "image": "145_烟叶赤星病.jpeg",
+    "label": "烟叶赤星病"
+  },
+  {
+    "image": "146_烟叶赤星病.jpeg",
+    "label": "烟叶赤星病"
+  },
+  {
+    "image": "147_烟草野火病.jpeg",
+    "label": "烟草野火病"
+  },
+  {
+    "image": "148_烟草角斑病.jpeg",
+    "label": "烟草角斑病"
+  },
+  {
+    "image": "149_烟草蛙眼病.jpeg",
+    "label": "烟草蛙眼病"
+  },
+  {
+    "image": "150_烟草赤星病初期.webp",
+    "label": "烟叶赤星病"
+  },
+  {
+    "image": "151_烟草赤星病中期.webp",
+    "label": "烟叶赤星病"
+  },
+  {
+    "image": "152_烟草赤星病后期.webp",
+    "label": "烟叶赤星病"
+  },
+  {
+    "image": "153_烟草赤星病晚期.webp",
+    "label": "烟叶赤星病"
+  },
+  {
+    "image": "154_烟草立枯病.webp",
+    "label": "烟草立枯病"
+  },
+  {
+    "image": "155_烟草立枯病.webp",
+    "label": "烟草立枯病"
+  },
+  {
+    "image": "156_烟草立枯病.webp",
+    "label": "烟草立枯病"
+  },
+  {
+    "image": "157_烟草立枯病.webp",
+    "label": "烟草立枯病"
+  },
+  {
+    "image": "158_烟草立枯病.webp",
+    "label": "烟草立枯病"
+  },
+  {
+    "image": "159_烟草立枯病.webp",
+    "label": "烟草立枯病"
+  },
+  {
+    "image": "160_烟草立枯病.webp",
+    "label": "烟草立枯病"
+  },
+  {
+    "image": "161_烟草立枯病.webp",
+    "label": "烟草立枯病"
+  },
+  {
+    "image": "162_烟草青枯病.webp",
+    "label": "烟草青枯病"
+  },
+  {
+    "image": "163_烟草枯萎病.webp",
+    "label": "烟草枯萎病"
+  },
+  {
+    "image": "164_烟草枯萎病.webp",
+    "label": "烟草枯萎病"
+  },
+  {
+    "image": "165_烟草枯萎病.webp",
+    "label": "烟草枯萎病"
+  },
+  {
+    "image": "166_烟草枯萎病.webp",
+    "label": "烟草枯萎病"
+  },
+  {
+    "image": "167_烟草枯萎病.webp",
+    "label": "烟草枯萎病"
+  },
+  {
+    "image": "168_烟草枯萎病.webp",
+    "label": "烟草枯萎病"
+  },
+  {
+    "image": "169_烟草枯萎病.webp",
+    "label": "烟草枯萎病"
+  },
+  {
+    "image": "170_烟草枯萎病.webp",
+    "label": "烟草枯萎病"
+  },
+  {
+    "image": "171_烟草枯萎病.webp",
+    "label": "烟草枯萎病"
+  },
+  {
+    "image": "172_烟草枯萎病.webp",
+    "label": "烟草枯萎病"
+  },
+  {
+    "image": "173_烟草野火病.jpeg",
+    "label": "烟草野火病"
+  },
+  {
+    "image": "174_烟草野火病.jpeg",
+    "label": "烟草野火病"
+  },
+  {
+    "image": "175_烟草野火病.jpeg",
+    "label": "烟草野火病"
+  },
+  {
+    "image": "176_烟草野火病.jpeg",
+    "label": "烟草野火病"
+  },
+  {
+    "image": "177_灰霉病.jpeg",
+    "label": "灰霉病"
+  },
+  {
+    "image": "177_烟草野火病.png",
+    "label": "烟草野火病"
+  },
+  {
+    "image": "178_灰霉病.jpeg",
+    "label": "灰霉病"
+  },
+  {
+    "image": "178_烟草野火病.png",
+    "label": "烟草野火病"
+  },
+  {
+    "image": "179_灰霉病.jpeg",
+    "label": "灰霉病"
+  },
+  {
+    "image": "180_灰霉病.JPG",
+    "label": "灰霉病"
+  },
+  {
+    "image": "181_灰霉病.jpeg",
+    "label": "灰霉病"
+  },
+  {
+    "image": "182_烟草蛙眼病.jpeg",
+    "label": "烟草蛙眼病"
+  },
+  {
+    "image": "183_烟草蛙眼病.jpeg",
+    "label": "烟草蛙眼病"
+  },
+  {
+    "image": "184_烟草蛙眼病.jpeg",
+    "label": "烟草蛙眼病"
+  },
+  {
+    "image": "185_烟草蛙眼病.jpeg",
+    "label": "烟草蛙眼病"
+  },
+  {
+    "image": "186_烟草花叶病.jpeg",
+    "label": "烟草花叶病"
+  },
+  {
+    "image": "187_烟草花叶病.jpeg",
+    "label": "烟草花叶病"
+  },
+  {
+    "image": "188_烟草花叶病.webp",
+    "label": "烟草花叶病"
+  },
+  {
+    "image": "189_烟草花叶病.webp",
+    "label": "烟草花叶病"
+  },
+  {
+    "image": "190_烟草花叶病.webp",
+    "label": "烟草花叶病"
+  },
+  {
+    "image": "191_烟草花叶病.webp",
+    "label": "烟草花叶病"
+  },
+  {
+    "image": "192_烟草花叶病.webp",
+    "label": "烟草花叶病"
+  },
+  {
+    "image": "193_烟草花叶病.jpg",
+    "label": "烟草花叶病"
+  },
+  {
+    "image": "193_烟草花叶病.png",
+    "label": "烟草花叶病"
+  },
+  {
+    "image": "194_烟草霜霉病.jpeg",
+    "label": "烟草霜霉病"
+  },
+  {
+    "image": "195_烟草斑点病.jpeg",
+    "label": "烟草斑点病"
+  },
+  {
+    "image": "196_烟草白粉病.jpeg",
+    "label": "烟草白粉病"
+  },
+  {
+    "image": "197_烟草黑斑病.jpeg",
+    "label": "烟草黑斑病"
+  },
+  {
+    "image": "198_烟草蛙眼病.jpeg",
+    "label": "烟草蛙眼病"
+  },
+  {
+    "image": "199_烟草剑叶病.jpeg",
+    "label": "烟草剑叶病"
+  },
+  {
+    "image": "200_烟草剑叶病.jpeg",
+    "label": "烟草剑叶病"
+  },
+  {
+    "image": "202_烟草剑叶病.png",
+    "label": "烟草剑叶病"
+  },
+  {
+    "image": "203_烟草剑叶病.png",
+    "label": "烟草剑叶病"
+  },
+  {
+    "image": "204_烟草剑叶病.png",
+    "label": "烟草剑叶病"
+  },
+  {
+    "image": "205_烟草剑叶病.jpg",
+    "label": "烟草剑叶病"
+  },
+  {
+    "image": "206_烟草曲叶病.png",
+    "label": "烟草曲叶病"
+  },
+  {
+    "image": "207_烟草曲叶病.png",
+    "label": "烟草曲叶病"
+  },
+  {
+    "image": "208_烟草曲叶病.png",
+    "label": "烟草曲叶病"
+  },
+  {
+    "image": "209_烟草曲叶病.png",
+    "label": "烟草曲叶病"
+  },
+  {
+    "image": "210_烟草曲叶病.jpeg",
+    "label": "烟草曲叶病"
+  },
+  {
+    "image": "211_烟草曲叶病.jpeg",
+    "label": "烟草曲叶病"
+  },
+  {
+    "image": "212_烟草曲叶病.png",
+    "label": "烟草曲叶病"
+  },
+  {
+    "image": "213_烟草曲叶病.png",
+    "label": "烟草曲叶病"
+  },
+  {
+    "image": "214_烟草曲叶病.png",
+    "label": "烟草曲叶病"
+  },
+  {
+    "image": "215_烟草曲叶病.png",
+    "label": "烟草曲叶病"
+  },
+  {
+    "image": "216_烟草曲叶病.png",
+    "label": "烟草曲叶病"
+  },
+  {
+    "image": "217_烟草曲叶病.png",
+    "label": "烟草曲叶病"
+  },
+  {
+    "image": "218_烟草曲叶病.png",
+    "label": "烟草曲叶病"
+  },
+  {
+    "image": "219_烟草曲叶病.png",
+    "label": "烟草曲叶病"
+  },
+  {
+    "image": "220__烟草曲叶病.jpg",
+    "label": "烟草曲叶病"
+  },
+  {
+    "image": "221_烟草角斑病_初期.webp",
+    "label": "烟草角斑病"
+  },
+  {
+    "image": "222_烟草角斑病_初期.webp",
+    "label": "烟草角斑病"
+  },
+  {
+    "image": "223_烟草角斑病.webp",
+    "label": "烟草角斑病"
+  },
+  {
+    "image": "224_烟草角斑病.webp",
+    "label": "烟草角斑病"
+  },
+  {
+    "image": "225_烟草角斑病.webp",
+    "label": "烟草角斑病"
+  },
+  {
+    "image": "226_烟草角斑病.JPG",
+    "label": "烟草角斑病"
+  },
+  {
+    "image": "227_烟草青枯病.jpeg",
+    "label": "烟草青枯病"
+  },
+  {
+    "image": "228_烟草青枯病.jpeg",
+    "label": "烟草青枯病"
+  },
+  {
+    "image": "229_烟草青枯病.jpeg",
+    "label": "烟草青枯病"
+  },
+  {
+    "image": "230_烟草青枯病.webp",
+    "label": "烟草青枯病"
+  },
+  {
+    "image": "231_烟草青枯病.webp",
+    "label": "烟草青枯病"
+  },
+  {
+    "image": "232_烟草青枯病.webp",
+    "label": "烟草青枯病"
+  },
+  {
+    "image": "233_烟草青枯病.webp",
+    "label": "烟草青枯病"
+  },
+  {
+    "image": "234_烟草青枯病.webp",
+    "label": "烟草青枯病"
+  },
+  {
+    "image": "235_烟草青枯病.jpeg",
+    "label": "烟草青枯病"
+  },
+  {
+    "image": "236_烟草青枯病.jpeg",
+    "label": "烟草青枯病"
+  },
+  {
+    "image": "237_烟草霜霉病.webp",
+    "label": "烟草霜霉病"
+  },
+  {
+    "image": "238_烟草霜霉病_初期.webp",
+    "label": "烟草霜霉病"
+  },
+  {
+    "image": "239_烟草霜霉病.webp",
+    "label": "烟草霜霉病"
+  },
+  {
+    "image": "240_烟草霜霉病.webp",
+    "label": "烟草霜霉病"
+  },
+  {
+    "image": "241_烟草霜霉病.webp",
+    "label": "烟草霜霉病"
+  },
+  {
+    "image": "242_烟草霜霉病.webp",
+    "label": "烟草霜霉病"
+  },
+  {
+    "image": "243_烟草霜霉病.webp",
+    "label": "烟草霜霉病"
+  },
+  {
+    "image": "244_烟草霜霉病.webp",
+    "label": "烟草霜霉病"
+  },
+  {
+    "image": "245_烟草霜霉病.JPG",
+    "label": "烟草霜霉病"
+  },
+  {
+    "image": "246_烟草霜霉病.webp",
+    "label": "烟草霜霉病"
+  },
+  {
+    "image": "247_烟草斑点病.webp",
+    "label": "烟草斑点病"
+  },
+  {
+    "image": "248_烟草斑点病.webp",
+    "label": "烟草斑点病"
+  },
+  {
+    "image": "249_烟草斑点病.jpg",
+    "label": "烟草斑点病"
+  },
+  {
+    "image": "250_烟草斑点病.jpeg",
+    "label": "烟草斑点病"
+  },
+  {
+    "image": "251_烟草黑斑病.webp",
+    "label": "烟草黑斑病"
+  },
+  {
+    "image": "252_ 烟草黑斑病.jpeg",
+    "label": "烟草黑斑病"
+  },
+  {
+    "image": "253_烟草黑斑病.jpg",
+    "label": "烟草黑斑病"
+  },
+  {
+    "image": "254_烟草黑斑病.jpg",
+    "label": "烟草黑斑病"
+  },
+  {
+    "image": "255_烟草黑斑病.jpeg",
+    "label": "烟草黑斑病"
+  },
+  {
+    "image": "256_烟草黑斑病.jpg",
+    "label": "烟草黑斑病"
+  }
+]
