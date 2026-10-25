@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find /mnt/gpu-4070/Work/TobAI/Paper2-CLIPvsResNet -maxdepth 2 -type f \\\\\\( -name \"*.tex\" -o -name \"*.pdf\" -o -name \"*.md\" \\\\\\) | head -50)",
+      "Bash(cd /mnt/gpu-4070/Work/TobAI/Paper2-CLIPvsResNet/manuscript/paper && wc -l clip_vs_resnet_tobacco.tex && grep -n \"^\\\\\\\\\\\\\\\\\\\\\\(section\\\\|subsection\\\\|title\\\\|begin{abstract}\\\\|end{abstract}\\\\\\)\" clip_vs_resnet_tobacco.tex)",
+      "Bash(cd /mnt/gpu-4070/Work/TobAI/Paper2-CLIPvsResNet/manuscript/paper && head -20 cover_letter_CeA.md && echo \"--- HIGHLIGHTS ---\" && cat Highlights.txt && echo \"--- PAGES ---\" && pdfinfo clip_vs_resnet_tobacco.pdf 2>/dev/null | grep -i pages || grep -c \".\" clip_vs_resnet_tobacco.log)",
+      "Bash(cd /mnt/gpu-4070/Work/TobAI/Paper2-CLIPvsResNet/manuscript/paper && echo \"=== C=300 mentions ===\" && grep -n \"C{=}300\\\\b\\\\|C{=}300\\\\$\\\\|C\\\\$=\\\\$300\\\\|{=}300\" clip_vs_resnet_tobacco.tex | cut -c1-200 && echo && echo \"=== approx 4pp ===\" && grep -n \"\\\\\\\\\\\\\\\\approx\\\\$4\\\\\\\\\\\\\\\\,pp\\\\|4\\\\\\\\\\\\\\\\,pp\\) under proper\" clip_vs_resnet_tobacco.tex | cut -c1-200)",
+      "Bash(cd /mnt/gpu-4070/Work/TobAI/Paper2-CLIPvsResNet/manuscript/paper && grep -o \"the choice of the lower-complexity member \\([^\\)]*\\)\" clip_vs_resnet_tobacco.tex; grep -o \"validation-selected \\\\$C{=}300\\\\$\" clip_vs_resnet_tobacco.tex; grep -o \"\\\\$C{=}300\\\\$ \\(\\\\$89.96\" clip_vs_resnet_tobacco.tex; grep -o \"lower-complexity member, \\\\$C{=}100\\\\$\" clip_vs_resnet_tobacco.tex; grep -o \"lower-complexity \\\\$C{=}100\\\\$ is reported\" clip_vs_resnet_tobacco.tex; grep -o \"edge \\(\\\\$\\\\\\\\\\\\\\\\approx\\\\$4\\\\\\\\\\\\\\\\,pp\\\\$\\)\" clip_vs_resnet_tobacco.tex)",
+      "Bash(cd /mnt/gpu-4070/Work/TobAI/Paper2-CLIPvsResNet/manuscript/paper && grep -on \"small, stable edge \\([^\\)]*\\)\" clip_vs_resnet_tobacco.tex; grep -c \"approx\\\\$4\" clip_vs_resnet_tobacco.tex)"
+    ]
+  }
+}
