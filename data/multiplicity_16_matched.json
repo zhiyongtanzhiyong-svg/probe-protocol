@@ -1,0 +1,169 @@
+{
+  "date": "2026-10-26",
+  "note": "16-contrast family with matched-budget ResNet baseline for ALL frozen-probe contrasts. K=1/2 frozen-probe contrasts use matched ResNet (40.44%/52.46%) instead of legacy single-config (33.04%/43.38%). Direction: CLIP > ResNet (one-sided).",
+  "n_contrasts": 16,
+  "n_survive_holm": 11,
+  "max_holm_p": 1.0,
+  "contrasts": [
+    {
+      "name": "K=K1 DFN frozen (matched)",
+      "p_raw": 0.9999994831079572,
+      "probe_acc_pct": 30.48,
+      "resnet_mean_pct": 40.44,
+      "delta_pp": -9.96,
+      "wins_ties_losses": [
+        0,
+        0,
+        15
+      ],
+      "p_holm": 1.0,
+      "survive_holm": false
+    },
+    {
+      "name": "K=K1 LAION frozen (matched)",
+      "p_raw": 0.594477635063268,
+      "probe_acc_pct": 40.14,
+      "resnet_mean_pct": 40.44,
+      "delta_pp": -0.3,
+      "wins_ties_losses": [
+        8,
+        0,
+        7
+      ],
+      "p_holm": 1.0,
+      "survive_holm": false
+    },
+    {
+      "name": "K=K2 DFN frozen (matched)",
+      "p_raw": 0.9999999999747378,
+      "probe_acc_pct": 36.52,
+      "resnet_mean_pct": 52.46,
+      "delta_pp": -15.94,
+      "wins_ties_losses": [
+        0,
+        0,
+        15
+      ],
+      "p_holm": 0.9999999999747378,
+      "survive_holm": false
+    },
+    {
+      "name": "K=K2 LAION frozen (matched)",
+      "p_raw": 0.9994696697949773,
+      "probe_acc_pct": 48.79,
+      "resnet_mean_pct": 52.46,
+      "delta_pp": -3.67,
+      "wins_ties_losses": [
+        2,
+        0,
+        13
+      ],
+      "p_holm": 1.0,
+      "survive_holm": false
+    },
+    {
+      "name": "K=5 LAION frozen (matched)",
+      "p_raw": 0.0153,
+      "probe_acc_pct": 60.2,
+      "resnet_mean_pct": 64.9,
+      "delta_pp": -4.7,
+      "wins_ties_losses": [
+        3,
+        0,
+        12
+      ],
+      "p_holm": 0.0765,
+      "survive_holm": false
+    },
+    {
+      "name": "K=5 DFN frozen (matched)",
+      "p_raw": 3.3e-08,
+      "probe_acc_pct": 48.0,
+      "resnet_mean_pct": 64.9,
+      "delta_pp": -17.0,
+      "wins_ties_losses": [
+        0,
+        0,
+        15
+      ],
+      "p_holm": 4.29e-07,
+      "survive_holm": true
+    },
+    {
+      "name": "K=10 LAION frozen (matched)",
+      "p_raw": 6.13e-08,
+      "probe_acc_pct": 66.5,
+      "resnet_mean_pct": 74.6,
+      "delta_pp": -8.2,
+      "wins_ties_losses": [
+        0,
+        0,
+        15
+      ],
+      "p_holm": 7.356e-07,
+      "survive_holm": true
+    },
+    {
+      "name": "K=10 DFN frozen (matched)",
+      "p_raw": 9.54e-12,
+      "probe_acc_pct": 56.4,
+      "resnet_mean_pct": 74.6,
+      "delta_pp": -18.2,
+      "wins_ties_losses": [
+        0,
+        0,
+        15
+      ],
+      "p_holm": 1.5264e-10,
+      "survive_holm": true
+    },
+    {
+      "name": "K=10 DFN FT (matched)",
+      "p_raw": 4.3e-10,
+      "p_holm": 6.45e-09,
+      "survive_holm": true
+    },
+    {
+      "name": "K=2 DFN FT (matched)",
+      "p_raw": 1.24e-09,
+      "p_holm": 1.736e-08,
+      "survive_holm": true
+    },
+    {
+      "name": "K=5 DFN FT (matched)",
+      "p_raw": 4.9e-07,
+      "p_holm": 5.389999999999999e-06,
+      "survive_holm": true
+    },
+    {
+      "name": "K=5 LAION FT (matched)",
+      "p_raw": 6.4e-06,
+      "p_holm": 6.4e-05,
+      "survive_holm": true
+    },
+    {
+      "name": "K=1 LAION FT (matched)",
+      "p_raw": 1.61e-05,
+      "p_holm": 0.0001449,
+      "survive_holm": true
+    },
+    {
+      "name": "K=2 LAION FT (matched)",
+      "p_raw": 2.1e-05,
+      "p_holm": 0.000168,
+      "survive_holm": true
+    },
+    {
+      "name": "K=1 DFN FT (matched)",
+      "p_raw": 4.05e-05,
+      "p_holm": 0.0002835,
+      "survive_holm": true
+    },
+    {
+      "name": "K=10 LAION FT (matched)",
+      "p_raw": 0.0017,
+      "p_holm": 0.010199999999999999,
+      "survive_holm": true
+    }
+  ]
+}

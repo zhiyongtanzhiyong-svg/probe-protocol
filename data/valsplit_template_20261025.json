@@ -1,0 +1,96 @@
+{
+  "n_val": 259,
+  "n_test": 138,
+  "val_seed": 0,
+  "templates": {
+    "EN-Label": {
+      "val_acc_pct": 6.18,
+      "test_acc_pct": 2.17,
+      "val_n_correct": 16,
+      "test_n_correct": 3
+    },
+    "CN-Label": {
+      "val_acc_pct": 3.47,
+      "test_acc_pct": 7.25,
+      "val_n_correct": 9,
+      "test_n_correct": 10
+    },
+    "EN-Photo": {
+      "val_acc_pct": 8.11,
+      "test_acc_pct": 10.14,
+      "val_n_correct": 21,
+      "test_n_correct": 14
+    },
+    "CN-Photo": {
+      "val_acc_pct": 8.11,
+      "test_acc_pct": 7.25,
+      "val_n_correct": 21,
+      "test_n_correct": 10
+    },
+    "EN-Symptom": {
+      "val_acc_pct": 7.72,
+      "test_acc_pct": 6.52,
+      "val_n_correct": 20,
+      "test_n_correct": 9
+    },
+    "CN-Symptom": {
+      "val_acc_pct": 8.11,
+      "test_acc_pct": 8.7,
+      "val_n_correct": 21,
+      "test_n_correct": 12
+    },
+    "EN-Closeup": {
+      "val_acc_pct": 11.58,
+      "test_acc_pct": 10.87,
+      "val_n_correct": 30,
+      "test_n_correct": 15
+    },
+    "CN-Closeup": {
+      "val_acc_pct": 3.86,
+      "test_acc_pct": 2.9,
+      "val_n_correct": 10,
+      "test_n_correct": 4
+    },
+    "EN-Disease": {
+      "val_acc_pct": 5.41,
+      "test_acc_pct": 7.25,
+      "val_n_correct": 14,
+      "test_n_correct": 10
+    },
+    "CN-Disease": {
+      "val_acc_pct": 8.49,
+      "test_acc_pct": 7.97,
+      "val_n_correct": 22,
+      "test_n_correct": 11
+    },
+    "KG-Symptom": {
+      "val_acc_pct": 8.49,
+      "test_acc_pct": 11.59,
+      "val_n_correct": 22,
+      "test_n_correct": 16
+    },
+    "KG-Condition": {
+      "val_acc_pct": 6.18,
+      "test_acc_pct": 5.07,
+      "val_n_correct": 16,
+      "test_n_correct": 7
+    },
+    "KG-Combined": {
+      "val_acc_pct": 9.65,
+      "test_acc_pct": 10.87,
+      "val_n_correct": 25,
+      "test_n_correct": 15
+    },
+    "EN-Expert": {
+      "val_acc_pct": 6.18,
+      "test_acc_pct": 2.17,
+      "val_n_correct": 16,
+      "test_n_correct": 3
+    }
+  },
+  "val_best_template": "EN-Closeup",
+  "val_best_val_acc_pct": 11.58,
+  "val_best_test_acc_pct": 10.87,
+  "test_majority_baseline_pct": 13.04,
+  "date": "2026-10-25"
+}

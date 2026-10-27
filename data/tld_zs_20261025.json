@@ -1,0 +1,116 @@
+{
+  "date": "2026-10-25",
+  "n_base": 232,
+  "majority": {
+    "no cercospora nicotianae or alternaria alternata present": 44
+  },
+  "baseline_pct": 18.97,
+  "checkpoints": {
+    "dfn_clip": {
+      "templates": {
+        "EN-Label": {
+          "acc_pct": 6.9,
+          "n_correct": 16
+        },
+        "CN-Label": {
+          "acc_pct": 0.0,
+          "n_correct": 0
+        },
+        "EN-Photo": {
+          "acc_pct": 0.86,
+          "n_correct": 2
+        },
+        "CN-Photo": {
+          "acc_pct": 0.0,
+          "n_correct": 0
+        },
+        "EN-Symptom": {
+          "acc_pct": 0.0,
+          "n_correct": 0
+        },
+        "CN-Symptom": {
+          "acc_pct": 0.0,
+          "n_correct": 0
+        },
+        "EN-Closeup": {
+          "acc_pct": 0.0,
+          "n_correct": 0
+        },
+        "CN-Closeup": {
+          "acc_pct": 0.0,
+          "n_correct": 0
+        },
+        "EN-Disease": {
+          "acc_pct": 0.86,
+          "n_correct": 2
+        },
+        "CN-Disease": {
+          "acc_pct": 0.0,
+          "n_correct": 0
+        },
+        "EN-Expert": {
+          "acc_pct": 3.02,
+          "n_correct": 7
+        }
+      },
+      "best_template": "EN-Label",
+      "best_acc_pct": 6.9,
+      "baseline_pct": 18.97,
+      "p_vs_uniform": 0.9600107753913765,
+      "p_vs_baseline": 0.9999999540642
+    },
+    "laion2b": {
+      "templates": {
+        "EN-Label": {
+          "acc_pct": 1.29,
+          "n_correct": 3
+        },
+        "CN-Label": {
+          "acc_pct": 0.0,
+          "n_correct": 0
+        },
+        "EN-Photo": {
+          "acc_pct": 0.43,
+          "n_correct": 1
+        },
+        "CN-Photo": {
+          "acc_pct": 0.0,
+          "n_correct": 0
+        },
+        "EN-Symptom": {
+          "acc_pct": 0.0,
+          "n_correct": 0
+        },
+        "CN-Symptom": {
+          "acc_pct": 3.02,
+          "n_correct": 7
+        },
+        "EN-Closeup": {
+          "acc_pct": 1.29,
+          "n_correct": 3
+        },
+        "CN-Closeup": {
+          "acc_pct": 1.29,
+          "n_correct": 3
+        },
+        "EN-Disease": {
+          "acc_pct": 0.0,
+          "n_correct": 0
+        },
+        "CN-Disease": {
+          "acc_pct": 3.45,
+          "n_correct": 8
+        },
+        "EN-Expert": {
+          "acc_pct": 5.6,
+          "n_correct": 13
+        }
+      },
+      "best_template": "EN-Expert",
+      "best_acc_pct": 5.6,
+      "baseline_pct": 18.97,
+      "p_vs_uniform": 0.9940007367277568,
+      "p_vs_baseline": 0.9999999991405193
+    }
+  }
+}

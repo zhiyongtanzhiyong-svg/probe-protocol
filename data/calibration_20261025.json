@@ -1,0 +1,212 @@
+{
+  "date": "2026-10-25",
+  "store": "data/canonical_clip_features_dfn.npz",
+  "checkpoint": "dfn_clip",
+  "zero_shot_template": {
+    "name": "EN-Symptom",
+    "text": "tobacco leaf showing {class_name} symptoms"
+  },
+  "zero_shot": {
+    "tau": 100,
+    "accuracy": 6.52,
+    "n_correct": 9,
+    "ece": 0.0027,
+    "tau_sweep": {
+      "10": {
+        "accuracy": 6.52,
+        "ece": 0.0026
+      },
+      "50": {
+        "accuracy": 6.52,
+        "ece": 0.0027
+      },
+      "100": {
+        "accuracy": 6.52,
+        "ece": 0.0027
+      },
+      "500": {
+        "accuracy": 6.52,
+        "ece": 0.0027
+      },
+      "1000": {
+        "accuracy": 6.52,
+        "ece": 0.0027
+      }
+    }
+  },
+  "probe": {
+    "1.0": {
+      "accuracy": 76.81,
+      "ece": 0.4775,
+      "bins": [
+        {
+          "bin": 0,
+          "range": "0.0-0.1",
+          "acc": 0,
+          "conf": 0,
+          "size": 0,
+          "gap": 0
+        },
+        {
+          "bin": 1,
+          "range": "0.1-0.2",
+          "acc": 0.6061,
+          "conf": 0.1674,
+          "size": 33,
+          "gap": 0.4386
+        },
+        {
+          "bin": 2,
+          "range": "0.2-0.3",
+          "acc": 0.7037,
+          "conf": 0.2515,
+          "size": 54,
+          "gap": 0.4522
+        },
+        {
+          "bin": 3,
+          "range": "0.3-0.4",
+          "acc": 0.9048,
+          "conf": 0.3444,
+          "size": 21,
+          "gap": 0.5604
+        },
+        {
+          "bin": 4,
+          "range": "0.4-0.5",
+          "acc": 0.96,
+          "conf": 0.44,
+          "size": 25,
+          "gap": 0.52
+        },
+        {
+          "bin": 5,
+          "range": "0.5-0.6",
+          "acc": 1.0,
+          "conf": 0.5419,
+          "size": 4,
+          "gap": 0.4581
+        },
+        {
+          "bin": 6,
+          "range": "0.6-0.7",
+          "acc": 1.0,
+          "conf": 0.6065,
+          "size": 1,
+          "gap": 0.3935
+        },
+        {
+          "bin": 7,
+          "range": "0.7-0.8",
+          "acc": 0,
+          "conf": 0,
+          "size": 0,
+          "gap": 0
+        },
+        {
+          "bin": 8,
+          "range": "0.8-0.9",
+          "acc": 0,
+          "conf": 0,
+          "size": 0,
+          "gap": 0
+        },
+        {
+          "bin": 9,
+          "range": "0.9-1.0",
+          "acc": 0,
+          "conf": 0,
+          "size": 0,
+          "gap": 0
+        }
+      ]
+    },
+    "100.0": {
+      "accuracy": 86.23,
+      "ece": 0.0641,
+      "bins": [
+        {
+          "bin": 0,
+          "range": "0.0-0.1",
+          "acc": 0,
+          "conf": 0,
+          "size": 0,
+          "gap": 0
+        },
+        {
+          "bin": 1,
+          "range": "0.1-0.2",
+          "acc": 0,
+          "conf": 0,
+          "size": 0,
+          "gap": 0
+        },
+        {
+          "bin": 2,
+          "range": "0.2-0.3",
+          "acc": 0.5,
+          "conf": 0.2681,
+          "size": 2,
+          "gap": 0.2319
+        },
+        {
+          "bin": 3,
+          "range": "0.3-0.4",
+          "acc": 0.5,
+          "conf": 0.3558,
+          "size": 4,
+          "gap": 0.1442
+        },
+        {
+          "bin": 4,
+          "range": "0.4-0.5",
+          "acc": 0.5,
+          "conf": 0.459,
+          "size": 8,
+          "gap": 0.041
+        },
+        {
+          "bin": 5,
+          "range": "0.5-0.6",
+          "acc": 0.6,
+          "conf": 0.543,
+          "size": 15,
+          "gap": 0.057
+        },
+        {
+          "bin": 6,
+          "range": "0.6-0.7",
+          "acc": 0.8571,
+          "conf": 0.6514,
+          "size": 14,
+          "gap": 0.2057
+        },
+        {
+          "bin": 7,
+          "range": "0.7-0.8",
+          "acc": 0.7143,
+          "conf": 0.7654,
+          "size": 7,
+          "gap": -0.0512
+        },
+        {
+          "bin": 8,
+          "range": "0.8-0.9",
+          "acc": 0.9412,
+          "conf": 0.8445,
+          "size": 17,
+          "gap": 0.0966
+        },
+        {
+          "bin": 9,
+          "range": "0.9-1.0",
+          "acc": 0.9859,
+          "conf": 0.9614,
+          "size": 71,
+          "gap": 0.0245
+        }
+      ]
+    }
+  },
+  "elapsed_s": 28.1
+}

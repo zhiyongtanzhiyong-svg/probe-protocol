@@ -219,8 +219,9 @@ def main():
             "sem": round(float(np.std(accs, ddof=1) / np.sqrt(len(accs))), 6) if len(accs) > 1 else 0.0,
         },
         "legacy_single_config_ref": {
-            "value_pct": {5: 65.46, 10: 75.75}[K],
-            "source": "data/paired_kshot_a4.json (lr=3e-4, 30ep, NO hyper-parameter search)",
+            "value_pct": {1: 33.04, 2: 43.38, 5: 65.46, 10: 75.75}[K],
+            "source": ("K=1: data/paired_kshot_a4_both.json; K=2: data/paired_kshot_a4_k2.json; "
+                       "K=5/10: data/paired_kshot_a4.json (all: lr=3e-4, 30ep, NO hyper-parameter search)"),
         },
         "elapsed_s": round(time.time() - t0, 1),
     }

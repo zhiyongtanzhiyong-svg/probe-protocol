@@ -1,0 +1,72 @@
+{
+  "date": "2026-10-25",
+  "device": "cpu",
+  "n_test": 138,
+  "majority_baseline_pct": 13.04,
+  "templates": {
+    "EN-Symptom": {
+      "acc_pct": 1.45,
+      "n_correct": 2
+    },
+    "KG-Symptom": {
+      "acc_pct": 7.97,
+      "n_correct": 11
+    },
+    "EN-Photo": {
+      "acc_pct": 5.07,
+      "n_correct": 7
+    },
+    "KG-Combined": {
+      "acc_pct": 1.45,
+      "n_correct": 2
+    },
+    "KG-Condition": {
+      "acc_pct": 3.62,
+      "n_correct": 5
+    },
+    "CN-Symptom": {
+      "acc_pct": 13.04,
+      "n_correct": 18
+    },
+    "EN-Closeup": {
+      "acc_pct": 2.17,
+      "n_correct": 3
+    },
+    "CN-Photo": {
+      "acc_pct": 5.07,
+      "n_correct": 7
+    },
+    "CN-Label": {
+      "acc_pct": 2.17,
+      "n_correct": 3
+    },
+    "CN-Disease": {
+      "acc_pct": 2.17,
+      "n_correct": 3
+    },
+    "CN-Closeup": {
+      "acc_pct": 0.72,
+      "n_correct": 1
+    },
+    "EN-Disease": {
+      "acc_pct": 7.97,
+      "n_correct": 11
+    },
+    "EN-Expert": {
+      "acc_pct": 4.35,
+      "n_correct": 6
+    },
+    "EN-Label": {
+      "acc_pct": 2.17,
+      "n_correct": 3
+    }
+  },
+  "best_template": "CN-Symptom",
+  "best_acc_pct": 13.04,
+  "binomial_vs_uniform_best": {
+    "n_correct": 18,
+    "p_one_sided": 0.0024939231305663116
+  },
+  "protocol": "scripts/siglip_protocol.py templates; 0.5/0.5 norm; 384px; CPU",
+  "elapsed_s": 208.9
+}
