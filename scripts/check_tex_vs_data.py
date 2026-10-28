@@ -14,7 +14,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-TEX = ROOT / "manuscript" / "paper" / "clip_vs_resnet_tobacco.tex"
+TEX = ROOT / "manuscript" / "paper" / "probe-protocol.tex"
 DATA = ROOT / "data"
 
 

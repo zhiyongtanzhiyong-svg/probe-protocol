@@ -1,4 +1,4 @@
-"""Reproducible reference audit for clip_vs_resnet_tobacco.tex.
+"""Reproducible reference audit for probe-protocol.tex.
 
 Resolves every \\bibitem against a canonical registry (Crossref, DataCite,
 arXiv, HuggingFace, with Semantic Scholar for abstracts), checks cited<->bibitem
@@ -40,7 +40,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-TEX = ROOT / "manuscript" / "paper" / "clip_vs_resnet_tobacco.tex"
+TEX = ROOT / "manuscript" / "paper" / "probe-protocol.tex"
 CACHE = ROOT / "data" / "reference_audit_cache.json"
 REPORT_JSON = ROOT / "data" / "reference_audit.json"
 REPORT_MD = ROOT / "manuscript" / "paper" / "CITATION_VERIFICATION.md"

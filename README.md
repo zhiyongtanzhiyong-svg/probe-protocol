@@ -25,7 +25,7 @@ indistinguishable rather than as wins.
 ## Repository layout
 
 ```
-manuscript/paper/clip_vs_resnet_tobacco.tex   the paper (all prose and numbers)
+manuscript/paper/probe-protocol.tex   the paper (all prose and numbers)
 data/*.json                                   experiment outputs — source of truth
 scripts/                                      every experiment behind a number
 scripts/dataset.py                            TPDD dataset (vendored; see below)
@@ -45,7 +45,7 @@ The figures and the consistency check need no GPU and take seconds:
 ```bash
 python3 generate_figures.py        # writes manuscript/paper/figures/{pdf,svg,png}
 python3 scripts/check_tex_vs_data.py   # must print N/N consistent
-cd manuscript/paper && pdflatex clip_vs_resnet_tobacco.tex
+cd manuscript/paper && pdflatex probe-protocol.tex
 ```
 
 `scripts/check_tex_vs_data.py` derives each headline number from the JSON
@@ -121,4 +121,4 @@ JSON outputs.
 
 ## Citation
 
-See the bibliography in `manuscript/paper/clip_vs_resnet_tobacco.tex`.
+See the bibliography in `manuscript/paper/probe-protocol.tex`.

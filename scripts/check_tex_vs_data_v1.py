@@ -17,7 +17,7 @@ from pathlib import Path
 import numpy as np
 
 ROOT = Path(__file__).resolve().parent.parent
-TEX = ROOT / "manuscript" / "paper" / "clip_vs_resnet_tobacco.tex"
+TEX = ROOT / "manuscript" / "paper" / "probe-protocol.tex"
 DATA = ROOT / "data"
 
 

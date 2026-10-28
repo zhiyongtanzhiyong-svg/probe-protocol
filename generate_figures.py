@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-generate_figures.py — SINGLE source of truth for every figure in clip_vs_resnet_tobacco.tex.
+generate_figures.py — SINGLE source of truth for every figure in probe-protocol.tex.
 
 Run once and it (re)generates all four figures into manuscript/paper/figures/:
 
