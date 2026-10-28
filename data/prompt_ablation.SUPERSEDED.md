@@ -43,5 +43,4 @@ Deleting or moving the file would break all three. Do not.
 ## If you are reviewing or re-deriving
 
 Do not read this file as evidence about zero-shot CLIP. Read
-`data/zero_shot_clean.json`. See also
-`manuscript/paper/PAPER_CLAIM_AUDIT.md` §"Artifact Status".
+`data/zero_shot_clean.json`.

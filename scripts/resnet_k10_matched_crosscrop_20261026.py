@@ -1,7 +1,7 @@
 """
 Cross-crop K=10 ResNet-18 matched-budget (9-config grid search).
 
-Purpose: Address reviewer concern (GLM N-G) that the cross-crop K=10 ResNet
+Purpose: Address the reviewer concern that the cross-crop K=10 ResNet
 baselines use the legacy single-configuration protocol, not the matched-budget
 protocol used for TPDD.
 

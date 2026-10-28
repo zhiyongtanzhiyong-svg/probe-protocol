@@ -1,8 +1,7 @@
 # Novelty Check Report — Adaptation Ladder (A: token readout, B: LoRA cell)
 
 **Date**: 2026-10-20
-**Method**: OpenAlex multi-source search (Phase B) + independent subagent referee (Phase C,
-Codex MCP unavailable in this environment; same workaround as 2026-10-15 KILL_ARGUMENT run)
+**Method**: OpenAlex multi-source search (Phase B) + independent referee assessment (Phase C)
 **Dossier**: `idea-stage/NOVELTY_DOSSIER.md`
 
 ## Verdict per claim

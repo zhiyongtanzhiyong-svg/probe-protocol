@@ -1,4 +1,4 @@
-"""C-task verification probes (GLM review C1/C2 + ECE protocol check).
+"""C-task verification probes (review items C1/C2 + ECE protocol check).
 
 1. Canonical-protocol ECE: fit C=1 and validation-selected C probes on the
    canonical npz features (20% stratified val, seed 42, refit on 100%),

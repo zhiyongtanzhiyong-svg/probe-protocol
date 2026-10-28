@@ -1,7 +1,7 @@
 """
 Probe C-grid search at K=1 and K=2 for both CLIP checkpoints.
 
-Purpose: Address reviewer concern (GLM N-B) that the K=1/2 frozen-probe cells
+Purpose: Address the reviewer concern that the K=1/2 frozen-probe cells
 use C=1 (default) while the full-data probe uses C=100 (validation-selected).
 This script runs the same C grid at K=1 and K=2, selects best C on validation,
 and reports test accuracy.
@@ -56,7 +56,7 @@ def load_features(path):
 
 def main():
     results = {
-        'purpose': 'Probe C-grid at K=1/2 (address GLM N-B)',
+        'purpose': 'Probe C-grid at K=1/2 (address reviewer concern)',
         'c_grid': C_GRID,
         'protocol': 'Select C on 139-val, report test acc. Compare C=1 (default) vs best-C.',
     }

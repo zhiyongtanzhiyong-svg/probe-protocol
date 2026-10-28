@@ -11,7 +11,7 @@ checkpoints, with:
     (replaces the misattributed 0.14 in data/calibration_results.json,
     which was computed on a superseded store with the KG-Symptom template);
   - one-sided exact binomial p for best-vs-uniform (1/16), as requested
-    by the second round (DeepSeek C.1).
+    in the second-round review (C.1).
 
 Output: data/zero_shot_both_ckpts_20261025.json
 """

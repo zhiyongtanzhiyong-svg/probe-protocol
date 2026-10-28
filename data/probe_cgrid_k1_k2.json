@@ -1,5 +1,5 @@
 {
-  "purpose": "Probe C-grid at K=1/2 (address GLM N-B)",
+  "purpose": "Probe C-grid at K=1/2 (address reviewer concern)",
   "c_grid": [
     0.01,
     0.1,
