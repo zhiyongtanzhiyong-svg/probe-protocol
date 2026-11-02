@@ -85,6 +85,7 @@ data/Plant_leaf_diseases_dataset_without_augmentation.zip
 # superseded outputs, kept out of the audit trail
 data/_stale/
 *.bak
+*.bak-*
 
 # Vendored third-party reference implementations (LP++ etc). These are external
 # code, not ours to version; clone them from their own repositories.
@@ -118,3 +119,7 @@ manuscript/paper/EXPERIMENT_AUDIT*
 manuscript/paper/FIGURE_TABLE_AUDIT.md
 manuscript/paper/CITATION_VERIFICATION.md
 manuscript/paper/REVIEW_2026-*/
+manuscript/paper/probe-protocol-r1.tex
+manuscript/paper/probe-protocol-r1.pdf
+manuscript/paper/FIGURE_TABLE_AUDIT.json
+manuscript/paper/REVIEW_CEA_external_2026-10-30.md
