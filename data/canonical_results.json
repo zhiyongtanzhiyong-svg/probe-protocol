@@ -128,10 +128,11 @@
     },
     "resnet_finetuned": {
       "accuracy": 0.8773,
-      "balanced_accuracy": 0.8285,
+      "balanced_accuracy": 0.8116,
       "macro_f1": 0.7694,
       "sd": 0.0284,
-      "n_seeds": 15
+      "n_seeds": 15,
+      "note": "accuracy (0.8773) and balanced_accuracy (0.8116) are 15-seed means; balanced_accuracy = canonical_fig_artifacts.json resnet.balanced_accuracy_mean (the prior 0.8285 was the seed-0 value, mislabeled as the aggregate). macro_f1 (0.7694) is the seed-0 value; the 15-seed mean is not stored."
     }
   },
   "geometry": {
