@@ -52,8 +52,12 @@
 - [x] **full 出数（11-02 早）**：**95.60% ± 1.41%（n=15，winner lr=5e-6/300ep）**；K=1 40.19±6.29（A100）vs 40.24±6.10（V100）差 0.05pp 跨硬件复现✓；K=2 **57.49±4.78**。full+K1+K2 JSON 已回 143（`dinov2_finetune_full_16.json` / `dinov2_kshot_ft_k2_16.json`，K1 为 35 版 `dinov2_kshot_ft_k1.json`）。
 - [x] **full 入论文（4 处，备份 bak-rev9-20261102）**：① Results L313 DINOv2 句重写（frozen 68.1 / single-30ep 77.5 / matched 95.6±1.4，"not an artifact of the specific CLIP-vs-ResNet-18 pairing"）；② Fairness control 加 DINOv2 句（"tying fine-tuned CLIP…contrastive/self-supervised divide"）；③ Limitation (1) → "Three backbone families"（全数据轴三家族均覆盖）；④ Appendix A provenance 加 DINOv2-FT 行（A100/PyTorch 2.9 + V100 K1 跨硬件 0.05pp 互证）。29 页 clean build，pdftotext 6/6 验证。
 - [x] **TikZ 确认无需改**：Intro 2×2 图只含 CLIP–ResNet，无 DINOv2 格。
-- [ ] **K=5/K=10 出数后（11-02 内，~2–3h）**：填 Table 2 新行 `DINOv2 fine-tuned`（K1 40.2±6.3 / K2 57.5±4.8 / K5、K10 待 / Full 95.6±1.4，入 End-to-end FT 组）+ 脚注删 "DINOv2 K=2" not-executed + 硬件注；重建后 29 页终版。
-- [ ] 全部出数后：git 分组 commit（tex rev8+rev9 / paired_zs_baseline.py + 新 JSON / dinov2 脚本）。
+- [x] **K=5/K=10 出数（11-01 23:21 16 时钟，queue DONE，5/5 rc=0，GPU 释放）**：K=5 **75.27±5.72**（winner lr=2e-5/100ep）；K=10 **85.07±3.18**（winner lr=2e-5/30ep）。JSON 已回 143（`_k5_16` / `_k10_16`，partial=None）。
+- [x] **Table 2 终版（备份 bak-rev11-20261102）**：新增 `DINOv2 fine-tuned (ViT-L/14)` 行（40.2/57.5/75.3/85.1/95.6，FT 组）；脚注删 "DINOv2 K=2 not executed" + 加 A100/PyTorch2.9 + V100 K1 互证注；Results 加 few-shot 单调句（K1 打平 → K2 +5.0 → K5/10 +10.4/+10.5 vs ResNet，K5/10 追平 CLIP-FT，K1/2 落后）；SD 统一舍入 1.5。29 页 clean build，pdftotext 9/9 验证。
+- [x] **git 分组 commit（7 个，working tree 零残留）**：① gitignore（bak/r1/审计工作文件）② manuscript（rev8–11 + DINOv2 矩阵）③ scripts 迁移 ④ data DINOv2+paired ⑤ canonical 对齐 ⑥ dinov2/grid/paired 脚本 ⑦ 根 figures/ 删除。
+- [x] **em-dash 复查（B 方案撤销）**：70 个 `---` 中 41 个是表格占位符，行文真实密度 0.24%（每 413 词一个）低于 AI 典型值，29 个全为功能性括号 → 不改。
+- [x] **We/Our 统计**：we=38 / our=9 / 12.7k 词 = 0.37%，方法节集中、Results 近零，正常克制区间 → 不改。
+- [x] **AI 痕迹扫描**：40+ 指纹词零命中（crucial/pivotal/leverage/delve/moreover/notably/worth-noting… 全 0），mosaic=病毒名合法 → 不改。
 - [ ] 若队列失败：看 `logs/queue_nohup.log` traceback；容器内 `cd /work && export LD_LIBRARY_PATH=/hostlibs DINOV2_PTH=/work/checkpoints/dinov2/dinov2_vitl14_pretrain.pth && python3 scripts/dinov2_finetune_kshot.py <job>` 重跑。
 
 ### ⏳ 待办（投稿前，按序）
