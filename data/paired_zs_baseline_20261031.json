@@ -1,0 +1,58 @@
+{
+ "source": "zero_shot_full_20261025.json",
+ "labels_source": "canonical_clip_features_dfn.npz test_y (canonical DFN store; same test split manifest for all checkpoints)",
+ "n_test": 138,
+ "majority_class_idx": 15,
+ "majority_baseline_pct": 13.04,
+ "caveat": "the tested best template was selected on this same test set; paired statistics are descriptive (post-selection), not confirmatory",
+ "checkpoints": {
+  "dfn_clip": {
+   "best_template": "KG-Symptom",
+   "best_acc_pct": 11.59,
+   "paired_vs_majority": {
+    "b_model_right_baseline_wrong": 16,
+    "c_model_wrong_baseline_right": 18,
+    "discordant_pct": 24.6,
+    "mcnemar_exact_p_two_sided": 0.8642,
+    "paired_diff_pct": -1.45,
+    "paired_bootstrap_ci95_pct": [
+     -9.42,
+     7.25
+    ],
+    "p_d_observed": 0.2464
+   }
+  },
+  "laion2b": {
+   "best_template": "CN-Symptom",
+   "best_acc_pct": 12.32,
+   "paired_vs_majority": {
+    "b_model_right_baseline_wrong": 17,
+    "c_model_wrong_baseline_right": 18,
+    "discordant_pct": 25.4,
+    "mcnemar_exact_p_two_sided": 1.0,
+    "paired_diff_pct": -0.72,
+    "paired_bootstrap_ci95_pct": [
+     -9.42,
+     7.97
+    ],
+    "p_d_observed": 0.2536
+   }
+  },
+  "bioclip2": {
+   "best_template": "KG-Combined",
+   "best_acc_pct": 10.14,
+   "paired_vs_majority": {
+    "b_model_right_baseline_wrong": 14,
+    "c_model_wrong_baseline_right": 18,
+    "discordant_pct": 23.2,
+    "mcnemar_exact_p_two_sided": 0.5966,
+    "paired_diff_pct": -2.9,
+    "paired_bootstrap_ci95_pct": [
+     -10.87,
+     5.07
+    ],
+    "p_d_observed": 0.2319
+   }
+  }
+ }
+}
