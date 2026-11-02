@@ -103,8 +103,9 @@ def main():
     n_c = m16["n_contrasts"]
     n_s = m16["n_survive_holm"]
     chk("16-contrast n_contrasts", f"{n_c}")
-    chk("16-contrast survivors", f"{n_s} of {n_c}")
-    chk("16-contrast survivors (alt)", f"{n_s}/{n_c}")
+    # Paper uses the fraction form (15/16); accept either wording.
+    chk("16-contrast survivors", f"{n_s} of {n_c}",
+        ok=(norm(f"{n_s} of {n_c}") in flat) or (norm(f"{n_s}/{n_c}") in flat))
 
     # ==================================================================
     # 6. RESNET-50 (data/resnet50_full.json)
@@ -150,6 +151,16 @@ def main():
                     chk("Tomato CLIP full-data", f"{pct(fd['clip'][k])}")
 
     # ==================================================================
+    # 10a. DINOV2 FINE-TUNING (data/dinov2_finetune_full_16.json, A100 run)
+    # ==================================================================
+    try:
+        dft = load("dinov2_finetune_full_16.json")
+        m = dft["stage2_final"]["mean"]
+        chk("DINOv2-FT full mean", f"{pct(m)}")
+        chk("DINOv2-FT hardware note", "A100-80GB/PyTorch 2.9")
+    except (FileNotFoundError, KeyError):
+        pass
+
     # 10. DINOV2 (data/dinov2_protocol.json)
     # ==================================================================
     dino = load("dinov2_protocol.json")
@@ -239,14 +250,16 @@ def main():
     # ==================================================================
     # 18. RESNET K-SHOT MATCHED (cross-crop)
     # ==================================================================
+    # The paper's cross-crop numbers come from the canonical documented split
+    # (pv_tomato_results.json, pv_corn_results.json; test n=1,635/346). The
+    # resnet_k1_matched_*.json artifacts are a separate cross-check split
+    # (13,892/1,816) and are intentionally NOT cited in the prose.
     for crop in ("corn", "tomato"):
         try:
-            rk = load(f"resnet_k1_matched_{crop}.json")
-            if "stage2_final" in rk:
-                sf = rk["stage2_final"]
-                m = sf.get("mean") or sf.get("mean_test", 0)
-                chk(f"ResNet K=1 {crop}", f"{pct(m)}")
-        except FileNotFoundError:
+            pv = load(f"pv_{crop}_results.json")
+            m = pv["few_shot"]["K=1"]["resnet_finetuned"]["mean"]
+            chk(f"ResNet K=1 {crop}", f"{pct(m)}")
+        except (FileNotFoundError, KeyError):
             pass
 
     # ==================================================================
