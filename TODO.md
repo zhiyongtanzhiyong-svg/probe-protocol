@@ -1,6 +1,77 @@
 # Paper2: CLIP vs ResNet - Tobacco Dataset
 ## TODO List
 
+---
+
+## 【2026-10-31 第八轮】13 轮评审（ChatGPT）处置 —— 已完成
+
+### 评审定性
+- 它审的是**旧快照 `(4).tex`**（第七轮前，URL 占位符仍在）、附件无图无数据、其 TeX 环境编译失败、脚本是旧文件 `generate_figures_optimized.py` → E1.2/A3 等是**附件管道假象**；R1-5/R2-6/K=1 星号/逐类 CI/BioCLIP 0.051 均已在前面轮次修掉（它自己确认）。
+- 真问题 = A1（best-of-14 名义显著性 vs L239 FWER 自相矛盾）+ 7 个小项，全部已执行。
+
+### 已执行（18 处 tex + 2 处脚本，28 页 clean build，备份 `probe-protocol.tex.bak-rev8-20261031`）
+- [x] **A1**：L231 重写为 "nominal, post-selection, non-inferential"（模板同集选择，p 不控制 14 路搜索）；SigLIP p=0.0025 同步；L237 后加**配对 McNemar+bootstrap** 段（方向：否定结论对 marginal/paired 选择稳健）；RQ1 答案的 p≤0.051 加 "nominal post-selection and descriptive"。
+- [x] **新脚本 `scripts/paired_zs_baseline.py`** → `data/paired_zs_baseline_20261031.json`：从归档逐图 preds 算（**验证门：42/42 模板重算精度与归档一致**）：DFN b=16/c=18 p=0.86、LAION 17/18 p=1.0、BIO 14/18 p=0.60；配对差 CI 跨零偏负；**p_d 观测 0.23–0.25**。SigLIP 无逐图归档（保持 descriptive）。
+- [x] **A4**：结论 "tobacco-specific" → "descriptive contrast across our own evaluation settings…not a claim that tobacco as a crop causes a zero-shot deficit"；摘要加 "On TPDD" 限定。
+- [x] **A5**：混淆矩阵图注加 "Colour scale: row-normalised recall…numbers inside cells are raw image counts, not proportions"。
+- [x] **R1-3 功效段**：SE=√(p_d/n) 公式 + planning p_d≈0.16 声明为假设（full-data 对无逐图归档）+ bracket [1.7%, 23.3%] + per-class 表推下界 p_d≳6%（Σn_c|Δ_c|）→ 检测限 5.8–11.5pp（planning 9–10pp 在内）+ 零样本对观测 p_d=0.23–0.25。1.5/3.5pp 缺口全 bracket 下不可分辨 ✓。
+- [x] **⚠️ `data/p2_results.json` 是旧时代产物**（clip_full=75.4% 为 canonical 前 LAION C=1 值）→ **禁止引用**；其 McNemar 不对应当前 C=100 probe。
+- [x] **R1-6**：L129/L410 "full protocol" → "frozen-probe arm across all four regimes"。
+- [x] **R2-2**：4 处 "determined by" 软化（L73 首现加 "in the settings measured here…within-task regularity…not a universal law"；L310/372/622 → "is set by"）。
+- [x] **R2-4**：TikZ 图注加 "summarizes the reported results…no independent evidence; CV cell rests on five non-independent ≈80%-overlapping folds"。
+- [x] **B1（顺手）**：摘要首现 "matched fine-tuning budget---a matched 9-config search procedure, not equal compute cost (Methods)"。
+- [x] **R1-4（定量界限版）**：L134 → 单图 ≤0.06pp vs 番茄最小显著对比 11.1pp（K=5；K=10 14.4pp）→ 不可能翻转显著性。
+- [x] **R1-8**：L456 跨作物 3-家族 Holm 句加 `data/m2_powered_stats.json` 引用（raw p 可复算）。
+- [x] **R4.3**：`generate_figures.py` `--no-gpu` help/docstring 改为 "legacy alias…no longer GPU-dependent"。
+- [x] 构建：28 页，0 错/0 overfull/0 未定义；pdftotext 18/18 验证。
+- [x] **R2-1（导读句版，用户确认“不做结构大改”）**：Results 开头 L189 后补两句——两条承重结论（零样本 decision-rule mismatch；ordering set by adaptation protocol）+ “其余全部分析为支撑证据，逐条 scoped，无一条结论依赖其中任何一项”。28 页 clean build 验证通过。
+- [ ] **回复信素材**：按上文“假象/已修/本轮修/待人工”四类逐条回应 13 轮意见。
+
+---
+
+## 【2026-10-30 第七轮】投稿前收尾 —— 状态与待办
+
+> 队列进度（10-31 早）：K=1 stage-1 完成（winner lr=2e-5 ep=300, val 43.72%），stage-2 15 seeds 进行中（seed0 test 40.58 / seed1 36.23）；随后 --full（大头 2–4 天）→ K=2/5/10。
+
+### 已完成（本轮，全部已验证）
+- [x] **项1 npz/canonical 对齐**：根因 = `clip_features_clean.npz`（DFN legacy，重建前随机增强）漂移（cosine 0.83–0.97，C=1 → 76.09 vs canonical 76.81）；LAION legacy（75.4）已被取代、仓库内两个 LAION store 均为 fresh。Appendix A "only place" 句已重写为当前事实（DFN C=1 为唯一受影响报告值；0.7pp 无符号/排名翻转；legacy 76.09 = 重建前 full_provenance.json 记录值）。
+- [x] **项2 错误代价**：Discussion 新增 §Cost-weighted diagnostic reliability（病毒级 PVY/TMV/TSWV/CMV w=3；重症 w=2；其余 w=1；DFN 66.2% vs ResNet-FT 81.0%；病毒层 51.2 vs 74.1；权重 2/1.5/1 与 2/1.2/1 下排名不变；healthy→0 不变；权重为显式假设已声明）。
+- [x] **项3 双网格平台曲线**：`scripts/fig_grid_plateau.py`（新）→ `figures/fig_grid_plateau.{pdf,png,svg}`；新增 Appendix C + Methods matched-budget 段加一句 + **Limitation (10)**。如实结论：CLIP 面平坦（span 5.3pp、选中在内部）；ResNet 面陡峭（span 24.2pp、选在最低 lr 边界、epochs 仍在升）→ 声称 matched 的是搜索程序而非调优质量；若 ResNet 真最优低于 3e-4 则 matched-FT 边距可能被高估（frozen 臂不受影响）。数据源：`data/p3b_clip_finetune_kshot.json`（laion2b K=5）、`data/p3b_resnet_kshot_matched.json`（K=5）的 stage1_search。
+- [x] **项4 split 核查**：四个 n=1 测试类（anthracnose/black_shank/genetic_abnormality/tswv）各 60 张训练池，再平衡可行但刻意不做 → **Limitation (9)** 已加（预注册 re-derived split 不可事后改）。
+- [x] **项6 稳定性限定**：三处 "descriptive" 核实齐全（RQ2 答案 / CV 段 / Limitation 3），无需改动。
+- [x] **项7 行政**：ghost authors（F.H./X.T.）已不在作者列表；对应作者仅 L.Z.；资金声明标题页与 Funding 一致无矛盾；**URL 占位符已改为 double-blind 措辞**（DAS L626 + Limitation 7 同步；DAS 补 manifest 与审计文件路径）。
+- [x] 论文构建：**28 页**（27→28，因成本小节+Appendix C+两条 Limitation）、0 错/0 overfull/0 未定义。备份 `probe-protocol.tex.bak-rev7-20261030`。
+
+### ⏳ 进行中：DINOv2-FT 补 2×2 缺失格 —— **已迁移至 16/A100**（2026-10-31）
+- **迁移原因**：35/V100 上 full 需 ~1.5–2 天 + K 收尾 0.5 天；用户指认 16 上 A100-80G×2（GPU1 空闲）可用 → 总 ETA 缩至 **~12–18h**。
+- **35 状态**：队列已 kill（pid 2364237）；**K=1 成品已回 143**：`data/dinov2_kshot_ft_k1.json`（40.24%±6.10, n=15，winner lr=2e-5 ep=300，V100/torch2.4 产物，留作跨硬件备份）；partial full checkpoint 存 `/tmp/dinov2_full_partial_35.json`（仅 5e-6 列，不作数）；35 现空闲备用。
+- **16 环境**：`user@10.78.65.16`（143 直连可达，35 不通需经 143 中转）；容器 `dinov2-ft`（基于 `mzyc-llm-base:v1`，torch 2.9.1+cu129/py3.12；`--device /dev/nvidia1` 手工直通——该 docker 无 nvidia runtime 别名；`-v /usr/lib/x86_64-linux-gnu:/hostlibs:ro`+`LD_LIBRARY_PATH`；容器内 pip 装了 sklearn 1.9.1/open_clip_torch 3.3.0/scipy）；工作区 `/home/user/probe-protocol`（=容器 `/work`）；权重 SHA256 `d5383ea8…` 已验证一致；**冒烟已通过**（K=1 单 seed 跑通，验证门正常）。
+- **队列**：`/work/run_queue_16.sh`（容器内 nohup，pid 1006，10-31 启动）；顺序 `--k 1 → --full → --k 2 → --k 5 → --k 10`（K=1 重跑 = 与其余 job 同硬件同 torch，保同族可比；35 版 K=1 留作跨硬件复现点）；guard：GPU1 空闲显存 <20GB 则睡 300s；失败即停。
+- **监控**：`ssh user@10.78.65.16 "tail -20 /home/user/probe-protocol/logs/queue_nohup.log"`（⚠️ **16 时钟慢 1 天**：日志 10-30 14:53 = 实际 10-31）；输出 schema 同前（stage1 9 配置×3 seeds + selected + stage2 15 seeds）。
+- **provenance 注意**：A100/torch2.9 产物与 35 的 K=1（V100/torch2.4）跨硬件，Appendix A provenance 按 artifact 分别注明硬件/torch。
+- [x] **full 出数（11-02 早）**：**95.60% ± 1.41%（n=15，winner lr=5e-6/300ep）**；K=1 40.19±6.29（A100）vs 40.24±6.10（V100）差 0.05pp 跨硬件复现✓；K=2 **57.49±4.78**。full+K1+K2 JSON 已回 143（`dinov2_finetune_full_16.json` / `dinov2_kshot_ft_k2_16.json`，K1 为 35 版 `dinov2_kshot_ft_k1.json`）。
+- [x] **full 入论文（4 处，备份 bak-rev9-20261102）**：① Results L313 DINOv2 句重写（frozen 68.1 / single-30ep 77.5 / matched 95.6±1.4，"not an artifact of the specific CLIP-vs-ResNet-18 pairing"）；② Fairness control 加 DINOv2 句（"tying fine-tuned CLIP…contrastive/self-supervised divide"）；③ Limitation (1) → "Three backbone families"（全数据轴三家族均覆盖）；④ Appendix A provenance 加 DINOv2-FT 行（A100/PyTorch 2.9 + V100 K1 跨硬件 0.05pp 互证）。29 页 clean build，pdftotext 6/6 验证。
+- [x] **TikZ 确认无需改**：Intro 2×2 图只含 CLIP–ResNet，无 DINOv2 格。
+- [ ] **K=5/K=10 出数后（11-02 内，~2–3h）**：填 Table 2 新行 `DINOv2 fine-tuned`（K1 40.2±6.3 / K2 57.5±4.8 / K5、K10 待 / Full 95.6±1.4，入 End-to-end FT 组）+ 脚注删 "DINOv2 K=2" not-executed + 硬件注；重建后 29 页终版。
+- [ ] 全部出数后：git 分组 commit（tex rev8+rev9 / paired_zs_baseline.py + 新 JSON / dinov2 脚本）。
+- [ ] 若队列失败：看 `logs/queue_nohup.log` traceback；容器内 `cd /work && export LD_LIBRARY_PATH=/hostlibs DINOV2_PTH=/work/checkpoints/dinov2/dinov2_vitl14_pretrain.pth && python3 scripts/dinov2_finetune_kshot.py <job>` 重跑。
+
+### ⏳ 待办（投稿前，按序）
+- [ ] **项7 收尾：20 项 one-line checklist**（源自 12 轮评审 verdict `manuscript/paper/REVIEW_2026-10-29/12_twelfth_review_verdict.md` + `SUBMISSION_CHECKLIST.md` 的 "Still TODO"）→ 写成每项一行的状态表，放进 SUBMISSION_CHECKLIST.md 或 REVIEW 目录。
+- [ ] **Git commit**（分组）：① 本轮 tex（14 意见+7 项）② 图/脚本（fig_grid_plateau、generate_figures 合并、perclass ×100 修复）③ dinov2_finetune_kshot.py ④ 数据 JSON；注意 `data/canonical_results.json` 是**先前遗留**的未提交修改，单独一组；`*.bak-*` 备份文件加 .gitignore 或不提交。
+- [ ] **人工项（只能作者做）**：CeA Guide for Authors 活页确认（引用格式/模板/关键词上限 3–6/摘要字数）；仓库真实 URL（double-blind 前可匿名，投稿前必须插入）；ORCID；Highlights 5 条复核。
+- [ ] 最终：latexmk 重建 + `scripts/audit_references.py` + checker + 页数/overfull 终验。
+
+### 关键事实备忘（防遗忘）
+- 论文 28 页；float 布局 p3 Fig1(TikZ 2×2) / p9 T1 / p11 T2 / p12 Fig2 / p13 T3 / p14 T4 / p15 Fig3 / p19 Fig4 / p27 Fig5(t-SNE)+Appendix C。
+- DFN-CLIP full C=1 canonical = **76.81**；legacy store = 76.09（漂移 0.72pp，已披露）；LAION = 76.09；ResNet-FT = 87.7±2.8；CLIP-FT = 94.7/95.9。
+- matched-FT 8 contrasts 全过 Holm（+4.64~+12.17pp）；p=0.002 是 5-fold 配对 t（df=4，descriptive，非 16 家族成员）。
+- 143 = lizhuo@192.168.50.143（4070 Ti，sshfs 挂在 /mnt/gpu-4070）；35 = broadsense@192.168.20.35（V100×4，DINOv2 队列已迁走，现空闲备用）；16 = user@10.78.65.16（A100-80G×2，GPU0 他人占用，GPU1 归 `dinov2-ft` 容器；143↔16 直连，35↔16 不互通需经 143 中转；**16 时钟慢 1 天**）。
+- 35 上的仓库副本只有 scripts/ + data/（tpdd 52M + 108 个 json + checkpoints/dinov2），**无 .git、无 manuscript**——tex 改动不要指望 35 副本，一切以 143 为准。
+
+---
+
+
 > **状态 (2026-09-23)**: 大修订已完成并编译通过 —— 新标题/摘要/引言、番茄跨作物复制、
 > BioCLIP 2 领域VLM零样本对照、DINOv2 自监督对照、CoOp 完整配方对照、5-fold CV 协议、
 > ZPE 加权模板集成（作为 in-sample bound 报告）。排版 overfull 已修复（含 Abbreviations 表

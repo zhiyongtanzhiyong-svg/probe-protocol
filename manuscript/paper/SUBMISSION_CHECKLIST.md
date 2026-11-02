@@ -1,5 +1,13 @@
 # Submission Checklist — Computers and Electronics in Agriculture
 
+> **[TOP-PRIORITY — HUMAN, before submission] Confirm the live CeA "Guide for Authors" in a normal
+> browser.** Every automated fetch from this machine returned 403 (webfetch / curl / Jina / CDP), so
+> the exact house format **cannot be machine-verified here**. Manually confirm: (a) reference/citation
+> style — this paper uses **numbered** `[1]…[32]`; (b) reference **entry format** (e.g. `Authors.;
+> Title. Venue, Year.; DOI`); (c) whether the portal wants the **`elsarticle`** class template or
+> accepts plain `article`. URL:
+> `https://www.sciencedirect.com/journal/computers-and-electronics-in-agriculture/publish-your-article/guide-for-authors`
+
 > **Source:** Drafted 2026-10-13. ScienceDirect/Elsevier guidelines page returned 403 to all
 > automated fetch attempts (webfetch, curl, Jina, CDP). Items marked **[VERIFY]** must be
 > confirmed against the live "Guide for Authors" page before submission:
@@ -8,7 +16,7 @@
 ## STATUS (2026-10-14)
 **Re-target to C&E in Agriculture (Elsevier) COMPLETE:**
 - [x] Document class MDPI → `\documentclass{article}` (plain LaTeX); all MDPI macros removed
-- [x] Citations author-year → numbered `[1]…[25]` (verified in compiled PDF)
+- [x] Citations author-year → numbered `[1]…[32]` (verified in compiled PDF)
 - [x] End-matter MDPI macros → standard `\section*{...}` (Author Contributions / Funding / Data Availability Statement / Conflicts of Interest)
 - [x] `\simplesumm` removed; Highlights created (`Highlights.txt`, 5 bullets, 50–200 chars each)
 - [x] Compiles clean (pdflatex ×2, 0 errors, 0 undefined refs); checker 189/189; 0 TABs
@@ -19,23 +27,27 @@
 - [x] **Full 55k PlantVillage skipped** (user decision) — tomato+corn already provide powered multi-crop evidence
 - [x] M5 gate green: 189/189 checker PASS; clean compile 27pp, 0 errors, 0 undefined refs/cites, 0 overfull>100pt, 0 TABs
  - [x] **2026-10-16 adversarial review pass + apt fix.** Cross-examination flagged P1/P2/P3; each checked against source: **P2 (K=1) already addressed** (abstract L25 "checkpoint-specific… probe-protocol effect… not a representation effect"); **P1 restricted-usage-mode already in abstract** (L30) and title L12 already tobacco-scoped/representation-focused → no retitle needed. **P3 is a research gap** (fine-tuned CLIP not run at K≥5), already in Limitation L553 — not a writing fix. **Sole apt residual fixed:** abstract L26 "…the ordering is a property of the data regime rather than of the model" conditioned on the frozen-probe-vs-fine-tuned-CNN protocol (→ "…rather than of the encoder"), aligning the abstract with the body's own L482 "restricted usage mode" scoping. Re-verified: 189/189 gate + clean compile 27pp (0 errors / 0 undef / 0 overfull>100pt).
- - [ ] **Still TODO before submission:** replace repository URL placeholder; add author ORCID; confirm journal caps (keywords, page/word limit) against the live Guide for Authors; (optional) consider a 5th highlight for the readout-geometry finding if the journal allows 5
+   - [x] **2026-10-29 reference-integrity audit (3 questions).** (Q1) Citation **order was wrong** — all 32 `\bibitem`s reordered to **first-citation order** (the 2026 readout-geometry cluster `cxr/traceclip/dinov3mil` had sat mid-list but is cited last). (Q2) All **32/32 references verified REAL** via CrossRef/OpenAlex/arXiv/DataCite (30 papers + 2 datasets; no hallucinated entries); `scold2025` year corrected **2026→2025** (per its DOI + OpenAlex). (Q3) All 32 citation contexts **appropriate** (no wrong-context). Reference count grew **25→32** through revision rounds. Recompiled clean: 26 pp, 0 errors, 0 undefined; `.aux` numbering `1→32` = first-citation order. Backup: `probe-protocol.tex.bak-citeorder-20261029-222648`.
+   - [x] **2026-10-30 figure/table audit + caption de-duplication.** Placement verified clean: all 14 floats `[!ht]`, recompile 26 pp / 0 errors / 0 undefined / **0 float warnings**; every float referenced before-or-adjacent to its definition (the two full-width figures sit beside their callout; `fig:tsne` correctly in the Appendix). Trimmed 4 captions that re-narrated the body (number-preserving, caption-only): `tab:prompts` (dropped the finding sentence already in the following RQ1 paragraph, L206–208); `tab:perclass` — dropped the §why-duplicated interpretation tail, **kept** the 16-class index→name list (it is the only copy; the Appendix lists only the 19 field classes); `fig:curve` — dropped the K=1-LAION tie/unstarred clause already in Methods (L159/L162) + Findings (L70/L287), kept the asterisk legend + the "K=1 ResNet = legacy baseline" reading note; `tab:readout` — dropped the L486-duplicated readout interpretation, kept all column definitions. Cross-verification caught and held the tab:perclass class-list removal. Backup: `probe-protocol.tex.bak-captrim-20261030-064059`.
+    - [x] **2026-10-30 de-verbosity / redundancy pass (2 batches).** (Batch 1) Abstract re-compressed **625→249 words** and collapsed 7 paragraphs→1 (all 7 finding verdicts + load-bearing numbers 13.0% / 86.2% / 92.5-vs-89.4 retained; per-$K$ number soup and caveat parentheticals dropped — all still in the body); tomato+corn captions' identical verbose split-exclusion sentence → short pointer (full caveat retained in Intro L53 / Methods L154 + result bodies). (Batch 2) Pointer-ized the 4 recurring caveats — #2 full-data gap/CI, #4 CV-folds-not-independent, #6 PlantVillage non-independent, #7 field "untested hypothesis": each stated once in Results, now pointed to (Section~\ref{sec:results}) from Limitation 3, Conclusions, and 2 within-Results near-verbatim dups; every verdict kept, only re-derived numbers dropped, so the canonical CI ($[-0.1,\,+3.1]$) now appears only in Results (L281/L334). Verify: 26 pp, 0 errors / 0 undefined refs / 0 overfull / 0 float; new pointers resolve. Backups: `.bak-deverb-115959`, `.bak-deverb2-121124`, `.bak-deverb3-124257`.
+    - [x] **2026-10-30 selective em-dash pass.** Converted the **21 run-on clause-join** em-dashes to cleaner punctuation (commas / semicolons / colons / parentheses) across Intro, Methods, Results, Discussion, Conclusions; **kept** the ~32 tight appositive em-dashes doing real parenthetical work and left the 41 table cell placeholders (`& --- &`) untouched. Prose em-dash density **53→32**; total `---` **94→73**. Every change punctuation-only (no wording / number / claim altered); each target matched exactly once. Verify: 26 pp, 0 errors / 0 undefined / 0 overfull / 0 float. Backup: `.bak-emdash-125826`.
+   - [ ] **Still TODO before submission:** replace repository URL placeholder; add author ORCID; confirm journal caps (keywords, page/word limit) against the live Guide for Authors; (optional) consider a 5th highlight for the readout-geometry finding if the journal allows 5
 
 ## Abstract & Keywords
 
-- [x] Abstract unstructured (no sub-headings) — **done** (238 words, measured 2026-10-24)
-- [x] Abstract ≤ 250 words — **done** (238 words, measured 2026-10-24; it had drifted to ~575 words through the revision rounds and was re-cut during the reviewer-response pass, with the removed detail already present in the Introduction and Results) **[VERIFY: confirm exact limit]**
+- [x] Abstract unstructured (no sub-headings) — **done** (single paragraph; 249 words, re-compressed 2026-10-30)
+- [x] Abstract ≤ 250 words — **done** (249 words, re-compressed 2026-10-30; it had drifted to ~625 words through revision rounds and was re-cut to 249 with all finding verdicts retained) **[VERIFY: confirm exact CeA cap]**
 - [x] Highlights ≤ 85 characters each — **done** (all five were 85–95 characters; re-cut 2026-10-24, now 76–83) **[VERIFY against the live Guide for Authors]**
 - [x] Keywords: 7 (CLIP; zero-shot classification; agricultural disease diagnosis; vision-language models; few-shot learning; knowledge graph; prompt engineering) **[VERIFY: confirm C&E-in-Ag keyword range — some Elsevier journals cap at 3–6; may need to trim to 6]**
 - [x] No `\simplesumm` (MDPI-specific) — **removed**
 
 ## Citation & References
 
-- [x] **Citation style:** Now **numbered** `[1], [2], …` — **done** (article class + `thebibliography` renders `\cite` as `[n]`; verified `[1]…[25]` in compiled PDF)
-- [x] **25 references — no orphans** — **pass** (25 distinct `\cite` keys = 25 `\bibitem` entries; parity clean)
-- [x] **Numbering follows first-citation order (strict)** — **pass** (`[1]` CLIP … `[8]` Shi et al. … `[25]` DINOv2; `\bibitem` blocks ordered by first `\cite` appearance). Managed by `scripts/audit_references.py --reorder` (committed, idempotent); verified `order_strict=True`.
-- [x] **Reproducible reference audit — pass via `scripts/audit_references.py`** (each `\bibitem` resolved against Crossref/DataCite/arXiv/HF; title + first-author + year checked). `tld` (community HF dataset, no DOI) verified **offline against local ground truth** (`data/tld_local_manifest.json`: 1,392 images / 10 classes / 0 missing on disk). Audit record: `data/reference_audit.json`.
-- [x] DOI present for most references — **pass** (4 without DOI: `radford2021learning`, `dinov2`, `fang2023data`, `tld` — all arXiv/preprint or community dataset with no publisher DOI available)
+- [x] **Citation style:** Now **numbered** `[1], [2], …` — **done** (article class + `thebibliography` renders `\cite` as `[n]`; verified `[1]…[32]` in compiled PDF)
+- [x] **32 references — no orphans** — **pass** (32 distinct `\cite` keys = 32 `\bibitem` entries; parity clean; count grew 25→32 through revision rounds)
+- [x] **Numbering follows first-citation order (strict)** — **fixed 2026-10-29** (`[1]` CLIP … `[8]` Shi et al. … `[30][31][32]` = 2026 readout-geometry cluster `cxr`/`dinov3mil`/`traceclip`; `\bibitem` blocks ordered by first `\cite` appearance). The 2026 cluster had previously sat mid-list; reordering applied and verified `1→32` in the compiled `.aux`. Managed by `scripts/audit_references.py --reorder` (committed, idempotent).
+- [x] **Reproducible reference audit — pass via `scripts/audit_references.py`** (each `\bibitem` resolved against Crossref/DataCite/arXiv/HF; title + first-author + year checked). `tld` (community HF dataset, no DOI) verified **offline against local ground truth** (`data/tld_local_manifest.json`: 1,392 images / 10 classes / 0 missing on disk). Audit record: `data/reference_audit.json`. **Re-verified 2026-10-29:** all **32/32** entries confirmed REAL (30 journal/papers via CrossRef/OpenAlex/arXiv + 2 datasets: `plantvillage_mendeley` DataCite-confirmed, `tld` HF no-DOI); `scold2025` year corrected 2026→2025.
+- [x] DOI present for most references — **pass** (**6 without DOI**: `radford2021learning`, `tld`, `fang2023data`, `dinov2`, `hu2022lora`, `liu2022convnext` — all arXiv/preprint or community dataset with no publisher DOI available)
 
 ## Section Structure
 
@@ -46,11 +58,11 @@
 
 ## End-Matter (required by journal-guidelines skill)
 
-- [x] CRediT authorship contribution statement — **added** (4 authors: Lizhuo Zhang, Feier Hao, Chenfeng Long, Xiaoyong Tang; roles L.Z./F.H./C.L./X.T. — **VERIFY role assignment with co-authors**)
+- [x] CRediT authorship contribution statement — **added** (5 authors: Chenfeng Long, Zhiyong Tan, Yangjun Deng, Xiang Luo, Lizhuo Zhang; roles L.Z./C.L./Z.T./Y.D./X.L. — **VERIFY Z.T./Y.D./X.L. role assignment with co-authors**)
 - [x] Declaration of competing interest — **added**
 - [x] Acknowledgments (with AI-use declaration) — **added**
 - [x] Data availability statement — **added** (repository URL placeholder)
-- [ ] ORCID for authors — **MISSING** **[VERIFY: confirm required; add ORCID iDs for all four authors]**
+- [ ] ORCID for authors — **MISSING** **[VERIFY: confirm required; add ORCID iDs for all five authors]**
 - [ ] Repository URL placeholder — **MUST replace before submission**
 
 ## Figures & Tables
@@ -101,7 +113,7 @@
 - [ ] Replace `[ANONYMOUS_REPOSITORY_URL_TO_BE_INSERTED_BEFORE_SUBMISSION]` with actual URL
 - [ ] Add author ORCID
 - [x] Switch document class to Elsevier template — **done** (article class)
-- [x] Convert citation style to numbered (if required) — **done** ([1]…[25])
+- [x] Convert citation style to numbered (if required) — **done** ([1]…[32])
 - [x] Remove all MDPI-specific macros — **done**
 - [x] Re-compile and verify 0 errors, 0 undefined references — **done** (pdflatex ×2, 0 errors)
 - [x] Run `scripts/check_tex_vs_data.py` — confirm 189/189 — **done** (189/189)

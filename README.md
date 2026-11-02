@@ -30,7 +30,7 @@ data/*.json                                   experiment outputs — source of t
 scripts/                                      every experiment behind a number
 scripts/dataset.py                            TPDD dataset (vendored; see below)
 scripts/model_zoo.py                          encoders + train/eval loops (vendored)
-generate_figures.py                           all four figures, from data/*.json only
+scripts/generate_figures.py                   all four figures, from data/*.json only
 scripts/check_tex_vs_data.py                  consistency gate (run before committing)
 RESEARCH_PROTOCOL.md                          experiment working rules
 ```
@@ -43,7 +43,7 @@ those files, not the other way round.
 The figures and the consistency check need no GPU and take seconds:
 
 ```bash
-python3 generate_figures.py        # writes manuscript/paper/figures/{pdf,svg,png}
+python3 scripts/generate_figures.py  # writes manuscript/paper/figures/{pdf,svg,png}
 python3 scripts/check_tex_vs_data.py   # must print N/N consistent
 cd manuscript/paper && pdflatex probe-protocol.tex
 ```
@@ -111,6 +111,10 @@ caption. Paper 1 now versions its own copy of the corpus in git for this reason.
 
 If you depend on a corpus for a paper, keep a dated tarball outside the repo
 and in git, or learn this the same way.
+
+### Citation direction (companion readout paper)
+
+The readout-geometry section reports a domain-internal characterization and cites only external work (e.g. `shi2026registers`); it deliberately does **not** forward-cite the companion readout-hygiene paper (the `protocol-swing` project). Citation is one-way: the later-submitted paper cites the earlier one, so `protocol-swing` cites *this* paper, not the reverse. This keeps this paper free of a dangling reference to an unpublished work and keeps the two readout sections from sharing one body of evidence (anti-salami-slicing guard).
 
 ## Dependencies
 
