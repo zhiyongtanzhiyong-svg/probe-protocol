@@ -71,6 +71,21 @@ python3 scripts/clip_finetune.py --out data/clip_finetune.json   # 5 seeds x 2 c
 `data/_orig_baseline/` holds the outputs of the pre-rerun pipeline, kept so the
 diff against current results is auditable. Do not read those numbers as current.
 
+DINOv2 ViT-L/14 fine-tuning (the matched-budget control completing the
+backbone axis; results in `data/dinov2_finetune_full_16.json` and
+`data/dinov2_kshot_ft_k{1,2,5,10}*.json`, run on A100-80GB/PyTorch 2.9):
+
+```bash
+python3 scripts/dinov2_finetune_kshot.py --full   # or --k 1|2|5|10
+```
+
+Base weights: official LVD-142M pretrain from HuggingFace
+(`facebook/dinov2-large`, `dinov2_vitl14_pretrain.pth`),
+SHA256 `d5383ea8f4877b2472eb973e0fd72d557c7da5d3611bd527ceeb1d7162cbf428`.
+A verified copy is kept at `checkpoints/dinov2/dinov2_vitl14_pretrain.pth`
+(1.2 GB, git-ignored); set `DINOV2_PTH` to override the path. The script
+asserts the checksum before training.
+
 ## Data
 
 **The image corpora are not in this repository.** Obtain them as follows:

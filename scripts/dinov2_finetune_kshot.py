@@ -34,6 +34,7 @@ import sys
 import json
 import time
 import argparse
+import hashlib
 import importlib.util
 
 os.environ.setdefault("HF_ENDPOINT", "https://hf-mirror.com")
@@ -49,9 +50,25 @@ sys.path.insert(0, os.path.join(REPO, "scripts"))
 from dataset import TPDDDataset, worker_init_fn          # noqa: E402
 from coop_experiment import kshot_subset_idx             # noqa: E402
 from dinov2_protocol import load_dinov2, DEVICE          # noqa: E402
-# PTH overridable via env (the canonical path lives on the 4070 box; other
-# machines, e.g. the V100 box, keep their own copy).
-PTH = os.environ.get("DINOV2_PTH") or "/home/lizhuo/Work/TobAI/checkpoints/dinov2/dinov2_vitl14_pretrain.pth"
+# PTH overridable via env (the canonical copy lives in this repo's
+# checkpoints/dinov2/; other machines keep their own).
+PTH = os.environ.get("DINOV2_PTH") or os.path.join(
+    os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+    "checkpoints/dinov2/dinov2_vitl14_pretrain.pth")
+# Official facebook/dinov2-large LVD-142M base (HuggingFace).
+EXPECTED_SHA256 = "d5383ea8f4877b2472eb973e0fd72d557c7da5d3611bd527ceeb1d7162cbf428"
+
+
+def verify_weights(path):
+    h = hashlib.sha256()
+    with open(path, "rb") as f:
+        for chunk in iter(lambda: f.read(1 << 22), b""):
+            h.update(chunk)
+    digest = h.hexdigest()
+    if digest != EXPECTED_SHA256:
+        sys.exit(f"FATAL: weight checksum mismatch for {path}:\n"
+                 f"  got      {digest}\n  expected {EXPECTED_SHA256}")
+    print(f"[verify] weight sha256 ok ({digest[:12]}...)", flush=True)
 
 NC = 16
 SEED_OFFSET = 500
@@ -202,6 +219,7 @@ def main():
     val_dl = DataLoader(val_full, batch_size=64, shuffle=False, num_workers=0, pin_memory=True)
     test_dl = DataLoader(test_full, batch_size=64, shuffle=False, num_workers=0, pin_memory=True)
 
+    verify_weights(PTH)
     model = load_dinov2(PTH)
     for p in model.parameters():
         p.requires_grad = True
