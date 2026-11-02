@@ -61,13 +61,13 @@
 - [x] **em-dash 复查（B 方案撤销）**：70 个 `---` 中 41 个是表格占位符，行文真实密度 0.24%（每 413 词一个）低于 AI 典型值，29 个全为功能性括号 → 不改。
 - [x] **We/Our 统计**：we=38 / our=9 / 12.7k 词 = 0.37%，方法节集中、Results 近零，正常克制区间 → 不改。
 - [x] **AI 痕迹扫描**：40+ 指纹词零命中（crucial/pivotal/leverage/delve/moreover/notably/worth-noting… 全 0），mosaic=病毒名合法 → 不改。
-- [ ] 若队列失败：看 `logs/queue_nohup.log` traceback；容器内 `cd /work && export LD_LIBRARY_PATH=/hostlibs DINOV2_PTH=/work/checkpoints/dinov2/dinov2_vitl14_pretrain.pth && python3 scripts/dinov2_finetune_kshot.py <job>` 重跑。
+- [x] 队列失败预案（未触发：5/5 rc=0 全过；日志已归档 `logs/dinov2_16/`）。
 
 ### ⏳ 待办（投稿前，按序）
-- [ ] **项7 收尾：20 项 one-line checklist**（源自 12 轮评审 verdict `manuscript/paper/REVIEW_2026-10-29/12_twelfth_review_verdict.md` + `SUBMISSION_CHECKLIST.md` 的 "Still TODO"）→ 写成每项一行的状态表，放进 SUBMISSION_CHECKLIST.md 或 REVIEW 目录。
-- [ ] **Git commit**（分组）：① 本轮 tex（14 意见+7 项）② 图/脚本（fig_grid_plateau、generate_figures 合并、perclass ×100 修复）③ dinov2_finetune_kshot.py ④ 数据 JSON；注意 `data/canonical_results.json` 是**先前遗留**的未提交修改，单独一组；`*.bak-*` 备份文件加 .gitignore 或不提交。
-- [ ] **人工项（只能作者做）**：CeA Guide for Authors 活页确认（引用格式/模板/关键词上限 3–6/摘要字数）；仓库真实 URL（double-blind 前可匿名，投稿前必须插入）；ORCID；Highlights 5 条复核。
-- [ ] 最终：latexmk 重建 + `scripts/audit_references.py` + checker + 页数/overfull 终验。
+- [x] **项7 收尾：20 项验收门**：已并入 `manuscript/paper/SUBMISSION_CHECKLIST.md` 的 **FINAL GATE (2026-11-02)** 节（16 条机器可验附命令 + 4 条人工；未另建平行文件，避免双清单漂移）。机器条目已实跑全过：check_tex_vs_data **34/34**（含新补 DINOv2-FT full=95.6 + A100 硬件锚点）、旧值 45.5/p2_results/占位符均 0 命中、双盲 grep 0、Appendix A 引用文件全部存在。顺手修 check 脚本两个陈旧锚点（tomato K=1 改指 canonical 40.4；16-contrast 接受 15/16 分数形式）。Highlights.txt 5 条实测 78–85 字符达标。
+- [x] **Git commit**：全部完成（本会话 9+ 分组 commit，工作树零残留；`*.bak-*` 已入 .gitignore）。
+- [ ] **人工项（只能作者做）**：CeA Guide for Authors 活页确认（页数/引用格式/关键词上限/双盲细则）；仓库真实 URL（投稿前插入）；ORCID。（Highlights 已完成：5 条 78–85 字符，2026-11-02 实测。）
+- [x] 最终机器验证：latexmk 重建 29pp/0-0-0 + checker 34/34 + 双盲 grep + 权重 SHA256（2026-11-02 全部实跑通过；后续改动后按 SUBMISSION_CHECKLIST 的 FINAL GATE 重跑即可）。
 
 ### 关键事实备忘（防遗忘）
 - 论文 28 页；float 布局 p3 Fig1(TikZ 2×2) / p9 T1 / p11 T2 / p12 Fig2 / p13 T3 / p14 T4 / p15 Fig3 / p19 Fig4 / p27 Fig5(t-SNE)+Appendix C。
