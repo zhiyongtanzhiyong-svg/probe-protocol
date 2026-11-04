@@ -2,15 +2,16 @@
 """DFN-CLIP: select best of 14 templates on a 20% validation split of TRAIN images,
 report that template's TEST accuracy. Guard against test-set-driven prompt selection.
 Seed=0, same 14 templates as scripts/zero_shot_clean.py, canonical path."""
+import os
 import sys, json, time
 import numpy as np, torch
 from PIL import Image
-sys.path.insert(0, '/home/lizhuo/Work/TobAI/probe-protocol/scripts')
+sys.path.insert(0, ROOT + '/scripts')
 import dataset as D
 TPDDDataset = D.TPDDDataset
-REPO = '/home/lizhuo/Work/TobAI/probe-protocol'
+REPO = ROOT
 DEVICE = 'cuda' if torch.cuda.is_available() else 'cpu'
-CKPT = '/home/lizhuo/Work/TobAI/checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin'
+CKPT = 'checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin'
 
 ds_tr = TPDDDataset('train')
 ds_te = TPDDDataset('test')
@@ -59,6 +60,8 @@ TEMPLATES = [
 ]
 
 import open_clip
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 model, _, preprocess = open_clip.create_model_and_transforms('ViT-L-14', pretrained=CKPT)
 model = model.eval().to(DEVICE)
 tok = open_clip.get_tokenizer('ViT-L-14')

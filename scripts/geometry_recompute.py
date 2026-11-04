@@ -31,6 +31,7 @@ RUN
 (Requires the same env as r4_experiments.py: torch, torchvision, open_clip,
  and the shared dataset/model_zoo under ..)
 """
+import os
 import sys, os, json, time
 import numpy as np
 import torch
@@ -38,7 +39,7 @@ import torch.nn as nn
 import torchvision.models as models
 from torch.utils.data import DataLoader
 
-sys.path.insert(0, '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/scripts')
+sys.path.insert(0, ROOT + '/scripts')
 try:
     from dataset import TPDDDataset, TRAIN_TRANSFORM, EVAL_TRANSFORM, worker_init_fn
 except Exception as e:
@@ -49,7 +50,7 @@ except Exception as e:
 
 import open_clip
 
-CLIP_CKPT = '/home/lizhuo/Work/TobAI/checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin'
+CLIP_CKPT = 'checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin'
 IMAGENET_MEAN = np.array([0.485, 0.456, 0.406])
 IMAGENET_STD = np.array([0.229, 0.224, 0.225])
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))

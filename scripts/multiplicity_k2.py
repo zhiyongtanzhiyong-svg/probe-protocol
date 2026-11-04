@@ -22,11 +22,14 @@ Reports per-contrast paired t, Wilcoxon (Pratt, ties-inclusive), bootstrap 95% C
 on the mean difference, and seed-level win/tie/loss, plus Holm-Bonferroni FWER
 and Benjamini-Hochberg FDR across the family of eight.
 """
+import os
 import sys, json
 import numpy as np
 from scipy import stats
 
-REPO = '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet'
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+REPO = ROOT
 ALPHA = 0.05
 B = 10000
 BOOT_SEED = 0

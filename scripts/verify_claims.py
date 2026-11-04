@@ -31,7 +31,7 @@ from scipy import stats
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, "data")
 sys.path.insert(0, os.path.join(ROOT, "scripts"))
-sys.path.insert(0, "/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/scripts")
+sys.path.insert(0, ROOT + "/scripts")
 OUT = os.path.join(DATA, "claim_verification.json")
 RNG = np.random.RandomState(20260928)
 N_BOOT = 20000

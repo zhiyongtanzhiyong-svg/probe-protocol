@@ -15,7 +15,7 @@ os.environ.setdefault('HF_ENDPOINT', 'https://hf-mirror.com')
 import concurrent.futures as cf
 from huggingface_hub import hf_hub_download
 
-ROOT   = '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet'
+ROOT   = ROOT
 REPO   = 'Joker5800/Tobacco_Leaf_Diseases'
 MAN    = f'{ROOT}/data/tld_test_manifest.json'
 LOCAL  = f'{ROOT}/data/tld_images'

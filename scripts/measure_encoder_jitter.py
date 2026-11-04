@@ -23,12 +23,13 @@ Any comparison whose margin is inside that spread is not interpretable.
 
 Writes data/encoder_jitter.json.
 """
+import os
 import sys, os, json
 import numpy as np
 import torch
 from sklearn.linear_model import LogisticRegression
 
-REPO = '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet'
+REPO = ROOT
 sys.path.insert(0, f'{REPO}/scripts')
 
 import open_clip
@@ -36,6 +37,8 @@ from dataset import TPDDDataset, EVAL_TRANSFORM, worker_init_fn
 from coop_experiment import kshot_subset_idx
 from clip_fewshot_probe import tensor_to_pil
 from torch.utils.data import DataLoader
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 CKPTS = {
     'dfn_clip': f'{REPO}/../checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin',

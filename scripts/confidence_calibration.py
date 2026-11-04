@@ -2,14 +2,17 @@
 Confidence calibration analysis for CLIP zero-shot and probe.
 FIXED: Chinese fallback for unmatched KG classes (matches prompt_ablation.py behavior).
 """
+import os
 import sys, json, torch, numpy as np
-sys.path.insert(0, '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/scripts')
+sys.path.insert(0, ROOT + '/scripts')
 
 import open_clip
 from sklearn.linear_model import LogisticRegression
 from dataset import TPDDDataset, EVAL_TRANSFORM, TRAIN_TRANSFORM, worker_init_fn
 from PIL import Image
 from torch.utils.data import DataLoader
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 IMAGENET_MEAN = np.array([0.485, 0.456, 0.406])
 IMAGENET_STD  = np.array([0.229, 0.224, 0.225])
@@ -49,12 +52,12 @@ def compute_ece(probs, labels, n_bins=10):
 
 def main():
     model, _, preprocess = open_clip.create_model_and_transforms(
-        'ViT-L-14', pretrained='/home/lizhuo/Work/TobAI/checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin')
+        'ViT-L-14', pretrained='checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin')
     tokenizer = open_clip.get_tokenizer('ViT-L-14')
     model = model.eval().cuda()
 
-    tpd_map = json.load(open('/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/data/tpd_to_kg_map.json'))
-    kg_data = json.load(open('/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/data/tobacco_records.json'))
+    tpd_map = json.load(open(ROOT + '/data/tpd_to_kg_map.json'))
+    kg_data = json.load(open(ROOT + '/data/tobacco_records.json'))
     class_names = list(tpd_map.keys())
 
     cn_map = {
@@ -206,7 +209,7 @@ def main():
                         "correct_conf": round(float(probe_conf[probe_correct].mean()), 3),
                         "incorrect_conf": round(float(probe_conf[~probe_correct].mean()), 3)},
     }
-    json.dump(result, open('/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/data/calibration_results.json', 'w'), indent=2)
+    json.dump(result, open(ROOT + '/data/calibration_results.json', 'w'), indent=2)
     print("\nSaved.")
 
 

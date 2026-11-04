@@ -52,8 +52,8 @@ from dataset import TPDDDataset, worker_init_fn  # noqa: E402
 from coop_experiment import kshot_subset_idx  # noqa: E402
 
 CKPTS = {
-    "dfn_clip": "/home/lizhuo/Work/TobAI/checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin",
-    "laion2b": "/home/lizhuo/Work/TobAI/checkpoints/clip_vitl14_laion2b/open_clip_pytorch_model.bin",
+    "dfn_clip": "checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin",
+    "laion2b": "checkpoints/clip_vitl14_laion2b/open_clip_pytorch_model.bin",
 }
 MODEL = "ViT-L-14"
 NC = 16

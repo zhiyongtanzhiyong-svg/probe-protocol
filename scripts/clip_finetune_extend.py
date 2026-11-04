@@ -21,11 +21,13 @@ Launch (single GPU, ~6h):
 import os, sys, json, time, argparse
 import numpy as np
 
-REPO = "/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet"
+REPO = ROOT
 sys.path.insert(0, os.path.join(REPO, "scripts"))
 import torch
 from torch.utils.data import DataLoader
 import clip_finetune as cf  # noqa: E402  (reuse all building blocks verbatim)
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 def run_seed(name, seed, epochs, batch, vis_lr, head_lr, model, head,

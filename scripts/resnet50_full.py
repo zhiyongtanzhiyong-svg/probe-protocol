@@ -17,12 +17,14 @@ import torch.nn as nn
 from torch.utils.data import DataLoader
 from datetime import datetime
 
-REPO = "/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet"
-PAPER1 = "/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/scripts"
+REPO = ROOT
+PAPER1 = ROOT + "/scripts"
 sys.path.insert(0, os.path.join(REPO, "scripts"))
 sys.path.insert(0, PAPER1)
 from dataset import TPDDDataset, TRAIN_TRANSFORM, EVAL_TRANSFORM, worker_init_fn
 from model_zoo import ResNetBaseline, set_seed
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 NC = 16
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"

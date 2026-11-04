@@ -2,7 +2,7 @@
 # P3c GPU chain: wait for K=5 (already running) -> launch K=10 -> verify -> DONE marker.
 # Launched detached (setsid) so it survives the launching shell's timeout.
 # Safe: K=10 is launched ONLY if the K=5 store exists; otherwise FAILED marker.
-cd /home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet || exit 1
+cd "$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")/.." && pwd)" || exit 1
 PY=/usr/bin/python3
 LOG=logs/p3c_wrapper.log
 DONE=logs/p3c_wrapper_DONE

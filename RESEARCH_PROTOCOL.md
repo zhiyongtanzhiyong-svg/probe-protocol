@@ -1,4 +1,4 @@
-# Paper2: CLIP vs ResNet — 实验规程
+# CLIP vs ResNet — 实验规程
 
 > 本文件规定本仓库的实验作业规程：任何改动都要按此执行。
 > 与 TODO.md 并存——TODO.md 记录「做什么」，本文件规定「怎么做才不浪费算力与时间」。

@@ -2,13 +2,14 @@
 P2 Experiments: McNemar, Balanced Accuracy, C-grid, Per-sample predictions.
 Run once, produces data/p2_results.json with all metrics.
 """
+import os
 import sys, json, torch, numpy as np, time, os
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import (
     balanced_accuracy_score, f1_score, accuracy_score
 )
 from scipy.stats import binomtest
-sys.path.insert(0, '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/scripts')
+sys.path.insert(0, ROOT + '/scripts')
 
 import open_clip
 from dataset import TPDDDataset, TRAIN_TRANSFORM, EVAL_TRANSFORM, worker_init_fn
@@ -17,7 +18,9 @@ from PIL import Image
 from torch.utils.data import DataLoader, Dataset
 import torch.nn as nn
 
-CLIP_CKPT = '/home/lizhuo/Work/TobAI/checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin'
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+CLIP_CKPT = 'checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin'
 IMAGENET_MEAN = np.array([0.485, 0.456, 0.406])
 IMAGENET_STD  = np.array([0.229, 0.224, 0.225])
 

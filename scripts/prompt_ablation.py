@@ -2,13 +2,16 @@
 CLIP Zero-Shot & Prompt Ablation for Tobacco Disease Classification.
 Fixed: inverse ImageNet normalization before converting to PIL.
 """
+import os
 import sys, json, torch, numpy as np
-sys.path.insert(0, '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/scripts')
+sys.path.insert(0, ROOT + '/scripts')
 
 import open_clip
 from dataset import TPDDDataset, EVAL_TRANSFORM, worker_init_fn
 from PIL import Image
 from torch.utils.data import DataLoader
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Inverse ImageNet normalization
 IMAGENET_MEAN = np.array([0.485, 0.456, 0.406])
@@ -25,12 +28,12 @@ def tensor_to_pil(img_tensor):
 
 def main():
     model, _, preprocess = open_clip.create_model_and_transforms(
-        'ViT-L-14', pretrained='/home/lizhuo/Work/TobAI/checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin')
+        'ViT-L-14', pretrained='checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin')
     tokenizer = open_clip.get_tokenizer('ViT-L-14')
     model = model.eval().cuda()
 
-    tpd_map = json.load(open('/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/data/tpd_to_kg_map.json'))
-    kg_data = json.load(open('/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/data/tobacco_records.json'))
+    tpd_map = json.load(open(ROOT + '/data/tpd_to_kg_map.json'))
+    kg_data = json.load(open(ROOT + '/data/tobacco_records.json'))
     class_names = list(tpd_map.keys())
 
     cn_map = {
@@ -128,7 +131,7 @@ def main():
     # writes did not exist in data/ at all, meaning the fixed pipeline had never
     # actually been run. One producer, one canonical filename, plus the alias.
     for _name in ("prompt_ablation.json", "prompt_ablation_fixed.json"):
-        json.dump(results, open(f'/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/data/{_name}', 'w'), indent=2)
+        json.dump(results, open(f'{ROOT}/data/{_name}', 'w'), indent=2)
     print("Saved data/prompt_ablation.json (+ _fixed alias).")
     print(f"\nSaved {len(results)} templates.")
 

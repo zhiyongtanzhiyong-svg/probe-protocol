@@ -28,13 +28,16 @@ about +1.8 pp and +1.5 pp. No sign changes.
 
 Writes data/laion_fewshot_canonical.json.
 """
+import os
 import sys, json
 import numpy as np
 from sklearn.linear_model import LogisticRegression
 
-REPO = '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet'
+REPO = ROOT
 sys.path.insert(0, f'{REPO}/scripts')
 from coop_experiment import kshot_subset_idx
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 N_SEEDS = 15
 SRC = f'{REPO}/data/laion_clip_features_clean.npz'

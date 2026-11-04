@@ -26,10 +26,10 @@ import open_clip
 from PIL import Image
 from torchvision import transforms
 
-ROOT   = '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet'
-CKPT   = '/home/lizhuo/Work/TobAI/checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin'
+ROOT   = ROOT
+CKPT   = 'checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin'
 MAN    = f'{ROOT}/data/tld_local_manifest.json'
-TPD_MAP= '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/data/tpd_to_kg_map.json'
+TPD_MAP= ROOT + '/data/tpd_to_kg_map.json'
 KG_DATA= f'{ROOT}/data/tobacco_records.json'
 OUT    = f'{ROOT}/data/tld_zero_shot.json'
 N_BOOT = 2000

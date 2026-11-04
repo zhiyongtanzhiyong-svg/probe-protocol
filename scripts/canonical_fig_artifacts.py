@@ -51,7 +51,7 @@ from torch.utils.data import DataLoader
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, "data")
-P1 = "/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet"
+P1 = ROOT
 sys.path.insert(0, os.path.join(ROOT, "scripts"))
 sys.path.insert(0, os.path.join(P1, "scripts"))
 
@@ -60,7 +60,7 @@ from dataset import TPDDDataset, EVAL_TRANSFORM, TRAIN_TRANSFORM, worker_init_fn
 from model_zoo import ResNetBaseline, set_seed
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-CKPT = "/home/lizhuo/Work/TobAI/checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin"
+CKPT = "checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin"
 FEAT_CACHE = os.path.join(DATA, "canonical_clip_features_dfn.npz")
 OUT = os.path.join(DATA, "canonical_fig_artifacts.json")
 

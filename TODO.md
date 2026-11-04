@@ -1,4 +1,4 @@
-# Paper2: CLIP vs ResNet - Tobacco Dataset
+# CLIP vs ResNet - Tobacco Dataset（工作笔记）
 ## TODO List
 
 ---
@@ -92,7 +92,7 @@
 - [x] **引用 SCOLD (2025)**: "[SCOLD: A Vision-Language Foundation Model for Leaf Disease Identification](http://arxiv.org/abs/2505.07019)" （已引用：Intro L66、Related Work L92、Discussion L459、Limitations L517）
     - Paper提出18.6万图文对 + 97概念的叶片病害专用VLM
     - soft-target对比预训练，直接竞品/相关工作
-    - Paper2结论"off-the-shelf CLIP zero-shot不行"的直接反向支撑
+    - 本文结论"off-the-shelf CLIP zero-shot不行"的直接反向支撑
 
 - [x] **引用 BioCLIP 2 (2025)**: "[BioCLIP 2: Emergent Properties from Scaling Hierarchical Contrastive Learning](http://arxiv.org/abs/2505.23883)" （已引用 + 已实测：作为领域VLM零样本对照，TPDD 最佳 15.2% / TLD 21.1%，见 L216 与 data/domain_vlm_zeroshot.json）
     - 2.14亿生物体图像训练，zero-shot泛化到栖息地分类、性状预测
@@ -106,7 +106,7 @@
     - 农业/食品领域直接证据
     - 领域特定prompt池(51-52条)稳定优于通用池(247-426条)
     - ZPE(按判别信号加权prompt集成)在domain shift下显著提升精度与校准
-    - 将Paper2的单数据集观察升级为领域规律
+    - 将本文的单数据集观察升级为领域规律
 
 - [x] **引用 LP++ (2024)**: "[LP++: A Surprisingly Strong Linear Probe for Few-Shot CLIP](http://arxiv.org/abs/2404.02285)" （已引用：Intro L66、Discussion L459、Limitations L517；未实测，仅作为"已知更强probe"文献引用）
     - 明确指出"LP在few-shot CLIP文献中常被当作弱基线"
@@ -128,15 +128,15 @@
 
 - [x] **Related Work Section**: 补全SCOLD, BioCLIP 2, LP++ 三篇关键论文（"You Are What You Prompt" 已移除，见上方决策点）
     - 正面处理领域预训练VLM作为off-the-shelf CLIP的直接反例方向 ✓（L66、L91-92）
-    - 在related work里并置Paper2结论与领域预训练结果 ✓（L66 明确"off-the-shelf"边界 + BioCLIP 2 实测对照 L216）
+    - 在related work里并置本文结论与领域预训练结果 ✓（L66 明确"off-the-shelf"边界 + BioCLIP 2 实测对照 L216）
 
 - [x] **Limitations Section**: 
     - 引用LP++ (2404.02285)，明确朴素probe是已知弱基线 ✓（L459、L517）
     - 承认朴素LP是已知弱基线，防止审稿人解读为"用了CLIP的弱用法" ✓（CoOp 对照 + DINOv2 对照 + frozen-ResNet 对照共同支撑"特征 vs 用法"的区分）
 
 - [x] **Domain Pretraining Discussion**: 
-    - 阐明Paper2的定位是"资源受限场景下不做领域预训练的实证边界" ✓（L66、L459）
-    - 虽然有SCOLD/BioCLIP 2等领域预训练工作，但Paper2在资源受限情况下的实验更具代表性 ✓（BioCLIP 2 已实测作为对照 L216，结论：领域VLM仍处 near-zero-shot，失败是 CLIP-style 冻结图文决策规则的性质）
+    - 阐明本文的定位是"资源受限场景下不做领域预训练的实证边界" ✓（L66、L459）
+    - 虽然有SCOLD/BioCLIP 2等领域预训练工作，但本工作在资源受限情况下的实验更具代表性 ✓（BioCLIP 2 已实测作为对照 L216，结论：领域VLM仍处 near-zero-shot，失败是 CLIP-style 冻结图文决策规则的性质）
 
 - [~] **Prompt Quality Acknowledgment**: 
     - ~~融入"You Are What You Prompt"的发现~~ → 已移除（决策点，见上方）

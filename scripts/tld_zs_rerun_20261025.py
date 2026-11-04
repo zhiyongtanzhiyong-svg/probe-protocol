@@ -6,13 +6,13 @@ import sys, json, time
 from math import comb
 import numpy as np, torch
 from PIL import Image
-sys.path.insert(0, '/home/lizhuo/Work/TobAI/probe-protocol/scripts')
+sys.path.insert(0, ROOT + '/scripts')
 import dataset as D  # noqa
-REPO = '/home/lizhuo/Work/TobAI/probe-protocol'
+REPO = ROOT
 DEVICE = 'cuda' if torch.cuda.is_available() else 'cpu'
 
-CKPTS = {'dfn_clip': '/home/lizhuo/Work/TobAI/checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin',
-         'laion2b': '/home/lizhuo/Work/TobAI/checkpoints/clip_vitl14_laion2b/open_clip_pytorch_model.bin'}
+CKPTS = {'dfn_clip': 'checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin',
+         'laion2b': 'checkpoints/clip_vitl14_laion2b/open_clip_pytorch_model.bin'}
 CLASSES = ['Brown spot', 'Frogeye', 'Healthy', 'Mosaic', 'Potato virus Y', 'Target spot',
            'Weather fleck', 'alternaria alternata', 'cercospora nicotianae',
            'no cercospora nicotianae or alternaria alternata present']
@@ -61,6 +61,8 @@ def binom_sf(k, N, p):
 out = {'date': time.strftime('%Y-%m-%d'), 'n_base': n, 'majority': dict(majority),
        'baseline_pct': round(majority[0][1]/n*100, 2), 'checkpoints': {}}
 import open_clip
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 for ck, path in CKPTS.items():
     model, _, preprocess = open_clip.create_model_and_transforms('ViT-L-14', pretrained=path)
     model = model.eval().to(DEVICE)

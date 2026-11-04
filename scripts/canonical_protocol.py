@@ -16,6 +16,7 @@ Outputs data/canonical_results.json with:
 
 Deterministic: fixed features + fixed seeds. No per-seed re-encoding.
 """
+import os
 import sys, json, time, os
 import torch, numpy as np
 from sklearn.linear_model import LogisticRegression
@@ -26,15 +27,15 @@ from sklearn.model_selection import train_test_split
 from scipy.stats import t as tdist
 from torch.utils.data import DataLoader
 
-sys.path.insert(0, '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/scripts')
+sys.path.insert(0, ROOT + '/scripts')
 from dataset import TPDDDataset, TRAIN_TRANSFORM, EVAL_TRANSFORM, worker_init_fn
 import open_clip
 import torch.nn as nn
 import torchvision.models as models
 
 CLIP_CKPTS = {
-    'dfn_clip': '/home/lizhuo/Work/TobAI/checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin',
-    'laion2b': '/home/lizhuo/Work/TobAI/checkpoints/clip_vitl14_laion2b/open_clip_pytorch_model.bin',
+    'dfn_clip': 'checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin',
+    'laion2b': 'checkpoints/clip_vitl14_laion2b/open_clip_pytorch_model.bin',
 }
 PRIMARY = 'dfn_clip'
 IMAGENET_MEAN = np.array([0.485, 0.456, 0.406])

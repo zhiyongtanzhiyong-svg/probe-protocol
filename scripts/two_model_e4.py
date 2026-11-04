@@ -21,10 +21,10 @@ import open_clip
 from PIL import Image
 from torchvision import transforms
 
-ROOT   = '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet'
-CKPT   = '/home/lizhuo/Work/TobAI/checkpoints/clip_vitl14_laion2b/open_clip_pytorch_model.bin'
-TPDD   = '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/data/tpdd'
-TPD_MAP= '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/data/tpd_to_kg_map.json'
+ROOT   = ROOT
+CKPT   = 'checkpoints/clip_vitl14_laion2b/open_clip_pytorch_model.bin'
+TPDD   = ROOT + '/data/tpdd'
+TPD_MAP= ROOT + '/data/tpd_to_kg_map.json'
 KG_DATA= f'{ROOT}/data/tobacco_records.json'
 OUT    = f'{ROOT}/data/two_model_e4.json'
 N_BOOT = 2000

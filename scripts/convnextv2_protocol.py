@@ -18,9 +18,11 @@ from torch.utils.data import DataLoader
 import torchvision.transforms as T
 import torchvision.models as tv_models
 
-REPO = "/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet"
+REPO = ROOT
 sys.path.insert(0, os.path.join(REPO, "scripts"))
 from dataset import TPDDDataset  # noqa
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 NC = 16
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"

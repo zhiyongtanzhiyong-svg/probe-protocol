@@ -1,5 +1,5 @@
 """
-CoOp (Zhou et al. 2022, IJCV) OFFICIAL-RECIPE rerun for Paper2.
+CoOp (Zhou et al. 2022, IJCV) OFFICIAL-RECIPE rerun for this paper.
 
 Why this exists
 ---------------
@@ -41,6 +41,7 @@ Protocol (mutually comparable with lp_plus_plus.py and the paper's probe):
     K-per-class subset (seed+1500)
 Outputs data/coop_official.json.
 """
+import os
 import sys, json, os, time
 import numpy as np
 import torch
@@ -53,7 +54,7 @@ from torch.utils.data import DataLoader
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(REPO, "scripts"))
-sys.path.insert(0, "/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/scripts")
+sys.path.insert(0, ROOT + "/scripts")
 import open_clip
 from dataset import TPDDDataset, EVAL_TRANSFORM, TRAIN_TRANSFORM, worker_init_fn
 from lp_plus_plus import (
@@ -62,6 +63,8 @@ from lp_plus_plus import (
     load_feature_cache,
 )
 from coop_experiment import kshot_subset_idx
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 N_CTX = 16
 EPOCHS = 200

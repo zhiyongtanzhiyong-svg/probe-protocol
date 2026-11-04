@@ -1,5 +1,5 @@
 """
-CoOp (learnable context, Zhou et al. 2022, IJCV) control experiment for Paper2.
+CoOp (learnable context, Zhou et al. 2022, IJCV) control experiment for this paper.
 Answers: is CLIP weak because of features, or because of the (linear probe) usage?
 
 Protocol:
@@ -13,6 +13,7 @@ Protocol:
   features (C=1.0, max_iter=2000, random_state=seed) — isolates the classifier
   difference from the feature difference.
 """
+import os
 import sys, json, os
 import numpy as np
 import torch
@@ -21,13 +22,15 @@ import torch.nn.functional as F
 from sklearn.linear_model import LogisticRegression
 from torch.utils.data import DataLoader
 
-sys.path.insert(0, '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/scripts')
+sys.path.insert(0, ROOT + '/scripts')
 import open_clip
 from dataset import TPDDDataset, EVAL_TRANSFORM
 
-CKPT = '/home/lizhuo/Work/TobAI/checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin'
-OUT = '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/data/coop_experiment.json'
-FEAT_CACHE = '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/data/clip_features_clean.npz'
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+CKPT = 'checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin'
+OUT = ROOT + '/data/coop_experiment.json'
+FEAT_CACHE = ROOT + '/data/clip_features_clean.npz'
 
 CLASS_NAMES = ['anthracnose', 'black_shank', 'brown_spot', 'cmv', 'frog_eye',
                'genetic_abnormality', 'healthy', 'nematodes', 'potato_tuber_moth',

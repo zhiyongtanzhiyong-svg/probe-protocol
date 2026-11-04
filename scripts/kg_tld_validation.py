@@ -2,15 +2,18 @@
 KG prompt validation on TLD cross-dataset.
 Uses TPDD->KG mapping via TLD_TO_TPDD to create KG-augmented prompts for TLD.
 """
+import os
 import sys, json, torch, numpy as np
 from datasets import load_dataset
-sys.path.insert(0, '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/scripts')
+sys.path.insert(0, ROOT + '/scripts')
 
 import open_clip
 from dataset import EVAL_TRANSFORM, worker_init_fn
 from PIL import Image
 from torch.utils.data import DataLoader, Dataset
 from torchvision import transforms as T
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 IMAGENET_MEAN = np.array([0.485, 0.456, 0.406])
 IMAGENET_STD  = np.array([0.229, 0.224, 0.225])
@@ -61,13 +64,13 @@ class TLDDatasetSimple(Dataset):
 
 def main():
     model, _, preprocess = open_clip.create_model_and_transforms(
-        'ViT-L-14', pretrained='/home/lizhuo/Work/TobAI/checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin')
+        'ViT-L-14', pretrained='checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin')
     tokenizer = open_clip.get_tokenizer('ViT-L-14')
     model = model.eval().cuda()
 
     # Load KG data
-    tpd_map = json.load(open('/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/data/tpd_to_kg_map.json'))
-    kg_data = json.load(open('/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/data/tobacco_records.json'))
+    tpd_map = json.load(open(ROOT + '/data/tpd_to_kg_map.json'))
+    kg_data = json.load(open(ROOT + '/data/tobacco_records.json'))
 
     # Build KG symptom descriptions for TPDD class names
     def get_kg_symptom(tpdd_name):
@@ -132,7 +135,7 @@ def main():
     print(f"\nKG advantage on TLD (via TPDD mapping): {kg_acc - en_acc:+.1f} pp")
     print(f"Compare with TPDD KG advantage: +1.4 pp (KG-Symptom 15.2% vs EN-Photo 13.8%)")
 
-    json.dump(results, open('/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/data/tld_kg_prompts.json', 'w'), indent=2)
+    json.dump(results, open(ROOT + '/data/tld_kg_prompts.json', 'w'), indent=2)
 
 
 if __name__ == '__main__':

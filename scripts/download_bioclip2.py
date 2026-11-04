@@ -6,7 +6,7 @@ import os
 os.environ["HF_ENDPOINT"] = "https://hf-mirror.com"
 from huggingface_hub import hf_hub_download
 
-DEST = "/home/lizhuo/Work/TobAI/checkpoints/bioclip2"
+DEST = "checkpoints/bioclip2"
 os.makedirs(DEST, exist_ok=True)
 
 FILES = [

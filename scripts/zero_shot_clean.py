@@ -14,6 +14,7 @@ condition / combined; EN-expert) scored on the SAME 138 images.
 
 Outputs data/zero_shot_clean.json.
 """
+import os
 import json, os
 import numpy as np
 import torch
@@ -22,11 +23,13 @@ from PIL import Image
 from torch.utils.data import Dataset, DataLoader
 from torchvision import transforms
 
-CKPT = '/home/lizhuo/Work/TobAI/checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin'
-TPDD = '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/data/tpdd'
-TPD_MAP = '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/data/tpd_to_kg_map.json'
-KG_DATA = '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/data/tobacco_records.json'
-OUT = '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/data/zero_shot_clean.json'
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+CKPT = 'checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin'
+TPDD = ROOT + '/data/tpdd'
+TPD_MAP = ROOT + '/data/tpd_to_kg_map.json'
+KG_DATA = ROOT + '/data/tobacco_records.json'
+OUT = ROOT + '/data/zero_shot_clean.json'
 
 N_BOOT = 2000
 SEED = 0
@@ -193,8 +196,8 @@ def main():
         ta = d.get('per_template_test_acc') or d.get('template_acc')
         if isinstance(ta, dict) and ta: return max(ta, key=ta.get), ta
         return None, ta
-    pa_best, pa_ta = best_from_list('/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/data/prompt_ablation.json')
-    zp_best, zp_ta = best_from_dict('/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/data/zpe_experiment.json')
+    pa_best, pa_ta = best_from_list(ROOT + '/data/prompt_ablation.json')
+    zp_best, zp_ta = best_from_dict(ROOT + '/data/zpe_experiment.json')
     results['reconciliation'] = {
         'prior_prompt_ablation_best': pa_best, 'prior_prompt_ablation': pa_ta,
         'prior_zpe_best': zp_best, 'prior_zpe_template_acc': zp_ta,

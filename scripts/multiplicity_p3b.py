@@ -48,11 +48,14 @@ Validation (hard assertions, aborts on mismatch):
     and win/tie/loss.
   - K=5/K=10 probe rows use the matched-budget ResNet means (64.93/74.64).
 """
+import os
 import sys, json
 import numpy as np
 from scipy import stats
 
-REPO = '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet'
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+REPO = ROOT
 ALPHA = 0.05
 B = 10000
 BOOT_SEED = 0

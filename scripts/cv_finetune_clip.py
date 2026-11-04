@@ -34,14 +34,16 @@ import open_clip
 from sklearn.model_selection import StratifiedKFold, StratifiedShuffleSplit
 from scipy import stats
 
-REPO = "/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet"
+REPO = ROOT
 sys.path.insert(0, os.path.join(REPO, "scripts"))
 from dataset import TPDDDataset  # noqa
 from cv_protocol import set_seed  # noqa (shared seeding)
 
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 CKPTS = {
-    "dfn_clip": "/home/lizhuo/Work/TobAI/checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin",
-    "laion2b": "/home/lizhuo/Work/TobAI/checkpoints/clip_vitl14_laion2b/open_clip_pytorch_model.bin",
+    "dfn_clip": "checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin",
+    "laion2b": "checkpoints/clip_vitl14_laion2b/open_clip_pytorch_model.bin",
 }
 MODEL = "ViT-L-14"
 NC = 16

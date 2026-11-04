@@ -199,7 +199,7 @@ def main():
     print("\n=== CLIP DFN-CLIP zero-shot ===")
     try:
         import open_clip
-        clip_model, _, _ = open_clip.create_model_and_transforms("ViT-L-14", pretrained="/home/lizhuo/Work/TobAI/checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin")
+        clip_model, _, _ = open_clip.create_model_and_transforms("ViT-L-14", pretrained="checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin")
         clip_model = clip_model.to(DEVICE).eval()
         clip_tokenizer = open_clip.get_tokenizer("ViT-L-14")
         tf = get_transform("clip")
@@ -215,7 +215,7 @@ def main():
     # === 2. CLIP LAION zero-shot ===
     print("\n=== CLIP LAION-2B zero-shot ===")
     try:
-        clip_model2, _, _ = open_clip.create_model_and_transforms("ViT-L-14", pretrained="/home/lizhuo/Work/TobAI/checkpoints/clip_vitl14_laion2b/open_clip_pytorch_model.bin")
+        clip_model2, _, _ = open_clip.create_model_and_transforms("ViT-L-14", pretrained="checkpoints/clip_vitl14_laion2b/open_clip_pytorch_model.bin")
         clip_model2 = clip_model2.to(DEVICE).eval()
         res = zero_shot_eval(clip_model2, tf, clip_tokenizer, class_names_en, args.field_dir, "clip", args.batch)
         results["clip_laion_zeroshot"] = res
@@ -230,8 +230,8 @@ def main():
     print("\n=== SigLIP zero-shot ===")
     try:
         from transformers import AutoModel, AutoTokenizer
-        siglip_model = AutoModel.from_pretrained("/home/lizhuo/Work/TobAI/checkpoints/siglip").to(DEVICE).eval()
-        siglip_tokenizer = AutoTokenizer.from_pretrained("/home/lizhuo/Work/TobAI/checkpoints/siglip")
+        siglip_model = AutoModel.from_pretrained("checkpoints/siglip").to(DEVICE).eval()
+        siglip_tokenizer = AutoTokenizer.from_pretrained("checkpoints/siglip")
         tf_siglip = get_transform("siglip")
         res = zero_shot_eval(siglip_model, tf_siglip, siglip_tokenizer, class_names_en, args.field_dir, "siglip", 8)
         results["siglip_zeroshot"] = res

@@ -39,12 +39,13 @@ every few-shot number is reproducible from this one artifact.
 
 Writes data/clip_fewshot.json (+ _fixed alias) and data/fewshot_features_dfn.npz.
 """
+import os
 import sys, json, os
 import numpy as np
 import torch
 from sklearn.linear_model import LogisticRegression
 
-REPO = '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet'
+REPO = ROOT
 sys.path.insert(0, f'{REPO}/scripts')
 
 import open_clip
@@ -52,6 +53,8 @@ from dataset import TPDDDataset, EVAL_TRANSFORM, worker_init_fn
 from coop_experiment import kshot_subset_idx
 from torch.utils.data import DataLoader
 from PIL import Image
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 IMAGENET_MEAN = np.array([0.485, 0.456, 0.406])
 IMAGENET_STD = np.array([0.229, 0.224, 0.225])

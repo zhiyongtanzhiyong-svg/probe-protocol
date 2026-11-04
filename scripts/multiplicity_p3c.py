@@ -23,11 +23,14 @@ Validation (hard assertions, aborts on mismatch):
 The two old families remain: data/multiplicity_k2.json (8) and
 data/multiplicity_p3b.json (10); the 12-family is the executed one.
 """
+import os
 import json
 import numpy as np
 from scipy import stats
 
-REPO = '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet'
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+REPO = ROOT
 ALPHA = 0.05
 B = 10000
 BOOT_SEED = 0

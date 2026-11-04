@@ -12,7 +12,7 @@ os.environ.setdefault('HF_ENDPOINT', 'https://hf-mirror.com')
 import shutil
 from huggingface_hub import hf_hub_download
 
-CKPT_DIR = '/home/lizhuo/Work/TobAI/checkpoints/clip_vitl14_laion2b'
+CKPT_DIR = 'checkpoints/clip_vitl14_laion2b'
 REPO = 'laion/CLIP-ViT-L-14-laion2B-s32B-b82K'
 BIN_LOCAL = os.path.join(CKPT_DIR, 'open_clip_pytorch_model.bin')
 CFG_LOCAL = os.path.join(CKPT_DIR, 'open_clip_config.json')

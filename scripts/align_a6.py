@@ -7,7 +7,7 @@ bottleneck, not representation failure. Uses the EN-Photo base template
 (the zero-shot decision rule). No new data; reuses cached test features.
 """
 import numpy as np, torch, open_clip, json, os
-CKPT='/home/lizhuo/Work/TobAI/checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin'
+CKPT='checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin'
 NAMES=['anthracnose','black_shank','brown_spot','cmv','frog_eye','genetic_abnormality',
        'healthy','nematodes','potato_tuber_moth','pvy','sunscald','target_spot','tmv',
        'tswv','weather_fleck','wildfire']  # index order (alphabetical, DatasetFolder default)

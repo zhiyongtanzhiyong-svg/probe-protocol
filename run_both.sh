@@ -2,7 +2,7 @@
 # Sequential runner: LP++ first (creates laion feature cache), then CoOp official.
 # Avoids a race on cache creation and GPU contention between the two.
 set -uo pipefail
-cd /home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet
+cd "$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")/.." && pwd)"
 TS=$(date +%Y%m%d_%H%M%S)
 LOGDIR=logs
 mkdir -p "$LOGDIR"

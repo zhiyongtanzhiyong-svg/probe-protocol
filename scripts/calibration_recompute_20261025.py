@@ -20,15 +20,18 @@ This script:
 
 Output: data/calibration_20261025.json
 """
+import os
 import sys, json, time
 import numpy as np
 from sklearn.linear_model import LogisticRegression
 
-sys.path.insert(0, '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/scripts')
+sys.path.insert(0, ROOT + '/scripts')
 import torch
 import open_clip
 
-CKPT = '/home/lizhuo/Work/TobAI/checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin'
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+CKPT = 'checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin'
 STORE = 'data/canonical_clip_features_dfn.npz'
 OUT = 'data/calibration_20261025.json'
 

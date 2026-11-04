@@ -3,11 +3,12 @@ Multi-Model × Multi-Dataset CLIP Evaluation for Tobacco Disease Classification.
 2 VLMs (DFN-CLIP, SigLIP) × 2 datasets (TPDD 16-class, TLD 10-class).
 Evaluates zero-shot + few-shot linear probe.
 """
+import os
 import sys, json, torch, numpy as np, os
 from sklearn.linear_model import LogisticRegression
 from torch.utils.data import DataLoader, Dataset
 from PIL import Image
-sys.path.insert(0, '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/scripts')
+sys.path.insert(0, ROOT + '/scripts')
 
 import open_clip
 from dataset import TPDDDataset, EVAL_TRANSFORM, TRAIN_TRANSFORM, worker_init_fn
@@ -52,16 +53,18 @@ class KShotSubset(Dataset):
 
 # ===== Models to evaluate =====
 MODELS = {
-    "DFN-CLIP-ViTL14": ("open_clip", "ViT-L-14", "/home/lizhuo/Work/TobAI/checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin"),
-    "OpenAI-CLIP-ViTL14": ("openai_clip", "ViT-L/14", "/home/lizhuo/Work/TobAI/checkpoints/clip_openai_vitl14/pytorch_model.bin"),
+    "DFN-CLIP-ViTL14": ("open_clip", "ViT-L-14", "checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin"),
+    "OpenAI-CLIP-ViTL14": ("openai_clip", "ViT-L/14", "checkpoints/clip_openai_vitl14/pytorch_model.bin"),
 }
 
 # ===== Datasets =====
 from datasets import load_dataset
 from collections import Counter
 
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 # TPDD
-tpd_map = json.load(open('/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/data/tpd_to_kg_map.json'))
+tpd_map = json.load(open(ROOT + '/data/tpd_to_kg_map.json'))
 tpd_eng_names = list(tpd_map.keys())
 tpd_test = TPDDDataset('test', transform=EVAL_TRANSFORM)
 tpd_train_full = TPDDDataset('train', transform=TRAIN_TRANSFORM)
@@ -187,8 +190,8 @@ for model_name, (lib, arch, ckpt_path) in MODELS.items():
         RESULTS[f"{model_name}_{ds_name}_zero-shot"] = {"accuracy": zs_acc}
 
 # Save
-os.makedirs('/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/data/', exist_ok=True)
-json.dump(RESULTS, open('/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/data/multimodel_results.json', 'w'), indent=2)
+os.makedirs(ROOT + '/data/', exist_ok=True)
+json.dump(RESULTS, open(ROOT + '/data/multimodel_results.json', 'w'), indent=2)
 
 # Summary table
 print(f"\n{'='*70}")

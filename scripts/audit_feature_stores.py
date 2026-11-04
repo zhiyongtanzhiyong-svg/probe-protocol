@@ -19,18 +19,21 @@ state which results are reproducible from the repository as it now stands.
 Writes data/laion_clip_features_clean.npz and data/feature_store_audit.json.
 Exit 0 if the LAION cache is fresh; the audit is written either way.
 """
+import os
 import sys, os, json
 import numpy as np
 import torch
 from sklearn.linear_model import LogisticRegression
 
-REPO = '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet'
+REPO = ROOT
 sys.path.insert(0, f'{REPO}/scripts')
 
 import open_clip
 from dataset import TPDDDataset, EVAL_TRANSFORM, worker_init_fn
 from clip_fewshot_probe import tensor_to_pil
 from torch.utils.data import DataLoader
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 LAION_CKPT = f'{REPO}/../checkpoints/clip_vitl14_laion2b/open_clip_pytorch_model.bin'
 OUT = f'{REPO}/data/laion_clip_features_clean.npz'

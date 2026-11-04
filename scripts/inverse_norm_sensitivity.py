@@ -18,6 +18,7 @@ and reports, on the 138-image test split (primary DFN-CLIP):
   - C=1 logistic-probe accuracy (A vs B), train features likewise
 Deterministic: no stochastic ops, fixed seed.
 """
+import os
 import sys, os, json, time
 import numpy as np, torch
 from PIL import Image
@@ -25,11 +26,13 @@ from torch.utils.data import DataLoader
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score
 
-sys.path.insert(0, '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/scripts')
+sys.path.insert(0, ROOT + '/scripts')
 from dataset import TPDDDataset, EVAL_TRANSFORM
 import open_clip
 
-CKPT = '/home/lizhuo/Work/TobAI/checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin'
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+CKPT = 'checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin'
 IMAGENET_MEAN = np.array([0.485, 0.456, 0.406])
 IMAGENET_STD  = np.array([0.229, 0.224, 0.225])
 DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')

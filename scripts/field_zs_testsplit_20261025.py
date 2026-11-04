@@ -160,7 +160,7 @@ def main():
 
     import open_clip
     print("=== DFN-CLIP ===")
-    m, _, _ = open_clip.create_model_and_transforms("ViT-L-14", pretrained="/home/lizhuo/Work/TobAI/checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin")
+    m, _, _ = open_clip.create_model_and_transforms("ViT-L-14", pretrained="checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin")
     m = m.to(DEVICE).eval()
     tok = open_clip.get_tokenizer("ViT-L-14")
     out["clip_dfn_zeroshot_test53"] = run_clip(m, tok, get_transform("clip"), "dfn")
@@ -168,7 +168,7 @@ def main():
     print(out["clip_dfn_zeroshot_test53"]["accuracy"], "baseline", out["clip_dfn_zeroshot_test53"]["majority_baseline"])
 
     print("=== LAION-2B ===")
-    m, _, _ = open_clip.create_model_and_transforms("ViT-L-14", pretrained="/home/lizhuo/Work/TobAI/checkpoints/clip_vitl14_laion2b/open_clip_pytorch_model.bin")
+    m, _, _ = open_clip.create_model_and_transforms("ViT-L-14", pretrained="checkpoints/clip_vitl14_laion2b/open_clip_pytorch_model.bin")
     m = m.to(DEVICE).eval()
     out["clip_laion_zeroshot_test53"] = run_clip(m, tok, get_transform("clip"), "laion")
     del m
@@ -177,8 +177,8 @@ def main():
     print("=== SigLIP ===")
     try:
         from transformers import AutoModel, AutoTokenizer
-        sm = AutoModel.from_pretrained("/home/lizhuo/Work/TobAI/checkpoints/siglip").to(DEVICE).eval()
-        st = AutoTokenizer.from_pretrained("/home/lizhuo/Work/TobAI/checkpoints/siglip")
+        sm = AutoModel.from_pretrained("checkpoints/siglip").to(DEVICE).eval()
+        st = AutoTokenizer.from_pretrained("checkpoints/siglip")
         text_feats = []
         for c in class_names:
             for text in make_prompts(class_names_en[c]):

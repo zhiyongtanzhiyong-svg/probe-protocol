@@ -2,14 +2,17 @@
 P2-6: τ sensitivity analysis for zero-shot CLIP.
 Tests how accuracy changes with different temperature values.
 """
+import os
 import sys, json, torch, numpy as np, time, os
-sys.path.insert(0, '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/scripts')
+sys.path.insert(0, ROOT + '/scripts')
 import open_clip
 from dataset import TPDDDataset, EVAL_TRANSFORM, worker_init_fn
 from PIL import Image
 from torch.utils.data import DataLoader
 
-CLIP_CKPT = '/home/lizhuo/Work/TobAI/checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin'
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+CLIP_CKPT = 'checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin'
 IMAGENET_MEAN = np.array([0.485, 0.456, 0.406])
 IMAGENET_STD  = np.array([0.229, 0.224, 0.225])
 

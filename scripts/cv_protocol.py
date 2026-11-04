@@ -24,6 +24,7 @@ a replacement for) the original held-out-138 numbers.
 
 Resumable: per-fold results are flushed to data/cv_protocol.json after each fold.
 """
+import os
 import sys, os, json, time
 import numpy as np, torch
 from PIL import Image
@@ -37,7 +38,7 @@ DATA_DIR = os.path.join(ROOT, 'data')
 OUT = os.path.join(DATA_DIR, 'cv_protocol.json')
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-sys.path.insert(0, '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/scripts')
+sys.path.insert(0, ROOT + '/scripts')
 from dataset import TPDDDataset, TRAIN_TRANSFORM, EVAL_TRANSFORM, worker_init_fn
 from model_zoo import ResNetBaseline, set_seed
 from canonical_protocol import extract_clip, C_GRID, CLIP_CKPTS, PRIMARY

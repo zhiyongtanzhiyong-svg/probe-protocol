@@ -17,11 +17,13 @@ import torchvision.transforms as T
 from transformers import AutoModel, AutoImageProcessor, AutoTokenizer
 from sklearn.linear_model import LogisticRegression
 
-REPO = "/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet"
+REPO = ROOT
 sys.path.insert(0, os.path.join(REPO, "scripts"))
 from dataset import TPDDDataset  # noqa
 
-MODEL_PATH = "/home/lizhuo/Work/TobAI/checkpoints/siglip"
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+MODEL_PATH = "checkpoints/siglip"
 NC = 16
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 IMG_SIZE = 384

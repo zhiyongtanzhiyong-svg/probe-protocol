@@ -13,6 +13,7 @@ Data: data/plantvillage_corn/Corn___*/  (4 classes, 3852 imgs, no augmentation).
 Resumable: every phase/seed/fold flushes to data/corn_results.json.
 CLIP features cached to data/corn_clip_features.npz.
 """
+import os
 import sys, os, json, time, glob
 import numpy as np, torch
 from PIL import Image
@@ -29,7 +30,7 @@ OUT = os.path.join(DATA_DIR, 'corn_results.json')
 FEAT_NPZ = os.path.join(DATA_DIR, 'corn_clip_features.npz')
 
 sys.path.insert(0, SCRIPTS)
-sys.path.insert(0, '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/scripts')
+sys.path.insert(0, ROOT + '/scripts')
 from dataset import TRAIN_TRANSFORM, EVAL_TRANSFORM, worker_init_fn
 from model_zoo import ResNetBaseline, set_seed
 from canonical_protocol import extract_clip, run_clip_protocol, C_GRID, CLIP_CKPTS, PRIMARY, tensor_to_pil

@@ -15,13 +15,15 @@ import open_clip
 from torch.utils.data import DataLoader
 from PIL import Image
 
-REPO = "/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet"
-CKPT = "/home/lizhuo/Work/TobAI/checkpoints/bioclip2/open_clip_pytorch_model.bin"
-PAPER1 = "/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/scripts"
+REPO = ROOT
+CKPT = "checkpoints/bioclip2/open_clip_pytorch_model.bin"
+PAPER1 = ROOT + "/scripts"
 sys.path.insert(0, os.path.join(REPO, "scripts"))
 sys.path.insert(0, PAPER1)
 from dataset import TPDDDataset, EVAL_TRANSFORM
 from prompt_ablation import tensor_to_pil, worker_init_fn
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 MODEL = "ViT-L-14"  # BioCLIP 2 arch (24 layers, width 1024, patch 14) -> ViT-L/14
 

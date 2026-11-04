@@ -8,18 +8,19 @@
    collapse (e.g., always-predict-wildfire) behind EN-Label 0.7%.
 3. Sanity: reproduce C-selection (expect best_C=300, test 85.5%).
 """
+import os
 import json, sys
 import numpy as np
 import torch
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 
-sys.path.insert(0, '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/scripts')
+sys.path.insert(0, ROOT + '/scripts')
 
-CKPT = '/home/lizhuo/Work/TobAI/checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin'
-NPZ = '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/data/clip_features_clean.npz'
-TPD_MAP = '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/data/tpd_to_kg_map.json'
-KG_DATA = '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/data/tobacco_records.json'
+CKPT = 'checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin'
+NPZ = ROOT + '/data/clip_features_clean.npz'
+TPD_MAP = ROOT + '/data/tpd_to_kg_map.json'
+KG_DATA = ROOT + '/data/tobacco_records.json'
 
 CLASS_NAMES = list(json.load(open(TPD_MAP)).keys())  # label ids 0..15
 CN_MAP = {
@@ -71,6 +72,8 @@ print('probes:', json.dumps(probes, indent=1))
 
 # ---- 2. zero-shot EN-Label / EN-Photo distributions + ECE ----
 import open_clip
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 model, _, _ = open_clip.create_model_and_transforms('ViT-L-14', pretrained=CKPT)
 model.eval().cuda(); tok = open_clip.get_tokenizer('ViT-L-14')
 
@@ -115,5 +118,5 @@ for tname, prompts in TEMPLATES.items():
 
 json.dump({'class_names': CLASS_NAMES, 'best_C': best_C, 'val_grid': val,
            'canonical_probes': probes, 'zero_shot': out},
-          open('/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/data/verification_c2.json','w'), indent=2)
+          open(ROOT + '/data/verification_c2.json','w'), indent=2)
 print('saved data/verification_c2.json')

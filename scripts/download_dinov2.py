@@ -1,7 +1,7 @@
 """Download base DINOv2 ViT-L/14 (native .pth) via HF mirror (facebook/ is not proxied)."""
 import os, urllib.request
 
-DEST = "/home/lizhuo/Work/TobAI/checkpoints/dinov2"
+DEST = "checkpoints/dinov2"
 os.makedirs(DEST, exist_ok=True)
 SRC = "https://hf-mirror.com/hdtech/dinov2_vitl14_pretrain/resolve/main/dinov2_vitl14_pretrain.pth"
 DEST_P = os.path.join(DEST, "dinov2_vitl14_pretrain.pth")

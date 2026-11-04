@@ -5,6 +5,7 @@ R4 Experiments (4th round reviewer response):
 3. Exact binomial test: 14 zero-shot prompts vs majority baseline
 Produces data/r4_results.json
 """
+import os
 import sys, json, torch, numpy as np, os, time
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, balanced_accuracy_score, f1_score
@@ -14,7 +15,7 @@ from scipy.spatial.distance import cdist
 from scipy.stats import binomtest, norm
 from sklearn.metrics import silhouette_score
 
-sys.path.insert(0, '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/scripts')
+sys.path.insert(0, ROOT + '/scripts')
 
 import open_clip
 from dataset import TPDDDataset, TRAIN_TRANSFORM, EVAL_TRANSFORM, worker_init_fn
@@ -25,7 +26,9 @@ import torch.nn as nn
 import torchvision.models as models
 import torchvision.transforms as T
 
-CLIP_CKPT = '/home/lizhuo/Work/TobAI/checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin'
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+CLIP_CKPT = 'checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin'
 IMAGENET_MEAN = np.array([0.485, 0.456, 0.406])
 IMAGENET_STD = np.array([0.229, 0.224, 0.225])
 DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -231,8 +234,8 @@ def main():
     print(f"  CLIP-C30 accuracy: {clip_c30_acc*100:.1f}%")
 
     # Load fine-tuned ResNet predictions (seed 1, deterministic)
-    rn_full_preds = np.load('/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/data/p2_resnet_full_preds.npy')
-    test_labels = np.load('/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/data/p2_test_labels.npy')
+    rn_full_preds = np.load(ROOT + '/data/p2_resnet_full_preds.npy')
+    test_labels = np.load(ROOT + '/data/p2_test_labels.npy')
     rn_full_acc = accuracy_score(test_labels, rn_full_preds)
     print(f"  ResNet-18 (fine-tuned, seed-1) accuracy: {rn_full_acc*100:.1f}%")
 
@@ -266,7 +269,7 @@ def main():
     # ============================================================
     print("\n[5/5] Exact binomial test for zero-shot prompts...")
     # Load zero-shot results
-    zs_path = '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/data/zero_shot_clean.json'
+    zs_path = ROOT + '/data/zero_shot_clean.json'
     with open(zs_path) as f:
         zs = json.load(f)
 
@@ -311,7 +314,7 @@ def main():
     # Save
     # ============================================================
     RESULTS['elapsed_sec'] = round(time.time() - t0, 1)
-    out_path = '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/data/r4_results.json'
+    out_path = ROOT + '/data/r4_results.json'
     with open(out_path, 'w') as f:
         json.dump(RESULTS, f, indent=2)
     print(f"\nDone in {RESULTS['elapsed_sec']}s. Results saved to {out_path}")

@@ -24,6 +24,7 @@ zero-shot result set:
 
 Output: data/zero_shot_full_20261025.json
 """
+import os
 import sys, json, time
 from math import comb
 import numpy as np
@@ -31,18 +32,20 @@ import torch
 from PIL import Image
 from torchvision import transforms
 
-sys.path.insert(0, '/home/lizhuo/Work/TobAI/probe-protocol/scripts')
+sys.path.insert(0, ROOT + '/scripts')
 import dataset as D
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TPDDDataset = D.TPDDDataset
 
-REPO = '/home/lizhuo/Work/TobAI/probe-protocol'
+REPO = ROOT
 OUT = f'{REPO}/data/zero_shot_full_20261025.json'
 DEVICE = 'cuda' if torch.cuda.is_available() else 'cpu'
 
 CKPTS = {
-    'dfn_clip': f'/home/lizhuo/Work/TobAI/checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin',
-    'laion2b': f'/home/lizhuo/Work/TobAI/checkpoints/clip_vitl14_laion2b/open_clip_pytorch_model.bin',
-    'bioclip2': f'/home/lizhuo/Work/TobAI/checkpoints/bioclip2/open_clip_pytorch_model.bin',
+    'dfn_clip': f'checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin',
+    'laion2b': f'checkpoints/clip_vitl14_laion2b/open_clip_pytorch_model.bin',
+    'bioclip2': f'checkpoints/bioclip2/open_clip_pytorch_model.bin',
 }
 
 CN = {"anthracnose": "炭疽病", "black_shank": "黑胫病", "brown_spot": "赤星病", "cmv": "黄瓜花叶病毒病",
@@ -203,7 +206,7 @@ def main():
     # ---------------- SigLIP (transformers, own protocol) ----------------
     try:
         from transformers import AutoModel, AutoTokenizer
-        SP = f'/home/lizhuo/Work/TobAI/checkpoints/siglip'
+        SP = f'checkpoints/siglip'
         smodel = AutoModel.from_pretrained(SP).to(DEVICE)
         stok = AutoTokenizer.from_pretrained(SP)
         smodel.eval()

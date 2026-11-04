@@ -1,6 +1,6 @@
 """
 LP++ (Huang et al. 2024, arXiv:2404.02285, "LP++: A Surprisingly Strong
-Linear Probe for Few-Shot CLIP") head comparison for Paper2.
+Linear Probe for Few-Shot CLIP") head comparison for this paper.
 
 Addresses the reviewer demand to benchmark against the known-stronger few-shot
 CLIP probe instead of only the naive linear probe.
@@ -23,7 +23,7 @@ github.com/FereshteShakeri/FewShot-CLIP-Strong-Baseline):
   - 300 epochs; early stop on validation accuracy; report test accuracy at
     the best-validation epoch.
 
-Adaptation to the Paper2 protocol (documented deviations):
+Adaptation to the matched-budget protocol (documented deviations):
   - open_clip ViT-L/14 (dfn_clip primary, laion2b); fp32 (reference: fp16).
   - Text side = the paper's own 14-template zero-shot set: per-class mean of
     the 14 normalized template embeddings, NOT renormalized, so the text
@@ -42,6 +42,7 @@ Adaptation to the Paper2 protocol (documented deviations):
 
 Outputs data/lp_plus_plus.json.
 """
+import os
 import sys, json, os
 import numpy as np
 import torch
@@ -53,14 +54,16 @@ from torch.utils.data import DataLoader
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(REPO, "scripts"))
-sys.path.insert(0, "/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/scripts")
+sys.path.insert(0, ROOT + "/scripts")
 import open_clip
 from dataset import TPDDDataset, EVAL_TRANSFORM, worker_init_fn
 from coop_experiment import kshot_subset_idx
 
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 CKPT = {
-    'dfn_clip': '/home/lizhuo/Work/TobAI/checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin',
-    'laion2b': '/home/lizhuo/Work/TobAI/checkpoints/clip_vitl14_laion2b/open_clip_pytorch_model.bin',
+    'dfn_clip': 'checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin',
+    'laion2b': 'checkpoints/clip_vitl14_laion2b/open_clip_pytorch_model.bin',
 }
 # REPOINTED 2026-10-05. The previous DFN entry, data/clip_features_clean.npz,
 # is a stale store: max |diff| 0.1185 against the current corpus on
@@ -85,7 +88,7 @@ def load_feature_cache(path):
     if 'Xtr' in z:                              # audit_feature_stores convention
         return z['Xtr'], z['ytr'], z['Xte'], z['yte']
     return z['train'], z['train_y'], z['test'], z['test_y']   # canonical convention
-TPD_MAP = '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/data/tpd_to_kg_map.json'
+TPD_MAP = ROOT + '/data/tpd_to_kg_map.json'
 KG_DATA = os.path.join(REPO, 'data/tobacco_records.json')
 OUT = os.path.join(REPO, 'data', 'lp_plus_plus.json')
 DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')

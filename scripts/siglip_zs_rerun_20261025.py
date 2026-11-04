@@ -1,17 +1,20 @@
 #!/usr/bin/env python3
 """SigLIP zero-shot re-run on CURRENT repo state (CPU, to coexist with K12 GPU runs).
 Verifies data/siglip_protocol.json zero-shot (best CN-Symptom 13.04%, 2026-10-22)."""
+import os
 import sys, json, time
 import numpy as np, torch
 from PIL import Image
 from torchvision import transforms
-sys.path.insert(0, '/home/lizhuo/Work/TobAI/probe-protocol/scripts')
+sys.path.insert(0, ROOT + '/scripts')
 import dataset as D
 TPDDDataset = D.TPDDDataset
 from math import comb
 from transformers import AutoModel, AutoTokenizer
 
-REPO = '/home/lizhuo/Work/TobAI/probe-protocol'
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+REPO = ROOT
 DEVICE = 'cpu'
 ds = TPDDDataset('test')
 class_names = ds.class_names

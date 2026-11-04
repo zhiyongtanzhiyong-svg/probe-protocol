@@ -14,6 +14,7 @@ Outputs data/dinov2_protocol.json with:
   - kshot: K=1/5/10 (+full) 15-seed mean/std  [vs CLIP & ResNet K-curves]
   - geometry (train/test) for the representational comparison.
 """
+import os
 import sys, os, json, time
 import numpy as np, torch
 import torch.nn as nn
@@ -24,11 +25,13 @@ import sklearn.metrics as M
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(REPO, "scripts"))
-sys.path.insert(0, "/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/scripts")
+sys.path.insert(0, ROOT + "/scripts")
 from dataset import TPDDDataset, EVAL_TRANSFORM, TRAIN_TRANSFORM, worker_init_fn
 from canonical_protocol import run_clip_protocol, compute_geometry
 
-PTH = "/home/lizhuo/Work/TobAI/checkpoints/dinov2/dinov2_vitl14_pretrain.pth"
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+PTH = "checkpoints/dinov2/dinov2_vitl14_pretrain.pth"
 OUT = os.path.join(REPO, "data", "dinov2_protocol.json")
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 

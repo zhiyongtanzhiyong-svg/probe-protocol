@@ -14,6 +14,7 @@ Also:
 
 Produces data/r4b_clean_protocol.json
 """
+import os
 import sys, json, torch, numpy as np, os, time
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, balanced_accuracy_score, f1_score
@@ -21,7 +22,7 @@ from sklearn.neural_network import MLPClassifier
 from scipy.stats import binomtest
 from sklearn.model_selection import train_test_split
 
-sys.path.insert(0, '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/scripts')
+sys.path.insert(0, ROOT + '/scripts')
 
 import open_clip
 from dataset import TPDDDataset, TRAIN_TRANSFORM, EVAL_TRANSFORM, worker_init_fn
@@ -31,12 +32,14 @@ from torch.utils.data import DataLoader
 import torch.nn as nn
 import torchvision.models as models
 
-CLIP_CKPT = '/home/lizhuo/Work/TobAI/checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin'
-LAION_CKPT = '/home/lizhuo/Work/TobAI/checkpoints/clip_vitl14_laion2b/open_clip_pytorch_model.bin'
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+CLIP_CKPT = 'checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin'
+LAION_CKPT = 'checkpoints/clip_vitl14_laion2b/open_clip_pytorch_model.bin'
 IMAGENET_MEAN = np.array([0.485, 0.456, 0.406])
 IMAGENET_STD = np.array([0.229, 0.224, 0.225])
 DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-DATA_DIR = '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/data'
+DATA_DIR = ROOT + '/data'
 RESULTS = {}
 
 

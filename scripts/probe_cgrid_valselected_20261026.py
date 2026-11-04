@@ -22,6 +22,7 @@ Protocol:
 
 Outputs: data/probe_cgrid_k1_k2_valselected.json
 """
+import os
 import sys, json, os
 import numpy as np
 import torch
@@ -60,8 +61,8 @@ def extract_val_features(ckpt_name):
     
     # Load model
     ckpt_paths = {
-        'dfn': '/home/lizhuo/Work/TobAI/checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin',
-        'laion': '/home/lizhuo/Work/TobAI/checkpoints/clip_vitl14_laion2b/open_clip_pytorch_model.bin',
+        'dfn': 'checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin',
+        'laion': 'checkpoints/clip_vitl14_laion2b/open_clip_pytorch_model.bin',
     }
     model, _, preprocess = open_clip.create_model_and_transforms(
         'ViT-L-14', pretrained=ckpt_paths[ckpt_name]

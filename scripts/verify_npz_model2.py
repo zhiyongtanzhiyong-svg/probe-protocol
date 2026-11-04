@@ -5,8 +5,10 @@ from PIL import Image
 from torchvision import transforms
 import open_clip
 
-BASE = '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet'
-TEST = '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/data/tpdd/test'
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+BASE = ROOT
+TEST = ROOT + '/data/tpdd/test'
 DEVICE = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 
 tf = transforms.Compose([
@@ -24,8 +26,8 @@ ref = ref / (np.linalg.norm(ref, axis=1, keepdims=True) + 1e-9)
 ref = torch.from_numpy(ref).to(DEVICE)
 
 CKPTS = {
-    'DFN-CLIP':  '/home/lizhuo/Work/TobAI/checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin',
-    'LAION-2B':  '/home/lizhuo/Work/TobAI/checkpoints/clip_vitl14_laion2b/open_clip_pytorch_model.bin',
+    'DFN-CLIP':  'checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin',
+    'LAION-2B':  'checkpoints/clip_vitl14_laion2b/open_clip_pytorch_model.bin',
 }
 for name, ckpt in CKPTS.items():
     model, _, _ = open_clip.create_model_and_transforms('ViT-L-14', pretrained=ckpt)

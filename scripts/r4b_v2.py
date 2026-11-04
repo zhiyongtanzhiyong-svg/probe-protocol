@@ -1,10 +1,11 @@
 """R4b v2: Clean protocol - validation-based selection. Simplified."""
+import os
 import sys, json, torch, numpy as np, time
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, balanced_accuracy_score, f1_score
 from sklearn.neural_network import MLPClassifier
 from sklearn.model_selection import train_test_split
-sys.path.insert(0, '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/scripts')
+sys.path.insert(0, ROOT + '/scripts')
 import open_clip
 from dataset import TPDDDataset, TRAIN_TRANSFORM, EVAL_TRANSFORM, worker_init_fn
 from PIL import Image
@@ -12,11 +13,13 @@ from torch.utils.data import DataLoader, Dataset
 import torchvision.models as models
 import torch.nn as nn
 
-CLIP_CKPT = '/home/lizhuo/Work/TobAI/checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin'
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+CLIP_CKPT = 'checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin'
 IMAGENET_MEAN = np.array([0.485, 0.456, 0.406])
 IMAGENET_STD = np.array([0.229, 0.224, 0.225])
 DEVICE = torch.device('cuda')
-DATA_DIR = '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/data'
+DATA_DIR = ROOT + '/data'
 RESULTS = {}
 
 def tensor_to_pil(img_tensor):

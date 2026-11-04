@@ -15,6 +15,7 @@ checkpoints, with:
 
 Output: data/zero_shot_both_ckpts_20261025.json
 """
+import os
 import sys, json, time
 from math import comb
 import numpy as np
@@ -22,12 +23,14 @@ import torch
 from PIL import Image
 from torchvision import transforms
 
-sys.path.insert(0, '/home/lizhuo/Work/TobAI/probe-protocol/scripts')
+sys.path.insert(0, ROOT + '/scripts')
 from dataset import TPDDDataset  # noqa: E402
 
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 CKPTS = {
-    "dfn_clip": "/home/lizhuo/Work/TobAI/checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin",
-    "laion2b": "/home/lizhuo/Work/TobAI/checkpoints/clip_vitl14_laion2b/open_clip_pytorch_model.bin",
+    "dfn_clip": "checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin",
+    "laion2b": "checkpoints/clip_vitl14_laion2b/open_clip_pytorch_model.bin",
 }
 OUT = 'data/zero_shot_both_ckpts_20261025.json'
 
@@ -42,8 +45,8 @@ CN_MAP = {
 
 
 def build_kg(class_names):
-    tpd_map = json.load(open('/home/lizhuo/Work/TobAI/probe-protocol/data/tpd_to_kg_map.json'))
-    kg_data = json.load(open('/home/lizhuo/Work/TobAI/probe-protocol/data/tobacco_records.json'))
+    tpd_map = json.load(open(ROOT + '/data/tpd_to_kg_map.json'))
+    kg_data = json.load(open(ROOT + '/data/tobacco_records.json'))
     kg_sym, kg_cond = {}, {}
     for name in class_names:
         if name == 'healthy':

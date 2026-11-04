@@ -22,7 +22,7 @@
     "val_frac": 0.25,
     "val_seed": 2024,
     "logit_scale": 100.0,
-    "feature_cache": "/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/data/clip_features_clean.npz"
+    "feature_cache": "./data/clip_features_clean.npz"
   },
   "per_template_test_acc": {
     "EN-Label": 0.007246376811594203,

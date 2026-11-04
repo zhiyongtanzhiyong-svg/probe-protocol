@@ -6,10 +6,11 @@ clip_fewshot.json (seed 0..14); ResNet-18 is re-run with the matching
 seed+500 support sets. Reports paired mean delta, paired t, Wilcoxon, and a
 bootstrap 95% CI on the mean delta.
 """
+import os
 import sys, os, json, time
 import numpy as np
 import torch, torch.nn as nn
-sys.path.insert(0, '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/scripts')
+sys.path.insert(0, ROOT + '/scripts')
 from dataset import TPDDDataset, TRAIN_TRANSFORM, EVAL_TRANSFORM, worker_init_fn
 from torch.utils.data import DataLoader, Dataset
 from model_zoo import ResNetBaseline, set_seed

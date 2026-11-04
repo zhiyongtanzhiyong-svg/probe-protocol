@@ -19,6 +19,7 @@ class order. ResNet keeps TRAIN_TRANSFORM because it trains for 30 epochs and
 there the augmentation is genuine, not a single stochastic draw.
 
 K in {1,5,10} ResNet per-seed accuracies are NOT recomputed here; they are read
+import os
 from the existing paired_kshot_a4.json, which used the same recipe and the same
 support draws. Only the K=2 row is new.
 
@@ -29,11 +30,13 @@ import numpy as np
 import torch
 from torch.utils.data import DataLoader
 
-REPO = '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet'
+REPO = ROOT
 sys.path.insert(0, f'{REPO}/scripts')
 
 from dataset import TPDDDataset, TRAIN_TRANSFORM, EVAL_TRANSFORM, worker_init_fn
 from paired_kshot_a4 import resnet_kshot_acc
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 N_SEEDS = 15
 K = 2

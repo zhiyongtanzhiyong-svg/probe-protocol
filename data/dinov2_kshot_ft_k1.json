@@ -3,7 +3,7 @@
   "gpu": "Tesla V100-DGXS-32GB",
   "torch": "2.4.1+cu121",
   "arch": "DINOv2 ViT-L/14 (LVD-142M base pretrain) full fine-tune + linear head 16",
-  "checkpoint": "/home/broadsense/works/lizhuo/TobAI/probe-protocol/checkpoints/dinov2/dinov2_vitl14_pretrain.pth",
+  "checkpoint": "./checkpoints/dinov2/dinov2_vitl14_pretrain.pth",
   "K": 1,
   "n_classes": 16,
   "seed_offset": 500,

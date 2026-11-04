@@ -127,7 +127,7 @@ def clip_eval_tf():
 def train_clip(train_e, test_e, field_dir, n_cls, seed, epochs=30, device=DEVICE):
     torch.manual_seed(seed); np.random.seed(seed); random.seed(seed)
     import open_clip
-    ckpt = "/home/lizhuo/Work/TobAI/checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin"
+    ckpt = "checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin"
     model, _, _ = open_clip.create_model_and_transforms("ViT-L-14", pretrained=ckpt)
     model = model.to(device)
     for p in model.parameters():

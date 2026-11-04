@@ -1,5 +1,5 @@
 """
-ZPE (zero-shot prompt ensembling) for Paper2.
+ZPE (zero-shot prompt ensembling) for this paper.
 
 Unifies the 14 prompt templates from prompt_ablation.py into an ensemble
 whose per-template weights are "discriminative signal" -- zero-shot
@@ -22,20 +22,23 @@ Protocol:
 - Final evaluation always uses the held-out test split features
   (clip_features_clean.npz, same clean cache as coop_experiment.py).
 """
+import os
 import sys, json
 import numpy as np
 import torch
 import torch.nn.functional as F
 
-sys.path.insert(0, '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/scripts')
+sys.path.insert(0, ROOT + '/scripts')
 import open_clip
 
-CKPT = '/home/lizhuo/Work/TobAI/checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin'
-OUT = '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/data/zpe_experiment.json'
-FEAT_CACHE = '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/data/clip_features_clean.npz'
-ABLATION_JSON = '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/data/prompt_ablation.json'
-KG_MAP = '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/data/tpd_to_kg_map.json'
-KG_DATA = '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/data/tobacco_records.json'
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+CKPT = 'checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin'
+OUT = ROOT + '/data/zpe_experiment.json'
+FEAT_CACHE = ROOT + '/data/clip_features_clean.npz'
+ABLATION_JSON = ROOT + '/data/prompt_ablation.json'
+KG_MAP = ROOT + '/data/tpd_to_kg_map.json'
+KG_DATA = ROOT + '/data/tobacco_records.json'
 
 CLASS_NAMES = ['anthracnose', 'black_shank', 'brown_spot', 'cmv', 'frog_eye',
                'genetic_abnormality', 'healthy', 'nematodes', 'potato_tuber_moth',

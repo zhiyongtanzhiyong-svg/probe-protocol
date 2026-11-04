@@ -4,11 +4,12 @@ R2 Experiments (fixed):
 2. CLIP tuned head (C=30) n=15 seeds
 3. LAION-2B balanced accuracy (K=1,5,10,full)
 """
+import os
 import sys, json, torch, numpy as np, time, os
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import balanced_accuracy_score, f1_score, accuracy_score
 from scipy.stats import binomtest
-sys.path.insert(0, '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/scripts')
+sys.path.insert(0, ROOT + '/scripts')
 
 import open_clip
 from dataset import TPDDDataset, TRAIN_TRANSFORM, EVAL_TRANSFORM, worker_init_fn
@@ -16,8 +17,10 @@ from model_zoo import ResNetBaseline, set_seed
 from PIL import Image
 from torch.utils.data import DataLoader, Dataset
 
-DFN_CKPT = '/home/lizhuo/Work/TobAI/checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin'
-LAION_CKPT = '/home/lizhuo/Work/TobAI/checkpoints/clip_vitl14_laion2b/open_clip_pytorch_model.bin'
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+DFN_CKPT = 'checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin'
+LAION_CKPT = 'checkpoints/clip_vitl14_laion2b/open_clip_pytorch_model.bin'
 IMAGENET_MEAN = np.array([0.485, 0.456, 0.406])
 IMAGENET_STD  = np.array([0.229, 0.224, 0.225])
 N_SEEDS = 15
@@ -146,7 +149,7 @@ def main():
 
     # McNemar: DFN C=30 seed0 vs ResNet full (from p2)
     try:
-        rn_fp = np.load('/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/data/p2_resnet_full_preds.npy')
+        rn_fp = np.load(ROOT + '/data/p2_resnet_full_preds.npy')
         nd, n01, n10, pm = mcnemar(p0, rn_fp, test_labels)
         results['mcnemar_dfn_c30_vs_rn_full'] = {'n_disc': nd, 'p': pm, 'sig': pm < 0.05}
         print(f'  McNemar DFN-C30 vs RN-full: n={nd}, p={pm:.4f}')

@@ -11,18 +11,21 @@ open_clip preprocess) and compares to the cache.
 
 Writes data/cache_freshness.json. Exit 0 iff all splits match to atol=1e-5.
 """
+import os
 import sys, json
 import numpy as np
 import torch
 from sklearn.linear_model import LogisticRegression
 
-REPO = '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet'
+REPO = ROOT
 sys.path.insert(0, f'{REPO}/scripts')
 
 import open_clip
 from dataset import TPDDDataset, EVAL_TRANSFORM, worker_init_fn
 from clip_fewshot_probe import tensor_to_pil
 from torch.utils.data import DataLoader
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 CKPT = f'{REPO}/../checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin'
 CACHE = f'{REPO}/data/clip_features_clean.npz'

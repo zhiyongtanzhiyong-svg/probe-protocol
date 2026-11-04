@@ -13,6 +13,7 @@ number is kept as a reference; this adds the 518px number.
 Same canonical probe protocol (C-grid, best-C on 20% val, MLP, kNN) and same held-out test set.
 Outputs data/dinov2_native518.json.
 """
+import os
 import sys, os, json, time
 import numpy as np, torch
 from PIL import Image
@@ -21,10 +22,12 @@ from torch.utils.data import DataLoader, Dataset
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(REPO, "scripts"))
-sys.path.insert(0, "/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/scripts")
+sys.path.insert(0, ROOT + "/scripts")
 from dataset import TPDDDataset
 from canonical_protocol import run_clip_protocol
 from dinov2_protocol import load_dinov2, PTH, DEVICE
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 NATIVE = transforms.Compose([
     transforms.Resize(518, interpolation=transforms.InterpolationMode.BICUBIC),

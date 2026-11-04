@@ -1,6 +1,6 @@
 """
 Frozen-CLIP patch-token extraction for the foreground-anchored patch-attention
-head (Paper2 A+B expansion, EXPERIMENT_PLAN block B1/B2).
+head (this paper A+B expansion, EXPERIMENT_PLAN block B1/B2).
 
 The paper's CLS features are the CLIP embedding `encode_image(img)`. This module
 returns the SAME CLS embedding (byte-identical, verified) together with the 196
@@ -41,8 +41,8 @@ DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 IMAGENET_MEAN = np.array([0.485, 0.456, 0.406])
 IMAGENET_STD = np.array([0.229, 0.224, 0.225])
 CKPT = {
-    'dfn_clip': '/home/lizhuo/Work/TobAI/checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin',
-    'laion2b': '/home/lizhuo/Work/TobAI/checkpoints/clip_vitl14_laion2b/open_clip_pytorch_model.bin',
+    'dfn_clip': 'checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin',
+    'laion2b': 'checkpoints/clip_vitl14_laion2b/open_clip_pytorch_model.bin',
 }
 
 

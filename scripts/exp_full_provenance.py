@@ -10,15 +10,18 @@ Protocol matches paper Methods exactly:
   DFN-CLIP full: frozen features (data/clip_features_clean.npz) + LogisticRegression C=1.0.
 Output: data/full_provenance.json
 """
+import os
 import sys, json, time, os, datetime
 import numpy as np
 import torch, torch.nn as nn
 from torch.utils.data import DataLoader
 from sklearn.linear_model import LogisticRegression
 
-sys.path.insert(0, '/home/lizhuo/Work/TobAI/Paper2-CLIPvsResNet/scripts')
+sys.path.insert(0, ROOT + '/scripts')
 from dataset import TPDDDataset, TRAIN_TRANSFORM, EVAL_TRANSFORM, worker_init_fn
 from model_zoo import ResNetBaseline, set_seed
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(BASE, 'data')
@@ -149,7 +152,7 @@ def main():
     del rn
     if DEVICE.type == 'cuda':
         torch.cuda.empty_cache()
-    ckpt = '/home/lizhuo/Work/TobAI/checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin'
+    ckpt = 'checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin'
     cost['clip_ckpt_bytes'] = int(os.path.getsize(ckpt))
     try:
         import open_clip

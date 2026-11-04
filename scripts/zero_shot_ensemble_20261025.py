@@ -1,8 +1,9 @@
 """14-template uniform-logit ensemble zero-shot, both checkpoints, current repo state.
 Replaces the 09-28-era ensemble numbers (7.97% DFN / 17.39% LAION) used as the
 CoOp 'zero-shot prior' context in the manuscript."""
+import os
 import sys, json
-sys.path.insert(0, '/home/lizhuo/Work/TobAI/probe-protocol/scripts')
+sys.path.insert(0, ROOT + '/scripts')
 import dataset as D  # must import BEFORE torch (import-order quirk in this env)
 TPDDDataset = D.TPDDDataset
 import torch  # noqa: E402
@@ -11,13 +12,15 @@ from PIL import Image  # noqa: E402
 from torchvision import transforms  # noqa: E402
 import open_clip  # noqa: E402
 
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 tf = transforms.Compose([transforms.Resize((256, 256)), transforms.CenterCrop(224), transforms.ToTensor(),
                          transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])])
 ds = TPDDDataset('test')
 y = np.array([ds.name_to_idx[l] for l in ds.class_labels])
 CKPTS = {
-    'dfn_clip': '/home/lizhuo/Work/TobAI/checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin',
-    'laion2b': '/home/lizhuo/Work/TobAI/checkpoints/clip_vitl14_laion2b/open_clip_pytorch_model.bin'}
+    'dfn_clip': 'checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin',
+    'laion2b': 'checkpoints/clip_vitl14_laion2b/open_clip_pytorch_model.bin'}
 
 CN = {"anthracnose": "炭疽病", "black_shank": "黑胫病", "brown_spot": "赤星病", "cmv": "黄瓜花叶病毒病",
       "frog_eye": "蛙眼病", "genetic_abnormality": "遗传异常", "healthy": "健康", "nematodes": "根结线虫病",
