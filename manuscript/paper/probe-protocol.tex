@@ -16,14 +16,14 @@
 
 \title{Fine-Tuning or Frozen Probes? Empirical Applicability Boundaries for Off-the-Shelf CLIP in Tobacco Leaf-Disorder Diagnosis}
 \author{
-Chenfeng Long$^{1,2,3}$, Zhiyong Tan$^{1,2,3}$, Yangjun Deng$^{1,2,3}$,\\ Xiang Luo$^{4}$, and Lizhuo Zhang$^{1,2,3*}$\\[6pt]
-$^{1}$College of Information and Intelligence,\\
+Chenfeng Long$^{a,b,c}$, Zhiyong Tan$^{a,b,c}$, Yangjun Deng$^{a,b,c}$,\\ Xiang Luo$^{d}$, and Lizhuo Zhang$^{a,b,c*}$\\[6pt]
+$^{a}$College of Information and Intelligence,\\
 \hspace{1em}Hunan Agricultural University, Changsha 410128, China\\
-$^{2}$Yuelushan Laboratory, Changsha 410128, China\\
-$^{3}$Hunan Provincial Engineering and Technology Research\\
+$^{b}$Yuelushan Laboratory, Changsha 410128, China\\
+$^{c}$Hunan Provincial Engineering and Technology Research\\
 \hspace{1em}Center for Rural and Agricultural Informatization,\\
 \hspace{1em}Hunan Agricultural University, Changsha 410128, China\\
-$^{4}$Information Department, China Guangdong Tobacco\\
+$^{d}$Information Department, China Guangdong Tobacco\\
 \hspace{1em}Meizhou Ltd, Meizhou 514000, China\\[4pt]
 $^{*}$Corresponding author: L.~Zhang (zhanglizhuo@hunau.edu.cn)\\[4pt]
 \parbox{\dimexpr\hsize-2\tabcolsep\relax}{\sloppy\small\textbf{Funding:} This work was supported in part by the Yuelushan Laboratory Breeding Program under Grant YLS-2026-ZY01002, in part by the National Natural Science Foundation of China (Youth Program) under Grant 62401203, and in part by the Meizhou Tobacco Science Research Project under Grant 202404.}
@@ -684,8 +684,8 @@ This work was supported in part by the Yuelushan Laboratory Breeding Program und
 The code and per-seed result files supporting the findings of this study are available in the public repository \url{https://github.com/zhiyongtanzhiyong-svg/probe-protocol}, so that the \texttt{data/*.json} files cited throughout the text can be independently re-verified during the review period rather than only after acceptance. The repository contains the full pipeline (feature extraction, probe and fine-tuning scripts, statistical analyses), the per-seed and per-fold result files cited as \texttt{data/*.json} throughout the text, the per-split image/label manifests (\texttt{data/tpdd/\{train,test,validation\}/labels.json}), and the feature-store audit files (\texttt{feature\_store\_audit.json}, \texttt{cache\_freshness.json}). The precomputed feature stores ($\approx$2\,GB) exceed comfortable repository size and are not included in it; they are available from the authors on request. The re-derived TPDD image set on which every number in this paper is computed (the original 11\,MB release cited in Methods is no longer available to us) and the 246-image field dataset are likewise available from the authors on request; the TLD and PlantVillage corpora are public (Methods).
 \section*{Conflicts of Interest}
 X. Luo is employed by China Guangdong Tobacco Meizhou Ltd, and part of this work was supported by the Meizhou Tobacco Science Research Project (Grant 202404). The authors declare no other conflicts of interest.
-\section*{AI-Assisted Tools}
-An LLM coding assistant was used for drafting assistance and code assistance during the preparation of this manuscript. All claims, analyses, and reported statistics were critically reviewed and verified by the authors, who take full responsibility for the content.
+\section*{Declaration of generative AI and AI-assisted technologies in the manuscript preparation process}
+During the preparation of this work, the authors used an LLM coding assistant for drafting assistance and code assistance. After using this tool, the authors reviewed and edited the content as needed---verifying every claim and reported statistic against the underlying result files---and take full responsibility for the content of the published article.
 
 \section*{Abbreviations}
 The following abbreviations are used in this manuscript:
