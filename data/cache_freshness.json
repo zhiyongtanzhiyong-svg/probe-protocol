@@ -1,0 +1,40 @@
+{
+  "train": {
+    "n_images": 1295,
+    "shape_fresh": [
+      1295,
+      768
+    ],
+    "shape_cache": [
+      1295,
+      768
+    ],
+    "labels_match": true,
+    "max_abs_feat_diff": 0.11851076781749725,
+    "atol": 1e-05,
+    "feats_match": false,
+    "verdict": "DRIFT"
+  },
+  "test": {
+    "n_images": 138,
+    "shape_fresh": [
+      138,
+      768
+    ],
+    "shape_cache": [
+      138,
+      768
+    ],
+    "labels_match": true,
+    "max_abs_feat_diff": 0.11279260367155075,
+    "atol": 1e-05,
+    "feats_match": false,
+    "verdict": "DRIFT"
+  },
+  "full_data_C1_recomputed": {
+    "acc": 0.7608695652173914,
+    "acc_pct": 76.09,
+    "canonical_results_json_pct": null
+  },
+  "all_splits_match": false
+}

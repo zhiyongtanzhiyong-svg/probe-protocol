@@ -75,7 +75,9 @@ Thumbs.db
 # to obtain each one.
 # ---------------------------------------------------------------------------
 # TPDD tobacco images (52 MB; splits 1295/138/138)
-data/tpdd/
+# (image/label manifests ARE tracked: required by the Data Availability Statement)
+data/tpdd/*/*
+!data/tpdd/*/labels.json
 # TLD tobacco-leaf images (178 MB)
 data/tld_images/
 # PlantVillage tomato subset (313 MB)
@@ -107,7 +109,7 @@ data/*.pre_*
 !data/coop_official.json.pre_canonical_store
 !data/lp_plus_plus.json.pre_cache_repoint
 # Transient caches
-data/cache_freshness.json
+# (cache_freshness.json is tracked: required by the Data Availability Statement)
 data/reference_audit_cache.json
 # Raw corn image subset (58 MB) -- obtain per README "Data provenance"
 data/plantvillage_corn/
