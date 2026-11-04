@@ -224,7 +224,7 @@ def main():
     chk("Q2 C=1 CI low", f"{c1['ci95_delta_pp'][0]:.1f}")
     chk("Q3 bestC delta", f"{abs(bc['delta_pp']):.1f}\\,pp")
     chk("Q3 bestC p", f"p={bc['mcnemar_p_exact']:.2f}")
-    chk("Q3 bestC n_seeds", f"{bc['n_seeds_ge_clip']} of {bc['n_resnet_seeds']}")
+    chk("Q3 bestC n_seeds", f"{bc['n_seeds_above_clip']} of {bc['n_resnet_seeds']}")
     # Guard against the specific confusion this repo already hit once: seed 0
     # (86.96%) is the *lowest-but-one* ResNet run and sits 0.72 pp above the
     # 86.23% probe, so quoting "87.0% vs 86.2% = 0.7 pp" is arithmetically
@@ -279,7 +279,7 @@ def main():
         f"CI low {_lo:.1f}",
         _lo <= 0 <= _seedmean_gap + _tcrit * _sem)
     chk("Q2 C=1 all seeds exceed probe",
-        f"all {c1['n_seeds_ge_clip']} of {c1['n_resnet_seeds']} ResNet seeds")
+        f"all {c1['n_seeds_above_clip']} of {c1['n_resnet_seeds']} ResNet seeds")
 
     # ------------------------------------------------------------------
     # SINGLE-CALIBER GUARD (added 2026-10-05).

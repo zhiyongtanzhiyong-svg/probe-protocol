@@ -1,0 +1,78 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{hyperref}
+\usepackage{setspace}
+\usepackage{enumitem}
+\hypersetup{colorlinks=true,linkcolor=black,urlcolor=blue}
+\onehalfspacing
+
+\begin{document}
+
+\begin{center}
+{\large\bfseries Cover Letter}\\[6pt]
+{\normalsize Submission to \emph{Computers and Electronics in Agriculture}}
+\end{center}
+
+\vspace{1.2em}
+
+\noindent\textbf{Date:} October 14, 2026
+
+\noindent\textbf{To:} The Editor, \emph{Computers and Electronics in Agriculture} (Elsevier)
+
+\noindent\textbf{Manuscript title:} ``Fine-Tuning or Frozen Probes? Empirical Applicability Boundaries for Off-the-Shelf CLIP in Tobacco Leaf-Disorder Diagnosis''
+
+\noindent\textbf{Authors:} Chenfeng Long$^{1,2,3}$, Zhiyong Tan$^{1,2,3}$, Yangjun Deng$^{1,2,3}$, Xiang Luo$^{4}$, Lizhuo Zhang$^{1,2,3,*}$
+
+\begin{itemize}[leftmargin=2em,itemsep=2pt,topsep=4pt]
+\item[$^{1}$] College of Information and Intelligence, Hunan Agricultural University, Changsha 410128, China
+\item[$^{2}$] Yuelushan Laboratory, Changsha 410128, China
+\item[$^{3}$] Hunan Provincial Engineering and Technology Research Center for Rural and Agricultural Informatization, Hunan Agricultural University, Changsha 410128, China
+\item[$^{4}$] Information Department, China Guangdong Tobacco Meizhou Co.\ Ltd, Meizhou 514000, China
+\item[$^{*}$] Corresponding author: zhanglizhuo@hunau.edu.cn
+\end{itemize}
+
+\vspace{1.5em}
+
+Dear Editor,
+
+We are pleased to submit the above manuscript for consideration as a Research Article in \emph{Computers and Electronics in Agriculture}.
+
+\medskip
+
+\noindent\textbf{Why this work matters for your readership.}
+Whether off-the-shelf vision--language models can classify fine-grained crop diseases without domain-specific training is a practical question for the resource-constrained deployments that \emph{Computers and Electronics in Agriculture} addresses. On a primary 16-class tobacco leaf-disorder dataset (TPDD), with cross-crop checks on tomato and corn (PlantVillage) and a field-condition evaluation, we report findings of direct practical consequence. First, generic CLIP is unreliable zero-shot for this fine-grained task: on the two tobacco sets no prompt template is detectably better than the majority-class baseline, and knowledge-graph-augmented prompts give no reliable gain. Second, the CLIP-versus-ResNet ordering varies with the adaptation protocol rather than the data regime: at the default probe $C{=}1$ the apparent few-shot CLIP advantage over the under-tuned CNN is an artifact that disappears under a matched fine-tuning budget, whereas under matched fine-tuning fine-tuned CLIP leads fine-tuned ResNet-18 at every $K$. Third, at full data fine-tuned ResNet-18 holds a small, sign-stable edge over the validation-regularized frozen CLIP probe under 5-fold cross-validation. Together these give practitioners an empirical boundary for when off-the-shelf CLIP is and is not a reasonable, training-light option for fine-grained leaf-disorder diagnosis.
+
+\medskip
+
+\noindent\textbf{Fit and originality.}
+The work is empirical and methods-comparative, in line with the journal's scope on intelligent and electronic systems for agriculture. Its contribution is a within-crop empirical boundary, tested under seed-paired statistics and multiplicity correction, with a cross-crop replication---rather than a new architecture. We deliberately frame the contribution as protocol-controlled boundary conditions for deployment, not as a new model: the CLIP-based plant-disease numbers in the current literature are not protocol-comparable (tuning budgets, evaluation splits and class compositions differ across reports), and practitioners lack an evidence base for deciding between frozen-probe and fine-tuning workflows on fine-grained leaf disorders. We believe this is precisely the kind of applied decision evidence \emph{Computers and Electronics in Agriculture} readers need.
+
+\medskip
+
+\noindent\textbf{Declarations.}
+\begin{enumerate}[leftmargin=2.5em,itemsep=3pt,topsep=4pt]
+\item This manuscript is original, has not been published, and is not under consideration by any other journal or conference.
+\item All authors have read and approved the submission. X.~Luo is employed by China Guangdong Tobacco Meizhou Ltd, and part of this work was supported by the Meizhou Tobacco Science Research Project (Grant~202404); the authors declare no other conflicts of interest.
+\item AI-assisted tools (an LLM coding assistant) were used for drafting and code assistance during preparation; the authors critically reviewed every claim, verified all reported statistics against the underlying result files, and take full responsibility for the content.
+\item The code, precomputed features, and per-seed result files supporting all findings will be made available in an anonymized repository at the review stage so that the reported statistics can be independently re-verified.
+\end{enumerate}
+
+\medskip
+
+Thank you for your consideration. We look forward to your response.
+
+\vspace{1.5em}
+
+Sincerely,
+
+\vspace{1.2em}
+
+Lizhuo Zhang (on behalf of all co-authors)\\
+College of Information and Intelligence, Hunan Agricultural University\\
+Changsha 410128, China\\
+\texttt{zhanglizhuo@hunau.edu.cn}
+
+\end{document}

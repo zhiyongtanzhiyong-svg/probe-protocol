@@ -36,6 +36,25 @@
 
 ## FINAL GATE — 20-item quick pass (2026-11-02, paper final: 29 pp)
 
+### 最终运行记录（2026-11-04，投稿前）
+**状态：机器可验证项全部通过（30 页版）**。逐项：
+- A.1 ✅ compile 0 错误 / 0 overfull / 0 undefined（修复 Appendix D 长文件名 overfull 79.9pt → 花括号集合记法）
+- A.2 ✅ 30 页（29→30：M2/M3/M4 内容增量，已记录）
+- A.3 ⏳ 浮动体顺序人工扫 PDF（用户）
+- A.4 ✅ M2/M3 不动任何图；figures/ 无变化
+- B.5 ✅ 34/34；B.6 ✅（被 B.5 覆盖）
+- B.7 ✅ 复核：45.5 出现在 Appendix D（Round 18 M4 新增，gate 写于其前）；6 值全部对 JSON `stage2_final` 核实（45.5±5.4 / 75.3±4.4 / 82.3±2.4 / 76.2±4.8 / 90.6±2.4 / 92.5±1.1）→ 旧 gate 误报
+- B.8 ✅ 0；B.9 ✅ 0
+- C.10 ✅ sha256 匹配；C.12 ✅ 5 JSON 字段齐全；C.13 ✅ 全部 data 引用存在（花括号集合逐一展开验证）
+- C.11 ✅ 提交后树干净
+- D.14 ✅ Limitation (1)/(10) 自洽（(10) 已改写：K=1/2 稳健、K≥5 grid coverage、frozen arm 不受影响）
+- D.15 ✅ descriptive ×21；nominal-post-selection 限定句在 tex:260（含 and，grep 变体未命中）
+- D.16 ✅ cost-weighted/calibration scope 限定在位
+- E.17 ✅ 双盲干净（无真实 URL / 0 ORCID）
+- E.18–20 ⏳ 人工：CeA Guide for Authors 官网核对、投稿时插匿名 repo URL、最终通读 PDF
+
+---
+
 Run once before submission; items 1–16 are machine-verifiable (commands from repo root), 17–20 human.
 Any item fails → fix, then re-run all of 1–16.
 

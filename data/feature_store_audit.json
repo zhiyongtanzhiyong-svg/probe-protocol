@@ -1,4 +1,9 @@
 {
+  "naming_note": "CANONICAL feature stores (the ones used for every full-data number in the paper): DFN-CLIP -> canonical_clip_features_dfn.npz (full-data C=1 = 76.8%); LAION-2B -> laion_clip_features_clean.npz (== clip_features_laion_clean.npz, 76.1%). DO NOT use clip_features_clean.npz despite the 'clean' in its name: it is the pre-rebuild LEGACY/DRIFTED DFN store (full-data C=1 = 76.1%, 0.7pp off canonical). See Appendix A 'Feature-store unification'.",
+  "canonical_files": {
+    "dfn_clip": "canonical_clip_features_dfn.npz",
+    "laion_2b": "laion_clip_features_clean.npz"
+  },
   "laion_canonical": {
     "file": "laion_clip_features_clean.npz",
     "fresh": true,

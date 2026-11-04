@@ -582,7 +582,7 @@ def fig_confusion(formats=("pdf", "svg"), transparent=False):
         "seq_blue", ["#FFFFFF", "#9EC5E8", "#4A90C4", "#1F5C8B", "#0B2E4F"])
     cmap.set_bad("#F0F0F0")
 
-    fig, axes = plt.subplots(1, 2, figsize=(11.0, 5.9), constrained_layout=True)
+    fig, axes = plt.subplots(1, 2, figsize=(11.4, 5.9))
     im = None
     for ax, cm, tag, acc in zip(
             axes, [cm_clip, cm_rn],
@@ -610,8 +610,11 @@ def fig_confusion(formats=("pdf", "svg"), transparent=False):
                 ax.text(j, i, f"{cm[i, j]}", ha="center", va="center",
                         fontsize=8, fontweight="bold" if cmn[i, j] > 0.5 else "normal",
                         color="white" if cmn[i, j] > 0.5 else "black")
-    cbar = fig.colorbar(im, ax=axes, fraction=0.025, pad=0.015)
-    cbar.set_label("Row-normalised rate (recall)")
+    fig.tight_layout(rect=[0, 0, 0.88, 1])
+    pos = axes[0].get_position()
+    cbar_ax = fig.add_axes([0.90, pos.y0, 0.025, pos.height])
+    cbar = fig.colorbar(im, cax=cbar_ax)
+    cbar.set_label("Row-normalised rate (recall)", fontsize=9)
     cbar.ax.tick_params(labelsize=8, width=1.0, length=3.0)
     cbar.outline.set_linewidth(1.0)
     out = save(fig, "fig_confusion", formats, transparent)

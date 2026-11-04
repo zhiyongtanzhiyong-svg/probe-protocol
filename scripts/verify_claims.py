@@ -212,18 +212,18 @@ def q2_full_data(y):
         res[nm] = {"clip_acc": float(cc.mean()), "resnet_seed0_acc": float(rc.mean()),
                    "delta_pp": d * 100, "ci95_delta_pp": [lo * 100, hi * 100],
                    "mcnemar_p_exact": p,
-                   "n_seeds_ge_clip": int((accs * 100 > cc.mean() * 100).sum()),
+                   "n_seeds_above_clip": int((accs * 100 > cc.mean() * 100).sum()),
                    # strict >: with n_test=138 an accuracy is a k/138 grid, so a
                    # seed can land exactly on the probe (seed 6 does, at
                    # 0.8623188...). Counting >= folded that tie in and
                    # reported 11; strictly above is 10 plus 1 tie.
                    "n_resnet_seeds": int(len(accs))}
-        tail = (res[nm]["n_seeds_ge_clip"] + 1) / (len(accs) + 1)
+        tail = (res[nm]["n_seeds_above_clip"] + 1) / (len(accs) + 1)
         res[nm]["empirical_tail_vs_15seed_dist"] = float(tail)
         print(f"  {nm} {cc.mean()*100:.2f}% vs ResNet seed0 {rc.mean()*100:.2f}%: "
               f"delta {d*100:+.2f}pp, exact McNemar p={p:.4f}, "
               f"CI95 [{lo*100:+.2f},{hi*100:+.2f}]")
-        print(f"      ResNet seeds >= CLIP: {res[nm]['n_seeds_ge_clip']}/{len(accs)} "
+        print(f"      ResNet seeds above CLIP: {res[nm]['n_seeds_above_clip']}/{len(accs)} "
               f"-> empirical tail p={tail:.3f}")
     return res
 

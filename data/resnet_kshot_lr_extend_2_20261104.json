@@ -1,0 +1,278 @@
+{
+  "date": "2026-11-04",
+  "gpu": "NVIDIA GeForce RTX 4070 Ti",
+  "torch": "2.4.1+cu121",
+  "purpose": "M2 exploratory follow-up (Round-18 review): extended low-LR sweep below the matched grid floor 3e-4; OUTSIDE the matched 9-config budget; selection over the 15-config union uses the identical validation-only rule",
+  "K": 2,
+  "new_grid": [
+    {
+      "lr": 3e-05,
+      "epochs": 30
+    },
+    {
+      "lr": 3e-05,
+      "epochs": 100
+    },
+    {
+      "lr": 3e-05,
+      "epochs": 300
+    },
+    {
+      "lr": 0.0001,
+      "epochs": 30
+    },
+    {
+      "lr": 0.0001,
+      "epochs": 100
+    },
+    {
+      "lr": 0.0001,
+      "epochs": 300
+    }
+  ],
+  "new_stage1": [
+    {
+      "lr": 3e-05,
+      "epochs": 30,
+      "mean_best_val": 0.0773,
+      "mean_test": 0.0797
+    },
+    {
+      "lr": 3e-05,
+      "epochs": 100,
+      "mean_best_val": 0.2947,
+      "mean_test": 0.2512
+    },
+    {
+      "lr": 3e-05,
+      "epochs": 300,
+      "mean_best_val": 0.4662,
+      "mean_test": 0.4179
+    },
+    {
+      "lr": 0.0001,
+      "epochs": 30,
+      "mean_best_val": 0.2633,
+      "mean_test": 0.2391
+    },
+    {
+      "lr": 0.0001,
+      "epochs": 100,
+      "mean_best_val": 0.4831,
+      "mean_test": 0.4468
+    },
+    {
+      "lr": 0.0001,
+      "epochs": 300,
+      "mean_best_val": 0.529,
+      "mean_test": 0.5024
+    }
+  ],
+  "union_top5": [
+    {
+      "lr": 0.0003,
+      "epochs": 300,
+      "mean_best_val": 0.5483,
+      "mean_test": 0.529,
+      "runs": [
+        {
+          "seed": 0,
+          "lr": 0.0003,
+          "epochs": 300,
+          "best_val": 0.5507,
+          "test": 0.5507,
+          "best_epoch": 70,
+          "n_support": 32,
+          "elapsed_s": 55.3
+        },
+        {
+          "seed": 1,
+          "lr": 0.0003,
+          "epochs": 300,
+          "best_val": 0.5942,
+          "test": 0.5435,
+          "best_epoch": 70,
+          "n_support": 32,
+          "elapsed_s": 55.9
+        },
+        {
+          "seed": 2,
+          "lr": 0.0003,
+          "epochs": 300,
+          "best_val": 0.5,
+          "test": 0.4928,
+          "best_epoch": 170,
+          "n_support": 32,
+          "elapsed_s": 57.5
+        }
+      ]
+    },
+    {
+      "lr": 0.001,
+      "epochs": 100,
+      "mean_best_val": 0.529,
+      "mean_test": 0.5121,
+      "runs": [
+        {
+          "seed": 0,
+          "lr": 0.001,
+          "epochs": 100,
+          "best_val": 0.5362,
+          "test": 0.5217,
+          "best_epoch": 70,
+          "n_support": 32,
+          "elapsed_s": 20.0
+        },
+        {
+          "seed": 1,
+          "lr": 0.001,
+          "epochs": 100,
+          "best_val": 0.5507,
+          "test": 0.4928,
+          "best_epoch": 80,
+          "n_support": 32,
+          "elapsed_s": 19.7
+        },
+        {
+          "seed": 2,
+          "lr": 0.001,
+          "epochs": 100,
+          "best_val": 0.5,
+          "test": 0.5217,
+          "best_epoch": 80,
+          "n_support": 32,
+          "elapsed_s": 20.5
+        }
+      ]
+    },
+    {
+      "lr": 0.0001,
+      "epochs": 300,
+      "mean_best_val": 0.529,
+      "mean_test": 0.5024,
+      "runs": [
+        {
+          "seed": 0,
+          "lr": 0.0001,
+          "epochs": 300,
+          "best_val": 0.5217,
+          "test": 0.529,
+          "best_epoch": 110,
+          "n_support": 32,
+          "elapsed_s": 72.3
+        },
+        {
+          "seed": 1,
+          "lr": 0.0001,
+          "epochs": 300,
+          "best_val": 0.6014,
+          "test": 0.5652,
+          "best_epoch": 220,
+          "n_support": 32,
+          "elapsed_s": 71.9
+        },
+        {
+          "seed": 2,
+          "lr": 0.0001,
+          "epochs": 300,
+          "best_val": 0.4638,
+          "test": 0.413,
+          "best_epoch": 210,
+          "n_support": 32,
+          "elapsed_s": 71.3
+        }
+      ]
+    },
+    {
+      "lr": 0.0003,
+      "epochs": 100,
+      "mean_best_val": 0.5266,
+      "mean_test": 0.5048,
+      "runs": [
+        {
+          "seed": 0,
+          "lr": 0.0003,
+          "epochs": 100,
+          "best_val": 0.5362,
+          "test": 0.5217,
+          "best_epoch": 70,
+          "n_support": 32,
+          "elapsed_s": 20.0
+        },
+        {
+          "seed": 1,
+          "lr": 0.0003,
+          "epochs": 100,
+          "best_val": 0.5942,
+          "test": 0.5652,
+          "best_epoch": 70,
+          "n_support": 32,
+          "elapsed_s": 19.3
+        },
+        {
+          "seed": 2,
+          "lr": 0.0003,
+          "epochs": 100,
+          "best_val": 0.4493,
+          "test": 0.4275,
+          "best_epoch": 50,
+          "n_support": 32,
+          "elapsed_s": 20.0
+        }
+      ]
+    },
+    {
+      "lr": 0.001,
+      "epochs": 300,
+      "mean_best_val": 0.5193,
+      "mean_test": 0.4976,
+      "runs": [
+        {
+          "seed": 0,
+          "lr": 0.001,
+          "epochs": 300,
+          "best_val": 0.5362,
+          "test": 0.4783,
+          "best_epoch": 140,
+          "n_support": 32,
+          "elapsed_s": 56.6
+        },
+        {
+          "seed": 1,
+          "lr": 0.001,
+          "epochs": 300,
+          "best_val": 0.5435,
+          "test": 0.5145,
+          "best_epoch": 40,
+          "n_support": 32,
+          "elapsed_s": 54.8
+        },
+        {
+          "seed": 2,
+          "lr": 0.001,
+          "epochs": 300,
+          "best_val": 0.4783,
+          "test": 0.5,
+          "best_epoch": 100,
+          "n_support": 32,
+          "elapsed_s": 57.1
+        }
+      ]
+    }
+  ],
+  "union_winner": {
+    "lr": 0.0003,
+    "epochs": 300,
+    "mean_best_val": 0.5483,
+    "is_new": false
+  },
+  "published_matched": {
+    "lr": 0.0003,
+    "epochs": 300,
+    "stage2_mean_pct": 52.5,
+    "source": "p3b_resnet_kshot_matched_k2.json"
+  },
+  "stage2_new_winner": null,
+  "change_vs_published_pp": 0.0,
+  "elapsed_s": 638.4
+}
