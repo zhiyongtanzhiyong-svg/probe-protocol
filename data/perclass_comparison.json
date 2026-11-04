@@ -1,0 +1,38 @@
+{
+  "clip_full": {
+    "anthracnose": 0.0,
+    "black_shank": 0.0,
+    "brown_spot": 70.0,
+    "cmv": 0.0,
+    "frog_eye": 50.0,
+    "genetic_abnormality": 0.0,
+    "healthy": 60.0,
+    "nematodes": 0.0,
+    "potato_tuber_moth": 50.0,
+    "pvy": 0.0,
+    "sunscald": 21.428571428571427,
+    "target_spot": 60.0,
+    "tmv": 42.857142857142854,
+    "tswv": 0.0,
+    "weather_fleck": 25.0,
+    "wildfire": 61.111111111111114
+  },
+  "resnet_full": {
+    "anthracnose": 10.0,
+    "black_shank": 100.0,
+    "brown_spot": 98.0,
+    "cmv": 93.0,
+    "frog_eye": 99.0,
+    "genetic_abnormality": 100.0,
+    "healthy": 97.0,
+    "nematodes": 45.0,
+    "potato_tuber_moth": 83.0,
+    "pvy": 58.75,
+    "sunscald": 88.57142857142857,
+    "target_spot": 81.0,
+    "tmv": 89.28571428571429,
+    "tswv": 40.0,
+    "weather_fleck": 92.5,
+    "wildfire": 96.66666666666667
+  }
+}

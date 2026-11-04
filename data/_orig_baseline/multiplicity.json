@@ -1,0 +1,76 @@
+{
+  "family": "six few-shot CLIP-probe vs fine-tuned ResNet-18 seed-paired contrasts (K in {1,5,10} x {DFN-CLIP, LAION-2B}); paired-t p-values from data/paired_kshot_a4_both.json",
+  "alpha": 0.05,
+  "n_tests": 6,
+  "n_holm_surviving": 5,
+  "n_bh_surviving": 5,
+  "rows": [
+    {
+      "contrast": "K=1: CLIP (LAION-2B) vs ResNet-18",
+      "clip_acc_pct": 38.45,
+      "resnet_acc_pct": 32.08,
+      "delta_pp": 6.38,
+      "paired_t_p": 0.0002764129421531669,
+      "holm_significant": true,
+      "holm_adjusted_p": 0.06359525735359133,
+      "bh_fdr_significant": true,
+      "bh_qvalue": 0.0004146194132297504
+    },
+    {
+      "contrast": "K=1: CLIP (DFN-CLIP) vs ResNet-18",
+      "clip_acc_pct": 28.36,
+      "resnet_acc_pct": 32.08,
+      "delta_pp": -3.72,
+      "paired_t_p": 0.06359525735359133,
+      "holm_significant": false,
+      "holm_adjusted_p": 0.06359525735359133,
+      "bh_fdr_significant": false,
+      "bh_qvalue": 0.06359525735359133
+    },
+    {
+      "contrast": "K=5: CLIP (LAION-2B) vs ResNet-18",
+      "clip_acc_pct": 59.13,
+      "resnet_acc_pct": 64.73,
+      "delta_pp": -5.6,
+      "paired_t_p": 0.004649088985327689,
+      "holm_significant": true,
+      "holm_adjusted_p": 0.06359525735359133,
+      "bh_fdr_significant": true,
+      "bh_qvalue": 0.005578906782393226
+    },
+    {
+      "contrast": "K=5: CLIP (DFN-CLIP) vs ResNet-18",
+      "clip_acc_pct": 48.26,
+      "resnet_acc_pct": 64.73,
+      "delta_pp": -16.47,
+      "paired_t_p": 2.6398797393414126e-08,
+      "holm_significant": true,
+      "holm_adjusted_p": 0.06359525735359133,
+      "bh_fdr_significant": true,
+      "bh_qvalue": 7.919639218024237e-08
+    },
+    {
+      "contrast": "K=10: CLIP (LAION-2B) vs ResNet-18",
+      "clip_acc_pct": 66.52,
+      "resnet_acc_pct": 75.17,
+      "delta_pp": -8.65,
+      "paired_t_p": 4.3455317276874806e-05,
+      "holm_significant": true,
+      "holm_adjusted_p": 0.06359525735359133,
+      "bh_fdr_significant": true,
+      "bh_qvalue": 8.691063455374961e-05
+    },
+    {
+      "contrast": "K=10: CLIP (DFN-CLIP) vs ResNet-18",
+      "clip_acc_pct": 57.54,
+      "resnet_acc_pct": 75.17,
+      "delta_pp": -17.63,
+      "paired_t_p": 8.933014960080174e-09,
+      "holm_significant": true,
+      "holm_adjusted_p": 0.06359525735359133,
+      "bh_fdr_significant": true,
+      "bh_qvalue": 5.359808976048104e-08
+    }
+  ],
+  "note": "Holm-Bonferroni controls FWER; Benjamini-Hochberg controls FDR. The single borderline contrast (K=1 DFN-CLIP, p=0.064) drops out under both corrections; the other five survive. This generalises the manuscript's existing Bonferroni x2 on the K=1 pair to the full six-contrast family."
+}

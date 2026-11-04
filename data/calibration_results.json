@@ -1,0 +1,181 @@
+{
+  "zero_shot": {
+    "accuracy": 15.22,
+    "ece": 0.1424,
+    "bins": [
+      {
+        "bin": 0,
+        "range": "0.0-0.1",
+        "acc": 0,
+        "conf": 0,
+        "size": 0,
+        "gap": 0
+      },
+      {
+        "bin": 1,
+        "range": "0.1-0.2",
+        "acc": 0.0,
+        "conf": 0.181,
+        "size": 7,
+        "gap": 0.181
+      },
+      {
+        "bin": 2,
+        "range": "0.2-0.3",
+        "acc": 0.12,
+        "conf": 0.262,
+        "size": 75,
+        "gap": 0.142
+      },
+      {
+        "bin": 3,
+        "range": "0.3-0.4",
+        "acc": 0.213,
+        "conf": 0.337,
+        "size": 47,
+        "gap": 0.125
+      },
+      {
+        "bin": 4,
+        "range": "0.4-0.5",
+        "acc": 0.222,
+        "conf": 0.432,
+        "size": 9,
+        "gap": 0.21
+      },
+      {
+        "bin": 5,
+        "range": "0.5-0.6",
+        "acc": 0,
+        "conf": 0,
+        "size": 0,
+        "gap": 0
+      },
+      {
+        "bin": 6,
+        "range": "0.6-0.7",
+        "acc": 0,
+        "conf": 0,
+        "size": 0,
+        "gap": 0
+      },
+      {
+        "bin": 7,
+        "range": "0.7-0.8",
+        "acc": 0,
+        "conf": 0,
+        "size": 0,
+        "gap": 0
+      },
+      {
+        "bin": 8,
+        "range": "0.8-0.9",
+        "acc": 0,
+        "conf": 0,
+        "size": 0,
+        "gap": 0
+      },
+      {
+        "bin": 9,
+        "range": "0.9-1.0",
+        "acc": 0,
+        "conf": 0,
+        "size": 0,
+        "gap": 0
+      }
+    ],
+    "mean_confidence": 0.295,
+    "correct_conf": 0.317,
+    "incorrect_conf": 0.29
+  },
+  "probe_full": {
+    "accuracy": 76.81,
+    "ece": 0.4775,
+    "bins": [
+      {
+        "bin": 0,
+        "range": "0.0-0.1",
+        "acc": 0,
+        "conf": 0,
+        "size": 0,
+        "gap": 0
+      },
+      {
+        "bin": 1,
+        "range": "0.1-0.2",
+        "acc": 0.606,
+        "conf": 0.167,
+        "size": 33,
+        "gap": -0.439
+      },
+      {
+        "bin": 2,
+        "range": "0.2-0.3",
+        "acc": 0.704,
+        "conf": 0.251,
+        "size": 54,
+        "gap": -0.452
+      },
+      {
+        "bin": 3,
+        "range": "0.3-0.4",
+        "acc": 0.905,
+        "conf": 0.344,
+        "size": 21,
+        "gap": -0.56
+      },
+      {
+        "bin": 4,
+        "range": "0.4-0.5",
+        "acc": 0.96,
+        "conf": 0.44,
+        "size": 25,
+        "gap": -0.52
+      },
+      {
+        "bin": 5,
+        "range": "0.5-0.6",
+        "acc": 1.0,
+        "conf": 0.542,
+        "size": 4,
+        "gap": -0.458
+      },
+      {
+        "bin": 6,
+        "range": "0.6-0.7",
+        "acc": 1.0,
+        "conf": 0.606,
+        "size": 1,
+        "gap": -0.394
+      },
+      {
+        "bin": 7,
+        "range": "0.7-0.8",
+        "acc": 0,
+        "conf": 0,
+        "size": 0,
+        "gap": 0
+      },
+      {
+        "bin": 8,
+        "range": "0.8-0.9",
+        "acc": 0,
+        "conf": 0,
+        "size": 0,
+        "gap": 0
+      },
+      {
+        "bin": 9,
+        "range": "0.9-1.0",
+        "acc": 0,
+        "conf": 0,
+        "size": 0,
+        "gap": 0
+      }
+    ],
+    "mean_confidence": 0.291,
+    "correct_conf": 0.313,
+    "incorrect_conf": 0.217,
+    "protocol": "canonical deterministic DFN-CLIP ViT-L/14 features (EVAL_TRANSFORM on train and test); LogisticRegression(C=1.0, max_iter=2000, random_state=42) refit on all 1,295 train images; one evaluation on the 138 test images. Reproduces the 76.8% probe accuracy of the main text."
+  }
+}

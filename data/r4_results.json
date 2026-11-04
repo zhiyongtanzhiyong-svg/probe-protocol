@@ -1,0 +1,138 @@
+{
+  "tost_equivalence": {
+    "acc_a": 0.8406,
+    "acc_b": 0.8841,
+    "point_estimate_diff_pp": -4.35,
+    "delta_pp": 5.0,
+    "boot_95ci_low_pp": -10.87,
+    "boot_95ci_high_pp": 2.17,
+    "tost_equivalent_at_delta": false,
+    "interpretation": "Cannot establish equivalence within 5pp (CI [-10.9, 2.2]pp)"
+  },
+  "feature_geometry": {
+    "clip_dfn": {
+      "mean_inter_centroid_dist": 0.4331,
+      "mean_intra_class_dist": 0.4814,
+      "inter_intra_ratio": 0.8997,
+      "fisher_ratio": 0.53,
+      "silhouette_score": -0.0211,
+      "n_classes_with_samples": 16
+    },
+    "resnet18_frozen_imagenet": {
+      "mean_inter_centroid_dist": 0.556,
+      "mean_intra_class_dist": 0.6353,
+      "inter_intra_ratio": 0.8752,
+      "fisher_ratio": 0.44,
+      "silhouette_score": 0.0078,
+      "n_classes_with_samples": 16
+    },
+    "clip_dfn_train": {
+      "mean_inter_centroid_dist": 0.3183,
+      "mean_intra_class_dist": 0.486,
+      "inter_intra_ratio": 0.6549,
+      "fisher_ratio": 0.43,
+      "silhouette_score": 0.011,
+      "n_classes_with_samples": 16
+    },
+    "resnet18_frozen_imagenet_train": {
+      "mean_inter_centroid_dist": 0.3522,
+      "mean_intra_class_dist": 0.6883,
+      "inter_intra_ratio": 0.5116,
+      "fisher_ratio": 0.25,
+      "silhouette_score": 0.0134,
+      "n_classes_with_samples": 16
+    }
+  },
+  "binomial_tests": {
+    "n_test": 138,
+    "n_majority": 18,
+    "p_baseline": 0.1304,
+    "templates": {
+      "EN-Photo": {
+        "n_correct": 18,
+        "acc": 0.1304,
+        "p_value": 1.0,
+        "significant": "no"
+      },
+      "KG-Symptom": {
+        "n_correct": 18,
+        "acc": 0.1304,
+        "p_value": 1.0,
+        "significant": "no"
+      },
+      "EN-Symptom": {
+        "n_correct": 16,
+        "acc": 0.1159,
+        "p_value": 0.705,
+        "significant": "no"
+      },
+      "CN-Photo": {
+        "n_correct": 15,
+        "acc": 0.1087,
+        "p_value": 0.5277,
+        "significant": "no"
+      },
+      "CN-Label": {
+        "n_correct": 13,
+        "acc": 0.0942,
+        "p_value": 0.2543,
+        "significant": "no"
+      },
+      "CN-Symptom": {
+        "n_correct": 13,
+        "acc": 0.0942,
+        "p_value": 0.2543,
+        "significant": "no"
+      },
+      "KG-Condition": {
+        "n_correct": 13,
+        "acc": 0.0942,
+        "p_value": 0.2543,
+        "significant": "no"
+      },
+      "KG-Combined": {
+        "n_correct": 13,
+        "acc": 0.0942,
+        "p_value": 0.2543,
+        "significant": "no"
+      },
+      "EN-Disease": {
+        "n_correct": 12,
+        "acc": 0.087,
+        "p_value": 0.1628,
+        "significant": "no"
+      },
+      "CN-Disease": {
+        "n_correct": 11,
+        "acc": 0.0797,
+        "p_value": 0.0774,
+        "significant": "no"
+      },
+      "EN-Closeup": {
+        "n_correct": 10,
+        "acc": 0.0725,
+        "p_value": 0.0426,
+        "significant": "YES"
+      },
+      "CN-Closeup": {
+        "n_correct": 9,
+        "acc": 0.0652,
+        "p_value": 0.022,
+        "significant": "YES"
+      },
+      "EN-Expert": {
+        "n_correct": 6,
+        "acc": 0.0435,
+        "p_value": 0.0009,
+        "significant": "YES"
+      },
+      "EN-Label": {
+        "n_correct": 1,
+        "acc": 0.0072,
+        "p_value": 0.0,
+        "significant": "YES"
+      }
+    }
+  },
+  "elapsed_sec": 39.1
+}

@@ -1,0 +1,449 @@
+{
+  "class_names": [
+    "anthracnose",
+    "black_shank",
+    "brown_spot",
+    "cmv",
+    "frog_eye",
+    "genetic_abnormality",
+    "healthy",
+    "nematodes",
+    "potato_tuber_moth",
+    "pvy",
+    "sunscald",
+    "target_spot",
+    "tmv",
+    "tswv",
+    "weather_fleck",
+    "wildfire"
+  ],
+  "best_C": 3000.0,
+  "val_grid": {
+    "0.01": 0.10810810810810811,
+    "0.1": 0.23166023166023167,
+    "1.0": 0.7722007722007722,
+    "3.0": 0.8185328185328186,
+    "10.0": 0.8687258687258688,
+    "30.0": 0.8996138996138996,
+    "100.0": 0.8996138996138996,
+    "300.0": 0.9034749034749034,
+    "1000.0": 0.9111969111969112,
+    "3000.0": 0.915057915057915
+  },
+  "canonical_probes": {
+    "C=1.0": {
+      "test_acc": 0.7609,
+      "ece10": 0.4605,
+      "bins_conf_acc_n": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0.169,
+          0.571,
+          28
+        ],
+        [
+          0.245,
+          0.633,
+          49
+        ],
+        [
+          0.339,
+          0.903,
+          31
+        ],
+        [
+          0.443,
+          1.0,
+          21
+        ],
+        [
+          0.536,
+          1.0,
+          8
+        ],
+        [
+          0.606,
+          1.0,
+          1
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "mean_conf": 0.3,
+      "correct_conf": 0.325,
+      "incorrect_conf": 0.221
+    },
+    "C=3000.0": {
+      "test_acc": 0.8623,
+      "ece10": 0.044,
+      "bins_conf_acc_n": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0.387,
+          0.0,
+          1
+        ],
+        [
+          0.45,
+          0.375,
+          8
+        ],
+        [
+          0.545,
+          0.5,
+          6
+        ],
+        [
+          0.652,
+          0.667,
+          6
+        ],
+        [
+          0.723,
+          0.667,
+          3
+        ],
+        [
+          0.861,
+          0.5,
+          8
+        ],
+        [
+          0.987,
+          0.972,
+          106
+        ]
+      ],
+      "mean_conf": 0.905,
+      "correct_conf": 0.944,
+      "incorrect_conf": 0.659
+    }
+  },
+  "zero_shot": {
+    "EN-Label": {
+      "acc": 0.0072,
+      "n_correct": 1,
+      "ece10": 0.8308,
+      "bins_conf_acc_n": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0.365,
+          0.0,
+          2
+        ],
+        [
+          0.454,
+          0.0,
+          5
+        ],
+        [
+          0.562,
+          0.0,
+          12
+        ],
+        [
+          0.655,
+          0.0,
+          11
+        ],
+        [
+          0.761,
+          0.0,
+          14
+        ],
+        [
+          0.858,
+          0.0,
+          20
+        ],
+        [
+          0.958,
+          0.014,
+          74
+        ]
+      ],
+      "pred_dist": {
+        "anthracnose": 125,
+        "black_shank": 0,
+        "brown_spot": 4,
+        "cmv": 0,
+        "frog_eye": 0,
+        "genetic_abnormality": 0,
+        "healthy": 0,
+        "nematodes": 0,
+        "potato_tuber_moth": 3,
+        "pvy": 3,
+        "sunscald": 3,
+        "target_spot": 0,
+        "tmv": 0,
+        "tswv": 0,
+        "weather_fleck": 0,
+        "wildfire": 0
+      },
+      "top_pred": [
+        [
+          "anthracnose",
+          125
+        ],
+        [
+          "brown_spot",
+          4
+        ],
+        [
+          "potato_tuber_moth",
+          3
+        ],
+        [
+          "pvy",
+          3
+        ],
+        [
+          "sunscald",
+          3
+        ]
+      ],
+      "mean_conf": 0.838
+    },
+    "EN-Photo": {
+      "acc": 0.1304,
+      "n_correct": 18,
+      "ece10": 0.1208,
+      "bins_conf_acc_n": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0.158,
+          0.068,
+          59
+        ],
+        [
+          0.244,
+          0.176,
+          51
+        ],
+        [
+          0.337,
+          0.111,
+          9
+        ],
+        [
+          0.437,
+          0.273,
+          11
+        ],
+        [
+          0.549,
+          0.25,
+          4
+        ],
+        [
+          0.673,
+          0.0,
+          1
+        ],
+        [
+          0.726,
+          0.0,
+          3
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "pred_dist": {
+        "anthracnose": 0,
+        "black_shank": 1,
+        "brown_spot": 13,
+        "cmv": 1,
+        "frog_eye": 0,
+        "genetic_abnormality": 4,
+        "healthy": 3,
+        "nematodes": 0,
+        "potato_tuber_moth": 12,
+        "pvy": 7,
+        "sunscald": 2,
+        "target_spot": 48,
+        "tmv": 1,
+        "tswv": 0,
+        "weather_fleck": 46,
+        "wildfire": 0
+      },
+      "top_pred": [
+        [
+          "target_spot",
+          48
+        ],
+        [
+          "weather_fleck",
+          46
+        ],
+        [
+          "brown_spot",
+          13
+        ],
+        [
+          "potato_tuber_moth",
+          12
+        ],
+        [
+          "pvy",
+          7
+        ]
+      ],
+      "mean_conf": 0.251
+    },
+    "KG-Symptom": {
+      "acc": 0.1522,
+      "n_correct": 21,
+      "ece10": 0.1338,
+      "bins_conf_acc_n": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0.178,
+          0.0,
+          7
+        ],
+        [
+          0.257,
+          0.115,
+          78
+        ],
+        [
+          0.335,
+          0.245,
+          49
+        ],
+        [
+          0.44,
+          0.0,
+          4
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "pred_dist": {
+        "anthracnose": 1,
+        "black_shank": 1,
+        "brown_spot": 0,
+        "cmv": 0,
+        "frog_eye": 3,
+        "genetic_abnormality": 0,
+        "healthy": 0,
+        "nematodes": 0,
+        "potato_tuber_moth": 0,
+        "pvy": 0,
+        "sunscald": 0,
+        "target_spot": 89,
+        "tmv": 0,
+        "tswv": 0,
+        "weather_fleck": 43,
+        "wildfire": 1
+      },
+      "top_pred": [
+        [
+          "target_spot",
+          89
+        ],
+        [
+          "weather_fleck",
+          43
+        ],
+        [
+          "frog_eye",
+          3
+        ],
+        [
+          "anthracnose",
+          1
+        ],
+        [
+          "black_shank",
+          1
+        ]
+      ],
+      "mean_conf": 0.286
+    }
+  }
+}

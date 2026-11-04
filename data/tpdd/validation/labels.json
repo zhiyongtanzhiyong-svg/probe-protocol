@@ -1,0 +1,554 @@
+[
+ {
+  "image": "anthracnose/TV3_4_IMG_9137.jpg",
+  "label": "anthracnose"
+ },
+ {
+  "image": "black_shank/TV3_6_IMG_5921.jpg",
+  "label": "black_shank"
+ },
+ {
+  "image": "brown_spot/TV3_2_IMG_0868.jpg",
+  "label": "brown_spot"
+ },
+ {
+  "image": "brown_spot/TV3_2_IMG_0947.jpg",
+  "label": "brown_spot"
+ },
+ {
+  "image": "brown_spot/TV3_2_IMG_0983.jpg",
+  "label": "brown_spot"
+ },
+ {
+  "image": "brown_spot/TV3_2_IMG_1033.jpg",
+  "label": "brown_spot"
+ },
+ {
+  "image": "brown_spot/TV3_2_IMG_8795.jpg",
+  "label": "brown_spot"
+ },
+ {
+  "image": "brown_spot/TV6_6_IMG_0868.jpg",
+  "label": "brown_spot"
+ },
+ {
+  "image": "brown_spot/TV6_6_IMG_0947.jpg",
+  "label": "brown_spot"
+ },
+ {
+  "image": "brown_spot/TV6_6_IMG_0983.jpg",
+  "label": "brown_spot"
+ },
+ {
+  "image": "brown_spot/TV6_6_IMG_1033.jpg",
+  "label": "brown_spot"
+ },
+ {
+  "image": "brown_spot/TV6_6_IMG_8795.jpg",
+  "label": "brown_spot"
+ },
+ {
+  "image": "cmv/TV3_8_IMG_0889.jpg",
+  "label": "cmv"
+ },
+ {
+  "image": "cmv/TV3_8_IMG_7878.jpg",
+  "label": "cmv"
+ },
+ {
+  "image": "cmv/TV3_8_IMG_8271.jpg",
+  "label": "cmv"
+ },
+ {
+  "image": "cmv/TV3_8_IMG_8892.jpg",
+  "label": "cmv"
+ },
+ {
+  "image": "cmv/TV3_8_IMG_9658.jpg",
+  "label": "cmv"
+ },
+ {
+  "image": "cmv/TV6_12_IMG_0889.jpg",
+  "label": "cmv"
+ },
+ {
+  "image": "cmv/TV6_12_IMG_7878.jpg",
+  "label": "cmv"
+ },
+ {
+  "image": "cmv/TV6_12_IMG_8271.jpg",
+  "label": "cmv"
+ },
+ {
+  "image": "cmv/TV6_12_IMG_8892.jpg",
+  "label": "cmv"
+ },
+ {
+  "image": "cmv/TV6_12_IMG_9658.jpg",
+  "label": "cmv"
+ },
+ {
+  "image": "frog_eye/TV3_3_IMG_0255.jpg",
+  "label": "frog_eye"
+ },
+ {
+  "image": "frog_eye/TV3_3_IMG_0614.jpg",
+  "label": "frog_eye"
+ },
+ {
+  "image": "frog_eye/TV3_3_IMG_8116.jpg",
+  "label": "frog_eye"
+ },
+ {
+  "image": "frog_eye/TV3_3_IMG_8333.jpg",
+  "label": "frog_eye"
+ },
+ {
+  "image": "frog_eye/TV3_3_IMG_9280.jpg",
+  "label": "frog_eye"
+ },
+ {
+  "image": "frog_eye/TV6_7_IMG_0255.jpg",
+  "label": "frog_eye"
+ },
+ {
+  "image": "frog_eye/TV6_7_IMG_0614.jpg",
+  "label": "frog_eye"
+ },
+ {
+  "image": "frog_eye/TV6_7_IMG_8116.jpg",
+  "label": "frog_eye"
+ },
+ {
+  "image": "frog_eye/TV6_7_IMG_8333.jpg",
+  "label": "frog_eye"
+ },
+ {
+  "image": "frog_eye/TV6_7_IMG_9280.jpg",
+  "label": "frog_eye"
+ },
+ {
+  "image": "genetic_abnormality/TV3_13_IMG_8217.jpg",
+  "label": "genetic_abnormality"
+ },
+ {
+  "image": "healthy/TV3_16_IMG_0356.jpg",
+  "label": "healthy"
+ },
+ {
+  "image": "healthy/TV3_16_IMG_0383.jpg",
+  "label": "healthy"
+ },
+ {
+  "image": "healthy/TV3_16_IMG_0412.jpg",
+  "label": "healthy"
+ },
+ {
+  "image": "healthy/TV3_16_IMG_0414.jpg",
+  "label": "healthy"
+ },
+ {
+  "image": "healthy/TV3_16_IMG_0542.jpg",
+  "label": "healthy"
+ },
+ {
+  "image": "healthy/TV6_20_IMG_0356.jpg",
+  "label": "healthy"
+ },
+ {
+  "image": "healthy/TV6_20_IMG_0383.jpg",
+  "label": "healthy"
+ },
+ {
+  "image": "healthy/TV6_20_IMG_0412.jpg",
+  "label": "healthy"
+ },
+ {
+  "image": "healthy/TV6_20_IMG_0414.jpg",
+  "label": "healthy"
+ },
+ {
+  "image": "healthy/TV6_20_IMG_0542.jpg",
+  "label": "healthy"
+ },
+ {
+  "image": "nematodes/TV3_15_IMG_0779.jpg",
+  "label": "nematodes"
+ },
+ {
+  "image": "nematodes/TV3_15_IMG_0800.jpg",
+  "label": "nematodes"
+ },
+ {
+  "image": "nematodes/TV3_15_IMG_0813.jpg",
+  "label": "nematodes"
+ },
+ {
+  "image": "nematodes/TV3_15_IMG_1707.jpg",
+  "label": "nematodes"
+ },
+ {
+  "image": "nematodes/TV6_19_IMG_0779.jpg",
+  "label": "nematodes"
+ },
+ {
+  "image": "nematodes/TV6_19_IMG_0800.jpg",
+  "label": "nematodes"
+ },
+ {
+  "image": "nematodes/TV6_19_IMG_0813.jpg",
+  "label": "nematodes"
+ },
+ {
+  "image": "nematodes/TV6_19_IMG_1707.jpg",
+  "label": "nematodes"
+ },
+ {
+  "image": "potato_tuber_moth/TV3_14_IMG_0508.jpg",
+  "label": "potato_tuber_moth"
+ },
+ {
+  "image": "potato_tuber_moth/TV3_14_IMG_0532.jpg",
+  "label": "potato_tuber_moth"
+ },
+ {
+  "image": "potato_tuber_moth/TV3_14_IMG_0564.jpg",
+  "label": "potato_tuber_moth"
+ },
+ {
+  "image": "potato_tuber_moth/TV3_14_IMG_0712.jpg",
+  "label": "potato_tuber_moth"
+ },
+ {
+  "image": "potato_tuber_moth/TV3_14_IMG_1624.jpg",
+  "label": "potato_tuber_moth"
+ },
+ {
+  "image": "potato_tuber_moth/TV6_18_IMG_0508.jpg",
+  "label": "potato_tuber_moth"
+ },
+ {
+  "image": "potato_tuber_moth/TV6_18_IMG_0532.jpg",
+  "label": "potato_tuber_moth"
+ },
+ {
+  "image": "potato_tuber_moth/TV6_18_IMG_0564.jpg",
+  "label": "potato_tuber_moth"
+ },
+ {
+  "image": "potato_tuber_moth/TV6_18_IMG_0712.jpg",
+  "label": "potato_tuber_moth"
+ },
+ {
+  "image": "potato_tuber_moth/TV6_18_IMG_1624.jpg",
+  "label": "potato_tuber_moth"
+ },
+ {
+  "image": "pvy/TV3_9_IMG_0431.jpg",
+  "label": "pvy"
+ },
+ {
+  "image": "pvy/TV3_9_IMG_0770.jpg",
+  "label": "pvy"
+ },
+ {
+  "image": "pvy/TV3_9_IMG_8195.jpg",
+  "label": "pvy"
+ },
+ {
+  "image": "pvy/TV3_9_IMG_8657.jpg",
+  "label": "pvy"
+ },
+ {
+  "image": "pvy/TV6_13_IMG_0431.jpg",
+  "label": "pvy"
+ },
+ {
+  "image": "pvy/TV6_13_IMG_0770.jpg",
+  "label": "pvy"
+ },
+ {
+  "image": "pvy/TV6_13_IMG_8195.jpg",
+  "label": "pvy"
+ },
+ {
+  "image": "pvy/TV6_13_IMG_8657.jpg",
+  "label": "pvy"
+ },
+ {
+  "image": "sunscald/TV3_12_IMG_5004.jpg",
+  "label": "sunscald"
+ },
+ {
+  "image": "sunscald/TV3_12_IMG_5934.jpg",
+  "label": "sunscald"
+ },
+ {
+  "image": "sunscald/TV3_12_IMG_5935.jpg",
+  "label": "sunscald"
+ },
+ {
+  "image": "sunscald/TV3_12_IMG_5970.jpg",
+  "label": "sunscald"
+ },
+ {
+  "image": "sunscald/TV3_12_IMG_5981.jpg",
+  "label": "sunscald"
+ },
+ {
+  "image": "sunscald/TV3_12_IMG_5995.jpg",
+  "label": "sunscald"
+ },
+ {
+  "image": "sunscald/TV3_12_IMG_9984.jpg",
+  "label": "sunscald"
+ },
+ {
+  "image": "sunscald/TV6_16_IMG_5004.jpg",
+  "label": "sunscald"
+ },
+ {
+  "image": "sunscald/TV6_16_IMG_5934.jpg",
+  "label": "sunscald"
+ },
+ {
+  "image": "sunscald/TV6_16_IMG_5935.jpg",
+  "label": "sunscald"
+ },
+ {
+  "image": "sunscald/TV6_16_IMG_5970.jpg",
+  "label": "sunscald"
+ },
+ {
+  "image": "sunscald/TV6_16_IMG_5981.jpg",
+  "label": "sunscald"
+ },
+ {
+  "image": "sunscald/TV6_16_IMG_5995.jpg",
+  "label": "sunscald"
+ },
+ {
+  "image": "sunscald/TV6_16_IMG_9984.jpg",
+  "label": "sunscald"
+ },
+ {
+  "image": "target_spot/TV3_5_IMG_0962.jpg",
+  "label": "target_spot"
+ },
+ {
+  "image": "target_spot/TV3_5_IMG_0966.jpg",
+  "label": "target_spot"
+ },
+ {
+  "image": "target_spot/TV3_5_IMG_1206.jpg",
+  "label": "target_spot"
+ },
+ {
+  "image": "target_spot/TV3_5_IMG_1257.jpg",
+  "label": "target_spot"
+ },
+ {
+  "image": "target_spot/TV3_5_IMG_1484.jpg",
+  "label": "target_spot"
+ },
+ {
+  "image": "target_spot/TV6_9_IMG_0962.jpg",
+  "label": "target_spot"
+ },
+ {
+  "image": "target_spot/TV6_9_IMG_0966.jpg",
+  "label": "target_spot"
+ },
+ {
+  "image": "target_spot/TV6_9_IMG_1206.jpg",
+  "label": "target_spot"
+ },
+ {
+  "image": "target_spot/TV6_9_IMG_1257.jpg",
+  "label": "target_spot"
+ },
+ {
+  "image": "target_spot/TV6_9_IMG_1484.jpg",
+  "label": "target_spot"
+ },
+ {
+  "image": "tmv/TV3_7_IMG_0378.jpg",
+  "label": "tmv"
+ },
+ {
+  "image": "tmv/TV3_7_IMG_1634.jpg",
+  "label": "tmv"
+ },
+ {
+  "image": "tmv/TV3_7_IMG_2216.jpg",
+  "label": "tmv"
+ },
+ {
+  "image": "tmv/TV3_7_IMG_2249.jpg",
+  "label": "tmv"
+ },
+ {
+  "image": "tmv/TV3_7_IMG_6508.jpg",
+  "label": "tmv"
+ },
+ {
+  "image": "tmv/TV3_7_IMG_7352.jpg",
+  "label": "tmv"
+ },
+ {
+  "image": "tmv/TV3_7_IMG_9037.jpg",
+  "label": "tmv"
+ },
+ {
+  "image": "tmv/TV6_11_IMG_0378.jpg",
+  "label": "tmv"
+ },
+ {
+  "image": "tmv/TV6_11_IMG_1634.jpg",
+  "label": "tmv"
+ },
+ {
+  "image": "tmv/TV6_11_IMG_2216.jpg",
+  "label": "tmv"
+ },
+ {
+  "image": "tmv/TV6_11_IMG_2249.jpg",
+  "label": "tmv"
+ },
+ {
+  "image": "tmv/TV6_11_IMG_6508.jpg",
+  "label": "tmv"
+ },
+ {
+  "image": "tmv/TV6_11_IMG_7352.jpg",
+  "label": "tmv"
+ },
+ {
+  "image": "tmv/TV6_11_IMG_9037.jpg",
+  "label": "tmv"
+ },
+ {
+  "image": "tswv/TV3_10_IMG_0925.jpg",
+  "label": "tswv"
+ },
+ {
+  "image": "weather_fleck/TV3_11_IMG_0030.jpg",
+  "label": "weather_fleck"
+ },
+ {
+  "image": "weather_fleck/TV3_11_IMG_0051.jpg",
+  "label": "weather_fleck"
+ },
+ {
+  "image": "weather_fleck/TV3_11_IMG_9631.jpg",
+  "label": "weather_fleck"
+ },
+ {
+  "image": "weather_fleck/TV3_11_IMG_9669.jpg",
+  "label": "weather_fleck"
+ },
+ {
+  "image": "weather_fleck/TV3_11_IMG_9736.jpg",
+  "label": "weather_fleck"
+ },
+ {
+  "image": "weather_fleck/TV3_11_IMG_9818.jpg",
+  "label": "weather_fleck"
+ },
+ {
+  "image": "weather_fleck/TV6_15_IMG_0030.jpg",
+  "label": "weather_fleck"
+ },
+ {
+  "image": "weather_fleck/TV6_15_IMG_0051.jpg",
+  "label": "weather_fleck"
+ },
+ {
+  "image": "weather_fleck/TV6_15_IMG_9631.jpg",
+  "label": "weather_fleck"
+ },
+ {
+  "image": "weather_fleck/TV6_15_IMG_9669.jpg",
+  "label": "weather_fleck"
+ },
+ {
+  "image": "weather_fleck/TV6_15_IMG_9736.jpg",
+  "label": "weather_fleck"
+ },
+ {
+  "image": "weather_fleck/TV6_15_IMG_9818.jpg",
+  "label": "weather_fleck"
+ },
+ {
+  "image": "wildfire/TV3_1_IMG_0036.jpg",
+  "label": "wildfire"
+ },
+ {
+  "image": "wildfire/TV3_1_IMG_0198.jpg",
+  "label": "wildfire"
+ },
+ {
+  "image": "wildfire/TV3_1_IMG_0326.jpg",
+  "label": "wildfire"
+ },
+ {
+  "image": "wildfire/TV3_1_IMG_0919.jpg",
+  "label": "wildfire"
+ },
+ {
+  "image": "wildfire/TV3_1_IMG_8410.jpg",
+  "label": "wildfire"
+ },
+ {
+  "image": "wildfire/TV3_1_IMG_8782.jpg",
+  "label": "wildfire"
+ },
+ {
+  "image": "wildfire/TV3_1_IMG_8947.jpg",
+  "label": "wildfire"
+ },
+ {
+  "image": "wildfire/TV3_1_IMG_9348.jpg",
+  "label": "wildfire"
+ },
+ {
+  "image": "wildfire/TV3_1_IMG_9367.jpg",
+  "label": "wildfire"
+ },
+ {
+  "image": "wildfire/TV6_1_IMG_8782.jpg",
+  "label": "wildfire"
+ },
+ {
+  "image": "wildfire/TV6_1_IMG_8947.jpg",
+  "label": "wildfire"
+ },
+ {
+  "image": "wildfire/TV6_1_IMG_9348.jpg",
+  "label": "wildfire"
+ },
+ {
+  "image": "wildfire/TV6_1_IMG_9367.jpg",
+  "label": "wildfire"
+ },
+ {
+  "image": "wildfire/TV6_2_IMG_0919.jpg",
+  "label": "wildfire"
+ },
+ {
+  "image": "wildfire/TV6_2_IMG_8410.jpg",
+  "label": "wildfire"
+ },
+ {
+  "image": "wildfire/TV6_3_IMG_0198.jpg",
+  "label": "wildfire"
+ },
+ {
+  "image": "wildfire/TV6_5_IMG_0036.jpg",
+  "label": "wildfire"
+ },
+ {
+  "image": "wildfire/TV6_5_IMG_0326.jpg",
+  "label": "wildfire"
+ }
+]

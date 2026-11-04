@@ -1,0 +1,414 @@
+{
+  "protocol": "clean/canonical: fresh frozen CLIP ViT-L/14 features (deterministic), C selected on 20% stratified validation (seed 42), refit on 100% train, evaluated once on 138 test images. Both checkpoints (dfn_clip primary, laion2b) run under the SAME protocol. ResNet fine-tuned loaded from full_provenance.json.",
+  "n_train": 1295,
+  "n_test": 138,
+  "n_classes": 16,
+  "primary_checkpoint": "dfn_clip",
+  "C_grid": [
+    0.01,
+    0.1,
+    1.0,
+    3.0,
+    10.0,
+    30.0,
+    100.0,
+    300.0,
+    1000.0,
+    3000.0
+  ],
+  "val_accs": {
+    "0.01": 0.1081,
+    "0.1": 0.2201,
+    "1.0": 0.7413,
+    "3.0": 0.8224,
+    "10.0": 0.8764,
+    "30.0": 0.8919,
+    "100.0": 0.8996,
+    "300.0": 0.8996,
+    "1000.0": 0.8958,
+    "3000.0": 0.8958
+  },
+  "best_C": 100.0,
+  "resnet_frozen_val_accs": {
+    "0.01": 0.1081,
+    "0.1": 0.3629,
+    "1.0": 0.722,
+    "3.0": 0.7876,
+    "10.0": 0.8069,
+    "30.0": 0.7992,
+    "100.0": 0.7992,
+    "300.0": 0.7915,
+    "1000.0": 0.7915,
+    "3000.0": 0.7876
+  },
+  "resnet_frozen_best_C": 10.0,
+  "clip_by_checkpoint": {
+    "dfn_clip": {
+      "best_C": 100.0,
+      "linear_C1": {
+        "accuracy": 0.7681,
+        "balanced_accuracy": 0.68,
+        "macro_f1": 0.6747
+      },
+      "linear_bestC": {
+        "accuracy": 0.8623,
+        "balanced_accuracy": 0.7762,
+        "macro_f1": 0.773
+      },
+      "mlp": {
+        "accuracy": 0.8551,
+        "balanced_accuracy": 0.7733,
+        "macro_f1": 0.7702
+      },
+      "knn1": {
+        "accuracy": 0.7174,
+        "balanced_accuracy": 0.6557,
+        "macro_f1": 0.612
+      }
+    },
+    "laion2b": {
+      "best_C": 100.0,
+      "linear_C1": {
+        "accuracy": 0.7609,
+        "balanced_accuracy": 0.6841,
+        "macro_f1": 0.6343
+      },
+      "linear_bestC": {
+        "accuracy": 0.8768,
+        "balanced_accuracy": 0.7808,
+        "macro_f1": 0.7624
+      },
+      "mlp": {
+        "accuracy": 0.8551,
+        "balanced_accuracy": 0.7641,
+        "macro_f1": 0.7413
+      },
+      "knn1": {
+        "accuracy": 0.8116,
+        "balanced_accuracy": 0.7961,
+        "macro_f1": 0.7742
+      }
+    }
+  },
+  "matrix": {
+    "clip_linear_C1": {
+      "accuracy": 0.7681,
+      "balanced_accuracy": 0.68,
+      "macro_f1": 0.6747
+    },
+    "clip_linear_bestC": {
+      "accuracy": 0.8623,
+      "balanced_accuracy": 0.7762,
+      "macro_f1": 0.773
+    },
+    "clip_mlp": {
+      "accuracy": 0.8551,
+      "balanced_accuracy": 0.7733,
+      "macro_f1": 0.7702
+    },
+    "clip_knn1": {
+      "accuracy": 0.7174,
+      "balanced_accuracy": 0.6557,
+      "macro_f1": 0.612
+    },
+    "resnet_frozen_linear": {
+      "accuracy": 0.7391,
+      "balanced_accuracy": 0.6597,
+      "macro_f1": 0.6431
+    },
+    "resnet_frozen_mlp": {
+      "accuracy": 0.7681,
+      "balanced_accuracy": 0.7441,
+      "macro_f1": 0.6867
+    },
+    "resnet_frozen_bestC": {
+      "accuracy": 0.7971,
+      "balanced_accuracy": 0.7673,
+      "macro_f1": 0.7235
+    },
+    "resnet_finetuned": {
+      "accuracy": 0.8773,
+      "balanced_accuracy": 0.8116,
+      "macro_f1": 0.7694,
+      "sd": 0.0284,
+      "n_seeds": 15,
+      "note": "accuracy (0.8773) and balanced_accuracy (0.8116) are 15-seed means; balanced_accuracy = canonical_fig_artifacts.json resnet.balanced_accuracy_mean (the prior 0.8285 was the seed-0 value, mislabeled as the aggregate). macro_f1 (0.7694) is the seed-0 value; the 15-seed mean is not stored."
+    }
+  },
+  "geometry": {
+    "clip_dfn_train": {
+      "mean_inter_centroid_dist": 0.3354,
+      "mean_intra_class_dist": 0.5361,
+      "inter_intra_ratio": 0.6257,
+      "fisher_ratio": 0.39,
+      "silhouette_score": 0.0174
+    },
+    "clip_dfn_test": {
+      "mean_inter_centroid_dist": 0.4321,
+      "mean_intra_class_dist": 0.5232,
+      "inter_intra_ratio": 0.8259,
+      "fisher_ratio": 0.55,
+      "silhouette_score": -0.0171
+    },
+    "resnet_frozen_train": {
+      "mean_inter_centroid_dist": 0.3962,
+      "mean_intra_class_dist": 0.7038,
+      "inter_intra_ratio": 0.563,
+      "fisher_ratio": 0.31,
+      "silhouette_score": 0.0259
+    },
+    "resnet_frozen_test": {
+      "mean_inter_centroid_dist": 0.5551,
+      "mean_intra_class_dist": 0.693,
+      "inter_intra_ratio": 0.8011,
+      "fisher_ratio": 0.46,
+      "silhouette_score": 0.0055
+    }
+  },
+  "per_class": {
+    "class_names": [
+      "anthracnose",
+      "black_shank",
+      "brown_spot",
+      "cmv",
+      "frog_eye",
+      "genetic_abnormality",
+      "healthy",
+      "nematodes",
+      "potato_tuber_moth",
+      "pvy",
+      "sunscald",
+      "target_spot",
+      "tmv",
+      "tswv",
+      "weather_fleck",
+      "wildfire"
+    ],
+    "clip_linear_C1": {
+      "anthracnose": {
+        "n_test": 1,
+        "acc": 0.0
+      },
+      "black_shank": {
+        "n_test": 1,
+        "acc": 1.0
+      },
+      "brown_spot": {
+        "n_test": 10,
+        "acc": 0.6
+      },
+      "cmv": {
+        "n_test": 10,
+        "acc": 0.8
+      },
+      "frog_eye": {
+        "n_test": 10,
+        "acc": 0.9
+      },
+      "genetic_abnormality": {
+        "n_test": 1,
+        "acc": 1.0
+      },
+      "healthy": {
+        "n_test": 10,
+        "acc": 1.0
+      },
+      "nematodes": {
+        "n_test": 8,
+        "acc": 0.25
+      },
+      "potato_tuber_moth": {
+        "n_test": 10,
+        "acc": 0.9
+      },
+      "pvy": {
+        "n_test": 8,
+        "acc": 0.25
+      },
+      "sunscald": {
+        "n_test": 14,
+        "acc": 0.7857
+      },
+      "target_spot": {
+        "n_test": 10,
+        "acc": 0.7
+      },
+      "tmv": {
+        "n_test": 14,
+        "acc": 1.0
+      },
+      "tswv": {
+        "n_test": 1,
+        "acc": 0.0
+      },
+      "weather_fleck": {
+        "n_test": 12,
+        "acc": 0.75
+      },
+      "wildfire": {
+        "n_test": 18,
+        "acc": 0.9444
+      }
+    },
+    "clip_linear_bestC": {
+      "anthracnose": {
+        "n_test": 1,
+        "acc": 0.0
+      },
+      "black_shank": {
+        "n_test": 1,
+        "acc": 1.0
+      },
+      "brown_spot": {
+        "n_test": 10,
+        "acc": 0.9
+      },
+      "cmv": {
+        "n_test": 10,
+        "acc": 0.8
+      },
+      "frog_eye": {
+        "n_test": 10,
+        "acc": 1.0
+      },
+      "genetic_abnormality": {
+        "n_test": 1,
+        "acc": 1.0
+      },
+      "healthy": {
+        "n_test": 10,
+        "acc": 1.0
+      },
+      "nematodes": {
+        "n_test": 8,
+        "acc": 0.75
+      },
+      "potato_tuber_moth": {
+        "n_test": 10,
+        "acc": 0.9
+      },
+      "pvy": {
+        "n_test": 8,
+        "acc": 0.75
+      },
+      "sunscald": {
+        "n_test": 14,
+        "acc": 0.7857
+      },
+      "target_spot": {
+        "n_test": 10,
+        "acc": 0.8
+      },
+      "tmv": {
+        "n_test": 14,
+        "acc": 0.9286
+      },
+      "tswv": {
+        "n_test": 1,
+        "acc": 0.0
+      },
+      "weather_fleck": {
+        "n_test": 12,
+        "acc": 0.9167
+      },
+      "wildfire": {
+        "n_test": 18,
+        "acc": 0.8889
+      }
+    },
+    "resnet_finetuned_seed0": {
+      "anthracnose": {
+        "n_test": 1,
+        "acc": 0.0
+      },
+      "black_shank": {
+        "n_test": 1,
+        "acc": 1.0
+      },
+      "brown_spot": {
+        "n_test": 10,
+        "acc": 1.0
+      },
+      "cmv": {
+        "n_test": 10,
+        "acc": 1.0
+      },
+      "frog_eye": {
+        "n_test": 10,
+        "acc": 1.0
+      },
+      "genetic_abnormality": {
+        "n_test": 1,
+        "acc": 1.0
+      },
+      "healthy": {
+        "n_test": 10,
+        "acc": 1.0
+      },
+      "nematodes": {
+        "n_test": 8,
+        "acc": 0.5
+      },
+      "potato_tuber_moth": {
+        "n_test": 10,
+        "acc": 0.8
+      },
+      "pvy": {
+        "n_test": 8,
+        "acc": 0.75
+      },
+      "sunscald": {
+        "n_test": 14,
+        "acc": 0.9286
+      },
+      "target_spot": {
+        "n_test": 10,
+        "acc": 0.7
+      },
+      "tmv": {
+        "n_test": 14,
+        "acc": 0.8571
+      },
+      "tswv": {
+        "n_test": 1,
+        "acc": 1.0
+      },
+      "weather_fleck": {
+        "n_test": 12,
+        "acc": 1.0
+      },
+      "wildfire": {
+        "n_test": 18,
+        "acc": 0.9444
+      }
+    },
+    "note": "per-class top-1 accuracy on the 138 test images (canonical, deterministic CLIP). ResNet fine-tuned = representative seed 0 (88.4%) if available; the 15-seed mean is not per-class (only aggregate accs are stored)."
+  },
+  "tost_training_run": {
+    "clip_fixed_acc": 0.8623,
+    "resnet_mean": 0.8773,
+    "resnet_sd": 0.0284,
+    "n_seeds": 15,
+    "mean_diff_pp": 1.5,
+    "ci95_pp": [
+      -0.07,
+      3.07
+    ],
+    "delta_pp": 5.0,
+    "within_margin": true,
+    "note": "training-run level: 15 stochastic ResNet seeds vs ONE fixed deterministic CLIP probe (single fixed test set). NOT population-level."
+  },
+  "tost_per_image": {
+    "clip_acc": 0.8623,
+    "resnet_rep_seed_acc": 0.8841,
+    "mean_diff_pp": -2.17,
+    "ci95_pp": [
+      -8.43,
+      4.08
+    ],
+    "delta_pp": 5.0,
+    "within_margin": false,
+    "note": "per-image level against ONE representative ResNet seed; SE~3pp, not resolvable at 5pp margin."
+  },
+  "elapsed_sec": 435.6
+}

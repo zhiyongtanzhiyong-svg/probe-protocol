@@ -1,0 +1,1460 @@
+{
+  "purpose": "M3 follow-up: validation-selected-C probe, 15 support seeds, K=1/2/5/10; per-seed seed-paired with the ResNet matched-budget runs",
+  "c_grid": [
+    0.01,
+    0.1,
+    1.0,
+    3.0,
+    10.0,
+    30.0,
+    100.0,
+    300.0,
+    1000.0,
+    3000.0
+  ],
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14
+  ],
+  "seed_offset": 500,
+  "support_draw": "coop_experiment.kshot_subset_idx(y, K, seed+500); identical to the ResNet matched runs (resnet_kshot_matched_budget.py)",
+  "selection": "best validation accuracy on the 138-image validation split; first grid maximum on ties; test accuracy never used for selection",
+  "features": {
+    "dfn": "data/canonical_clip_features_dfn.npz",
+    "laion": "data/clip_features_laion_clean.npz"
+  },
+  "dfn": {
+    "K=1": {
+      "K": 1,
+      "per_seed": [
+        {
+          "seed": 0,
+          "selected_C": 0.1,
+          "selected_val_acc": 0.3696,
+          "test_acc_at_selected_C": 0.2681,
+          "test_acc_at_C1": 0.26811594202898553,
+          "best_test_C": 3000.0,
+          "best_test_acc": 0.3478
+        },
+        {
+          "seed": 1,
+          "selected_C": 10.0,
+          "selected_val_acc": 0.3116,
+          "test_acc_at_selected_C": 0.3116,
+          "test_acc_at_C1": 0.2971014492753623,
+          "best_test_C": 0.01,
+          "best_test_acc": 0.3188
+        },
+        {
+          "seed": 2,
+          "selected_C": 1.0,
+          "selected_val_acc": 0.2754,
+          "test_acc_at_selected_C": 0.2971,
+          "test_acc_at_C1": 0.2971014492753623,
+          "best_test_C": 1.0,
+          "best_test_acc": 0.2971
+        },
+        {
+          "seed": 3,
+          "selected_C": 30.0,
+          "selected_val_acc": 0.3913,
+          "test_acc_at_selected_C": 0.2101,
+          "test_acc_at_C1": 0.2536231884057971,
+          "best_test_C": 10.0,
+          "best_test_acc": 0.2609
+        },
+        {
+          "seed": 4,
+          "selected_C": 3000.0,
+          "selected_val_acc": 0.4493,
+          "test_acc_at_selected_C": 0.2899,
+          "test_acc_at_C1": 0.2826086956521739,
+          "best_test_C": 10.0,
+          "best_test_acc": 0.3333
+        },
+        {
+          "seed": 5,
+          "selected_C": 100.0,
+          "selected_val_acc": 0.4783,
+          "test_acc_at_selected_C": 0.3623,
+          "test_acc_at_C1": 0.34057971014492755,
+          "best_test_C": 30.0,
+          "best_test_acc": 0.3768
+        },
+        {
+          "seed": 6,
+          "selected_C": 10.0,
+          "selected_val_acc": 0.3768,
+          "test_acc_at_selected_C": 0.3406,
+          "test_acc_at_C1": 0.3333333333333333,
+          "best_test_C": 3.0,
+          "best_test_acc": 0.3406
+        },
+        {
+          "seed": 7,
+          "selected_C": 3000.0,
+          "selected_val_acc": 0.3261,
+          "test_acc_at_selected_C": 0.3261,
+          "test_acc_at_C1": 0.2898550724637681,
+          "best_test_C": 3000.0,
+          "best_test_acc": 0.3261
+        },
+        {
+          "seed": 8,
+          "selected_C": 30.0,
+          "selected_val_acc": 0.3696,
+          "test_acc_at_selected_C": 0.3116,
+          "test_acc_at_C1": 0.30434782608695654,
+          "best_test_C": 0.01,
+          "best_test_acc": 0.3333
+        },
+        {
+          "seed": 9,
+          "selected_C": 1000.0,
+          "selected_val_acc": 0.3478,
+          "test_acc_at_selected_C": 0.3696,
+          "test_acc_at_C1": 0.32608695652173914,
+          "best_test_C": 300.0,
+          "best_test_acc": 0.3696
+        },
+        {
+          "seed": 10,
+          "selected_C": 30.0,
+          "selected_val_acc": 0.3768,
+          "test_acc_at_selected_C": 0.3043,
+          "test_acc_at_C1": 0.30434782608695654,
+          "best_test_C": 0.1,
+          "best_test_acc": 0.3043
+        },
+        {
+          "seed": 11,
+          "selected_C": 30.0,
+          "selected_val_acc": 0.3551,
+          "test_acc_at_selected_C": 0.3116,
+          "test_acc_at_C1": 0.3115942028985507,
+          "best_test_C": 3.0,
+          "best_test_acc": 0.3188
+        },
+        {
+          "seed": 12,
+          "selected_C": 100.0,
+          "selected_val_acc": 0.3478,
+          "test_acc_at_selected_C": 0.3768,
+          "test_acc_at_C1": 0.32608695652173914,
+          "best_test_C": 100.0,
+          "best_test_acc": 0.3768
+        },
+        {
+          "seed": 13,
+          "selected_C": 1000.0,
+          "selected_val_acc": 0.3551,
+          "test_acc_at_selected_C": 0.3986,
+          "test_acc_at_C1": 0.3115942028985507,
+          "best_test_C": 3000.0,
+          "best_test_acc": 0.413
+        },
+        {
+          "seed": 14,
+          "selected_C": 100.0,
+          "selected_val_acc": 0.3841,
+          "test_acc_at_selected_C": 0.3913,
+          "test_acc_at_C1": 0.32608695652173914,
+          "best_test_C": 30.0,
+          "best_test_acc": 0.4058
+        }
+      ],
+      "selected_C_distribution": {
+        "0.01": 0,
+        "0.1": 1,
+        "1.0": 1,
+        "3.0": 0,
+        "10.0": 2,
+        "30.0": 4,
+        "100.0": 3,
+        "300.0": 0,
+        "1000.0": 2,
+        "3000.0": 2
+      },
+      "val_selected_C": {
+        "mean": 0.32464,
+        "std": 0.050382,
+        "n": 15
+      },
+      "default_C1": {
+        "mean": 0.304831,
+        "std": 0.024415,
+        "n": 15
+      },
+      "resnet_matched_15seed": {
+        "mean": 0.40436,
+        "std": 0.047053,
+        "source": "p3b_resnet_kshot_matched_k1.json"
+      },
+      "gap_vs_resnet_pp": {
+        "val_selected_C": -7.972,
+        "C1": -9.953
+      },
+      "seed_paired_probe_minus_resnet": {
+        "t": -4.5345,
+        "df": 14,
+        "p": 0.0004673342263780833,
+        "mean_diff_pp": -7.972
+      }
+    },
+    "K=2": {
+      "K": 2,
+      "per_seed": [
+        {
+          "seed": 0,
+          "selected_C": 3000.0,
+          "selected_val_acc": 0.529,
+          "test_acc_at_selected_C": 0.5145,
+          "test_acc_at_C1": 0.34782608695652173,
+          "best_test_C": 3000.0,
+          "best_test_acc": 0.5145
+        },
+        {
+          "seed": 1,
+          "selected_C": 30.0,
+          "selected_val_acc": 0.529,
+          "test_acc_at_selected_C": 0.5072,
+          "test_acc_at_C1": 0.39855072463768115,
+          "best_test_C": 3000.0,
+          "best_test_acc": 0.5362
+        },
+        {
+          "seed": 2,
+          "selected_C": 3000.0,
+          "selected_val_acc": 0.4348,
+          "test_acc_at_selected_C": 0.442,
+          "test_acc_at_C1": 0.32608695652173914,
+          "best_test_C": 3000.0,
+          "best_test_acc": 0.442
+        },
+        {
+          "seed": 3,
+          "selected_C": 30.0,
+          "selected_val_acc": 0.4855,
+          "test_acc_at_selected_C": 0.3406,
+          "test_acc_at_C1": 0.34782608695652173,
+          "best_test_C": 10.0,
+          "best_test_acc": 0.3696
+        },
+        {
+          "seed": 4,
+          "selected_C": 100.0,
+          "selected_val_acc": 0.529,
+          "test_acc_at_selected_C": 0.4275,
+          "test_acc_at_C1": 0.34057971014492755,
+          "best_test_C": 1000.0,
+          "best_test_acc": 0.442
+        },
+        {
+          "seed": 5,
+          "selected_C": 1000.0,
+          "selected_val_acc": 0.4855,
+          "test_acc_at_selected_C": 0.4203,
+          "test_acc_at_C1": 0.38405797101449274,
+          "best_test_C": 100.0,
+          "best_test_acc": 0.4275
+        },
+        {
+          "seed": 6,
+          "selected_C": 1000.0,
+          "selected_val_acc": 0.558,
+          "test_acc_at_selected_C": 0.5145,
+          "test_acc_at_C1": 0.427536231884058,
+          "best_test_C": 1000.0,
+          "best_test_acc": 0.5145
+        },
+        {
+          "seed": 7,
+          "selected_C": 1000.0,
+          "selected_val_acc": 0.529,
+          "test_acc_at_selected_C": 0.4783,
+          "test_acc_at_C1": 0.37681159420289856,
+          "best_test_C": 3000.0,
+          "best_test_acc": 0.4855
+        },
+        {
+          "seed": 8,
+          "selected_C": 30.0,
+          "selected_val_acc": 0.5072,
+          "test_acc_at_selected_C": 0.3986,
+          "test_acc_at_C1": 0.3333333333333333,
+          "best_test_C": 100.0,
+          "best_test_acc": 0.4058
+        },
+        {
+          "seed": 9,
+          "selected_C": 0.1,
+          "selected_val_acc": 0.4275,
+          "test_acc_at_selected_C": 0.4203,
+          "test_acc_at_C1": 0.4492753623188406,
+          "best_test_C": 30.0,
+          "best_test_acc": 0.5435
+        },
+        {
+          "seed": 10,
+          "selected_C": 100.0,
+          "selected_val_acc": 0.4493,
+          "test_acc_at_selected_C": 0.4783,
+          "test_acc_at_C1": 0.4057971014492754,
+          "best_test_C": 10.0,
+          "best_test_acc": 0.4783
+        },
+        {
+          "seed": 11,
+          "selected_C": 3000.0,
+          "selected_val_acc": 0.413,
+          "test_acc_at_selected_C": 0.4348,
+          "test_acc_at_C1": 0.3188405797101449,
+          "best_test_C": 3000.0,
+          "best_test_acc": 0.4348
+        },
+        {
+          "seed": 12,
+          "selected_C": 30.0,
+          "selected_val_acc": 0.4348,
+          "test_acc_at_selected_C": 0.4058,
+          "test_acc_at_C1": 0.32608695652173914,
+          "best_test_C": 100.0,
+          "best_test_acc": 0.4348
+        },
+        {
+          "seed": 13,
+          "selected_C": 1000.0,
+          "selected_val_acc": 0.4493,
+          "test_acc_at_selected_C": 0.5072,
+          "test_acc_at_C1": 0.36231884057971014,
+          "best_test_C": 300.0,
+          "best_test_acc": 0.5145
+        },
+        {
+          "seed": 14,
+          "selected_C": 1000.0,
+          "selected_val_acc": 0.4203,
+          "test_acc_at_selected_C": 0.442,
+          "test_acc_at_C1": 0.3333333333333333,
+          "best_test_C": 300.0,
+          "best_test_acc": 0.442
+        }
+      ],
+      "selected_C_distribution": {
+        "0.01": 0,
+        "0.1": 1,
+        "1.0": 0,
+        "3.0": 0,
+        "10.0": 0,
+        "30.0": 4,
+        "100.0": 2,
+        "300.0": 0,
+        "1000.0": 5,
+        "3000.0": 3
+      },
+      "val_selected_C": {
+        "mean": 0.448793,
+        "std": 0.050453,
+        "n": 15
+      },
+      "default_C1": {
+        "mean": 0.365217,
+        "std": 0.040234,
+        "n": 15
+      },
+      "resnet_matched_15seed": {
+        "mean": 0.524647,
+        "std": 0.034625,
+        "source": "p3b_resnet_kshot_matched_k2.json"
+      },
+      "gap_vs_resnet_pp": {
+        "val_selected_C": -7.585,
+        "C1": -15.943
+      },
+      "seed_paired_probe_minus_resnet": {
+        "t": -6.7611,
+        "df": 14,
+        "p": 9.153147783774173e-06,
+        "mean_diff_pp": -7.585
+      }
+    },
+    "K=5": {
+      "K": 5,
+      "per_seed": [
+        {
+          "seed": 0,
+          "selected_C": 100.0,
+          "selected_val_acc": 0.6522,
+          "test_acc_at_selected_C": 0.6449,
+          "test_acc_at_C1": 0.4420289855072464,
+          "best_test_C": 1000.0,
+          "best_test_acc": 0.6667
+        },
+        {
+          "seed": 1,
+          "selected_C": 1000.0,
+          "selected_val_acc": 0.7029,
+          "test_acc_at_selected_C": 0.6594,
+          "test_acc_at_C1": 0.5072463768115942,
+          "best_test_C": 300.0,
+          "best_test_acc": 0.6667
+        },
+        {
+          "seed": 2,
+          "selected_C": 3000.0,
+          "selected_val_acc": 0.7391,
+          "test_acc_at_selected_C": 0.587,
+          "test_acc_at_C1": 0.463768115942029,
+          "best_test_C": 300.0,
+          "best_test_acc": 0.5942
+        },
+        {
+          "seed": 3,
+          "selected_C": 30.0,
+          "selected_val_acc": 0.6594,
+          "test_acc_at_selected_C": 0.5725,
+          "test_acc_at_C1": 0.4782608695652174,
+          "best_test_C": 3000.0,
+          "best_test_acc": 0.6087
+        },
+        {
+          "seed": 4,
+          "selected_C": 100.0,
+          "selected_val_acc": 0.6667,
+          "test_acc_at_selected_C": 0.6087,
+          "test_acc_at_C1": 0.47101449275362317,
+          "best_test_C": 1000.0,
+          "best_test_acc": 0.6304
+        },
+        {
+          "seed": 5,
+          "selected_C": 30.0,
+          "selected_val_acc": 0.6449,
+          "test_acc_at_selected_C": 0.587,
+          "test_acc_at_C1": 0.4782608695652174,
+          "best_test_C": 3000.0,
+          "best_test_acc": 0.6159
+        },
+        {
+          "seed": 6,
+          "selected_C": 300.0,
+          "selected_val_acc": 0.6957,
+          "test_acc_at_selected_C": 0.6014,
+          "test_acc_at_C1": 0.4927536231884058,
+          "best_test_C": 30.0,
+          "best_test_acc": 0.6087
+        },
+        {
+          "seed": 7,
+          "selected_C": 100.0,
+          "selected_val_acc": 0.6159,
+          "test_acc_at_selected_C": 0.6159,
+          "test_acc_at_C1": 0.5,
+          "best_test_C": 30.0,
+          "best_test_acc": 0.6232
+        },
+        {
+          "seed": 8,
+          "selected_C": 30.0,
+          "selected_val_acc": 0.5072,
+          "test_acc_at_selected_C": 0.5145,
+          "test_acc_at_C1": 0.4057971014492754,
+          "best_test_C": 3000.0,
+          "best_test_acc": 0.5507
+        },
+        {
+          "seed": 9,
+          "selected_C": 100.0,
+          "selected_val_acc": 0.6232,
+          "test_acc_at_selected_C": 0.6232,
+          "test_acc_at_C1": 0.5579710144927537,
+          "best_test_C": 3000.0,
+          "best_test_acc": 0.6449
+        },
+        {
+          "seed": 10,
+          "selected_C": 1000.0,
+          "selected_val_acc": 0.6449,
+          "test_acc_at_selected_C": 0.7174,
+          "test_acc_at_C1": 0.5,
+          "best_test_C": 300.0,
+          "best_test_acc": 0.7174
+        },
+        {
+          "seed": 11,
+          "selected_C": 3000.0,
+          "selected_val_acc": 0.5797,
+          "test_acc_at_selected_C": 0.6522,
+          "test_acc_at_C1": 0.5362318840579711,
+          "best_test_C": 100.0,
+          "best_test_acc": 0.6522
+        },
+        {
+          "seed": 12,
+          "selected_C": 1000.0,
+          "selected_val_acc": 0.5507,
+          "test_acc_at_selected_C": 0.6377,
+          "test_acc_at_C1": 0.45652173913043476,
+          "best_test_C": 1000.0,
+          "best_test_acc": 0.6377
+        },
+        {
+          "seed": 13,
+          "selected_C": 3000.0,
+          "selected_val_acc": 0.6667,
+          "test_acc_at_selected_C": 0.7029,
+          "test_acc_at_C1": 0.5579710144927537,
+          "best_test_C": 1000.0,
+          "best_test_acc": 0.7029
+        },
+        {
+          "seed": 14,
+          "selected_C": 300.0,
+          "selected_val_acc": 0.6232,
+          "test_acc_at_selected_C": 0.5507,
+          "test_acc_at_C1": 0.34782608695652173,
+          "best_test_C": 100.0,
+          "best_test_acc": 0.558
+        }
+      ],
+      "selected_C_distribution": {
+        "0.01": 0,
+        "0.1": 0,
+        "1.0": 0,
+        "3.0": 0,
+        "10.0": 0,
+        "30.0": 3,
+        "100.0": 4,
+        "300.0": 2,
+        "1000.0": 3,
+        "3000.0": 3
+      },
+      "val_selected_C": {
+        "mean": 0.61836,
+        "std": 0.053924,
+        "n": 15
+      },
+      "default_C1": {
+        "mean": 0.47971,
+        "std": 0.054996,
+        "n": 15
+      },
+      "resnet_matched_15seed": {
+        "mean": 0.649287,
+        "std": 0.052028,
+        "source": "p3b_resnet_kshot_matched.json"
+      },
+      "gap_vs_resnet_pp": {
+        "val_selected_C": -3.093,
+        "C1": -16.958
+      },
+      "seed_paired_probe_minus_resnet": {
+        "t": -2.9528,
+        "df": 14,
+        "p": 0.010488267466436852,
+        "mean_diff_pp": -3.093
+      }
+    },
+    "K=10": {
+      "K": 10,
+      "per_seed": [
+        {
+          "seed": 0,
+          "selected_C": 30.0,
+          "selected_val_acc": 0.6594,
+          "test_acc_at_selected_C": 0.7101,
+          "test_acc_at_C1": 0.5362318840579711,
+          "best_test_C": 1000.0,
+          "best_test_acc": 0.7319
+        },
+        {
+          "seed": 1,
+          "selected_C": 30.0,
+          "selected_val_acc": 0.7609,
+          "test_acc_at_selected_C": 0.7609,
+          "test_acc_at_C1": 0.5579710144927537,
+          "best_test_C": 30.0,
+          "best_test_acc": 0.7609
+        },
+        {
+          "seed": 2,
+          "selected_C": 300.0,
+          "selected_val_acc": 0.7681,
+          "test_acc_at_selected_C": 0.7029,
+          "test_acc_at_C1": 0.5797101449275363,
+          "best_test_C": 3000.0,
+          "best_test_acc": 0.7174
+        },
+        {
+          "seed": 3,
+          "selected_C": 100.0,
+          "selected_val_acc": 0.7536,
+          "test_acc_at_selected_C": 0.6957,
+          "test_acc_at_C1": 0.5434782608695652,
+          "best_test_C": 300.0,
+          "best_test_acc": 0.7029
+        },
+        {
+          "seed": 4,
+          "selected_C": 300.0,
+          "selected_val_acc": 0.7536,
+          "test_acc_at_selected_C": 0.7246,
+          "test_acc_at_C1": 0.5652173913043478,
+          "best_test_C": 3000.0,
+          "best_test_acc": 0.7391
+        },
+        {
+          "seed": 5,
+          "selected_C": 100.0,
+          "selected_val_acc": 0.8043,
+          "test_acc_at_selected_C": 0.7464,
+          "test_acc_at_C1": 0.5507246376811594,
+          "best_test_C": 3000.0,
+          "best_test_acc": 0.7609
+        },
+        {
+          "seed": 6,
+          "selected_C": 30.0,
+          "selected_val_acc": 0.7464,
+          "test_acc_at_selected_C": 0.7464,
+          "test_acc_at_C1": 0.5797101449275363,
+          "best_test_C": 30.0,
+          "best_test_acc": 0.7464
+        },
+        {
+          "seed": 7,
+          "selected_C": 100.0,
+          "selected_val_acc": 0.7681,
+          "test_acc_at_selected_C": 0.6812,
+          "test_acc_at_C1": 0.6159420289855072,
+          "best_test_C": 1000.0,
+          "best_test_acc": 0.6957
+        },
+        {
+          "seed": 8,
+          "selected_C": 30.0,
+          "selected_val_acc": 0.6739,
+          "test_acc_at_selected_C": 0.6957,
+          "test_acc_at_C1": 0.4855072463768116,
+          "best_test_C": 100.0,
+          "best_test_acc": 0.7174
+        },
+        {
+          "seed": 9,
+          "selected_C": 3000.0,
+          "selected_val_acc": 0.7246,
+          "test_acc_at_selected_C": 0.6884,
+          "test_acc_at_C1": 0.6014492753623188,
+          "best_test_C": 30.0,
+          "best_test_acc": 0.6884
+        },
+        {
+          "seed": 10,
+          "selected_C": 3000.0,
+          "selected_val_acc": 0.7319,
+          "test_acc_at_selected_C": 0.7754,
+          "test_acc_at_C1": 0.572463768115942,
+          "best_test_C": 100.0,
+          "best_test_acc": 0.7971
+        },
+        {
+          "seed": 11,
+          "selected_C": 30.0,
+          "selected_val_acc": 0.6957,
+          "test_acc_at_selected_C": 0.7029,
+          "test_acc_at_C1": 0.5579710144927537,
+          "best_test_C": 3000.0,
+          "best_test_acc": 0.7681
+        },
+        {
+          "seed": 12,
+          "selected_C": 3000.0,
+          "selected_val_acc": 0.7246,
+          "test_acc_at_selected_C": 0.6812,
+          "test_acc_at_C1": 0.5579710144927537,
+          "best_test_C": 100.0,
+          "best_test_acc": 0.7174
+        },
+        {
+          "seed": 13,
+          "selected_C": 10.0,
+          "selected_val_acc": 0.7101,
+          "test_acc_at_selected_C": 0.7029,
+          "test_acc_at_C1": 0.6304347826086957,
+          "best_test_C": 1000.0,
+          "best_test_acc": 0.7826
+        },
+        {
+          "seed": 14,
+          "selected_C": 3000.0,
+          "selected_val_acc": 0.7536,
+          "test_acc_at_selected_C": 0.7101,
+          "test_acc_at_C1": 0.5289855072463768,
+          "best_test_C": 1000.0,
+          "best_test_acc": 0.7101
+        }
+      ],
+      "selected_C_distribution": {
+        "0.01": 0,
+        "0.1": 0,
+        "1.0": 0,
+        "3.0": 0,
+        "10.0": 1,
+        "30.0": 5,
+        "100.0": 3,
+        "300.0": 2,
+        "1000.0": 0,
+        "3000.0": 4
+      },
+      "val_selected_C": {
+        "mean": 0.714987,
+        "std": 0.02933,
+        "n": 15
+      },
+      "default_C1": {
+        "mean": 0.564251,
+        "std": 0.035801,
+        "n": 15
+      },
+      "resnet_matched_15seed": {
+        "mean": 0.746387,
+        "std": 0.023258,
+        "source": "p3b_resnet_kshot_matched_k10.json"
+      },
+      "gap_vs_resnet_pp": {
+        "val_selected_C": -3.14,
+        "C1": -18.214
+      },
+      "seed_paired_probe_minus_resnet": {
+        "t": -3.3209,
+        "df": 14,
+        "p": 0.005047673406303527,
+        "mean_diff_pp": -3.14
+      }
+    }
+  },
+  "laion": {
+    "K=1": {
+      "K": 1,
+      "per_seed": [
+        {
+          "seed": 0,
+          "selected_C": 1.0,
+          "selected_val_acc": 0.529,
+          "test_acc_at_selected_C": 0.3986,
+          "test_acc_at_C1": 0.39855072463768115,
+          "best_test_C": 10.0,
+          "best_test_acc": 0.4058
+        },
+        {
+          "seed": 1,
+          "selected_C": 100.0,
+          "selected_val_acc": 0.4565,
+          "test_acc_at_selected_C": 0.3623,
+          "test_acc_at_C1": 0.34782608695652173,
+          "best_test_C": 10.0,
+          "best_test_acc": 0.3768
+        },
+        {
+          "seed": 2,
+          "selected_C": 0.1,
+          "selected_val_acc": 0.4058,
+          "test_acc_at_selected_C": 0.3478,
+          "test_acc_at_C1": 0.35507246376811596,
+          "best_test_C": 30.0,
+          "best_test_acc": 0.3841
+        },
+        {
+          "seed": 3,
+          "selected_C": 30.0,
+          "selected_val_acc": 0.4493,
+          "test_acc_at_selected_C": 0.3913,
+          "test_acc_at_C1": 0.4420289855072464,
+          "best_test_C": 10.0,
+          "best_test_acc": 0.4493
+        },
+        {
+          "seed": 4,
+          "selected_C": 0.01,
+          "selected_val_acc": 0.5217,
+          "test_acc_at_selected_C": 0.3841,
+          "test_acc_at_C1": 0.391304347826087,
+          "best_test_C": 100.0,
+          "best_test_acc": 0.4275
+        },
+        {
+          "seed": 5,
+          "selected_C": 3.0,
+          "selected_val_acc": 0.4855,
+          "test_acc_at_selected_C": 0.471,
+          "test_acc_at_C1": 0.4492753623188406,
+          "best_test_C": 3.0,
+          "best_test_acc": 0.471
+        },
+        {
+          "seed": 6,
+          "selected_C": 0.01,
+          "selected_val_acc": 0.4855,
+          "test_acc_at_selected_C": 0.3478,
+          "test_acc_at_C1": 0.38405797101449274,
+          "best_test_C": 30.0,
+          "best_test_acc": 0.3986
+        },
+        {
+          "seed": 7,
+          "selected_C": 10.0,
+          "selected_val_acc": 0.5435,
+          "test_acc_at_selected_C": 0.4348,
+          "test_acc_at_C1": 0.42028985507246375,
+          "best_test_C": 0.01,
+          "best_test_acc": 0.442
+        },
+        {
+          "seed": 8,
+          "selected_C": 3000.0,
+          "selected_val_acc": 0.471,
+          "test_acc_at_selected_C": 0.4058,
+          "test_acc_at_C1": 0.37681159420289856,
+          "best_test_C": 10.0,
+          "best_test_acc": 0.4348
+        },
+        {
+          "seed": 9,
+          "selected_C": 30.0,
+          "selected_val_acc": 0.4058,
+          "test_acc_at_selected_C": 0.4855,
+          "test_acc_at_C1": 0.4927536231884058,
+          "best_test_C": 3.0,
+          "best_test_acc": 0.5072
+        },
+        {
+          "seed": 10,
+          "selected_C": 0.01,
+          "selected_val_acc": 0.3913,
+          "test_acc_at_selected_C": 0.3623,
+          "test_acc_at_C1": 0.34057971014492755,
+          "best_test_C": 10.0,
+          "best_test_acc": 0.3913
+        },
+        {
+          "seed": 11,
+          "selected_C": 10.0,
+          "selected_val_acc": 0.3986,
+          "test_acc_at_selected_C": 0.3841,
+          "test_acc_at_C1": 0.3695652173913043,
+          "best_test_C": 3.0,
+          "best_test_acc": 0.3841
+        },
+        {
+          "seed": 12,
+          "selected_C": 0.01,
+          "selected_val_acc": 0.4855,
+          "test_acc_at_selected_C": 0.4638,
+          "test_acc_at_C1": 0.427536231884058,
+          "best_test_C": 30.0,
+          "best_test_acc": 0.4783
+        },
+        {
+          "seed": 13,
+          "selected_C": 10.0,
+          "selected_val_acc": 0.4565,
+          "test_acc_at_selected_C": 0.4203,
+          "test_acc_at_C1": 0.391304347826087,
+          "best_test_C": 0.01,
+          "best_test_acc": 0.4565
+        },
+        {
+          "seed": 14,
+          "selected_C": 10.0,
+          "selected_val_acc": 0.4565,
+          "test_acc_at_selected_C": 0.4565,
+          "test_acc_at_C1": 0.43478260869565216,
+          "best_test_C": 300.0,
+          "best_test_acc": 0.4638
+        }
+      ],
+      "selected_C_distribution": {
+        "0.01": 4,
+        "0.1": 1,
+        "1.0": 1,
+        "3.0": 1,
+        "10.0": 4,
+        "30.0": 2,
+        "100.0": 1,
+        "300.0": 0,
+        "1000.0": 0,
+        "3000.0": 1
+      },
+      "val_selected_C": {
+        "mean": 0.407733,
+        "std": 0.045708,
+        "n": 15
+      },
+      "default_C1": {
+        "mean": 0.401449,
+        "std": 0.042501,
+        "n": 15
+      },
+      "resnet_matched_15seed": {
+        "mean": 0.40436,
+        "std": 0.047053,
+        "source": "p3b_resnet_kshot_matched_k1.json"
+      },
+      "gap_vs_resnet_pp": {
+        "val_selected_C": 0.337,
+        "C1": -0.291
+      },
+      "seed_paired_probe_minus_resnet": {
+        "t": 0.2042,
+        "df": 14,
+        "p": 0.8411671263164641,
+        "mean_diff_pp": 0.337
+      }
+    },
+    "K=2": {
+      "K": 2,
+      "per_seed": [
+        {
+          "seed": 0,
+          "selected_C": 30.0,
+          "selected_val_acc": 0.5507,
+          "test_acc_at_selected_C": 0.5,
+          "test_acc_at_C1": 0.45652173913043476,
+          "best_test_C": 30.0,
+          "best_test_acc": 0.5
+        },
+        {
+          "seed": 1,
+          "selected_C": 100.0,
+          "selected_val_acc": 0.6812,
+          "test_acc_at_selected_C": 0.587,
+          "test_acc_at_C1": 0.5072463768115942,
+          "best_test_C": 300.0,
+          "best_test_acc": 0.5942
+        },
+        {
+          "seed": 2,
+          "selected_C": 100.0,
+          "selected_val_acc": 0.558,
+          "test_acc_at_selected_C": 0.5652,
+          "test_acc_at_C1": 0.463768115942029,
+          "best_test_C": 300.0,
+          "best_test_acc": 0.5725
+        },
+        {
+          "seed": 3,
+          "selected_C": 10.0,
+          "selected_val_acc": 0.529,
+          "test_acc_at_selected_C": 0.5,
+          "test_acc_at_C1": 0.5,
+          "best_test_C": 3.0,
+          "best_test_acc": 0.5072
+        },
+        {
+          "seed": 4,
+          "selected_C": 30.0,
+          "selected_val_acc": 0.6014,
+          "test_acc_at_selected_C": 0.529,
+          "test_acc_at_C1": 0.463768115942029,
+          "best_test_C": 10.0,
+          "best_test_acc": 0.5362
+        },
+        {
+          "seed": 5,
+          "selected_C": 0.01,
+          "selected_val_acc": 0.6377,
+          "test_acc_at_selected_C": 0.4928,
+          "test_acc_at_C1": 0.5289855072463768,
+          "best_test_C": 30.0,
+          "best_test_acc": 0.587
+        },
+        {
+          "seed": 6,
+          "selected_C": 3000.0,
+          "selected_val_acc": 0.5507,
+          "test_acc_at_selected_C": 0.5435,
+          "test_acc_at_C1": 0.4927536231884058,
+          "best_test_C": 100.0,
+          "best_test_acc": 0.5435
+        },
+        {
+          "seed": 7,
+          "selected_C": 3000.0,
+          "selected_val_acc": 0.6667,
+          "test_acc_at_selected_C": 0.4783,
+          "test_acc_at_C1": 0.4927536231884058,
+          "best_test_C": 10.0,
+          "best_test_acc": 0.5217
+        },
+        {
+          "seed": 8,
+          "selected_C": 1.0,
+          "selected_val_acc": 0.5725,
+          "test_acc_at_selected_C": 0.471,
+          "test_acc_at_C1": 0.47101449275362317,
+          "best_test_C": 30.0,
+          "best_test_acc": 0.5217
+        },
+        {
+          "seed": 9,
+          "selected_C": 100.0,
+          "selected_val_acc": 0.5507,
+          "test_acc_at_selected_C": 0.6159,
+          "test_acc_at_C1": 0.5652173913043478,
+          "best_test_C": 100.0,
+          "best_test_acc": 0.6159
+        },
+        {
+          "seed": 10,
+          "selected_C": 3000.0,
+          "selected_val_acc": 0.5145,
+          "test_acc_at_selected_C": 0.5652,
+          "test_acc_at_C1": 0.5,
+          "best_test_C": 30.0,
+          "best_test_acc": 0.5652
+        },
+        {
+          "seed": 11,
+          "selected_C": 30.0,
+          "selected_val_acc": 0.5725,
+          "test_acc_at_selected_C": 0.5145,
+          "test_acc_at_C1": 0.45652173913043476,
+          "best_test_C": 3000.0,
+          "best_test_acc": 0.558
+        },
+        {
+          "seed": 12,
+          "selected_C": 100.0,
+          "selected_val_acc": 0.5652,
+          "test_acc_at_selected_C": 0.6087,
+          "test_acc_at_C1": 0.5362318840579711,
+          "best_test_C": 100.0,
+          "best_test_acc": 0.6087
+        },
+        {
+          "seed": 13,
+          "selected_C": 1000.0,
+          "selected_val_acc": 0.5145,
+          "test_acc_at_selected_C": 0.5,
+          "test_acc_at_C1": 0.4927536231884058,
+          "best_test_C": 3.0,
+          "best_test_acc": 0.5217
+        },
+        {
+          "seed": 14,
+          "selected_C": 30.0,
+          "selected_val_acc": 0.4928,
+          "test_acc_at_selected_C": 0.4855,
+          "test_acc_at_C1": 0.391304347826087,
+          "best_test_C": 100.0,
+          "best_test_acc": 0.529
+        }
+      ],
+      "selected_C_distribution": {
+        "0.01": 1,
+        "0.1": 0,
+        "1.0": 1,
+        "3.0": 0,
+        "10.0": 1,
+        "30.0": 4,
+        "100.0": 4,
+        "300.0": 0,
+        "1000.0": 1,
+        "3000.0": 3
+      },
+      "val_selected_C": {
+        "mean": 0.53044,
+        "std": 0.047763,
+        "n": 15
+      },
+      "default_C1": {
+        "mean": 0.487923,
+        "std": 0.040961,
+        "n": 15
+      },
+      "resnet_matched_15seed": {
+        "mean": 0.524647,
+        "std": 0.034625,
+        "source": "p3b_resnet_kshot_matched_k2.json"
+      },
+      "gap_vs_resnet_pp": {
+        "val_selected_C": 0.579,
+        "C1": -3.672
+      },
+      "seed_paired_probe_minus_resnet": {
+        "t": 0.451,
+        "df": 14,
+        "p": 0.658893947758605,
+        "mean_diff_pp": 0.579
+      }
+    },
+    "K=5": {
+      "K": 5,
+      "per_seed": [
+        {
+          "seed": 0,
+          "selected_C": 100.0,
+          "selected_val_acc": 0.6739,
+          "test_acc_at_selected_C": 0.7464,
+          "test_acc_at_C1": 0.6159420289855072,
+          "best_test_C": 300.0,
+          "best_test_acc": 0.7536
+        },
+        {
+          "seed": 1,
+          "selected_C": 100.0,
+          "selected_val_acc": 0.7029,
+          "test_acc_at_selected_C": 0.7101,
+          "test_acc_at_C1": 0.6376811594202898,
+          "best_test_C": 10.0,
+          "best_test_acc": 0.7246
+        },
+        {
+          "seed": 2,
+          "selected_C": 100.0,
+          "selected_val_acc": 0.7464,
+          "test_acc_at_selected_C": 0.6594,
+          "test_acc_at_C1": 0.5434782608695652,
+          "best_test_C": 3000.0,
+          "best_test_acc": 0.6812
+        },
+        {
+          "seed": 3,
+          "selected_C": 10.0,
+          "selected_val_acc": 0.7101,
+          "test_acc_at_selected_C": 0.6522,
+          "test_acc_at_C1": 0.6231884057971014,
+          "best_test_C": 300.0,
+          "best_test_acc": 0.6739
+        },
+        {
+          "seed": 4,
+          "selected_C": 10.0,
+          "selected_val_acc": 0.7246,
+          "test_acc_at_selected_C": 0.7029,
+          "test_acc_at_C1": 0.5652173913043478,
+          "best_test_C": 10.0,
+          "best_test_acc": 0.7029
+        },
+        {
+          "seed": 5,
+          "selected_C": 10.0,
+          "selected_val_acc": 0.7826,
+          "test_acc_at_selected_C": 0.6884,
+          "test_acc_at_C1": 0.6304347826086957,
+          "best_test_C": 10.0,
+          "best_test_acc": 0.6884
+        },
+        {
+          "seed": 6,
+          "selected_C": 10.0,
+          "selected_val_acc": 0.7246,
+          "test_acc_at_selected_C": 0.7029,
+          "test_acc_at_C1": 0.6231884057971014,
+          "best_test_C": 300.0,
+          "best_test_acc": 0.7101
+        },
+        {
+          "seed": 7,
+          "selected_C": 10.0,
+          "selected_val_acc": 0.6884,
+          "test_acc_at_selected_C": 0.6449,
+          "test_acc_at_C1": 0.6159420289855072,
+          "best_test_C": 1000.0,
+          "best_test_acc": 0.6522
+        },
+        {
+          "seed": 8,
+          "selected_C": 1000.0,
+          "selected_val_acc": 0.6304,
+          "test_acc_at_selected_C": 0.6377,
+          "test_acc_at_C1": 0.5362318840579711,
+          "best_test_C": 1000.0,
+          "best_test_acc": 0.6377
+        },
+        {
+          "seed": 9,
+          "selected_C": 1000.0,
+          "selected_val_acc": 0.7246,
+          "test_acc_at_selected_C": 0.7174,
+          "test_acc_at_C1": 0.6739130434782609,
+          "best_test_C": 300.0,
+          "best_test_acc": 0.7319
+        },
+        {
+          "seed": 10,
+          "selected_C": 100.0,
+          "selected_val_acc": 0.6449,
+          "test_acc_at_selected_C": 0.7246,
+          "test_acc_at_C1": 0.5797101449275363,
+          "best_test_C": 100.0,
+          "best_test_acc": 0.7246
+        },
+        {
+          "seed": 11,
+          "selected_C": 100.0,
+          "selected_val_acc": 0.6232,
+          "test_acc_at_selected_C": 0.6522,
+          "test_acc_at_C1": 0.6231884057971014,
+          "best_test_C": 1000.0,
+          "best_test_acc": 0.6667
+        },
+        {
+          "seed": 12,
+          "selected_C": 100.0,
+          "selected_val_acc": 0.7101,
+          "test_acc_at_selected_C": 0.7101,
+          "test_acc_at_C1": 0.6231884057971014,
+          "best_test_C": 1000.0,
+          "best_test_acc": 0.7319
+        },
+        {
+          "seed": 13,
+          "selected_C": 10.0,
+          "selected_val_acc": 0.7174,
+          "test_acc_at_selected_C": 0.6594,
+          "test_acc_at_C1": 0.6376811594202898,
+          "best_test_C": 1000.0,
+          "best_test_acc": 0.7101
+        },
+        {
+          "seed": 14,
+          "selected_C": 3000.0,
+          "selected_val_acc": 0.6159,
+          "test_acc_at_selected_C": 0.6159,
+          "test_acc_at_C1": 0.5,
+          "best_test_C": 300.0,
+          "best_test_acc": 0.6159
+        }
+      ],
+      "selected_C_distribution": {
+        "0.01": 0,
+        "0.1": 0,
+        "1.0": 0,
+        "3.0": 0,
+        "10.0": 6,
+        "30.0": 0,
+        "100.0": 6,
+        "300.0": 0,
+        "1000.0": 2,
+        "3000.0": 1
+      },
+      "val_selected_C": {
+        "mean": 0.681633,
+        "std": 0.037997,
+        "n": 15
+      },
+      "default_C1": {
+        "mean": 0.601932,
+        "std": 0.046839,
+        "n": 15
+      },
+      "resnet_matched_15seed": {
+        "mean": 0.649287,
+        "std": 0.052028,
+        "source": "p3b_resnet_kshot_matched.json"
+      },
+      "gap_vs_resnet_pp": {
+        "val_selected_C": 3.235,
+        "C1": -4.735
+      },
+      "seed_paired_probe_minus_resnet": {
+        "t": 2.3847,
+        "df": 14,
+        "p": 0.03178826175721874,
+        "mean_diff_pp": 3.235
+      }
+    },
+    "K=10": {
+      "K": 10,
+      "per_seed": [
+        {
+          "seed": 0,
+          "selected_C": 300.0,
+          "selected_val_acc": 0.6884,
+          "test_acc_at_selected_C": 0.7681,
+          "test_acc_at_C1": 0.6666666666666666,
+          "best_test_C": 30.0,
+          "best_test_acc": 0.7826
+        },
+        {
+          "seed": 1,
+          "selected_C": 100.0,
+          "selected_val_acc": 0.8261,
+          "test_acc_at_selected_C": 0.7536,
+          "test_acc_at_C1": 0.6521739130434783,
+          "best_test_C": 100.0,
+          "best_test_acc": 0.7536
+        },
+        {
+          "seed": 2,
+          "selected_C": 1000.0,
+          "selected_val_acc": 0.7971,
+          "test_acc_at_selected_C": 0.7319,
+          "test_acc_at_C1": 0.6594202898550725,
+          "best_test_C": 300.0,
+          "best_test_acc": 0.7391
+        },
+        {
+          "seed": 3,
+          "selected_C": 10.0,
+          "selected_val_acc": 0.7536,
+          "test_acc_at_selected_C": 0.7319,
+          "test_acc_at_C1": 0.6811594202898551,
+          "best_test_C": 1000.0,
+          "best_test_acc": 0.7681
+        },
+        {
+          "seed": 4,
+          "selected_C": 10.0,
+          "selected_val_acc": 0.8043,
+          "test_acc_at_selected_C": 0.7319,
+          "test_acc_at_C1": 0.6594202898550725,
+          "best_test_C": 30.0,
+          "best_test_acc": 0.7536
+        },
+        {
+          "seed": 5,
+          "selected_C": 30.0,
+          "selected_val_acc": 0.7826,
+          "test_acc_at_selected_C": 0.7246,
+          "test_acc_at_C1": 0.6811594202898551,
+          "best_test_C": 3000.0,
+          "best_test_acc": 0.7609
+        },
+        {
+          "seed": 6,
+          "selected_C": 10.0,
+          "selected_val_acc": 0.7899,
+          "test_acc_at_selected_C": 0.7464,
+          "test_acc_at_C1": 0.6884057971014492,
+          "best_test_C": 30.0,
+          "best_test_acc": 0.7536
+        },
+        {
+          "seed": 7,
+          "selected_C": 1000.0,
+          "selected_val_acc": 0.7391,
+          "test_acc_at_selected_C": 0.7464,
+          "test_acc_at_C1": 0.6884057971014492,
+          "best_test_C": 30.0,
+          "best_test_acc": 0.7464
+        },
+        {
+          "seed": 8,
+          "selected_C": 1000.0,
+          "selected_val_acc": 0.7536,
+          "test_acc_at_selected_C": 0.7899,
+          "test_acc_at_C1": 0.6086956521739131,
+          "best_test_C": 1000.0,
+          "best_test_acc": 0.7899
+        },
+        {
+          "seed": 9,
+          "selected_C": 300.0,
+          "selected_val_acc": 0.7536,
+          "test_acc_at_selected_C": 0.7536,
+          "test_acc_at_C1": 0.6884057971014492,
+          "best_test_C": 30.0,
+          "best_test_acc": 0.7754
+        },
+        {
+          "seed": 10,
+          "selected_C": 100.0,
+          "selected_val_acc": 0.7174,
+          "test_acc_at_selected_C": 0.7971,
+          "test_acc_at_C1": 0.6666666666666666,
+          "best_test_C": 30.0,
+          "best_test_acc": 0.7971
+        },
+        {
+          "seed": 11,
+          "selected_C": 10.0,
+          "selected_val_acc": 0.7464,
+          "test_acc_at_selected_C": 0.7391,
+          "test_acc_at_C1": 0.6521739130434783,
+          "best_test_C": 100.0,
+          "best_test_acc": 0.7681
+        },
+        {
+          "seed": 12,
+          "selected_C": 10.0,
+          "selected_val_acc": 0.7826,
+          "test_acc_at_selected_C": 0.7826,
+          "test_acc_at_C1": 0.6521739130434783,
+          "best_test_C": 30.0,
+          "best_test_acc": 0.8043
+        },
+        {
+          "seed": 13,
+          "selected_C": 10.0,
+          "selected_val_acc": 0.7754,
+          "test_acc_at_selected_C": 0.7464,
+          "test_acc_at_C1": 0.6811594202898551,
+          "best_test_C": 10.0,
+          "best_test_acc": 0.7464
+        },
+        {
+          "seed": 14,
+          "selected_C": 30.0,
+          "selected_val_acc": 0.7899,
+          "test_acc_at_selected_C": 0.7029,
+          "test_acc_at_C1": 0.644927536231884,
+          "best_test_C": 10.0,
+          "best_test_acc": 0.7029
+        }
+      ],
+      "selected_C_distribution": {
+        "0.01": 0,
+        "0.1": 0,
+        "1.0": 0,
+        "3.0": 0,
+        "10.0": 6,
+        "30.0": 2,
+        "100.0": 2,
+        "300.0": 2,
+        "1000.0": 3,
+        "3000.0": 0
+      },
+      "val_selected_C": {
+        "mean": 0.74976,
+        "std": 0.025676,
+        "n": 15
+      },
+      "default_C1": {
+        "mean": 0.664734,
+        "std": 0.021647,
+        "n": 15
+      },
+      "resnet_matched_15seed": {
+        "mean": 0.746387,
+        "std": 0.023258,
+        "source": "p3b_resnet_kshot_matched_k10.json"
+      },
+      "gap_vs_resnet_pp": {
+        "val_selected_C": 0.337,
+        "C1": -8.165
+      },
+      "seed_paired_probe_minus_resnet": {
+        "t": 0.4748,
+        "df": 14,
+        "p": 0.6422854901898591,
+        "mean_diff_pp": 0.337
+      }
+    }
+  },
+  "elapsed_s": 2928.3
+}

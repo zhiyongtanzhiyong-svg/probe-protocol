@@ -1,0 +1,1260 @@
+{
+  "generated": "2026-11-03T05:14:00Z",
+  "tex": "probe-protocol.tex",
+  "mode": "cache",
+  "paper_title": "Frozen Probes versus Matched Budgets: Protocol-Dependent Ordering of CLIP and ResNet-18 for Fine-Grained Tobacco Leaf-Disorder Classification",
+  "overall": "FAIL",
+  "summary": {
+    "pass": 26,
+    "mismatch": 2,
+    "unresolved": 4,
+    "parity_ok": true,
+    "order_strict": true
+  },
+  "parity": {
+    "cited_count": 32,
+    "bibitem_count": 32,
+    "cited_not_in_bib": [],
+    "bibitem_not_cited": []
+  },
+  "order": {
+    "total": 32,
+    "in_first_appearance_order": 32,
+    "out_of_order": [],
+    "strict": true
+  },
+  "references": [
+    {
+      "key": "radford2021learning",
+      "bib_text": "Radford, A.; Kim, J.W.; Hallacy, C.; Ramesh, A.; Goh, G.; Agarwal, S.; Sastry, G.; Askell, A.; Mishkin, P.; Clark, J.; et al. Learning Transferable Visual Models From Natural Language Supervision. In \\emph{Proceedings of ICML}, 2021. https://arxiv.org/abs/2103.00020",
+      "doi": null,
+      "arxiv": "2103.00020",
+      "hf": null,
+      "bib_year": 2021,
+      "cite_sites": [
+        [
+          47,
+          "Vision-language models (VLMs) pretrained on web-scale image-text pairs, such as CLIP~\\cite{radford2021learning}, have achieved strong zero-shot generalization across general-purpose visual recognition"
+        ],
+        [
+          103,
+          "CLIP~\\cite{radford2021learning} and its variants~\\cite{zhai2023sigmoid,cherti2023reproducible} have enabled zero-shot image classification through natural language prompts, achieving strong results on"
+        ],
+        [
+          112,
+          "Prior work has proposed prompt ensembling~\\cite{radford2021learning}, learnable contexts~\\cite{zhou2022learning}, and class-specific templates."
+        ],
+        [
+          158,
+          "This is the standard protocol for evaluating frozen CLIP representations~\\cite{radford2021learning}."
+        ]
+      ],
+      "verdict": "PASS",
+      "compare": {
+        "ratio": 1.0,
+        "title_ok": true,
+        "bib_first_author": "radford",
+        "first_ok": true,
+        "resolved_year": 2021,
+        "bib_year": 2021,
+        "year_ok": true,
+        "verdict": "PASS"
+      },
+      "resolved": {
+        "source": "arxiv",
+        "title": "Learning Transferable Visual Models From Natural Language Supervision",
+        "authors": [
+          "Alec Radford",
+          "Jong Wook Kim",
+          "Chris Hallacy",
+          "Aditya Ramesh",
+          "Gabriel Goh",
+          "Sandhini Agarwal"
+        ],
+        "year": 2021,
+        "venue": "arXiv"
+      },
+      "abstract": "State-of-the-art computer vision systems are trained to predict a fixed set of predetermined object categories. This restricted form of supervision limits their generality and usability since additional labeled data is needed to specify any other visual concept. Learning directly from raw text about images is a promising alternative which leverages a much broader source of supervision. We demonstrate that the simple pre-training task of predicting which caption goes with which image is an efficient and scalable way to learn SOTA image representations from scratch on a dataset of 400 million (i"
+    },
+    {
+      "key": "pdclip2026",
+      "bib_text": "Xie, P.; Li, X.; He, W.; Meadows, I.; Xiang, L. PD-CLIP: A contrastive language-image pre-training framework for zero-shot fine-grained plant disease diagnosis. \\emph{Artif. Intell. Agric.} 2026. https://doi.org/10.1016/j.aiia.2026.08.012",
+      "doi": "10.1016/j.aiia.2026.08.012",
+      "arxiv": null,
+      "hf": null,
+      "bib_year": 2026,
+      "cite_sites": [
+        [
+          48,
+          "This has led to growing enthusiasm for applying VLMs to specialized domains---including agriculture~\\cite{pdclip2026}, medicine~\\cite{huang2021gloria}, and remote sensing~\\cite{liu2024remoteclip}---un"
+        ]
+      ],
+      "verdict": "PASS",
+      "compare": {
+        "ratio": 1.0,
+        "title_ok": true,
+        "bib_first_author": "xie",
+        "first_ok": true,
+        "resolved_year": 2026,
+        "bib_year": 2026,
+        "year_ok": true,
+        "verdict": "PASS"
+      },
+      "resolved": {
+        "source": "crossref",
+        "title": "PD-CLIP: A contrastive language-image pre-training framework for zero-shot fine-grained plant disease diagnosis",
+        "authors": [
+          "Xie",
+          "Li",
+          "He",
+          "Meadows",
+          "Xiang"
+        ],
+        "year": 2026,
+        "venue": "Artificial Intelligence in Agriculture"
+      },
+      "abstract": ""
+    },
+    {
+      "key": "huang2021gloria",
+      "bib_text": "Huang, S.-C.; Shen, L.; Lungren, M.P.; Yeung, S. GLoRIA: A Multimodal Global-Local Representation Learning Framework for Label-Efficient Medical Image Recognition. In \\emph{Proceedings of ICCV}, 2021. https://doi.org/10.1109/iccv48922.2021.00391",
+      "doi": "10.1109/iccv48922.2021.00391",
+      "arxiv": null,
+      "hf": null,
+      "bib_year": 2021,
+      "cite_sites": [
+        [
+          48,
+          "This has led to growing enthusiasm for applying VLMs to specialized domains---including agriculture~\\cite{pdclip2026}, medicine~\\cite{huang2021gloria}, and remote sensing~\\cite{liu2024remoteclip}---un"
+        ],
+        [
+          104,
+          "Subsequent work has explored domain-specific adaptations such as BioCLIP~\\cite{stevens2024bioclip} for organism classification and medical VLMs for radiology~\\cite{huang2021gloria}, alongside agricult"
+        ]
+      ],
+      "verdict": "PASS",
+      "compare": {
+        "ratio": 1.0,
+        "title_ok": true,
+        "bib_first_author": "huang",
+        "first_ok": true,
+        "resolved_year": 2021,
+        "bib_year": 2021,
+        "year_ok": true,
+        "verdict": "PASS"
+      },
+      "resolved": {
+        "source": "crossref",
+        "title": "GLoRIA: A Multimodal Global-Local Representation Learning Framework for Label-efficient Medical Image Recognition",
+        "authors": [
+          "Huang",
+          "Shen",
+          "Lungren",
+          "Yeung"
+        ],
+        "year": 2021,
+        "venue": "2021 IEEE/CVF International Conference on Computer Vision (ICCV)"
+      },
+      "abstract": "In recent years, the growing utilization of medical imaging is placing an increasing burden on radiologists. Deep learning provides a promising solution for automatic medical image analysis and clinical decision support. However, large-scale manually labeled datasets required for training deep neural networks are difficult and expensive to obtain for medical images. The purpose of this work is to develop label-efficient multimodal medical imaging representations by leveraging radiology reports. We propose an attention-based framework for learning global and local representations by contrasting"
+    },
+    {
+      "key": "liu2024remoteclip",
+      "bib_text": "Liu, F.; Chen, D.; Guan, Z.; Zhou, X.; Zhu, J.; Ye, Q.; Fu, L.; Zhou, J. RemoteCLIP: A Vision Language Foundation Model for Remote Sensing. \\emph{IEEE Trans. Geosci. Remote Sens.} 2024. https://doi.org/10.1109/tgrs.2024.3390838",
+      "doi": "10.1109/tgrs.2024.3390838",
+      "arxiv": null,
+      "hf": null,
+      "bib_year": 2024,
+      "cite_sites": [
+        [
+          48,
+          "This has led to growing enthusiasm for applying VLMs to specialized domains---including agriculture~\\cite{pdclip2026}, medicine~\\cite{huang2021gloria}, and remote sensing~\\cite{liu2024remoteclip}---un"
+        ]
+      ],
+      "verdict": "PASS",
+      "compare": {
+        "ratio": 1.0,
+        "title_ok": true,
+        "bib_first_author": "liu",
+        "first_ok": true,
+        "resolved_year": 2024,
+        "bib_year": 2024,
+        "year_ok": true,
+        "verdict": "PASS"
+      },
+      "resolved": {
+        "source": "crossref",
+        "title": "RemoteCLIP: A Vision Language Foundation Model for Remote Sensing",
+        "authors": [
+          "Liu",
+          "Chen",
+          "Guan",
+          "Zhou",
+          "Zhu",
+          "Ye"
+        ],
+        "year": 2024,
+        "venue": "IEEE Transactions on Geoscience and Remote Sensing"
+      },
+      "abstract": "General-purpose foundation models have led to recent breakthroughs in artificial intelligence (AI). In remote sensing, self-supervised learning (SSL) and masked image modeling (MIM) have been adopted to build foundation models. However, these models primarily learn low-level features and require annotated data for fine-tuning. Moreover, they are inapplicable for retrieval and zero-shot applications due to the lack of language understanding. To address these limitations, we propose RemoteCLIP, the first vision-language foundation model for remote sensing that aims to learn robust visual feature"
+    },
+    {
+      "key": "scold2025",
+      "bib_text": "Nguyen, K.Q.; Le, L.T.T.; Quach, L.-D. A Vision-Language Foundation Model for Leaf Disease Identification. \\emph{Expert Syst. Appl.} 2025. https://doi.org/10.1016/j.eswa.2025.130084",
+      "doi": "10.1016/j.eswa.2025.130084",
+      "arxiv": null,
+      "hf": null,
+      "bib_year": 2025,
+      "cite_sites": [
+        [
+          54,
+          "Recent work has explored domain-specific VLM adaptations. SCOLD~\\cite{scold2025} pretrains a vision-language foundation model on over 186,000 leaf image-caption pairs, while BioCLIP 2~\\cite{bioclip2} "
+        ],
+        [
+          105,
+          "In the leaf-disease domain specifically, SCOLD~\\cite{scold2025} pretrains a vision-language foundation model on over 186,000 leaf image-caption pairs, and BioCLIP 2~\\cite{bioclip2} shows that 214M org"
+        ]
+      ],
+      "verdict": "PASS",
+      "compare": {
+        "ratio": 1.0,
+        "title_ok": true,
+        "bib_first_author": "nguyen",
+        "first_ok": true,
+        "resolved_year": 2026,
+        "bib_year": 2025,
+        "year_ok": true,
+        "verdict": "PASS"
+      },
+      "resolved": {
+        "source": "crossref",
+        "title": "A vision-language foundation model for leaf disease identification",
+        "authors": [
+          "Nguyen Quoc",
+          "Le Thi Thu",
+          "Quach"
+        ],
+        "year": 2026,
+        "venue": "Expert Systems with Applications"
+      },
+      "abstract": "Leaf disease identification plays a pivotal role in smart agriculture. However, many existing studies still struggle to integrate image and textual modalities to compensate for each other's limitations. Furthermore, many of these approaches rely on pretraining with constrained datasets such as ImageNet, which lack domain-specific information. We propose SCOLD (Soft-target COntrastive learning for Leaf Disease identification), a context-aware vision-language foundation model tailored to address these challenges for agricultural tasks. SCOLD is developed using a diverse corpus of plant leaf imag"
+    },
+    {
+      "key": "bioclip2",
+      "bib_text": "Gu, J.; Stevens, S.; Campolongo, E.; Thompson, M.; Zhang, N.; Wu, J.; Kopanev, A.; Mai, Z.; White, A.; Balhoff, J.; et al. BioCLIP 2: Emergent Properties from Scaling Hierarchical Contrastive Learning. In \\emph{Advances in Neural Information Processing Systems (NeurIPS)}, 2025. https://doi.org/10.52202/085713-3436",
+      "doi": "10.52202/085713-3436",
+      "arxiv": null,
+      "hf": null,
+      "bib_year": 2025,
+      "cite_sites": [
+        [
+          54,
+          "Recent work has explored domain-specific VLM adaptations. SCOLD~\\cite{scold2025} pretrains a vision-language foundation model on over 186,000 leaf image-caption pairs, while BioCLIP 2~\\cite{bioclip2} "
+        ],
+        [
+          105,
+          "In the leaf-disease domain specifically, SCOLD~\\cite{scold2025} pretrains a vision-language foundation model on over 186,000 leaf image-caption pairs, and BioCLIP 2~\\cite{bioclip2} shows that 214M org"
+        ],
+        [
+          244,
+          "To test whether the zero-shot failure is an artifact of using a generic VLM, we evaluate BioCLIP 2~\\cite{bioclip2}---a domain-specific VLM pretrained on organism-image pairs---with the same 14-templat"
+        ]
+      ],
+      "verdict": "PASS",
+      "compare": {
+        "ratio": 1.0,
+        "title_ok": true,
+        "bib_first_author": "gu",
+        "first_ok": true,
+        "resolved_year": 2025,
+        "bib_year": 2025,
+        "year_ok": true,
+        "verdict": "PASS"
+      },
+      "resolved": {
+        "source": "crossref",
+        "title": "BioCLIP 2: Emergent Properties from Scaling Hierarchical Contrastive Learning",
+        "authors": [
+          "Gu",
+          "Stevens",
+          "Campolongo",
+          "Thompson",
+          "Zhang",
+          "Wu"
+        ],
+        "year": 2025,
+        "venue": "Advances in Neural Information Processing Systems 38"
+      },
+      "abstract": ""
+    },
+    {
+      "key": "lpplus",
+      "bib_text": "Huang, Y.; Shakeri, F.; Dolz, J.; Boudiaf, M.; Bahig, H.; Ben Ayed, I. LP++: A Surprisingly Strong Linear Probe for Few-Shot CLIP. In \\emph{Proceedings of CVPR}, 2024. https://doi.org/10.1109/cvpr52733.2024.02244",
+      "doi": "10.1109/cvpr52733.2024.02244",
+      "arxiv": null,
+      "hf": null,
+      "bib_year": 2024,
+      "cite_sites": [
+        [
+          54,
+          "Recent work has explored domain-specific VLM adaptations. SCOLD~\\cite{scold2025} pretrains a vision-language foundation model on over 186,000 leaf image-caption pairs, while BioCLIP 2~\\cite{bioclip2} "
+        ],
+        [
+          163,
+          "To test whether the probe head itself limits CLIP, we evaluate two published task-adaptation methods on the identical $K$-shot support sets, features, and seeds as the probe protocol: CoOp~\\cite{zhou2"
+        ]
+      ],
+      "verdict": "PASS",
+      "compare": {
+        "ratio": 1.0,
+        "title_ok": true,
+        "bib_first_author": "huang",
+        "first_ok": true,
+        "resolved_year": 2024,
+        "bib_year": 2024,
+        "year_ok": true,
+        "verdict": "PASS"
+      },
+      "resolved": {
+        "source": "crossref",
+        "title": "LP++: A Surprisingly Strong Linear Probe for Few-Shot CLIP",
+        "authors": [
+          "Huang",
+          "Shakeri",
+          "Dolz",
+          "Boudiaf",
+          "Bahig",
+          "Ayed"
+        ],
+        "year": 2024,
+        "venue": "2024 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)"
+      },
+      "abstract": "In a recent, strongly emergent literature on few-shot CLIP adaptation, Linear Probe (LP) has been often reported as a weak baseline. This has motivated intensive research building convoluted prompt learning or feature adaptation strategies. In this work, we propose and exam-ine from convex-optimization perspectives a generalization of the standard LP baseline, in which the linear classifier weights are learnable functions of the text embedding, with class-wise multipliers blending image and text knowledge. As our objective function depends on two types of variables, i.e., the class visual prot"
+    },
+    {
+      "key": "shi2026registers",
+      "bib_text": "Shi, C.; Yu, Y.; Yang, S. Vision Transformers Need More Than Registers. \\emph{arXiv preprint} arXiv:2602.22394, 2026; accepted to CVPR 2026. https://doi.org/10.48550/arXiv.2602.22394",
+      "doi": "10.48550/arXiv.2602.22394",
+      "arxiv": "2602.22394",
+      "hf": null,
+      "bib_year": 2026,
+      "cite_sites": [
+        [
+          70,
+          "(4) Readout geometry is checkpoint-dependent: on LAION-2B the patch tokens carry additional signal the CLS readout misses (mean-pool $+10.9$\\,pp at $C{=}1$; though CLS at $C{=}100$ reaches 87.7\\%, so "
+        ],
+        [
+          511,
+          "\\textbf{Readout geometry.} The classification load is checkpoint-dependent (Table~\\ref{tab:readout}): on DFN-CLIP the CLS token carries essentially all signal (pure patch readouts 18.8--21.7\\% vs.\\ 76"
+        ]
+      ],
+      "verdict": "PASS",
+      "compare": {
+        "ratio": 1.0,
+        "title_ok": true,
+        "bib_first_author": "shi",
+        "first_ok": true,
+        "resolved_year": 2026,
+        "bib_year": 2026,
+        "year_ok": true,
+        "verdict": "PASS"
+      },
+      "resolved": {
+        "source": "arxiv",
+        "title": "Vision Transformers Need More Than Registers",
+        "authors": [
+          "Cheng Shi",
+          "Yizhou Yu",
+          "Sibei Yang"
+        ],
+        "year": 2026,
+        "venue": "arXiv"
+      },
+      "abstract": "Vision Transformers (ViTs), when pre-trained on large-scale data, provide general-purpose representations for diverse downstream tasks. However, artifacts in ViTs are widely observed across different supervision paradigms and downstream tasks. Through systematic analysis of artifacts in ViTs, we find that their fundamental mechanisms have yet to be sufficiently elucidated. In this paper, through systematic analysis, we conclude that these artifacts originate from a lazy aggregation behavior: ViT uses semantically irrelevant background patches as shortcuts to represent global semantics, driven "
+    },
+    {
+      "key": "cherti2023reproducible",
+      "bib_text": "Cherti, M.; Beaumont, R.; Wightman, R.; Wortsman, M.; Ilharco, G.; Gordon, C.; Schuhmann, C.; Schmidt, L.; Jitsev, J. Reproducible Scaling Laws for Contrastive Language-Image Learning. In \\emph{Proceedings of CVPR}, 2023. https://doi.org/10.1109/cvpr52729.2023.00276",
+      "doi": "10.1109/cvpr52729.2023.00276",
+      "arxiv": null,
+      "hf": null,
+      "bib_year": 2023,
+      "cite_sites": [
+        [
+          103,
+          "CLIP~\\cite{radford2021learning} and its variants~\\cite{zhai2023sigmoid,cherti2023reproducible} have enabled zero-shot image classification through natural language prompts, achieving strong results on"
+        ],
+        [
+          140,
+          "The backbone is DFN-CLIP ViT-L/14~\\cite{fang2023data} (428M parameters), accessed via OpenCLIP~\\cite{cherti2023reproducible,ilharco2022openclip}."
+        ]
+      ],
+      "verdict": "PASS",
+      "compare": {
+        "ratio": 1.0,
+        "title_ok": true,
+        "bib_first_author": "cherti",
+        "first_ok": true,
+        "resolved_year": 2023,
+        "bib_year": 2023,
+        "year_ok": true,
+        "verdict": "PASS"
+      },
+      "resolved": {
+        "source": "crossref",
+        "title": "Reproducible Scaling Laws for Contrastive Language-Image Learning",
+        "authors": [
+          "Cherti",
+          "Beaumont",
+          "Wightman",
+          "Wortsman",
+          "Ilharco",
+          "Gordon"
+        ],
+        "year": 2023,
+        "venue": "2023 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)"
+      },
+      "abstract": "Scaling up neural networks has led to remarkable performance across a wide range of tasks. Moreover, performance often follows reliable scaling laws as a function of training set size, model size, and compute, which offers valuable guidance as large-scale experiments are becoming increasingly expensive. However, previous work on scaling laws has primarily used private data & models or focused on uni-modal language or vision learning. To address these limitations, we investigate scaling laws for contrastive language-image pre-training (CLIP) with the public LAION dataset and the open-source Ope"
+    },
+    {
+      "key": "zhai2023sigmoid",
+      "bib_text": "Zhai, X.; Mustafa, B.; Kolesnikov, A.; Beyer, L. Sigmoid Loss for Language Image Pre-Training. In \\emph{Proceedings of ICCV}, 2023. https://doi.org/10.1109/iccv51070.2023.01100",
+      "doi": "10.1109/iccv51070.2023.01100",
+      "arxiv": null,
+      "hf": null,
+      "bib_year": 2023,
+      "cite_sites": [
+        [
+          103,
+          "CLIP~\\cite{radford2021learning} and its variants~\\cite{zhai2023sigmoid,cherti2023reproducible} have enabled zero-shot image classification through natural language prompts, achieving strong results on"
+        ]
+      ],
+      "verdict": "PASS",
+      "compare": {
+        "ratio": 1.0,
+        "title_ok": true,
+        "bib_first_author": "zhai",
+        "first_ok": true,
+        "resolved_year": 2023,
+        "bib_year": 2023,
+        "year_ok": true,
+        "verdict": "PASS"
+      },
+      "resolved": {
+        "source": "crossref",
+        "title": "Sigmoid Loss for Language Image Pre-Training",
+        "authors": [
+          "Zhai",
+          "Mustafa",
+          "Kolesnikov",
+          "Beyer"
+        ],
+        "year": 2023,
+        "venue": "2023 IEEE/CVF International Conference on Computer Vision (ICCV)"
+      },
+      "abstract": "We propose a simple pairwise sigmoid loss for imagetext pre-training. Unlike standard contrastive learning with softmax normalization, the sigmoid loss operates solely on image-text pairs and does not require a global view of the pairwise similarities for normalization. The sigmoid loss simultaneously allows further scaling up the batch size, while also performing better at smaller batch sizes. With only four TPUv4 chips, we can train a Base CLIP model at 4k batch size and a Large LiT model at 20k batch size, the latter achieves 84.5% ImageNet zero-shot accuracy in two days. This disentangleme"
+    },
+    {
+      "key": "deng2009imagenet",
+      "bib_text": "Deng, J.; Dong, W.; Socher, R.; Li, L.-J.; Li, K.; Fei-Fei, L. ImageNet: A Large-Scale Hierarchical Image Database. In \\emph{Proceedings of CVPR}, 2009. https://doi.org/10.1109/cvpr.2009.5206848",
+      "doi": "10.1109/cvpr.2009.5206848",
+      "arxiv": null,
+      "hf": null,
+      "bib_year": 2009,
+      "cite_sites": [
+        [
+          103,
+          "CLIP~\\cite{radford2021learning} and its variants~\\cite{zhai2023sigmoid,cherti2023reproducible} have enabled zero-shot image classification through natural language prompts, achieving strong results on"
+        ]
+      ],
+      "verdict": "PASS",
+      "compare": {
+        "ratio": 1.0,
+        "title_ok": true,
+        "bib_first_author": "deng",
+        "first_ok": true,
+        "resolved_year": 2009,
+        "bib_year": 2009,
+        "year_ok": true,
+        "verdict": "PASS"
+      },
+      "resolved": {
+        "source": "crossref",
+        "title": "ImageNet: A large-scale hierarchical image database",
+        "authors": [
+          "Deng",
+          "Dong",
+          "Socher",
+          "Li",
+          "Kai Li",
+          "Li Fei-Fei"
+        ],
+        "year": 2009,
+        "venue": "2009 IEEE Conference on Computer Vision and Pattern Recognition"
+      },
+      "abstract": ""
+    },
+    {
+      "key": "stevens2024bioclip",
+      "bib_text": "Stevens, S.; Wu, J.; Thompson, M.J.; Campolongo, E.G.; Song, C.H.; Carlyn, D.E.; Dong, L.; Dahdul, W.M.; Stewart, C.; Berger-Wolf, T.; et al. BioCLIP: A Vision Foundation Model for the Tree of Life. In \\emph{Proceedings of CVPR}, 2024. https://doi.org/10.1109/cvpr52733.2024.01836",
+      "doi": "10.1109/cvpr52733.2024.01836",
+      "arxiv": null,
+      "hf": null,
+      "bib_year": 2024,
+      "cite_sites": [
+        [
+          104,
+          "Subsequent work has explored domain-specific adaptations such as BioCLIP~\\cite{stevens2024bioclip} for organism classification and medical VLMs for radiology~\\cite{huang2021gloria}, alongside agricult"
+        ]
+      ],
+      "verdict": "PASS",
+      "compare": {
+        "ratio": 1.0,
+        "title_ok": true,
+        "bib_first_author": "stevens",
+        "first_ok": true,
+        "resolved_year": 2024,
+        "bib_year": 2024,
+        "year_ok": true,
+        "verdict": "PASS"
+      },
+      "resolved": {
+        "source": "crossref",
+        "title": "BioCLIP: A Vision Foundation Model for the Tree of Life",
+        "authors": [
+          "Stevens",
+          "Wu",
+          "Thompson",
+          "Campolongo",
+          "Song",
+          "Carlyn"
+        ],
+        "year": 2024,
+        "venue": "2024 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)"
+      },
+      "abstract": "Images of the natural world, collected by a variety of cameras, from drones to individual phones, are increasingly abundant sources of biological information. There is an ex-plosion of computational methods and tools, particularly computer vision, for extracting biologically relevant information from images for science and conservation. Yet most of these are bespoke approaches designed for a specific task and are not easily adaptable or extendable to new questions, contexts, and datasets. A vision model for general or-ganismal biology questions on images is of timely need. To approach this, we"
+    },
+    {
+      "key": "shinoda2025agrobench",
+      "bib_text": "Shinoda, R.; Inoue, N.; Kataoka, H.; Onishi, M.; Ushiku, Y. AgroBench: Vision-Language Model Benchmark in Agriculture. In \\emph{Proceedings of ICCV}, 2025, 7634--7644. https://doi.org/10.1109/iccv51701.2025.00716",
+      "doi": "10.1109/iccv51701.2025.00716",
+      "arxiv": null,
+      "hf": null,
+      "bib_year": 2025,
+      "cite_sites": [
+        [
+          104,
+          "Subsequent work has explored domain-specific adaptations such as BioCLIP~\\cite{stevens2024bioclip} for organism classification and medical VLMs for radiology~\\cite{huang2021gloria}, alongside agricult"
+        ],
+        [
+          120,
+          "Agriculture-specific vision-language benchmarks such as AgroBench~\\cite{shinoda2025agrobench} evaluate existing models on crop tasks but do not, in the surveyed literature, report controlled multi-see"
+        ]
+      ],
+      "verdict": "PASS",
+      "compare": {
+        "ratio": 1.0,
+        "title_ok": true,
+        "bib_first_author": "shinoda",
+        "first_ok": true,
+        "resolved_year": 2025,
+        "bib_year": 2025,
+        "year_ok": true,
+        "verdict": "PASS"
+      },
+      "resolved": {
+        "source": "crossref",
+        "title": "AgroBench: Vision-Language Model Benchmark in Agriculture",
+        "authors": [
+          "Shinoda",
+          "Inoue",
+          "Kataoka",
+          "Onishi",
+          "Ushiku"
+        ],
+        "year": 2025,
+        "venue": "2025 IEEE/CVF International Conference on Computer Vision (ICCV)"
+      },
+      "abstract": "Precise automated understanding of agricultural tasks such as disease identification is essential for sustainable crop production. Recent advances in vision-language models (VLMs) are expected to further expand the range of agricultural tasks by facilitating human-model interaction through easy, text-based communication. Here, we introduce AgroBench (Agronomist AI Benchmark), a benchmark for evaluating VLM models across seven agricultural topics, covering key areas in agricultural engineering and relevant to real-world farming. Unlike recent agricultural VLM benchmarks, AgroBench is annotated "
+    },
+    {
+      "key": "liu2025finegrained",
+      "bib_text": "Liu, Y.; Deng, Y.; Liu, A.; Liu, Y.; Li, S. Fine-Grained Multi-Modal Prompt Learning for Vision-Language Models. \\emph{Neurocomputing} 2025, 636, 130028. https://doi.org/10.1016/j.neucom.2025.130028",
+      "doi": "10.1016/j.neucom.2025.130028",
+      "arxiv": null,
+      "hf": null,
+      "bib_year": 2025,
+      "cite_sites": [
+        [
+          111,
+          "Prompt design significantly affects CLIP zero-shot performance~\\cite{zhou2022learning,liu2025finegrained}, and domain-specific prompts have been reported to outperform generic ones in specialized sett"
+        ]
+      ],
+      "verdict": "PASS",
+      "compare": {
+        "ratio": 1.0,
+        "title_ok": true,
+        "bib_first_author": "liu",
+        "first_ok": true,
+        "resolved_year": 2025,
+        "bib_year": 2025,
+        "year_ok": true,
+        "verdict": "PASS"
+      },
+      "resolved": {
+        "source": "crossref",
+        "title": "Fine-grained multi-modal prompt learning for vision\u2013language models",
+        "authors": [
+          "Liu",
+          "Deng",
+          "Liu",
+          "Liu",
+          "Li"
+        ],
+        "year": 2025,
+        "venue": "Neurocomputing"
+      },
+      "abstract": ""
+    },
+    {
+      "key": "zhou2022learning",
+      "bib_text": "Zhou, K.; Yang, J.; Loy, C.C.; Liu, Z. Learning to Prompt for Vision-Language Models. \\emph{Int. J. Comput. Vis.} 2022, 130, 2337--2348. https://doi.org/10.1007/s11263-022-01653-1",
+      "doi": "10.1007/s11263-022-01653-1",
+      "arxiv": null,
+      "hf": null,
+      "bib_year": 2022,
+      "cite_sites": [
+        [
+          111,
+          "Prompt design significantly affects CLIP zero-shot performance~\\cite{zhou2022learning,liu2025finegrained}, and domain-specific prompts have been reported to outperform generic ones in specialized sett"
+        ],
+        [
+          112,
+          "Prior work has proposed prompt ensembling~\\cite{radford2021learning}, learnable contexts~\\cite{zhou2022learning}, and class-specific templates."
+        ],
+        [
+          163,
+          "To test whether the probe head itself limits CLIP, we evaluate two published task-adaptation methods on the identical $K$-shot support sets, features, and seeds as the probe protocol: CoOp~\\cite{zhou2"
+        ]
+      ],
+      "verdict": "PASS",
+      "compare": {
+        "ratio": 1.0,
+        "title_ok": true,
+        "bib_first_author": "zhou",
+        "first_ok": true,
+        "resolved_year": 2022,
+        "bib_year": 2022,
+        "year_ok": true,
+        "verdict": "PASS"
+      },
+      "resolved": {
+        "source": "crossref",
+        "title": "Learning to Prompt for Vision-Language Models",
+        "authors": [
+          "Zhou",
+          "Yang",
+          "Loy",
+          "Liu"
+        ],
+        "year": 2022,
+        "venue": "International Journal of Computer Vision"
+      },
+      "abstract": "Large pre-trained vision-language models like CLIP have shown great potential in learning representations that are transferable across a wide range of downstream tasks. Different from the traditional representation learning that is based mostly on discretized labels, vision-language pre-training aligns images and texts in a common feature space, which allows zero-shot transfer to a downstream task via prompting, i.e., classification weights are synthesized from natural language describing classes of interest. In this work, we show that a major challenge for deploying such models in practice is"
+    },
+    {
+      "key": "cropdpkg2025",
+      "bib_text": "Yan, R.; An, P.; Meng, X.; Li, Y.; Li, D.; Xu, F.; Dang, D. A Knowledge Graph for Crop Diseases and Pests in China. \\emph{Scientific Data} 2025, 12, 222. https://doi.org/10.1038/s41597-025-04492-0",
+      "doi": "10.1038/s41597-025-04492-0",
+      "arxiv": null,
+      "hf": null,
+      "bib_year": 2025,
+      "cite_sites": [
+        [
+          113,
+          "In agricultural domains, KGs encode structured disease information~\\cite{cropdpkg2025}."
+        ]
+      ],
+      "verdict": "PASS",
+      "compare": {
+        "ratio": 1.0,
+        "title_ok": true,
+        "bib_first_author": "yan",
+        "first_ok": true,
+        "resolved_year": 2025,
+        "bib_year": 2025,
+        "year_ok": true,
+        "verdict": "PASS"
+      },
+      "resolved": {
+        "source": "crossref",
+        "title": "A knowledge graph for crop diseases and pests in China",
+        "authors": [
+          "Yan",
+          "An",
+          "Meng",
+          "Li",
+          "Li",
+          "Xu"
+        ],
+        "year": 2025,
+        "venue": "Scientific Data"
+      },
+      "abstract": "Abstract \n                   A standardized representation and sharing of crop disease and pest data is crucial for enhancing crop yields, especially in China, which features vast cultivation areas and complex agricultural ecosystems. A knowledge graph for crop diseases and pests, acting as a repository of entities and relationships, is crucial conceptually for achieving unified data management. However, there is currently a lack of knowledge graphs specifically designed for this field. In this paper, we propose CropDP-KG, a knowledge graph for crop diseases and pests in China, which leverages"
+    },
+    {
+      "key": "argueso2020fewshot",
+      "bib_text": "Arg\u00fceso, D.; Picon, A.; Irusta, U.; Medela, A.; San-Emeterio, M.G.; Bereciartua, A.; Alvarez-Gila, A. Few-Shot Learning Approach for Plant Disease Classification Using Images Taken in the Field. \\emph{Computers and Electronics in Agriculture} 2020, 175, 105542. https://doi.org/10.1016/j.compag.2020.105542",
+      "doi": "10.1016/j.compag.2020.105542",
+      "arxiv": null,
+      "hf": null,
+      "bib_year": 2020,
+      "cite_sites": [
+        [
+          118,
+          "Few-shot learning has been studied for crop disease classification~\\cite{argueso2020fewshot,liang2021cotton}, building on the large PlantVillage dataset~\\cite{plantvillage2016} that established the st"
+        ]
+      ],
+      "verdict": "PASS",
+      "compare": {
+        "ratio": 1.0,
+        "title_ok": true,
+        "bib_first_author": "argueso",
+        "first_ok": true,
+        "resolved_year": 2020,
+        "bib_year": 2020,
+        "year_ok": true,
+        "verdict": "PASS"
+      },
+      "resolved": {
+        "source": "crossref",
+        "title": "Few-Shot Learning approach for plant disease classification using images taken in the field",
+        "authors": [
+          "Arg\u00fceso",
+          "Picon",
+          "Irusta",
+          "Medela",
+          "San-Emeterio",
+          "Bereciartua"
+        ],
+        "year": 2020,
+        "venue": "Computers and Electronics in Agriculture"
+      },
+      "abstract": "Abstract Prompt plant disease detection is critical to prevent plagues and to mitigate their effects on crops. The most accurate automatic algorithms for plant disease identification using plant field images are based on deep learning. These methods require the acquisition and annotation of large image datasets, which is frequently technically or economically unfeasible. This study introduces Few-Shot Learning (FSL) algorithms for plant leaf classification using deep learning with small datasets. For the study 54,303 labeled images from the PlantVillage dataset were used, comprising 38 plant l"
+    },
+    {
+      "key": "liang2021cotton",
+      "bib_text": "Liang, X. Few-Shot Cotton Leaf Spots Disease Classification Based on Metric Learning. \\emph{Plant Methods} 2021, 17, 114. https://doi.org/10.1186/s13007-021-00813-7",
+      "doi": "10.1186/s13007-021-00813-7",
+      "arxiv": null,
+      "hf": null,
+      "bib_year": 2021,
+      "cite_sites": [
+        [
+          118,
+          "Few-shot learning has been studied for crop disease classification~\\cite{argueso2020fewshot,liang2021cotton}, building on the large PlantVillage dataset~\\cite{plantvillage2016} that established the st"
+        ]
+      ],
+      "verdict": "PASS",
+      "compare": {
+        "ratio": 1.0,
+        "title_ok": true,
+        "bib_first_author": "",
+        "first_ok": true,
+        "resolved_year": 2021,
+        "bib_year": 2021,
+        "year_ok": true,
+        "verdict": "PASS"
+      },
+      "resolved": {
+        "source": "crossref",
+        "title": "Few-shot cotton leaf spots disease classification based on metric learning",
+        "authors": [
+          "Liang"
+        ],
+        "year": 2021,
+        "venue": "Plant Methods"
+      },
+      "abstract": "Abstract  \n                 Background \n                 Cotton diceases seriously affect the yield and quality of cotton. The type of pest or disease suffered by cotton can be determined by the disease spots on the cotton leaves. This paper presents a few-shot learning framework that can be used for cotton leaf disease spot classification task. This can be used in preventing and controlling cotton diseases timely. First, disease spots on cotton leaf\u2019s disease images are segmented by different methods, compared by using support vector machine (SVM) method and threshold segmentation, and discus"
+    },
+    {
+      "key": "plantvillage2016",
+      "bib_text": "Mohanty, S.P.; Hughes, D.P.; Salath\u00e9, D. Using Deep Learning for Image-Based Plant Disease Detection. \\emph{Front. Plant Sci.} 2016, 7, 1419. https://doi.org/10.3389/fpls.2016.01419",
+      "doi": "10.3389/fpls.2016.01419",
+      "arxiv": null,
+      "hf": null,
+      "bib_year": 2016,
+      "cite_sites": [
+        [
+          118,
+          "Few-shot learning has been studied for crop disease classification~\\cite{argueso2020fewshot,liang2021cotton}, building on the large PlantVillage dataset~\\cite{plantvillage2016} that established the st"
+        ],
+        [
+          129,
+          "TPDD~\\cite{lin2022tpdd} (our re-derived release copy presents a 16-class taxonomy with 1,571 images, following the companion TLA taxonomy~\\cite{lin2024tla}; the SPIE record itself documents 2,721 fiel"
+        ]
+      ],
+      "verdict": "PASS",
+      "compare": {
+        "ratio": 1.0,
+        "title_ok": true,
+        "bib_first_author": "mohanty",
+        "first_ok": true,
+        "resolved_year": 2016,
+        "bib_year": 2016,
+        "year_ok": true,
+        "verdict": "PASS"
+      },
+      "resolved": {
+        "source": "crossref",
+        "title": "Using Deep Learning for Image-Based Plant Disease Detection",
+        "authors": [
+          "Mohanty",
+          "Hughes",
+          "Salath\u00e9"
+        ],
+        "year": 2016,
+        "venue": "Frontiers in Plant Science"
+      },
+      "abstract": "Crop diseases are a major threat to food security, but their rapid identification remains difficult in many parts of the world due to the lack of the necessary infrastructure. The combination of increasing global smartphone penetration and recent advances in computer vision made possible by deep learning has paved the way for smartphone-assisted disease diagnosis. Using a public dataset of 54,306 images of diseased and healthy plant leaves collected under controlled conditions, we train a deep convolutional neural network to identify 14 crop species and 26 diseases (or absence thereof). The tr"
+    },
+    {
+      "key": "lin2022tpdd",
+      "bib_text": "Lin, H.; Tse, R.; Tang, S.-K.; Qiang, Z.; Ou, J.; Pau, G. Tobacco Plant Disease Dataset. In \\emph{Proceedings of the 14th International Conference on Digital Image Processing (ICDIP)}, 2022, 89. https://doi.org/10.1117/12.2644288",
+      "doi": "10.1117/12.2644288",
+      "arxiv": null,
+      "hf": null,
+      "bib_year": 2022,
+      "cite_sites": [
+        [
+          129,
+          "TPDD~\\cite{lin2022tpdd} (our re-derived release copy presents a 16-class taxonomy with 1,571 images, following the companion TLA taxonomy~\\cite{lin2024tla}; the SPIE record itself documents 2,721 fiel"
+        ]
+      ],
+      "verdict": "PASS",
+      "compare": {
+        "ratio": 1.0,
+        "title_ok": true,
+        "bib_first_author": "lin",
+        "first_ok": true,
+        "resolved_year": 2022,
+        "bib_year": 2022,
+        "year_ok": true,
+        "verdict": "PASS"
+      },
+      "resolved": {
+        "source": "crossref",
+        "title": "Tobacco plant disease dataset",
+        "authors": [
+          "Lin",
+          "Tse",
+          "Tang",
+          "Qiang",
+          "Ou",
+          "Pau"
+        ],
+        "year": 2022,
+        "venue": "Fourteenth International Conference on Digital Image Processing (ICDIP 2022)"
+      },
+      "abstract": "Tobacco is a valuable plant in agricultural and commercial industry. Any disease infection to the plant may lower the harvest and interfere the operation of supply chain in the market. Image-based deep learning methods are cutting-edge technologies that can facilitate the diagnosis of diseases efficiently and effectively when large-scale dataset is available for training. However, there is not a public dataset about tobacco currently. A comprehensive dataset is appealed to take advantage of deep learning methods in tobacco cultivation urgently. In this paper, we propose to create a specific da"
+    },
+    {
+      "key": "lin2024tla",
+      "bib_text": "Lin, H.; Qiang, Z.; Tse, R.; Tang, S.-K.; Pau, G. A Few-Shot Learning Method for Tobacco Abnormality Identification. \\emph{Front. Plant Sci.} 2024, 15, 1333236. https://doi.org/10.3389/fpls.2024.1333236",
+      "doi": "10.3389/fpls.2024.1333236",
+      "arxiv": null,
+      "hf": null,
+      "bib_year": 2024,
+      "cite_sites": [
+        [
+          129,
+          "TPDD~\\cite{lin2022tpdd} (our re-derived release copy presents a 16-class taxonomy with 1,571 images, following the companion TLA taxonomy~\\cite{lin2024tla}; the SPIE record itself documents 2,721 fiel"
+        ]
+      ],
+      "verdict": "PASS",
+      "compare": {
+        "ratio": 1.0,
+        "title_ok": true,
+        "bib_first_author": "lin",
+        "first_ok": true,
+        "resolved_year": 2024,
+        "bib_year": 2024,
+        "year_ok": true,
+        "verdict": "PASS"
+      },
+      "resolved": {
+        "source": "crossref",
+        "title": "A few-shot learning method for tobacco abnormality identification",
+        "authors": [
+          "Lin",
+          "Qiang",
+          "Tse",
+          "Tang",
+          "Pau"
+        ],
+        "year": 2024,
+        "venue": "Frontiers in Plant Science"
+      },
+      "abstract": "Tobacco is a valuable crop, but its disease identification is rarely involved in existing works. In this work, we use few-shot learning (FSL) to identify abnormalities in tobacco. FSL is a solution for the data deficiency that has been an obstacle to using deep learning. However, weak feature representation caused by limited data is still a challenging issue in FSL. The weak feature representation leads to weak generalization and troubles in cross-domain. In this work, we propose a feature representation enhancement network (FREN) that enhances the feature representation through instance embed"
+    },
+    {
+      "key": "tld",
+      "bib_text": "Joker5800. Tobacco\\_Leaf\\_Diseases. \\emph{Hugging Face Datasets}, 2024. Available online: \\url{https://huggingface.co/datasets/Joker5800/Tobacco_Leaf_Diseases}.",
+      "doi": null,
+      "arxiv": null,
+      "hf": "Joker5800/Tobacco_Leaf_Diseases",
+      "bib_year": 2024,
+      "cite_sites": [
+        [
+          129,
+          "TPDD~\\cite{lin2022tpdd} (our re-derived release copy presents a 16-class taxonomy with 1,571 images, following the companion TLA taxonomy~\\cite{lin2024tla}; the SPIE record itself documents 2,721 fiel"
+        ]
+      ],
+      "verdict": "MISMATCH",
+      "resolved": {
+        "error": "<urlopen error [Errno 101] Network is unreachable>",
+        "source": "local (offline)"
+      },
+      "local": {
+        "verdict": "MISMATCH",
+        "manifest": "data/tld_local_manifest.json",
+        "total": 1392,
+        "claimed_images": 1392,
+        "images_ok": true,
+        "n_classes": 10,
+        "claimed_classes": 10,
+        "classes_ok": true,
+        "missing_on_disk": 1392,
+        "disk_ok": false,
+        "classes": [
+          "Brown spot",
+          "Frogeye",
+          "Healthy",
+          "Mosaic",
+          "Potato virus Y",
+          "Target spot",
+          "Weather fleck",
+          "alternaria alternata",
+          "cercospora nicotianae",
+          "no cercospora nicotianae or alternaria alternata present"
+        ]
+      }
+    },
+    {
+      "key": "plantvillage_mendeley",
+      "bib_text": "Data for: Identification of Plant Leaf Diseases Using a 9-layer Deep Convolutional Neural Network. \\emph{Mendeley Data}, 2019. https://doi.org/10.17632/tywbtsjrjv.1",
+      "doi": "10.17632/tywbtsjrjv.1",
+      "arxiv": null,
+      "hf": null,
+      "bib_year": 2019,
+      "cite_sites": [
+        [
+          129,
+          "TPDD~\\cite{lin2022tpdd} (our re-derived release copy presents a 16-class taxonomy with 1,571 images, following the companion TLA taxonomy~\\cite{lin2024tla}; the SPIE record itself documents 2,721 fiel"
+        ]
+      ],
+      "verdict": "PASS",
+      "compare": {
+        "ratio": 1.0,
+        "title_ok": true,
+        "bib_first_author": "",
+        "first_ok": true,
+        "resolved_year": 2019,
+        "bib_year": 2019,
+        "year_ok": true,
+        "verdict": "PASS"
+      },
+      "resolved": {
+        "source": "datacite",
+        "title": "Data for: Identification of Plant Leaf Diseases Using a 9-layer Deep Convolutional Neural Network",
+        "authors": [
+          "J"
+        ],
+        "year": 2019,
+        "venue": "Mendeley"
+      },
+      "abstract": ""
+    },
+    {
+      "key": "fang2023data",
+      "bib_text": "Fang, A.; Jose, A.M.; Jain, A.; Schmidt, L.; Toshev, A.; Shankar, V. Data Filtering Networks. \\emph{arXiv preprint} arXiv:2309.17425, 2023.",
+      "doi": null,
+      "arxiv": "2309.17425",
+      "hf": null,
+      "bib_year": 2023,
+      "cite_sites": [
+        [
+          140,
+          "The backbone is DFN-CLIP ViT-L/14~\\cite{fang2023data} (428M parameters), accessed via OpenCLIP~\\cite{cherti2023reproducible,ilharco2022openclip}."
+        ]
+      ],
+      "verdict": "PASS",
+      "compare": {
+        "ratio": 1.0,
+        "title_ok": true,
+        "bib_first_author": "fang",
+        "first_ok": true,
+        "resolved_year": 2023,
+        "bib_year": 2023,
+        "year_ok": true,
+        "verdict": "PASS"
+      },
+      "resolved": {
+        "source": "arxiv",
+        "title": "Data Filtering Networks",
+        "authors": [
+          "Alex Fang",
+          "Albin Madappally Jose",
+          "Amit Jain",
+          "Ludwig Schmidt",
+          "Alexander Toshev",
+          "Vaishaal Shankar"
+        ],
+        "year": 2023,
+        "venue": "arXiv"
+      },
+      "abstract": "Large training sets have become a cornerstone of machine learning and are the foundation for recent advances in language modeling and multimodal learning. While data curation for pre-training is often still ad-hoc, one common paradigm is to first collect a massive pool of data from the Web and then filter this candidate pool down to an actual training set via various heuristics. In this work, we study the problem of learning a data filtering network (DFN) for this second step of filtering a large uncurated dataset. Our key finding is that the quality of a network for filtering is distinct from"
+    },
+    {
+      "key": "ilharco2022openclip",
+      "bib_text": "Ilharco, G.; Wortsman, M.; Carlini, N.; Taori, R.; Dave, A.; Shankar, V.; Namkoong, H.; Miller, J.; Hajishirzi, H.; Farhadi, A.; Schmidt, L. OpenCLIP. \\emph{Zenodo Software}, 2021. Available online: \\url{https://doi.org/10.5281/zenodo.5143773}.",
+      "doi": "10.5281/zenodo.5143773",
+      "arxiv": null,
+      "hf": null,
+      "bib_year": 2021,
+      "cite_sites": [
+        [
+          140,
+          "The backbone is DFN-CLIP ViT-L/14~\\cite{fang2023data} (428M parameters), accessed via OpenCLIP~\\cite{cherti2023reproducible,ilharco2022openclip}."
+        ]
+      ],
+      "verdict": "PASS",
+      "compare": {
+        "ratio": 1.0,
+        "title_ok": true,
+        "bib_first_author": "ilharco",
+        "first_ok": true,
+        "resolved_year": 2021,
+        "bib_year": 2021,
+        "year_ok": true,
+        "verdict": "PASS"
+      },
+      "resolved": {
+        "source": "datacite",
+        "title": "OpenCLIP",
+        "authors": [
+          "Ilharco",
+          "Wortsman",
+          "Carlini",
+          "Taori",
+          "Dave",
+          "Shankar"
+        ],
+        "year": 2021,
+        "venue": "Zenodo"
+      },
+      "abstract": ""
+    },
+    {
+      "key": "he2016deep",
+      "bib_text": "He, K.; Zhang, X.; Ren, S.; Sun, J. Deep Residual Learning for Image Recognition. In \\emph{Proceedings of CVPR}, 2016. https://doi.org/10.1109/cvpr.2016.90",
+      "doi": "10.1109/cvpr.2016.90",
+      "arxiv": null,
+      "hf": null,
+      "bib_year": 2016,
+      "cite_sites": [
+        [
+          173,
+          "ResNet-18~\\cite{he2016deep} (12M parameters, ImageNet pretrained) is trained using AdamW ($lr=3\\times10^{-4}$), cosine annealing, batch size 32, 30 epochs, best-validation selection."
+        ]
+      ],
+      "verdict": "PASS",
+      "compare": {
+        "ratio": 1.0,
+        "title_ok": true,
+        "bib_first_author": "he",
+        "first_ok": true,
+        "resolved_year": 2016,
+        "bib_year": 2016,
+        "year_ok": true,
+        "verdict": "PASS"
+      },
+      "resolved": {
+        "source": "crossref",
+        "title": "Deep Residual Learning for Image Recognition",
+        "authors": [
+          "He",
+          "Zhang",
+          "Ren",
+          "Sun"
+        ],
+        "year": 2016,
+        "venue": "2016 IEEE Conference on Computer Vision and Pattern Recognition (CVPR)"
+      },
+      "abstract": "Deeper neural networks are more difficult to train. We present a residual learning framework to ease the training of networks that are substantially deeper than those used previously. We explicitly reformulate the layers as learning residual functions with reference to the layer inputs, instead of learning unreferenced functions. We provide comprehensive empirical evidence showing that these residual networks are easier to optimize, and can gain accuracy from considerably increased depth. On the ImageNet dataset we evaluate residual nets with a depth of up to 152 layers - 8\u00d7 deeper than VGG ne"
+    },
+    {
+      "key": "hu2022lora",
+      "bib_text": "Hu, E.~J.; Shen, Y.; Wallis, P.; et al. LoRA: Low-Rank Adaptation of Large Language Models. In \\emph{Proceedings of ICLR}, 2022. https://arxiv.org/abs/2106.09685",
+      "doi": null,
+      "arxiv": "2106.09685",
+      "hf": null,
+      "bib_year": 2022,
+      "cite_sites": [
+        [
+          300,
+          "{\\small $-$ = configuration not executed (ResNet-18 frozen probe at $K{=}5/10$; SigLIP at $K{=}2$; LoRA/ConvNeXt at few-shot $K$). SigLIP So400M probe: single-run linear probe on frozen features (not "
+        ],
+        [
+          313,
+          "Macro-F1 (the unweighted mean of the 16 per-class F1 scores; a class with no correct prediction scores 0) tracks the frozen-probe ordering: at $C{=}1$ the DFN-CLIP probe reaches 67.5\\% against 64.3\\% "
+        ],
+        [
+          317,
+          "\\textbf{Fairness control: matched fine-tuning.} Fine-tuned CLIP (encoder+head, $n{=}15$) reaches $95.9\\%\\pm0.9$ (DFN) and $94.7\\%\\pm1.2$ (LAION) at full data, 7--8\\,pp above fine-tuned ResNet (87.7\\%)"
+        ]
+      ],
+      "verdict": "UNRESOLVED",
+      "resolved": {
+        "error": "HTTP Error 429: Unknown Error"
+      }
+    },
+    {
+      "key": "liu2022convnext",
+      "bib_text": "Liu, Z.; Mao, H.; Wu, C.-Y.; Feichtenhofer, C.; Darrell, T.; Xie, S. A ConvNet for the 2020s. In \\emph{Proceedings of CVPR}, 2022. https://arxiv.org/abs/2201.03545",
+      "doi": null,
+      "arxiv": "2201.03545",
+      "hf": null,
+      "bib_year": 2020,
+      "cite_sites": [
+        [
+          300,
+          "{\\small $-$ = configuration not executed (ResNet-18 frozen probe at $K{=}5/10$; SigLIP at $K{=}2$; LoRA/ConvNeXt at few-shot $K$). SigLIP So400M probe: single-run linear probe on frozen features (not "
+        ],
+        [
+          317,
+          "\\textbf{Fairness control: matched fine-tuning.} Fine-tuned CLIP (encoder+head, $n{=}15$) reaches $95.9\\%\\pm0.9$ (DFN) and $94.7\\%\\pm1.2$ (LAION) at full data, 7--8\\,pp above fine-tuned ResNet (87.7\\%)"
+        ]
+      ],
+      "verdict": "MISMATCH",
+      "compare": {
+        "ratio": 1.0,
+        "title_ok": true,
+        "bib_first_author": "liu",
+        "first_ok": true,
+        "resolved_year": 2022,
+        "bib_year": 2020,
+        "year_ok": false,
+        "verdict": "MISMATCH"
+      },
+      "resolved": {
+        "source": "arxiv",
+        "title": "A ConvNet for the 2020s",
+        "authors": [
+          "Zhuang Liu",
+          "Hanzi Mao",
+          "Chao-Yuan Wu",
+          "Christoph Feichtenhofer",
+          "Trevor Darrell",
+          "Saining Xie"
+        ],
+        "year": 2022,
+        "venue": "arXiv"
+      },
+      "abstract": "The \"Roaring 20s\" of visual recognition began with the introduction of Vision Transformers (ViTs), which quickly superseded ConvNets as the state-of-the-art image classification model. A vanilla ViT, on the other hand, faces difficulties when applied to general computer vision tasks such as object detection and semantic segmentation. It is the hierarchical Transformers (e.g., Swin Transformers) that reintroduced several ConvNet priors, making Transformers practically viable as a generic vision backbone and demonstrating remarkable performance on a wide variety of vision tasks. However, the eff"
+    },
+    {
+      "key": "dinov2",
+      "bib_text": "Oquab, M.; Darcet, T.; Moutakanni, T.; et al. DINOv2: Learning Robust Visual Features without Supervision. \\emph{Transactions on Machine Learning Research (TMLR)}, 2024. https://arxiv.org/abs/2304.07193",
+      "doi": null,
+      "arxiv": "2304.07193",
+      "hf": null,
+      "bib_year": 2024,
+      "cite_sites": [
+        [
+          315,
+          "\\textbf{(2) Head capacity and probe regularization bound the frozen-feature gap.} Two head-capacity controls bracket the effect: CoOp (text prompt tuning) does not beat the plain probe on DFN-CLIP at "
+        ]
+      ],
+      "verdict": "PASS",
+      "compare": {
+        "ratio": 1.0,
+        "title_ok": true,
+        "bib_first_author": "oquab",
+        "first_ok": true,
+        "resolved_year": 2023,
+        "bib_year": 2024,
+        "year_ok": true,
+        "verdict": "PASS"
+      },
+      "resolved": {
+        "source": "arxiv",
+        "title": "DINOv2: Learning Robust Visual Features without Supervision",
+        "authors": [
+          "Maxime Oquab",
+          "Timoth\u00e9e Darcet",
+          "Th\u00e9o Moutakanni",
+          "Huy Vo",
+          "Marc Szafraniec",
+          "Vasil Khalidov"
+        ],
+        "year": 2023,
+        "venue": "arXiv"
+      },
+      "abstract": "The recent breakthroughs in natural language processing for model pretraining on large quantities of data have opened the way for similar foundation models in computer vision. These models could greatly simplify the use of images in any system by producing all-purpose visual features, i.e., features that work across image distributions and tasks without finetuning. This work shows that existing pretraining methods, especially self-supervised methods, can produce such features if trained on enough curated data from diverse sources. We revisit existing approaches and combine different techniques"
+    },
+    {
+      "key": "cxr2026frozen",
+      "bib_text": "Muthyala, R.; Yin, Z.; Jilla, A.; Li, F.; Dapamede, T.; Khosravi, B.; Chavoshi, M.; Gichoya, J.~W.; Purkayastha, S. Frozen Foundation-Model Embeddings Discard Small-Lesion Signal in Chest Radiography: Implications for Pre-Deployment Evaluation. \\emph{arXiv preprint} arXiv:2606.11606, 2026. https://doi.org/10.48550/arXiv.2606.11606",
+      "doi": "10.48550/arXiv.2606.11606",
+      "arxiv": "2606.11606",
+      "hf": null,
+      "bib_year": 2026,
+      "cite_sites": [
+        [
+          511,
+          "\\textbf{Readout geometry.} The classification load is checkpoint-dependent (Table~\\ref{tab:readout}): on DFN-CLIP the CLS token carries essentially all signal (pure patch readouts 18.8--21.7\\% vs.\\ 76"
+        ]
+      ],
+      "verdict": "UNRESOLVED",
+      "resolved": {
+        "error": "The read operation timed out"
+      }
+    },
+    {
+      "key": "dinov3mil2026",
+      "bib_text": "Vishalakshi, M.; Sharma, S.; Pramod Kumar, P. DINOv3-MIL: Per-Kidney Multi-Label Tumour and Cyst Detection from Foundation-Model Patch Tokens on KiTS23. \\emph{arXiv preprint} arXiv:2607.22687, 2026. https://doi.org/10.48550/arXiv.2607.22687",
+      "doi": "10.48550/arXiv.2607.22687",
+      "arxiv": "2607.22687",
+      "hf": null,
+      "bib_year": 2026,
+      "cite_sites": [
+        [
+          511,
+          "\\textbf{Readout geometry.} The classification load is checkpoint-dependent (Table~\\ref{tab:readout}): on DFN-CLIP the CLS token carries essentially all signal (pure patch readouts 18.8--21.7\\% vs.\\ 76"
+        ]
+      ],
+      "verdict": "UNRESOLVED",
+      "resolved": {
+        "error": "HTTP Error 429: Unknown Error"
+      }
+    },
+    {
+      "key": "traceclip2026",
+      "bib_text": "Liu, X.; Shi, S.; Chen, Y.; Wang, G.; Yao, X.-W.; Zhong, S. TraceCLIP: Recovering Local Semantics from Patch-to-CLS Contributions. \\emph{arXiv preprint} arXiv:2607.26107, 2026. https://doi.org/10.48550/arXiv.2607.26107",
+      "doi": "10.48550/arXiv.2607.26107",
+      "arxiv": "2607.26107",
+      "hf": null,
+      "bib_year": 2026,
+      "cite_sites": [
+        [
+          511,
+          "\\textbf{Readout geometry.} The classification load is checkpoint-dependent (Table~\\ref{tab:readout}): on DFN-CLIP the CLS token carries essentially all signal (pure patch readouts 18.8--21.7\\% vs.\\ 76"
+        ]
+      ],
+      "verdict": "UNRESOLVED",
+      "resolved": {
+        "error": "HTTP Error 429: Unknown Error"
+      }
+    }
+  ]
+}

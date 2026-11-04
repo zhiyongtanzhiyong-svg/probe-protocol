@@ -1,0 +1,296 @@
+{
+  "data": {
+    "n_images": 18160,
+    "n_classes": 10,
+    "class_names": [
+      "bacterial spot on a tomato leaf",
+      "early blight on a tomato leaf",
+      "late blight on a tomato leaf",
+      "leaf mold on a tomato leaf",
+      "septoria leaf spot on a tomato leaf",
+      "two-spotted spider mite damage on a tomato leaf",
+      "target spot on a tomato leaf",
+      "tomato yellow leaf curl virus on a tomato leaf",
+      "tomato mosaic virus on a tomato leaf",
+      "a healthy tomato leaf"
+    ],
+    "class_counts": {
+      "bacterial spot on a tomato leaf": 2127,
+      "early blight on a tomato leaf": 1000,
+      "late blight on a tomato leaf": 1909,
+      "leaf mold on a tomato leaf": 952,
+      "septoria leaf spot on a tomato leaf": 1771,
+      "two-spotted spider mite damage on a tomato leaf": 1676,
+      "target spot on a tomato leaf": 1404,
+      "tomato yellow leaf curl virus on a tomato leaf": 5357,
+      "tomato mosaic virus on a tomato leaf": 373,
+      "a healthy tomato leaf": 1591
+    },
+    "split": {
+      "train": 14891,
+      "val": 1634,
+      "test": 1635
+    }
+  },
+  "near_dup": {
+    "max_cosine_test_to_train": 1.0,
+    "frac_test_maxcos_gt_0.99": 0.0006,
+    "frac_test_maxcos_gt_0.97": 0.2177,
+    "note": "split-integrity screen mirroring TPDD; >0.99 flagged as true near-duplicate"
+  },
+  "zero_shot": {
+    "a photo of a {x}": {
+      "accuracy": 0.2495,
+      "balanced_accuracy": 0.2621
+    },
+    "{x}": {
+      "accuracy": 0.2147,
+      "balanced_accuracy": 0.2406
+    },
+    "a close-up photo of a {x}": {
+      "accuracy": 0.2422,
+      "balanced_accuracy": 0.2718
+    },
+    "a tomato leaf with {x}": {
+      "accuracy": 0.2098,
+      "balanced_accuracy": 0.1891
+    },
+    "a plant leaf showing {x}": {
+      "accuracy": 0.3339,
+      "balanced_accuracy": 0.2531
+    },
+    "__majority_baseline": {
+      "accuracy": 0.2948,
+      "class": "tomato yellow leaf curl virus on a tomato leaf"
+    },
+    "__uniform_baseline": {
+      "accuracy": 0.1
+    }
+  },
+  "full_data": {
+    "clip": {
+      "clip_C1": 0.926,
+      "clip_bestC": 0.9841,
+      "best_C": 3000.0,
+      "clip_MLP": 0.9829,
+      "clip_knn1": 0.9339
+    },
+    "resnet": {
+      "mean": 0.9974,
+      "sd": 0.0012,
+      "per_seed": [
+        0.9945,
+        0.9969,
+        0.9988,
+        0.9976,
+        0.9969,
+        0.9982,
+        0.9976,
+        0.9969,
+        0.9976,
+        0.9969,
+        0.9969,
+        0.9994,
+        0.9976,
+        0.9957,
+        0.9988
+      ]
+    },
+    "gap_clip_minus_resnet": -0.0133,
+    "n_seeds_done": 15
+  },
+  "few_shot": {
+    "K=1": {
+      "n_support": 10,
+      "clip_probe_C1": {
+        "mean": 0.4471,
+        "sd": 0.0519,
+        "per_seed": [
+          0.5052,
+          0.4997,
+          0.4569,
+          0.422,
+          0.4391,
+          0.3535,
+          0.4379,
+          0.3474,
+          0.4367,
+          0.4318,
+          0.5199,
+          0.411,
+          0.4606,
+          0.5113,
+          0.474
+        ]
+      },
+      "resnet_finetuned": {
+        "mean": 0.4038,
+        "sd": 0.0656,
+        "per_seed": [
+          0.2661,
+          0.5168,
+          0.4018,
+          0.3939,
+          0.455,
+          0.345,
+          0.4508,
+          0.3664,
+          0.4281,
+          0.441,
+          0.3798,
+          0.3743,
+          0.4881,
+          0.4318,
+          0.3174
+        ]
+      },
+      "gap_clip_minus_resnet": 0.0434
+    },
+    "K=5": {
+      "n_support": 50,
+      "clip_probe_C1": {
+        "mean": 0.6251,
+        "sd": 0.0244,
+        "per_seed": [
+          0.6502,
+          0.6654,
+          0.5982,
+          0.5908,
+          0.6122,
+          0.6128,
+          0.6471,
+          0.6275,
+          0.6232,
+          0.6306,
+          0.6165,
+          0.6398,
+          0.5804,
+          0.6239,
+          0.6575
+        ]
+      },
+      "resnet_finetuned": {
+        "mean": 0.7357,
+        "sd": 0.0513,
+        "per_seed": [
+          0.6924,
+          0.7774,
+          0.7217,
+          0.7456,
+          0.7021,
+          0.745,
+          0.7529,
+          0.7884,
+          0.7737,
+          0.7401,
+          0.6862,
+          0.7743,
+          0.6006,
+          0.8061,
+          0.7291
+        ]
+      },
+      "gap_clip_minus_resnet": -0.1106
+    },
+    "K=10": {
+      "n_support": 100,
+      "clip_probe_C1": {
+        "mean": 0.7008,
+        "sd": 0.0238,
+        "per_seed": [
+          0.7187,
+          0.7131,
+          0.7639,
+          0.6734,
+          0.7113,
+          0.7052,
+          0.7076,
+          0.6997,
+          0.6862,
+          0.685,
+          0.704,
+          0.6991,
+          0.6893,
+          0.6991,
+          0.6569
+        ]
+      },
+      "resnet_finetuned": {
+        "mean": 0.8444,
+        "sd": 0.0232,
+        "per_seed": [
+          0.8544,
+          0.8532,
+          0.8526,
+          0.8642,
+          0.844,
+          0.8575,
+          0.83,
+          0.8654,
+          0.8373,
+          0.7933,
+          0.8263,
+          0.8502,
+          0.8905,
+          0.8275,
+          0.8196
+        ]
+      },
+      "gap_clip_minus_resnet": -0.1436
+    }
+  },
+  "cv": {
+    "folds": {
+      "0": {
+        "clip_C1": 0.9074,
+        "clip_bestC": 0.9758,
+        "best_C": 3000.0,
+        "resnet": 0.9933,
+        "gap": -0.0175
+      },
+      "1": {
+        "clip_C1": 0.908,
+        "clip_bestC": 0.9802,
+        "best_C": 1000.0,
+        "resnet": 0.997,
+        "gap": -0.0168
+      },
+      "2": {
+        "clip_C1": 0.907,
+        "clip_bestC": 0.9802,
+        "best_C": 1000.0,
+        "resnet": 0.995,
+        "gap": -0.0148
+      },
+      "3": {
+        "clip_C1": 0.9103,
+        "clip_bestC": 0.9775,
+        "best_C": 1000.0,
+        "resnet": 0.994,
+        "gap": -0.0165
+      },
+      "4": {
+        "clip_C1": 0.9127,
+        "clip_bestC": 0.9852,
+        "best_C": 3000.0,
+        "resnet": 0.9976,
+        "gap": -0.0124
+      }
+    },
+    "n_folds_done": 5,
+    "summary": {
+      "clip_bestC_mean": 0.9798,
+      "resnet_mean": 0.9954,
+      "gap_pp_mean": -1.56,
+      "gap_pp_per_fold": [
+        -1.75,
+        -1.68,
+        -1.48,
+        -1.65,
+        -1.24
+      ]
+    }
+  },
+  "protocol": "PlantVillage tomato 10 classes; fixed stratified 82/9/9 split (seed42); zero-shot DFN-CLIP 5 plain captions; few-shot K=1/5/10 seed-paired CLIP C=1 probe vs fine-tuned ResNet-18 (15 seeds); full-data CLIP best-C probe vs ResNet-18 (15 seeds); 5-fold CV (CLIP best-C vs ResNet 1 seed/fold). Same heads/C-grid/recipe as TPDD.",
+  "elapsed_s": 9064.7
+}

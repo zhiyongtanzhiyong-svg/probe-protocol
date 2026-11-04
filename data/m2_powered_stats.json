@@ -1,0 +1,155 @@
+{
+  "protocol": "seed-paired (same kshot_subset_idx(y,K,seed+500) support) one-sample t on per-seed gap (CLIP - ResNet); 3 crops x K=1/5/10; full-data excluded (near-ceiling).",
+  "crops": {
+    "tobacco_TPDD": {
+      "K=1": {
+        "clip_mean": 0.3048,
+        "resnet_mean": 0.3203,
+        "gap_pp": -1.55,
+        "ci95_pp": [
+          -4.35,
+          1.26
+        ],
+        "t": -1.182,
+        "df": 14,
+        "p_two_sided": 0.25678,
+        "sig_05": false,
+        "n_seeds": 15
+      },
+      "K=5": {
+        "clip_mean": 0.4797,
+        "resnet_mean": 0.6415,
+        "gap_pp": -16.18,
+        "ci95_pp": [
+          -19.95,
+          -12.42
+        ],
+        "t": -9.223,
+        "df": 14,
+        "p_two_sided": 0.0,
+        "sig_05": true,
+        "n_seeds": 15
+      },
+      "K=10": {
+        "clip_mean": 0.5643,
+        "resnet_mean": 0.7242,
+        "gap_pp": -15.99,
+        "ci95_pp": [
+          -19.06,
+          -12.92
+        ],
+        "t": -11.161,
+        "df": 14,
+        "p_two_sided": 0.0,
+        "sig_05": true,
+        "n_seeds": 15
+      }
+    },
+    "tomato_PlantVillage": {
+      "K=1": {
+        "clip_mean": 0.4471,
+        "resnet_mean": 0.4038,
+        "gap_pp": 4.34,
+        "ci95_pp": [
+          -0.02,
+          8.69
+        ],
+        "t": 2.136,
+        "df": 14,
+        "p_two_sided": 0.05086,
+        "sig_05": false,
+        "n_seeds": 15
+      },
+      "K=5": {
+        "clip_mean": 0.6251,
+        "resnet_mean": 0.7357,
+        "gap_pp": -11.06,
+        "ci95_pp": [
+          -13.58,
+          -8.55
+        ],
+        "t": -9.43,
+        "df": 14,
+        "p_two_sided": 0.0,
+        "sig_05": true,
+        "n_seeds": 15
+      },
+      "K=10": {
+        "clip_mean": 0.7008,
+        "resnet_mean": 0.8444,
+        "gap_pp": -14.36,
+        "ci95_pp": [
+          -15.99,
+          -12.72
+        ],
+        "t": -18.855,
+        "df": 14,
+        "p_two_sided": 0.0,
+        "sig_05": true,
+        "n_seeds": 15
+      }
+    },
+    "corn_PlantVillage": {
+      "K=1": {
+        "clip_mean": 0.7676,
+        "resnet_mean": 0.6863,
+        "gap_pp": 8.13,
+        "ci95_pp": [
+          1.43,
+          14.83
+        ],
+        "t": 2.604,
+        "df": 14,
+        "p_two_sided": 0.02083,
+        "sig_05": true,
+        "n_seeds": 15
+      },
+      "K=5": {
+        "clip_mean": 0.8414,
+        "resnet_mean": 0.8751,
+        "gap_pp": -3.37,
+        "ci95_pp": [
+          -7.15,
+          0.4
+        ],
+        "t": -1.915,
+        "df": 14,
+        "p_two_sided": 0.07613,
+        "sig_05": false,
+        "n_seeds": 15
+      },
+      "K=10": {
+        "clip_mean": 0.8717,
+        "resnet_mean": 0.9279,
+        "gap_pp": -5.63,
+        "ci95_pp": [
+          -7.13,
+          -4.13
+        ],
+        "t": -8.047,
+        "df": 14,
+        "p_two_sided": 0.0,
+        "sig_05": true,
+        "n_seeds": 15
+      }
+    }
+  },
+  "regime_split": {
+    "tobacco_TPDD": {
+      "K1_clip_leads": false,
+      "K5_resnet_leads": true,
+      "K10_resnet_leads": true
+    },
+    "tomato_PlantVillage": {
+      "K1_clip_leads": true,
+      "K5_resnet_leads": true,
+      "K10_resnet_leads": true
+    },
+    "corn_PlantVillage": {
+      "K1_clip_leads": true,
+      "K5_resnet_leads": true,
+      "K10_resnet_leads": true
+    }
+  },
+  "authority_note": "AUTHORITY / PROVENANCE: The tobacco_TPDD K=1 row uses the NON-authoritative seed-paired ResNet-18 (resnet_mean 32.03%, from data/resnet_k1_n15.json, which is marked non-authoritative), yielding DFN-CLIP delta -1.55pp / p=0.257. The paper's CANONICAL tobacco K=1 is the seed-paired re-run in data/multiplicity_k2.json (ResNet-18 33.04%; LAION-2B +7.1pp, paired-t p=1.5e-05; DFN-CLIP -2.56pp, p=0.031). This file is authoritative here only for the tomato_PlantVillage and corn_PlantVillage cross-crop rows. Do NOT read the tobacco K=1 delta/p from this file."
+}

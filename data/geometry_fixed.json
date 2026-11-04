@@ -1,0 +1,30 @@
+{
+  "clip_dfn_train": {
+    "mean_inter_centroid_dist": 0.3355,
+    "mean_intra_class_dist": 0.5445,
+    "inter_intra_ratio": 0.6161,
+    "fisher_ratio": 0.38,
+    "silhouette_score": 0.0171
+  },
+  "clip_dfn_test": {
+    "mean_inter_centroid_dist": 0.4331,
+    "mean_intra_class_dist": 0.5317,
+    "inter_intra_ratio": 0.8145,
+    "fisher_ratio": 0.53,
+    "silhouette_score": -0.0211
+  },
+  "resnet_frozen_train": {
+    "mean_inter_centroid_dist": 0.3883,
+    "mean_intra_class_dist": 0.7071,
+    "inter_intra_ratio": 0.5492,
+    "fisher_ratio": 0.3,
+    "silhouette_score": 0.0242
+  },
+  "resnet_frozen_test": {
+    "mean_inter_centroid_dist": 0.556,
+    "mean_intra_class_dist": 0.7016,
+    "inter_intra_ratio": 0.7925,
+    "fisher_ratio": 0.44,
+    "silhouette_score": 0.0078
+  }
+}

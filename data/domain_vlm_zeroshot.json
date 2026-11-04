@@ -1,0 +1,1052 @@
+{
+  "model": "BioCLIP 2 (imageomics/bioclip-2, ViT-L/14)",
+  "templates": 14,
+  "datasets": {
+    "tpdd": {
+      "n_test": 138,
+      "majority_baseline": 13.04,
+      "best_template": "CN-Photo",
+      "best_accuracy": 15.22,
+      "gap_to_baseline": 2.18,
+      "templates": [
+        {
+          "template": "EN-Label",
+          "accuracy": 0.72,
+          "nonzero": 1,
+          "correct": 1,
+          "total": 138,
+          "per_class": {
+            "anthracnose": 100.0,
+            "black_shank": 0.0,
+            "brown_spot": 0.0,
+            "cmv": 0.0,
+            "frog_eye": 0.0,
+            "genetic_abnormality": 0.0,
+            "healthy": 0.0,
+            "nematodes": 0.0,
+            "potato_tuber_moth": 0.0,
+            "pvy": 0.0,
+            "sunscald": 0.0,
+            "target_spot": 0.0,
+            "tmv": 0.0,
+            "tswv": 0.0,
+            "weather_fleck": 0.0,
+            "wildfire": 0.0
+          }
+        },
+        {
+          "template": "CN-Label",
+          "accuracy": 5.8,
+          "nonzero": 2,
+          "correct": 8,
+          "total": 138,
+          "per_class": {
+            "anthracnose": 0.0,
+            "black_shank": 0.0,
+            "brown_spot": 0.0,
+            "cmv": 0.0,
+            "frog_eye": 0.0,
+            "genetic_abnormality": 0.0,
+            "healthy": 0.0,
+            "nematodes": 12.5,
+            "potato_tuber_moth": 0.0,
+            "pvy": 87.5,
+            "sunscald": 0.0,
+            "target_spot": 0.0,
+            "tmv": 0.0,
+            "tswv": 0.0,
+            "weather_fleck": 0.0,
+            "wildfire": 0.0
+          }
+        },
+        {
+          "template": "EN-Photo",
+          "accuracy": 4.35,
+          "nonzero": 3,
+          "correct": 6,
+          "total": 138,
+          "per_class": {
+            "anthracnose": 100.0,
+            "black_shank": 0.0,
+            "brown_spot": 10.0,
+            "cmv": 0.0,
+            "frog_eye": 0.0,
+            "genetic_abnormality": 0.0,
+            "healthy": 0.0,
+            "nematodes": 0.0,
+            "potato_tuber_moth": 40.0,
+            "pvy": 0.0,
+            "sunscald": 0.0,
+            "target_spot": 0.0,
+            "tmv": 0.0,
+            "tswv": 0.0,
+            "weather_fleck": 0.0,
+            "wildfire": 0.0
+          }
+        },
+        {
+          "template": "CN-Photo",
+          "accuracy": 15.22,
+          "nonzero": 3,
+          "correct": 21,
+          "total": 138,
+          "per_class": {
+            "anthracnose": 0.0,
+            "black_shank": 100.0,
+            "brown_spot": 0.0,
+            "cmv": 0.0,
+            "frog_eye": 0.0,
+            "genetic_abnormality": 0.0,
+            "healthy": 0.0,
+            "nematodes": 0.0,
+            "potato_tuber_moth": 70.0,
+            "pvy": 0.0,
+            "sunscald": 0.0,
+            "target_spot": 0.0,
+            "tmv": 92.85714285714286,
+            "tswv": 0.0,
+            "weather_fleck": 0.0,
+            "wildfire": 0.0
+          }
+        },
+        {
+          "template": "EN-Symptom",
+          "accuracy": 1.45,
+          "nonzero": 2,
+          "correct": 2,
+          "total": 138,
+          "per_class": {
+            "anthracnose": 100.0,
+            "black_shank": 0.0,
+            "brown_spot": 10.0,
+            "cmv": 0.0,
+            "frog_eye": 0.0,
+            "genetic_abnormality": 0.0,
+            "healthy": 0.0,
+            "nematodes": 0.0,
+            "potato_tuber_moth": 0.0,
+            "pvy": 0.0,
+            "sunscald": 0.0,
+            "target_spot": 0.0,
+            "tmv": 0.0,
+            "tswv": 0.0,
+            "weather_fleck": 0.0,
+            "wildfire": 0.0
+          }
+        },
+        {
+          "template": "CN-Symptom",
+          "accuracy": 8.7,
+          "nonzero": 2,
+          "correct": 12,
+          "total": 138,
+          "per_class": {
+            "anthracnose": 0.0,
+            "black_shank": 0.0,
+            "brown_spot": 0.0,
+            "cmv": 20.0,
+            "frog_eye": 0.0,
+            "genetic_abnormality": 0.0,
+            "healthy": 0.0,
+            "nematodes": 0.0,
+            "potato_tuber_moth": 0.0,
+            "pvy": 0.0,
+            "sunscald": 0.0,
+            "target_spot": 0.0,
+            "tmv": 71.42857142857143,
+            "tswv": 0.0,
+            "weather_fleck": 0.0,
+            "wildfire": 0.0
+          }
+        },
+        {
+          "template": "EN-Closeup",
+          "accuracy": 3.62,
+          "nonzero": 2,
+          "correct": 5,
+          "total": 138,
+          "per_class": {
+            "anthracnose": 100.0,
+            "black_shank": 0.0,
+            "brown_spot": 0.0,
+            "cmv": 0.0,
+            "frog_eye": 0.0,
+            "genetic_abnormality": 0.0,
+            "healthy": 0.0,
+            "nematodes": 0.0,
+            "potato_tuber_moth": 40.0,
+            "pvy": 0.0,
+            "sunscald": 0.0,
+            "target_spot": 0.0,
+            "tmv": 0.0,
+            "tswv": 0.0,
+            "weather_fleck": 0.0,
+            "wildfire": 0.0
+          }
+        },
+        {
+          "template": "CN-Closeup",
+          "accuracy": 2.9,
+          "nonzero": 2,
+          "correct": 4,
+          "total": 138,
+          "per_class": {
+            "anthracnose": 0.0,
+            "black_shank": 0.0,
+            "brown_spot": 0.0,
+            "cmv": 0.0,
+            "frog_eye": 0.0,
+            "genetic_abnormality": 0.0,
+            "healthy": 0.0,
+            "nematodes": 0.0,
+            "potato_tuber_moth": 10.0,
+            "pvy": 0.0,
+            "sunscald": 0.0,
+            "target_spot": 30.0,
+            "tmv": 0.0,
+            "tswv": 0.0,
+            "weather_fleck": 0.0,
+            "wildfire": 0.0
+          }
+        },
+        {
+          "template": "EN-Disease",
+          "accuracy": 0.72,
+          "nonzero": 1,
+          "correct": 1,
+          "total": 138,
+          "per_class": {
+            "anthracnose": 100.0,
+            "black_shank": 0.0,
+            "brown_spot": 0.0,
+            "cmv": 0.0,
+            "frog_eye": 0.0,
+            "genetic_abnormality": 0.0,
+            "healthy": 0.0,
+            "nematodes": 0.0,
+            "potato_tuber_moth": 0.0,
+            "pvy": 0.0,
+            "sunscald": 0.0,
+            "target_spot": 0.0,
+            "tmv": 0.0,
+            "tswv": 0.0,
+            "weather_fleck": 0.0,
+            "wildfire": 0.0
+          }
+        },
+        {
+          "template": "CN-Disease",
+          "accuracy": 10.14,
+          "nonzero": 1,
+          "correct": 14,
+          "total": 138,
+          "per_class": {
+            "anthracnose": 0.0,
+            "black_shank": 0.0,
+            "brown_spot": 0.0,
+            "cmv": 0.0,
+            "frog_eye": 0.0,
+            "genetic_abnormality": 0.0,
+            "healthy": 0.0,
+            "nematodes": 0.0,
+            "potato_tuber_moth": 0.0,
+            "pvy": 0.0,
+            "sunscald": 0.0,
+            "target_spot": 0.0,
+            "tmv": 100.0,
+            "tswv": 0.0,
+            "weather_fleck": 0.0,
+            "wildfire": 0.0
+          }
+        },
+        {
+          "template": "KG-Symptom",
+          "accuracy": 0.72,
+          "nonzero": 1,
+          "correct": 1,
+          "total": 138,
+          "per_class": {
+            "anthracnose": 100.0,
+            "black_shank": 0.0,
+            "brown_spot": 0.0,
+            "cmv": 0.0,
+            "frog_eye": 0.0,
+            "genetic_abnormality": 0.0,
+            "healthy": 0.0,
+            "nematodes": 0.0,
+            "potato_tuber_moth": 0.0,
+            "pvy": 0.0,
+            "sunscald": 0.0,
+            "target_spot": 0.0,
+            "tmv": 0.0,
+            "tswv": 0.0,
+            "weather_fleck": 0.0,
+            "wildfire": 0.0
+          }
+        },
+        {
+          "template": "KG-Condition",
+          "accuracy": 0.72,
+          "nonzero": 1,
+          "correct": 1,
+          "total": 138,
+          "per_class": {
+            "anthracnose": 100.0,
+            "black_shank": 0.0,
+            "brown_spot": 0.0,
+            "cmv": 0.0,
+            "frog_eye": 0.0,
+            "genetic_abnormality": 0.0,
+            "healthy": 0.0,
+            "nematodes": 0.0,
+            "potato_tuber_moth": 0.0,
+            "pvy": 0.0,
+            "sunscald": 0.0,
+            "target_spot": 0.0,
+            "tmv": 0.0,
+            "tswv": 0.0,
+            "weather_fleck": 0.0,
+            "wildfire": 0.0
+          }
+        },
+        {
+          "template": "KG-Combined",
+          "accuracy": 0.72,
+          "nonzero": 1,
+          "correct": 1,
+          "total": 138,
+          "per_class": {
+            "anthracnose": 100.0,
+            "black_shank": 0.0,
+            "brown_spot": 0.0,
+            "cmv": 0.0,
+            "frog_eye": 0.0,
+            "genetic_abnormality": 0.0,
+            "healthy": 0.0,
+            "nematodes": 0.0,
+            "potato_tuber_moth": 0.0,
+            "pvy": 0.0,
+            "sunscald": 0.0,
+            "target_spot": 0.0,
+            "tmv": 0.0,
+            "tswv": 0.0,
+            "weather_fleck": 0.0,
+            "wildfire": 0.0
+          }
+        },
+        {
+          "template": "EN-Expert",
+          "accuracy": 5.07,
+          "nonzero": 3,
+          "correct": 7,
+          "total": 138,
+          "per_class": {
+            "anthracnose": 100.0,
+            "black_shank": 0.0,
+            "brown_spot": 0.0,
+            "cmv": 0.0,
+            "frog_eye": 0.0,
+            "genetic_abnormality": 0.0,
+            "healthy": 10.0,
+            "nematodes": 0.0,
+            "potato_tuber_moth": 50.0,
+            "pvy": 0.0,
+            "sunscald": 0.0,
+            "target_spot": 0.0,
+            "tmv": 0.0,
+            "tswv": 0.0,
+            "weather_fleck": 0.0,
+            "wildfire": 0.0
+          }
+        }
+      ],
+      "clip_best_ref": "EN-Symptom 14.5%",
+      "resnet18_ref": 87.7,
+      "refs_note": "cross-references refreshed from canonical_fig_artifacts.json and zero_shot_clean.json; measured values unchanged"
+    },
+    "tld": {
+      "n_test": 232,
+      "n_total": 1392,
+      "majority_baseline": 18.97,
+      "best_template": "KG-Symptom",
+      "best_accuracy": 21.12,
+      "gap_to_baseline": 2.15,
+      "templates": [
+        {
+          "template": "EN-Label",
+          "accuracy": 8.62,
+          "n_correct": 20,
+          "n": 232,
+          "per_class": {
+            "Brown spot": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Frogeye": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Healthy": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Mosaic": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Potato virus Y": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Target spot": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Weather fleck": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "alternaria alternata": {
+              "n": 28,
+              "acc": 0.0
+            },
+            "cercospora nicotianae": {
+              "n": 20,
+              "acc": 1.0
+            },
+            "no cercospora nicotianae or alternaria alternata present": {
+              "n": 44,
+              "acc": 0.0
+            }
+          }
+        },
+        {
+          "template": "EN-Photo",
+          "accuracy": 20.26,
+          "n_correct": 47,
+          "n": 232,
+          "per_class": {
+            "Brown spot": {
+              "n": 20,
+              "acc": 0.2
+            },
+            "Frogeye": {
+              "n": 20,
+              "acc": 0.05
+            },
+            "Healthy": {
+              "n": 20,
+              "acc": 0.05
+            },
+            "Mosaic": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Potato virus Y": {
+              "n": 20,
+              "acc": 0.9
+            },
+            "Target spot": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Weather fleck": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "alternaria alternata": {
+              "n": 28,
+              "acc": 0.7857
+            },
+            "cercospora nicotianae": {
+              "n": 20,
+              "acc": 0.05
+            },
+            "no cercospora nicotianae or alternaria alternata present": {
+              "n": 44,
+              "acc": 0.0
+            }
+          }
+        },
+        {
+          "template": "EN-Symptom",
+          "accuracy": 8.62,
+          "n_correct": 20,
+          "n": 232,
+          "per_class": {
+            "Brown spot": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Frogeye": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Healthy": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Mosaic": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Potato virus Y": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Target spot": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Weather fleck": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "alternaria alternata": {
+              "n": 28,
+              "acc": 0.0357
+            },
+            "cercospora nicotianae": {
+              "n": 20,
+              "acc": 0.95
+            },
+            "no cercospora nicotianae or alternaria alternata present": {
+              "n": 44,
+              "acc": 0.0
+            }
+          }
+        },
+        {
+          "template": "EN-Closeup",
+          "accuracy": 11.64,
+          "n_correct": 27,
+          "n": 232,
+          "per_class": {
+            "Brown spot": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Frogeye": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Healthy": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Mosaic": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Potato virus Y": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Target spot": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Weather fleck": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "alternaria alternata": {
+              "n": 28,
+              "acc": 0.8571
+            },
+            "cercospora nicotianae": {
+              "n": 20,
+              "acc": 0.05
+            },
+            "no cercospora nicotianae or alternaria alternata present": {
+              "n": 44,
+              "acc": 0.0455
+            }
+          }
+        },
+        {
+          "template": "EN-Disease",
+          "accuracy": 9.05,
+          "n_correct": 21,
+          "n": 232,
+          "per_class": {
+            "Brown spot": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Frogeye": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Healthy": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Mosaic": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Potato virus Y": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Target spot": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Weather fleck": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "alternaria alternata": {
+              "n": 28,
+              "acc": 0.0
+            },
+            "cercospora nicotianae": {
+              "n": 20,
+              "acc": 0.95
+            },
+            "no cercospora nicotianae or alternaria alternata present": {
+              "n": 44,
+              "acc": 0.0455
+            }
+          }
+        },
+        {
+          "template": "EN-Expert",
+          "accuracy": 6.47,
+          "n_correct": 15,
+          "n": 232,
+          "per_class": {
+            "Brown spot": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Frogeye": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Healthy": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Mosaic": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Potato virus Y": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Target spot": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Weather fleck": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "alternaria alternata": {
+              "n": 28,
+              "acc": 0.4643
+            },
+            "cercospora nicotianae": {
+              "n": 20,
+              "acc": 0.1
+            },
+            "no cercospora nicotianae or alternaria alternata present": {
+              "n": 44,
+              "acc": 0.0
+            }
+          }
+        },
+        {
+          "template": "CN-Label",
+          "accuracy": 11.64,
+          "n_correct": 27,
+          "n": 232,
+          "per_class": {
+            "Brown spot": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Frogeye": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Healthy": {
+              "n": 20,
+              "acc": 0.65
+            },
+            "Mosaic": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Potato virus Y": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Target spot": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Weather fleck": {
+              "n": 20,
+              "acc": 0.7
+            },
+            "alternaria alternata": {
+              "n": 28,
+              "acc": 0.0
+            },
+            "cercospora nicotianae": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "no cercospora nicotianae or alternaria alternata present": {
+              "n": 44,
+              "acc": 0.0
+            }
+          }
+        },
+        {
+          "template": "CN-Photo",
+          "accuracy": 8.19,
+          "n_correct": 19,
+          "n": 232,
+          "per_class": {
+            "Brown spot": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Frogeye": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Healthy": {
+              "n": 20,
+              "acc": 0.1
+            },
+            "Mosaic": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Potato virus Y": {
+              "n": 20,
+              "acc": 0.85
+            },
+            "Target spot": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Weather fleck": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "alternaria alternata": {
+              "n": 28,
+              "acc": 0.0
+            },
+            "cercospora nicotianae": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "no cercospora nicotianae or alternaria alternata present": {
+              "n": 44,
+              "acc": 0.0
+            }
+          }
+        },
+        {
+          "template": "CN-Symptom",
+          "accuracy": 8.62,
+          "n_correct": 20,
+          "n": 232,
+          "per_class": {
+            "Brown spot": {
+              "n": 20,
+              "acc": 1.0
+            },
+            "Frogeye": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Healthy": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Mosaic": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Potato virus Y": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Target spot": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Weather fleck": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "alternaria alternata": {
+              "n": 28,
+              "acc": 0.0
+            },
+            "cercospora nicotianae": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "no cercospora nicotianae or alternaria alternata present": {
+              "n": 44,
+              "acc": 0.0
+            }
+          }
+        },
+        {
+          "template": "CN-Closeup",
+          "accuracy": 8.62,
+          "n_correct": 20,
+          "n": 232,
+          "per_class": {
+            "Brown spot": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Frogeye": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Healthy": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Mosaic": {
+              "n": 20,
+              "acc": 0.9
+            },
+            "Potato virus Y": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Target spot": {
+              "n": 20,
+              "acc": 0.1
+            },
+            "Weather fleck": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "alternaria alternata": {
+              "n": 28,
+              "acc": 0.0
+            },
+            "cercospora nicotianae": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "no cercospora nicotianae or alternaria alternata present": {
+              "n": 44,
+              "acc": 0.0
+            }
+          }
+        },
+        {
+          "template": "CN-Disease",
+          "accuracy": 7.76,
+          "n_correct": 18,
+          "n": 232,
+          "per_class": {
+            "Brown spot": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Frogeye": {
+              "n": 20,
+              "acc": 0.05
+            },
+            "Healthy": {
+              "n": 20,
+              "acc": 0.85
+            },
+            "Mosaic": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Potato virus Y": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Target spot": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Weather fleck": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "alternaria alternata": {
+              "n": 28,
+              "acc": 0.0
+            },
+            "cercospora nicotianae": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "no cercospora nicotianae or alternaria alternata present": {
+              "n": 44,
+              "acc": 0.0
+            }
+          }
+        },
+        {
+          "template": "KG-Symptom",
+          "accuracy": 21.12,
+          "n_correct": 49,
+          "n": 232,
+          "per_class": {
+            "Brown spot": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Frogeye": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Healthy": {
+              "n": 20,
+              "acc": 1.0
+            },
+            "Mosaic": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Potato virus Y": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Target spot": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Weather fleck": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "alternaria alternata": {
+              "n": 28,
+              "acc": 0.0
+            },
+            "cercospora nicotianae": {
+              "n": 20,
+              "acc": 0.25
+            },
+            "no cercospora nicotianae or alternaria alternata present": {
+              "n": 44,
+              "acc": 0.5455
+            }
+          }
+        },
+        {
+          "template": "KG-Condition",
+          "accuracy": 8.62,
+          "n_correct": 20,
+          "n": 232,
+          "per_class": {
+            "Brown spot": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Frogeye": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Healthy": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Mosaic": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Potato virus Y": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Target spot": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Weather fleck": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "alternaria alternata": {
+              "n": 28,
+              "acc": 0.0
+            },
+            "cercospora nicotianae": {
+              "n": 20,
+              "acc": 1.0
+            },
+            "no cercospora nicotianae or alternaria alternata present": {
+              "n": 44,
+              "acc": 0.0
+            }
+          }
+        },
+        {
+          "template": "KG-Combined",
+          "accuracy": 16.38,
+          "n_correct": 38,
+          "n": 232,
+          "per_class": {
+            "Brown spot": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Frogeye": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Healthy": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Mosaic": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Potato virus Y": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Target spot": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "Weather fleck": {
+              "n": 20,
+              "acc": 0.0
+            },
+            "alternaria alternata": {
+              "n": 28,
+              "acc": 0.0
+            },
+            "cercospora nicotianae": {
+              "n": 20,
+              "acc": 0.8
+            },
+            "no cercospora nicotianae or alternaria alternata present": {
+              "n": 44,
+              "acc": 0.5
+            }
+          }
+        }
+      ],
+      "clip_best_ref": "19.0%"
+    }
+  },
+  "verdict": "BioCLIP 2 best-template: TPDD 15.22% (vs CLIP 13.0%, ResNet-18 86.4%), TLD 21.12% (vs CLIP 19.0%). "
+}

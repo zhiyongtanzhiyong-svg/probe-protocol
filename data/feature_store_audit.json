@@ -1,0 +1,57 @@
+{
+  "naming_note": "CANONICAL feature stores (the ones used for every full-data number in the paper): DFN-CLIP -> canonical_clip_features_dfn.npz (full-data C=1 = 76.8%); LAION-2B -> laion_clip_features_clean.npz (== clip_features_laion_clean.npz, 76.1%). DO NOT use clip_features_clean.npz despite the 'clean' in its name: it is the pre-rebuild LEGACY/DRIFTED DFN store (full-data C=1 = 76.1%, 0.7pp off canonical). See Appendix A 'Feature-store unification'.",
+  "canonical_files": {
+    "dfn_clip": "canonical_clip_features_dfn.npz",
+    "laion_2b": "laion_clip_features_clean.npz"
+  },
+  "laion_canonical": {
+    "file": "laion_clip_features_clean.npz",
+    "fresh": true,
+    "full_data_C1_pct": 76.09,
+    "canonical_results_json_pct": 76.09,
+    "agrees_with_paper": true
+  },
+  "clip_features_laion_clean.npz": {
+    "fresh": true,
+    "max_abs_diff_train": 0.0,
+    "max_abs_diff_test": 0.0,
+    "labels_match": true,
+    "per_sample_cosine_train": {
+      "min": 1.0,
+      "max": 1.0,
+      "mean": 1.0
+    },
+    "full_data_C1_pct": 76.09,
+    "verdict": "MATCHES current corpus"
+  },
+  "clip_features_clean.npz": {
+    "fresh": false,
+    "max_abs_diff": 0.118511,
+    "per_sample_cosine_train": {
+      "min": 0.8278,
+      "max": 0.9663,
+      "mean": 0.9302
+    },
+    "verdict": "DRIFTED from current corpus"
+  },
+  "clip_aug_views_dfn.npz": {
+    "mtime": "2026-09-27 14:32",
+    "predates_2026_09_28_rebuild": true,
+    "shape": [
+      200,
+      1295,
+      768
+    ],
+    "note": "stochastic augmented views; not pixel-comparable, but built from the pre-rebuild image set"
+  },
+  "clip_aug_views_laion.npz": {
+    "mtime": "2026-09-27 21:51",
+    "predates_2026_09_28_rebuild": true,
+    "shape": [
+      200,
+      1295,
+      768
+    ],
+    "note": "stochastic augmented views; not pixel-comparable, but built from the pre-rebuild image set"
+  }
+}

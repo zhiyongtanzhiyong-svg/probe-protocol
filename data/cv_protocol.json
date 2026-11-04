@@ -1,0 +1,204 @@
+{
+  "folds": {
+    "0": {
+      "n_train": 1036,
+      "n_test": 259,
+      "n_fit": 828,
+      "n_val": 208,
+      "clip": {
+        "best_C": 1000.0,
+        "val_accs": {
+          "0.01": 0.1106,
+          "0.1": 0.1971,
+          "1.0": 0.7163,
+          "3.0": 0.7981,
+          "10.0": 0.8558,
+          "30.0": 0.875,
+          "100.0": 0.8846,
+          "300.0": 0.8798,
+          "1000.0": 0.8942,
+          "3000.0": 0.8894
+        },
+        "acc": 0.9035,
+        "balanced_acc": 0.8939,
+        "acc_C1": 0.6795
+      },
+      "resnet": {
+        "seeds": [
+          0.9266
+        ],
+        "acc_mean": 0.9266,
+        "acc_sd": 0.0
+      },
+      "gap_clip_minus_resnet": -0.0231
+    },
+    "1": {
+      "n_train": 1036,
+      "n_test": 259,
+      "n_fit": 828,
+      "n_val": 208,
+      "clip": {
+        "best_C": 100.0,
+        "val_accs": {
+          "0.01": 0.1106,
+          "0.1": 0.2067,
+          "1.0": 0.6923,
+          "3.0": 0.7885,
+          "10.0": 0.8317,
+          "30.0": 0.8654,
+          "100.0": 0.8798,
+          "300.0": 0.875,
+          "1000.0": 0.8702,
+          "3000.0": 0.8798
+        },
+        "acc": 0.9073,
+        "balanced_acc": 0.8913,
+        "acc_C1": 0.7104
+      },
+      "resnet": {
+        "seeds": [
+          0.9305
+        ],
+        "acc_mean": 0.9305,
+        "acc_sd": 0.0
+      },
+      "gap_clip_minus_resnet": -0.0232
+    },
+    "2": {
+      "n_train": 1036,
+      "n_test": 259,
+      "n_fit": 828,
+      "n_val": 208,
+      "clip": {
+        "best_C": 1000.0,
+        "val_accs": {
+          "0.01": 0.1106,
+          "0.1": 0.1875,
+          "1.0": 0.6875,
+          "3.0": 0.7548,
+          "10.0": 0.8269,
+          "30.0": 0.8654,
+          "100.0": 0.8702,
+          "300.0": 0.8846,
+          "1000.0": 0.8894,
+          "3000.0": 0.8846
+        },
+        "acc": 0.8996,
+        "balanced_acc": 0.8906,
+        "acc_C1": 0.7297
+      },
+      "resnet": {
+        "seeds": [
+          0.9266
+        ],
+        "acc_mean": 0.9266,
+        "acc_sd": 0.0
+      },
+      "gap_clip_minus_resnet": -0.027
+    },
+    "3": {
+      "n_train": 1036,
+      "n_test": 259,
+      "n_fit": 828,
+      "n_val": 208,
+      "clip": {
+        "best_C": 3000.0,
+        "val_accs": {
+          "0.01": 0.1106,
+          "0.1": 0.2067,
+          "1.0": 0.7067,
+          "3.0": 0.7933,
+          "10.0": 0.8462,
+          "30.0": 0.875,
+          "100.0": 0.8846,
+          "300.0": 0.8846,
+          "1000.0": 0.8894,
+          "3000.0": 0.8942
+        },
+        "acc": 0.8919,
+        "balanced_acc": 0.8775,
+        "acc_C1": 0.7297
+      },
+      "resnet": {
+        "seeds": [
+          0.9266
+        ],
+        "acc_mean": 0.9266,
+        "acc_sd": 0.0
+      },
+      "gap_clip_minus_resnet": -0.0347
+    },
+    "4": {
+      "n_train": 1036,
+      "n_test": 259,
+      "n_fit": 828,
+      "n_val": 208,
+      "clip": {
+        "best_C": 30.0,
+        "val_accs": {
+          "0.01": 0.1106,
+          "0.1": 0.2115,
+          "1.0": 0.7404,
+          "3.0": 0.8269,
+          "10.0": 0.8846,
+          "30.0": 0.9087,
+          "100.0": 0.9087,
+          "300.0": 0.9087,
+          "1000.0": 0.9087,
+          "3000.0": 0.899
+        },
+        "acc": 0.8687,
+        "balanced_acc": 0.8568,
+        "acc_C1": 0.7297
+      },
+      "resnet": {
+        "seeds": [
+          0.9151
+        ],
+        "acc_mean": 0.9151,
+        "acc_sd": 0.0
+      },
+      "gap_clip_minus_resnet": -0.0464
+    }
+  },
+  "summary": {
+    "n_folds": 5,
+    "n_resnet_seeds": 1,
+    "resnet_epochs": 30,
+    "clip": {
+      "acc_mean": 0.8942,
+      "acc_sd": 0.0154,
+      "per_fold": [
+        0.9035,
+        0.9073,
+        0.8996,
+        0.8919,
+        0.8687
+      ]
+    },
+    "resnet": {
+      "acc_mean": 0.9251,
+      "acc_sd": 0.0058,
+      "per_fold": [
+        0.9266,
+        0.9305,
+        0.9266,
+        0.9266,
+        0.9151
+      ]
+    },
+    "gap_clip_minus_resnet": {
+      "mean_pp": -3.09,
+      "sd_pp": 0.99,
+      "per_fold_pp": [
+        -2.31,
+        -2.32,
+        -2.7,
+        -3.47,
+        -4.64
+      ]
+    },
+    "protocol": "5-fold stratified CV over TPDD train pool (1295); per-fold 80/20 fit/val carve-out; CLIP frozen best-C probe and ImageNet-pretrained ResNet-18 (AdamW 3e-4, cosine, bs32, 30ep, best-val) both trained on the same fit-split; held-out fold used for evaluation only; 1 seed/fold (split stability; seed variance covered by the 15-seed ResNet runs)",
+    "elapsed_s": 860.2
+  }
+}

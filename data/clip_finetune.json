@@ -1,0 +1,223 @@
+{
+  "date": "2026-10-20",
+  "gpu": "NVIDIA GeForce RTX 4070 Ti",
+  "torch": "2.4.1+cu121",
+  "open_clip": "2.32.0",
+  "resnet_finetuned_ref": {
+    "accuracy": 0.8772946859903381,
+    "n_seeds": 15,
+    "protocol": "ResNet-18 ImageNet-pretrained, AdamW lr=3e-4, cosine, bs=32, 30ep, best-val, full TPDD train (1295), 15 seeds"
+  },
+  "n_seeds_target": 15,
+  "note": "Full-data fine-tuned CLIP cell extended from n=5 (seeds 0-4) to n=15 (seeds 5-14) to tighten the CI on the decisive CLIP-vs-ResNet cell. Recipe identical to the original store; every seed is an independent run from a common pretrained initialisation.",
+  "results": {
+    "dfn_clip": {
+      "checkpoint": "dfn_clip",
+      "n_seeds": 15,
+      "epochs": 30,
+      "batch": 32,
+      "vis_lr": 5e-06,
+      "head_lr": 0.001,
+      "seeds": [
+        {
+          "seed": 0,
+          "best_val": 0.913,
+          "test": 0.942,
+          "elapsed_s": 1331.6
+        },
+        {
+          "seed": 1,
+          "best_val": 0.9203,
+          "test": 0.971,
+          "elapsed_s": 1523.9
+        },
+        {
+          "seed": 2,
+          "best_val": 0.913,
+          "test": 0.9565,
+          "elapsed_s": 1036.4
+        },
+        {
+          "seed": 3,
+          "best_val": 0.9058,
+          "test": 0.9565,
+          "elapsed_s": 975.6
+        },
+        {
+          "seed": 4,
+          "best_val": 0.8986,
+          "test": 0.9493,
+          "elapsed_s": 980.3
+        },
+        {
+          "seed": 5,
+          "best_val": 0.913,
+          "test": 0.971,
+          "elapsed_s": 7060.4
+        },
+        {
+          "seed": 6,
+          "best_val": 0.9058,
+          "test": 0.9565,
+          "elapsed_s": 2507.1
+        },
+        {
+          "seed": 7,
+          "best_val": 0.9275,
+          "test": 0.9565,
+          "elapsed_s": 1003.3
+        },
+        {
+          "seed": 8,
+          "best_val": 0.8986,
+          "test": 0.9493,
+          "elapsed_s": 1011.4
+        },
+        {
+          "seed": 9,
+          "best_val": 0.9058,
+          "test": 0.9638,
+          "elapsed_s": 1370.1
+        },
+        {
+          "seed": 10,
+          "best_val": 0.913,
+          "test": 0.9493,
+          "elapsed_s": 1293.7
+        },
+        {
+          "seed": 11,
+          "best_val": 0.913,
+          "test": 0.971,
+          "elapsed_s": 1062.6
+        },
+        {
+          "seed": 12,
+          "best_val": 0.9058,
+          "test": 0.9565,
+          "elapsed_s": 1020.5
+        },
+        {
+          "seed": 13,
+          "best_val": 0.9203,
+          "test": 0.971,
+          "elapsed_s": 1376.4
+        },
+        {
+          "seed": 14,
+          "best_val": 0.9203,
+          "test": 0.9638,
+          "elapsed_s": 1272.1
+        }
+      ],
+      "mean": 0.9589,
+      "std": 0.0094,
+      "sem": 0.0024,
+      "protocol": "CLIP ViT-L-14 image-encoder fine-tune (dfn_clip; model.visual + linear head 16 classes), native CLIP preprocessing (open_clip preprocess for val/test; CLIP-normalized RandomResizedCrop/flip/rotate/color-jitter for train), AdamW (vision 5e-06, head 0.001, wd 0.01), cosine, batch 32, 30 ep, best-validation selection, full TPDD train (1295) / 138 test, mixed precision, 15 independent seeds from a common pretrained initialisation. Matched budget to ResNet-18 (AdamW, cosine, batch 32, 30 ep, best-val)."
+    },
+    "laion2b": {
+      "checkpoint": "laion2b",
+      "n_seeds": 15,
+      "epochs": 30,
+      "batch": 32,
+      "vis_lr": 5e-06,
+      "head_lr": 0.001,
+      "seeds": [
+        {
+          "seed": 0,
+          "best_val": 0.9493,
+          "test": 0.9493,
+          "elapsed_s": 962.2
+        },
+        {
+          "seed": 1,
+          "best_val": 0.9348,
+          "test": 0.942,
+          "elapsed_s": 964.0
+        },
+        {
+          "seed": 2,
+          "best_val": 0.942,
+          "test": 0.9565,
+          "elapsed_s": 996.5
+        },
+        {
+          "seed": 3,
+          "best_val": 0.9275,
+          "test": 0.9565,
+          "elapsed_s": 980.6
+        },
+        {
+          "seed": 4,
+          "best_val": 0.942,
+          "test": 0.942,
+          "elapsed_s": 972.8
+        },
+        {
+          "seed": 5,
+          "best_val": 0.9493,
+          "test": 0.942,
+          "elapsed_s": 1306.9
+        },
+        {
+          "seed": 6,
+          "best_val": 0.9565,
+          "test": 0.942,
+          "elapsed_s": 978.5
+        },
+        {
+          "seed": 7,
+          "best_val": 0.9275,
+          "test": 0.9348,
+          "elapsed_s": 937.7
+        },
+        {
+          "seed": 8,
+          "best_val": 0.942,
+          "test": 0.9203,
+          "elapsed_s": 974.1
+        },
+        {
+          "seed": 9,
+          "best_val": 0.9493,
+          "test": 0.9565,
+          "elapsed_s": 982.6
+        },
+        {
+          "seed": 10,
+          "best_val": 0.9275,
+          "test": 0.942,
+          "elapsed_s": 964.9
+        },
+        {
+          "seed": 11,
+          "best_val": 0.9348,
+          "test": 0.9565,
+          "elapsed_s": 925.2
+        },
+        {
+          "seed": 12,
+          "best_val": 0.9348,
+          "test": 0.9638,
+          "elapsed_s": 922.6
+        },
+        {
+          "seed": 13,
+          "best_val": 0.942,
+          "test": 0.9638,
+          "elapsed_s": 923.1
+        },
+        {
+          "seed": 14,
+          "best_val": 0.9493,
+          "test": 0.942,
+          "elapsed_s": 924.1
+        }
+      ],
+      "mean": 0.9473,
+      "std": 0.0118,
+      "sem": 0.003,
+      "protocol": "CLIP ViT-L-14 image-encoder fine-tune (laion2b; model.visual + linear head 16 classes), native CLIP preprocessing (open_clip preprocess for val/test; CLIP-normalized RandomResizedCrop/flip/rotate/color-jitter for train), AdamW (vision 5e-06, head 0.001, wd 0.01), cosine, batch 32, 30 ep, best-validation selection, full TPDD train (1295) / 138 test, mixed precision, 15 independent seeds from a common pretrained initialisation. Matched budget to ResNet-18 (AdamW, cosine, batch 32, 30 ep, best-val)."
+    }
+  }
+}

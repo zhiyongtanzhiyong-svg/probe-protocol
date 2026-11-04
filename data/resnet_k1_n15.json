@@ -1,0 +1,33 @@
+{
+  "K": 1,
+  "n_seeds": 15,
+  "epochs": 30,
+  "mean": 0.3202898550724638,
+  "std": 0.06008066111744826,
+  "sem": 0.015512759995800573,
+  "accs": [
+    0.37681159420289856,
+    0.3115942028985507,
+    0.26811594202898553,
+    0.14492753623188406,
+    0.2971014492753623,
+    0.3333333333333333,
+    0.38405797101449274,
+    0.3188405797101449,
+    0.35507246376811596,
+    0.36231884057971014,
+    0.36231884057971014,
+    0.3115942028985507,
+    0.2898550724637681,
+    0.3115942028985507,
+    0.37681159420289856
+  ],
+  "min": 0.14492753623188406,
+  "max": 0.38405797101449274,
+  "elapsed_s": 292.21032309532166,
+  "_provenance": {
+    "role": "reference_only_non_paired_run",
+    "note": "Independent ResNet-18 K-shot reference run on its OWN support draw. NOT the source of the paper's Table 1 ResNet few-shot row: that row is the seed-paired run in paired_kshot_a4.json (clip support draw seed+500), which gives 33.04%. This file gives 32.03%. Both are valid; they differ because the support draws differ. Kept for auditability of the non-paired baseline.",
+    "authoritative_source": "data/paired_kshot_a4.json"
+  }
+}

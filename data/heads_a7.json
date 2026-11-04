@@ -1,0 +1,1 @@
+{"rbf_svm": {"C_selected": 50, "val_acc": 0.9112, "test_acc": 0.8696, "test_balanced_acc": 0.848}, "nearest_centroid": {"test_acc": 0.7174, "test_balanced_acc": 0.6666}, "reference_linear_C300": {"test_acc": 0.855, "test_balanced_acc": 0.774}}

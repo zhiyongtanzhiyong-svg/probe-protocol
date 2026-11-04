@@ -1,0 +1,404 @@
+{
+  "n_test": 138,
+  "note": "All comparisons are paired on the same 138 test images. Exact (binomial) McNemar is used; CI overlap is NOT used as a significance criterion. The zero-shot 'best template' is selected on the test set, so a selection-aware max-statistic permutation test is reported alongside the per-template tests.",
+  "Q1_zero_shot": {
+    "baseline_class": 15,
+    "baseline_acc": 0.13043478260869565,
+    "n_test": 138,
+    "baseline_n_correct": 18,
+    "per_template": {
+      "CN-Closeup": {
+        "acc": 0.057971014492753624,
+        "n_correct": 8,
+        "delta_pp": -7.246376811594201,
+        "ci95_delta_pp": [
+          -14.492753623188406,
+          0.0
+        ],
+        "mcnemar_n_clip_wins": 8,
+        "mcnemar_n_baseline_wins": 18,
+        "p_exact": 0.07551869750022888,
+        "p_holm": 0.9062243700027466,
+        "significant_holm_05": false,
+        "better_than_baseline_holm_05": false,
+        "worse_than_baseline_holm_05": false
+      },
+      "CN-Disease": {
+        "acc": 0.07246376811594203,
+        "n_correct": 10,
+        "delta_pp": -5.797101449275361,
+        "ci95_delta_pp": [
+          -13.043478260869565,
+          1.4492753623188406
+        ],
+        "mcnemar_n_clip_wins": 10,
+        "mcnemar_n_baseline_wins": 18,
+        "p_exact": 0.1849333420395851,
+        "p_holm": 1.0,
+        "significant_holm_05": false,
+        "better_than_baseline_holm_05": false,
+        "worse_than_baseline_holm_05": false
+      },
+      "CN-Label": {
+        "acc": 0.07246376811594203,
+        "n_correct": 10,
+        "delta_pp": -5.797101449275361,
+        "ci95_delta_pp": [
+          -13.043478260869565,
+          1.4492753623188406
+        ],
+        "mcnemar_n_clip_wins": 10,
+        "mcnemar_n_baseline_wins": 18,
+        "p_exact": 0.1849333420395851,
+        "p_holm": 1.0,
+        "significant_holm_05": false,
+        "better_than_baseline_holm_05": false,
+        "worse_than_baseline_holm_05": false
+      },
+      "CN-Photo": {
+        "acc": 0.08695652173913043,
+        "n_correct": 12,
+        "delta_pp": -4.3478260869565215,
+        "ci95_delta_pp": [
+          -12.318840579710146,
+          3.6231884057971016
+        ],
+        "mcnemar_n_clip_wins": 12,
+        "mcnemar_n_baseline_wins": 18,
+        "p_exact": 0.36159460805356514,
+        "p_holm": 1.0,
+        "significant_holm_05": false,
+        "better_than_baseline_holm_05": false,
+        "worse_than_baseline_holm_05": false
+      },
+      "CN-Symptom": {
+        "acc": 0.09420289855072464,
+        "n_correct": 13,
+        "delta_pp": -3.6231884057971007,
+        "ci95_delta_pp": [
+          -11.594202898550725,
+          4.3478260869565215
+        ],
+        "mcnemar_n_clip_wins": 13,
+        "mcnemar_n_baseline_wins": 18,
+        "p_exact": 0.47312965989112854,
+        "p_holm": 1.0,
+        "significant_holm_05": false,
+        "better_than_baseline_holm_05": false,
+        "worse_than_baseline_holm_05": false
+      },
+      "EN-Closeup": {
+        "acc": 0.09420289855072464,
+        "n_correct": 13,
+        "delta_pp": -3.6231884057971007,
+        "ci95_delta_pp": [
+          -11.594202898550725,
+          4.3478260869565215
+        ],
+        "mcnemar_n_clip_wins": 13,
+        "mcnemar_n_baseline_wins": 18,
+        "p_exact": 0.47312965989112854,
+        "p_holm": 1.0,
+        "significant_holm_05": false,
+        "better_than_baseline_holm_05": false,
+        "worse_than_baseline_holm_05": false
+      },
+      "EN-Disease": {
+        "acc": 0.057971014492753624,
+        "n_correct": 8,
+        "delta_pp": -7.246376811594201,
+        "ci95_delta_pp": [
+          -14.492753623188406,
+          0.0
+        ],
+        "mcnemar_n_clip_wins": 8,
+        "mcnemar_n_baseline_wins": 18,
+        "p_exact": 0.07551869750022888,
+        "p_holm": 0.9062243700027466,
+        "significant_holm_05": false,
+        "better_than_baseline_holm_05": false,
+        "worse_than_baseline_holm_05": false
+      },
+      "EN-Expert": {
+        "acc": 0.028985507246376812,
+        "n_correct": 4,
+        "delta_pp": -10.144927536231883,
+        "ci95_delta_pp": [
+          -16.666666666666664,
+          -3.6231884057971016
+        ],
+        "mcnemar_n_clip_wins": 4,
+        "mcnemar_n_baseline_wins": 18,
+        "p_exact": 0.004343509674072266,
+        "p_holm": 0.05646562576293945,
+        "significant_holm_05": false,
+        "better_than_baseline_holm_05": false,
+        "worse_than_baseline_holm_05": false
+      },
+      "EN-Label": {
+        "acc": 0.007246376811594203,
+        "n_correct": 1,
+        "delta_pp": -12.318840579710145,
+        "ci95_delta_pp": [
+          -18.115942028985508,
+          -6.521739130434782
+        ],
+        "mcnemar_n_clip_wins": 1,
+        "mcnemar_n_baseline_wins": 18,
+        "p_exact": 7.62939453125e-05,
+        "p_holm": 0.001068115234375,
+        "significant_holm_05": true,
+        "better_than_baseline_holm_05": false,
+        "worse_than_baseline_holm_05": true
+      },
+      "EN-Photo": {
+        "acc": 0.13043478260869565,
+        "n_correct": 18,
+        "delta_pp": 0.0,
+        "ci95_delta_pp": [
+          -8.695652173913043,
+          8.695652173913043
+        ],
+        "mcnemar_n_clip_wins": 18,
+        "mcnemar_n_baseline_wins": 18,
+        "p_exact": 1.0,
+        "p_holm": 1.0,
+        "significant_holm_05": false,
+        "better_than_baseline_holm_05": false,
+        "worse_than_baseline_holm_05": false
+      },
+      "EN-Symptom": {
+        "acc": 0.14492753623188406,
+        "n_correct": 20,
+        "delta_pp": 1.4492753623188415,
+        "ci95_delta_pp": [
+          -7.246376811594203,
+          10.144927536231885
+        ],
+        "mcnemar_n_clip_wins": 19,
+        "mcnemar_n_baseline_wins": 17,
+        "p_exact": 0.8679394004284404,
+        "p_holm": 1.0,
+        "significant_holm_05": false,
+        "better_than_baseline_holm_05": false,
+        "worse_than_baseline_holm_05": false
+      },
+      "KG-Combined": {
+        "acc": 0.13043478260869565,
+        "n_correct": 18,
+        "delta_pp": 0.0,
+        "ci95_delta_pp": [
+          -8.695652173913043,
+          8.695652173913043
+        ],
+        "mcnemar_n_clip_wins": 18,
+        "mcnemar_n_baseline_wins": 18,
+        "p_exact": 1.0,
+        "p_holm": 1.0,
+        "significant_holm_05": false,
+        "better_than_baseline_holm_05": false,
+        "worse_than_baseline_holm_05": false
+      },
+      "KG-Condition": {
+        "acc": 0.10144927536231885,
+        "n_correct": 14,
+        "delta_pp": -2.8985507246376803,
+        "ci95_delta_pp": [
+          -10.869565217391305,
+          5.072463768115942
+        ],
+        "mcnemar_n_clip_wins": 14,
+        "mcnemar_n_baseline_wins": 18,
+        "p_exact": 0.5966148958541453,
+        "p_holm": 1.0,
+        "significant_holm_05": false,
+        "better_than_baseline_holm_05": false,
+        "worse_than_baseline_holm_05": false
+      },
+      "KG-Symptom": {
+        "acc": 0.13768115942028986,
+        "n_correct": 19,
+        "delta_pp": 0.7246376811594207,
+        "ci95_delta_pp": [
+          -7.971014492753622,
+          9.420289855072465
+        ],
+        "mcnemar_n_clip_wins": 19,
+        "mcnemar_n_baseline_wins": 18,
+        "p_exact": 1.0,
+        "p_holm": 1.0,
+        "significant_holm_05": false,
+        "better_than_baseline_holm_05": false,
+        "worse_than_baseline_holm_05": false
+      }
+    },
+    "best_template": "EN-Symptom",
+    "best_template_acc": 0.14492753623188406,
+    "best_vs_baseline_delta_pp": 1.4492753623188415,
+    "best_mcnemar_p_exact": 0.8679394004284404,
+    "best_mcnemar_p_holm": 1.0,
+    "any_template_better_than_baseline_perm_p": 0.9992500374981251,
+    "ensemble_uniform": {
+      "acc": 0.07971014492753623,
+      "delta_pp": -5.072463768115942,
+      "p_exact": 0.26493089646101
+    },
+    "ensemble_zpe_signal": {
+      "acc": 0.14492753623188406,
+      "delta_pp": 1.4492753623188415,
+      "p_exact": 0.8714146793645341
+    },
+    "templates_better_than_baseline_holm_05": [],
+    "templates_worse_than_baseline_holm_05": [
+      "EN-Label"
+    ]
+  },
+  "Q2_full_data": {
+    "clip_C1": {
+      "clip_acc": 0.7681159420289855,
+      "resnet_seed0_acc": 0.8695652173913043,
+      "delta_pp": 10.144927536231885,
+      "ci95_delta_pp": [
+        2.1739130434782608,
+        18.115942028985508
+      ],
+      "mcnemar_p_exact": 0.024306510109454393,
+      "n_seeds_above_clip": 15,
+      "n_resnet_seeds": 15,
+      "empirical_tail_vs_15seed_dist": 1.0
+    },
+    "clip_bestC": {
+      "clip_acc": 0.8623188405797102,
+      "resnet_seed0_acc": 0.8695652173913043,
+      "delta_pp": 0.7246376811594124,
+      "ci95_delta_pp": [
+        -5.797101449275362,
+        7.246376811594203
+      ],
+      "mcnemar_p_exact": 1.0,
+      "n_seeds_above_clip": 10,
+      "n_resnet_seeds": 15,
+      "empirical_tail_vs_15seed_dist": 0.6875
+    }
+  },
+  "Q3_few_shot": {
+    "per_K": {
+      "K=1": {
+        "DFN-CLIP": {
+          "clip_mean": 30.483091787439616,
+          "resnet_mean": 33.04347826086956,
+          "mean_delta_pp": -2.560386473429952,
+          "std_delta_pp": 4.125316165381537,
+          "n_seeds_where_clip_wins": 3
+        },
+        "LAION-2B": {
+          "clip_mean": 40.09661835748792,
+          "resnet_mean": 33.04347826086956,
+          "mean_delta_pp": 7.053140096618356,
+          "std_delta_pp": 5.3141665075039946,
+          "n_seeds_where_clip_wins": 15
+        }
+      },
+      "K=5": {
+        "DFN-CLIP": {
+          "clip_mean": 47.971014492753625,
+          "resnet_mean": 65.45893719806763,
+          "mean_delta_pp": -17.48792270531401,
+          "std_delta_pp": 5.993481888416607,
+          "n_seeds_where_clip_wins": 0
+        },
+        "LAION-2B": {
+          "clip_mean": 58.405797101449274,
+          "resnet_mean": 65.45893719806763,
+          "mean_delta_pp": -7.053140096618357,
+          "std_delta_pp": 6.598732698171079,
+          "n_seeds_where_clip_wins": 3
+        }
+      },
+      "K=10": {
+        "DFN-CLIP": {
+          "clip_mean": 56.425120772946855,
+          "resnet_mean": 75.7487922705314,
+          "mean_delta_pp": -19.32367149758454,
+          "std_delta_pp": 4.003504131209612,
+          "n_seeds_where_clip_wins": 0
+        },
+        "LAION-2B": {
+          "clip_mean": 65.02415458937197,
+          "resnet_mean": 75.7487922705314,
+          "mean_delta_pp": -10.724637681159424,
+          "std_delta_pp": 4.323604026138055,
+          "n_seeds_where_clip_wins": 0
+        }
+      }
+    },
+    "k_interaction": {
+      "DFN-CLIP": {
+        "mean_delta_by_K_pp": {
+          "K=1": -2.560386473429952,
+          "K=5": -17.48792270531401,
+          "K=10": -19.32367149758454
+        },
+        "friedman_stat": 23.423728813559322,
+        "friedman_p": 8.195999350942059e-06,
+        "pairwise_paired_t": {
+          "K=1_vs_K=5": {
+            "t": 6.845690862317316,
+            "p": 7.988858910070702e-06,
+            "p_holm": 1.5977717820141404e-05
+          },
+          "K=1_vs_K=10": {
+            "t": 10.855113837959616,
+            "p": 3.350018485327721e-08,
+            "p_holm": 1.0050055455983163e-07
+          },
+          "K=5_vs_K=10": {
+            "t": 1.298163475633877,
+            "p": 0.21521060853370536,
+            "p_holm": 0.21521060853370536
+          }
+        },
+        "spearman_K_vs_delta_rho": -0.06395521506087545,
+        "spearman_p": 0.6764008028123718,
+        "n_seeds_where_clip_wins_by_K": {
+          "K=1": 3,
+          "K=5": 0,
+          "K=10": 0
+        }
+      },
+      "LAION-2B": {
+        "mean_delta_by_K_pp": {
+          "K=1": 7.053140096618356,
+          "K=5": -7.053140096618357,
+          "K=10": -10.724637681159424
+        },
+        "friedman_stat": 24.133333333333326,
+        "friedman_p": 5.747953574056122e-06,
+        "pairwise_paired_t": {
+          "K=1_vs_K=5": {
+            "t": 8.241131562536925,
+            "p": 9.67575881408773e-07,
+            "p_holm": 1.935151762817546e-06
+          },
+          "K=1_vs_K=10": {
+            "t": 10.931458529364967,
+            "p": 3.066579571382276e-08,
+            "p_holm": 9.199738714146827e-08
+          },
+          "K=5_vs_K=10": {
+            "t": 2.08765550000174,
+            "p": 0.05558718659144772,
+            "p_holm": 0.05558718659144772
+          }
+        },
+        "spearman_K_vs_delta_rho": -0.11845488485469753,
+        "spearman_p": 0.43834365931559593,
+        "n_seeds_where_clip_wins_by_K": {
+          "K=1": 15,
+          "K=5": 3,
+          "K=10": 0
+        }
+      }
+    }
+  }
+}

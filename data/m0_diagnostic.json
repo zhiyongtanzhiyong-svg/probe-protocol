@@ -1,0 +1,137 @@
+{
+  "protocol": "linear LogisticRegression(C=1) on patch-derived vs CLS features; full-data + 10-shot(5 seeds); both ckpts",
+  "dfn_clip": {
+    "n_train": 1295,
+    "n_test": 138,
+    "n_patches": 256,
+    "full": {
+      "cls": 0.7681,
+      "mean_patch": 0.1884,
+      "max_patch": 0.2174,
+      "cls_mean": 0.7681,
+      "cls_max": 0.7899
+    },
+    "shot10": {
+      "cls": {
+        "mean": 0.5565,
+        "accs": [
+          0.5362,
+          0.558,
+          0.5797,
+          0.5435,
+          0.5652
+        ]
+      },
+      "mean_patch": {
+        "mean": 0.4696,
+        "accs": [
+          0.4855,
+          0.4348,
+          0.5145,
+          0.4203,
+          0.4928
+        ]
+      },
+      "max_patch": {
+        "mean": 0.5188,
+        "accs": [
+          0.5652,
+          0.4928,
+          0.529,
+          0.5,
+          0.5072
+        ]
+      },
+      "cls_mean": {
+        "mean": 0.5623,
+        "accs": [
+          0.5507,
+          0.558,
+          0.587,
+          0.5507,
+          0.5652
+        ]
+      },
+      "cls_max": {
+        "mean": 0.5623,
+        "accs": [
+          0.5435,
+          0.5652,
+          0.587,
+          0.5507,
+          0.5652
+        ]
+      }
+    },
+    "best_readout": "cls_mean",
+    "best_beats_cls_pp": 0.58
+  },
+  "laion2b": {
+    "n_train": 1295,
+    "n_test": 138,
+    "n_patches": 256,
+    "full": {
+      "cls": 0.7609,
+      "mean_patch": 0.8696,
+      "max_patch": 0.8333,
+      "cls_mean": 0.8768,
+      "cls_max": 0.8333
+    },
+    "shot10": {
+      "cls": {
+        "mean": 0.6638,
+        "accs": [
+          0.6667,
+          0.6522,
+          0.6594,
+          0.6812,
+          0.6594
+        ]
+      },
+      "mean_patch": {
+        "mean": 0.7072,
+        "accs": [
+          0.7826,
+          0.7029,
+          0.7174,
+          0.6667,
+          0.6667
+        ]
+      },
+      "max_patch": {
+        "mean": 0.6565,
+        "accs": [
+          0.7319,
+          0.6232,
+          0.6812,
+          0.6087,
+          0.6377
+        ]
+      },
+      "cls_mean": {
+        "mean": 0.7087,
+        "accs": [
+          0.7826,
+          0.7101,
+          0.7101,
+          0.6667,
+          0.6739
+        ]
+      },
+      "cls_max": {
+        "mean": 0.6594,
+        "accs": [
+          0.7391,
+          0.6232,
+          0.6812,
+          0.6159,
+          0.6377
+        ]
+      }
+    },
+    "best_readout": "cls_mean",
+    "best_beats_cls_pp": 4.49
+  },
+  "elapsed_sec": 520.8,
+  "note": "best_readout / best_beats_cls_pp (per checkpoint) are the K=10 (shot10) best readout over the menu {cls, mean_patch, max_patch, cls_mean, cls_max} -- NOT the full-data best. The per-regime 'full' and 'shot10' blocks are the authoritative values (the paper cites those directly). Full-data best for reference: dfn_clip = cls_max 0.7899 (+2.18pp over CLS 0.7681); laion2b = cls_mean 0.8768 (+11.59pp over CLS 0.7609)."
+}

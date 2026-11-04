@@ -1,0 +1,338 @@
+{
+  "family": "checkpoint-complete multiplicity family as executed: twelve seed-paired contrasts = eight frozen-probe CLIP vs fine-tuned ResNet-18 (K in {1,2,5,10} x {DFN-CLIP, LAION-2B}; K=1,2 ResNet comparators at the legacy budget, K=5,10 at the matched budget) plus four fine-tuned-CLIP vs matched-budget ResNet-18 contrasts (K in {5,10} x {LAION-2B, DFN-CLIP})",
+  "family_note": "P3c section 5 pre-commits the executed family of 12: the P3b family of 10 (data/multiplicity_p3b.json) plus the two DFN-CLIP few-shot fine-tune cells that P3b deferred. Both checkpoints now have fine-tune cells at K=5/10.",
+  "alpha": 0.05,
+  "n_tests": 12,
+  "n_holm_surviving": 12,
+  "n_bh_surviving": 12,
+  "bootstrap_resamples": 10000,
+  "bootstrap_seed": 0,
+  "rows": [
+    {
+      "clip_acc_pct": 40.14,
+      "resnet_acc_pct": 33.04,
+      "resnet_std_pct": 3.14,
+      "delta_pp": 7.1,
+      "delta_ci95_bootstrap_pp": [
+        5.07,
+        9.18
+      ],
+      "paired_t": 6.466,
+      "paired_t_p": 1.4829764542669404e-05,
+      "wilcoxon_p": 6.103515625e-05,
+      "wins_ties_losses": [
+        15,
+        0,
+        0
+      ],
+      "contrast": "K=1: CLIP (LAION-2B) vs ResNet-18",
+      "clip_kind": "frozen_probe",
+      "resnet_budget": "legacy",
+      "holm_adjusted_p": 8.897858725601643e-05,
+      "holm_significant": true,
+      "bh_qvalue": 2.5422453501718978e-05,
+      "bh_fdr_significant": true
+    },
+    {
+      "clip_acc_pct": 30.48,
+      "resnet_acc_pct": 33.04,
+      "resnet_std_pct": 3.14,
+      "delta_pp": -2.56,
+      "delta_ci95_bootstrap_pp": [
+        -4.69,
+        -0.63
+      ],
+      "paired_t": -2.404,
+      "paired_t_p": 0.030646476053462136,
+      "wilcoxon_p": 0.04711645096979023,
+      "wins_ties_losses": [
+        3,
+        3,
+        9
+      ],
+      "contrast": "K=1: CLIP (DFN-CLIP) vs ResNet-18",
+      "clip_kind": "frozen_probe",
+      "resnet_budget": "legacy",
+      "holm_adjusted_p": 0.038274944835245,
+      "holm_significant": true,
+      "bh_qvalue": 0.03064647605346214,
+      "bh_fdr_significant": true
+    },
+    {
+      "clip_acc_pct": 48.79,
+      "resnet_acc_pct": 43.38,
+      "resnet_std_pct": 5.58,
+      "delta_pp": 5.41,
+      "delta_ci95_bootstrap_pp": [
+        1.79,
+        8.89
+      ],
+      "paired_t": 2.854,
+      "paired_t_p": 0.012758314945081669,
+      "wilcoxon_p": 0.018303464690576244,
+      "wins_ties_losses": [
+        11,
+        1,
+        3
+      ],
+      "contrast": "K=2: CLIP (LAION-2B) vs ResNet-18",
+      "clip_kind": "frozen_probe",
+      "resnet_budget": "legacy",
+      "holm_adjusted_p": 0.038274944835245,
+      "holm_significant": true,
+      "bh_qvalue": 0.015309977934098001,
+      "bh_fdr_significant": true
+    },
+    {
+      "clip_acc_pct": 36.52,
+      "resnet_acc_pct": 43.38,
+      "resnet_std_pct": 5.58,
+      "delta_pp": -6.86,
+      "delta_ci95_bootstrap_pp": [
+        -9.52,
+        -4.3
+      ],
+      "paired_t": -4.945,
+      "paired_t_p": 0.00021557882582590618,
+      "wilcoxon_p": 0.00018310546875,
+      "wins_ties_losses": [
+        1,
+        0,
+        14
+      ],
+      "contrast": "K=2: CLIP (DFN-CLIP) vs ResNet-18",
+      "clip_kind": "frozen_probe",
+      "resnet_budget": "legacy",
+      "holm_adjusted_p": 0.0010778941291295309,
+      "holm_significant": true,
+      "bh_qvalue": 0.0003233682387388593,
+      "bh_fdr_significant": true
+    },
+    {
+      "clip_acc_pct": 60.19,
+      "resnet_acc_pct": 64.93,
+      "resnet_std_pct": 5.2,
+      "delta_pp": -4.74,
+      "delta_ci95_bootstrap_pp": [
+        -8.07,
+        -1.64
+      ],
+      "paired_t": -2.762,
+      "paired_t_p": 0.015291480424894734,
+      "wilcoxon_p": 0.00836181640625,
+      "wins_ties_losses": [
+        2,
+        0,
+        13
+      ],
+      "contrast": "K=5: CLIP (LAION-2B) vs ResNet-18",
+      "clip_kind": "frozen_probe",
+      "resnet_budget": "matched",
+      "holm_adjusted_p": 0.038274944835245,
+      "holm_significant": true,
+      "bh_qvalue": 0.016681615008976074,
+      "bh_fdr_significant": true
+    },
+    {
+      "clip_acc_pct": 47.97,
+      "resnet_acc_pct": 64.93,
+      "resnet_std_pct": 5.2,
+      "delta_pp": -16.96,
+      "delta_ci95_bootstrap_pp": [
+        -20.0,
+        -14.06
+      ],
+      "paired_t": -10.868,
+      "paired_t_p": 3.3000190934711245e-08,
+      "wilcoxon_p": 6.103515625e-05,
+      "wins_ties_losses": [
+        0,
+        0,
+        15
+      ],
+      "contrast": "K=5: CLIP (DFN-CLIP) vs ResNet-18",
+      "clip_kind": "frozen_probe",
+      "resnet_budget": "matched",
+      "holm_adjusted_p": 3.3000190934711247e-07,
+      "holm_significant": true,
+      "bh_qvalue": 1.3200076373884498e-07,
+      "bh_fdr_significant": true
+    },
+    {
+      "clip_acc_pct": 66.47,
+      "resnet_acc_pct": 74.64,
+      "resnet_std_pct": 2.33,
+      "delta_pp": -8.17,
+      "delta_ci95_bootstrap_pp": [
+        -9.66,
+        -6.67
+      ],
+      "paired_t": -10.344,
+      "paired_t_p": 6.134248954234884e-08,
+      "wilcoxon_p": 6.103515625e-05,
+      "wins_ties_losses": [
+        0,
+        0,
+        15
+      ],
+      "contrast": "K=10: CLIP (LAION-2B) vs ResNet-18",
+      "clip_kind": "frozen_probe",
+      "resnet_budget": "matched",
+      "holm_adjusted_p": 5.520824058811396e-07,
+      "holm_significant": true,
+      "bh_qvalue": 1.8402746862704651e-07,
+      "bh_fdr_significant": true
+    },
+    {
+      "clip_acc_pct": 56.43,
+      "resnet_acc_pct": 74.64,
+      "resnet_std_pct": 2.33,
+      "delta_pp": -18.21,
+      "delta_ci95_bootstrap_pp": [
+        -19.95,
+        -16.57
+      ],
+      "paired_t": -20.178,
+      "paired_t_p": 9.539114727354018e-12,
+      "wilcoxon_p": 6.103515625e-05,
+      "wins_ties_losses": [
+        0,
+        0,
+        15
+      ],
+      "contrast": "K=10: CLIP (DFN-CLIP) vs ResNet-18",
+      "clip_kind": "frozen_probe",
+      "resnet_budget": "matched",
+      "holm_adjusted_p": 1.144693767282482e-10,
+      "holm_significant": true,
+      "bh_qvalue": 1.144693767282482e-10,
+      "bh_fdr_significant": true
+    },
+    {
+      "clip_acc_pct": 75.85,
+      "resnet_acc_pct": 64.93,
+      "resnet_std_pct": 5.2,
+      "delta_pp": 10.92,
+      "delta_ci95_bootstrap_pp": [
+        8.07,
+        13.91
+      ],
+      "paired_t": 6.986,
+      "paired_t_p": 6.385499670271131e-06,
+      "wilcoxon_p": 6.103515625e-05,
+      "wins_ties_losses": [
+        15,
+        0,
+        0
+      ],
+      "contrast": "K=5: CLIP fine-tuned (LAION-2B) vs ResNet-18 (matched budget)",
+      "clip_kind": "finetuned",
+      "checkpoint": "LAION-2B",
+      "resnet_budget": "matched",
+      "holm_adjusted_p": 4.469849769189792e-05,
+      "holm_significant": true,
+      "bh_qvalue": 1.2770999340542264e-05,
+      "bh_fdr_significant": true,
+      "p3c_branch": "R (reversal)"
+    },
+    {
+      "clip_acc_pct": 79.28,
+      "resnet_acc_pct": 74.64,
+      "resnet_std_pct": 2.33,
+      "delta_pp": 4.64,
+      "delta_ci95_bootstrap_pp": [
+        2.36,
+        6.91
+      ],
+      "paired_t": 3.857,
+      "paired_t_p": 0.001744681712988534,
+      "wilcoxon_p": 0.00262451171875,
+      "wins_ties_losses": [
+        12,
+        0,
+        3
+      ],
+      "contrast": "K=10: CLIP fine-tuned (LAION-2B) vs ResNet-18 (matched budget)",
+      "clip_kind": "finetuned",
+      "checkpoint": "LAION-2B",
+      "resnet_budget": "matched",
+      "holm_adjusted_p": 0.006978726851954136,
+      "holm_significant": true,
+      "bh_qvalue": 0.0023262422839847117,
+      "bh_fdr_significant": true,
+      "p3c_branch": "R (reversal)"
+    },
+    {
+      "clip_acc_pct": 77.1,
+      "resnet_acc_pct": 64.93,
+      "resnet_std_pct": 5.2,
+      "delta_pp": 12.17,
+      "delta_ci95_bootstrap_pp": [
+        9.42,
+        14.64
+      ],
+      "paired_t": 8.725,
+      "paired_t_p": 4.916995576459605e-07,
+      "wilcoxon_p": 0.0001220703125,
+      "wins_ties_losses": [
+        14,
+        0,
+        1
+      ],
+      "contrast": "K=5: CLIP fine-tuned (DFN-CLIP) vs ResNet-18 (matched budget)",
+      "clip_kind": "finetuned",
+      "checkpoint": "DFN-CLIP",
+      "resnet_budget": "matched",
+      "holm_adjusted_p": 3.933596461167684e-06,
+      "holm_significant": true,
+      "bh_qvalue": 1.1800789383503053e-06,
+      "bh_fdr_significant": true,
+      "p3c_branch": "R (reversal)"
+    },
+    {
+      "clip_acc_pct": 85.12,
+      "resnet_acc_pct": 74.64,
+      "resnet_std_pct": 2.33,
+      "delta_pp": 10.48,
+      "delta_ci95_bootstrap_pp": [
+        9.27,
+        11.88
+      ],
+      "paired_t": 15.196,
+      "paired_t_p": 4.286294577958058e-10,
+      "wilcoxon_p": 6.103515625e-05,
+      "wins_ties_losses": [
+        15,
+        0,
+        0
+      ],
+      "contrast": "K=10: CLIP fine-tuned (DFN-CLIP) vs ResNet-18 (matched budget)",
+      "clip_kind": "finetuned",
+      "checkpoint": "DFN-CLIP",
+      "resnet_budget": "matched",
+      "holm_adjusted_p": 4.714924035753864e-09,
+      "holm_significant": true,
+      "bh_qvalue": 2.571776746774835e-09,
+      "bh_fdr_significant": true,
+      "p3c_branch": "R (reversal)"
+    }
+  ],
+  "dfn_ft_branches": {
+    "K=5": "R (reversal)",
+    "K=10": "R (reversal)"
+  },
+  "provenance": {
+    "clip_dfn": "data/clip_fewshot.json",
+    "clip_laion": "data/laion_fewshot_canonical.json",
+    "resnet_K_1": "data/paired_kshot_a4.json (legacy budget)",
+    "resnet_K_2": "data/paired_kshot_a4_k2.json (legacy budget)",
+    "resnet_K_5_matched": "data/p3b_resnet_kshot_matched.json",
+    "resnet_K_10_matched": "data/p3b_resnet_kshot_matched_k10.json",
+    "clip_ft_laion_K_5": "data/p3b_clip_finetune_kshot.json",
+    "clip_ft_laion_K_10": "data/p3b_clip_finetune_kshot_k10.json",
+    "clip_ft_dfn_K_5": "data/p3c_clip_finetune_kshot_dfn.json",
+    "clip_ft_dfn_K_10": "data/p3c_clip_finetune_kshot_dfn_k10.json",
+    "old_family_of_8": "data/multiplicity_k2.json",
+    "old_family_of_10": "data/multiplicity_p3b.json"
+  }
+}

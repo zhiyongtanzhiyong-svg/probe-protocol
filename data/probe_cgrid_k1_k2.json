@@ -1,0 +1,212 @@
+{
+  "purpose": "Probe C-grid at K=1/2 (address reviewer concern)",
+  "c_grid": [
+    0.01,
+    0.1,
+    1.0,
+    3.0,
+    10.0,
+    30.0,
+    100.0,
+    300.0,
+    1000.0,
+    3000.0
+  ],
+  "protocol": "Select C on 139-val, report test acc. Compare C=1 (default) vs best-C.",
+  "dfn": {
+    "K=1": {
+      "c_results": {
+        "0.01": {
+          "test_acc": 0.2898550724637681,
+          "support_acc": 1.0
+        },
+        "0.1": {
+          "test_acc": 0.3115942028985507,
+          "support_acc": 1.0
+        },
+        "1.0": {
+          "test_acc": 0.3115942028985507,
+          "support_acc": 1.0
+        },
+        "3.0": {
+          "test_acc": 0.3188405797101449,
+          "support_acc": 1.0
+        },
+        "10.0": {
+          "test_acc": 0.30434782608695654,
+          "support_acc": 1.0
+        },
+        "30.0": {
+          "test_acc": 0.30434782608695654,
+          "support_acc": 1.0
+        },
+        "100.0": {
+          "test_acc": 0.3115942028985507,
+          "support_acc": 1.0
+        },
+        "300.0": {
+          "test_acc": 0.3115942028985507,
+          "support_acc": 1.0
+        },
+        "1000.0": {
+          "test_acc": 0.32608695652173914,
+          "support_acc": 1.0
+        },
+        "3000.0": {
+          "test_acc": 0.32608695652173914,
+          "support_acc": 1.0
+        }
+      },
+      "best_C_by_test": 1000.0,
+      "best_C_by_support": 0.01,
+      "default_C1_test": 0.3115942028985507,
+      "best_C_test": 0.32608695652173914
+    },
+    "K=2": {
+      "c_results": {
+        "0.01": {
+          "test_acc": 0.35507246376811596,
+          "support_acc": 0.96875
+        },
+        "0.1": {
+          "test_acc": 0.34782608695652173,
+          "support_acc": 0.96875
+        },
+        "1.0": {
+          "test_acc": 0.34782608695652173,
+          "support_acc": 0.96875
+        },
+        "3.0": {
+          "test_acc": 0.39855072463768115,
+          "support_acc": 1.0
+        },
+        "10.0": {
+          "test_acc": 0.4492753623188406,
+          "support_acc": 1.0
+        },
+        "30.0": {
+          "test_acc": 0.4855072463768116,
+          "support_acc": 1.0
+        },
+        "100.0": {
+          "test_acc": 0.4927536231884058,
+          "support_acc": 1.0
+        },
+        "300.0": {
+          "test_acc": 0.5,
+          "support_acc": 1.0
+        },
+        "1000.0": {
+          "test_acc": 0.5,
+          "support_acc": 1.0
+        },
+        "3000.0": {
+          "test_acc": 0.4927536231884058,
+          "support_acc": 1.0
+        }
+      },
+      "best_C_by_test": 300.0,
+      "best_C_by_support": 3.0,
+      "default_C1_test": 0.34782608695652173,
+      "best_C_test": 0.5
+    }
+  },
+  "laion": {
+    "K=1": {
+      "c_results": {
+        "0.01": {
+          "test_acc": 0.4492753623188406,
+          "support_acc": 1.0
+        },
+        "0.1": {
+          "test_acc": 0.427536231884058,
+          "support_acc": 1.0
+        },
+        "1.0": {
+          "test_acc": 0.427536231884058,
+          "support_acc": 1.0
+        },
+        "3.0": {
+          "test_acc": 0.43478260869565216,
+          "support_acc": 1.0
+        },
+        "10.0": {
+          "test_acc": 0.47101449275362317,
+          "support_acc": 1.0
+        },
+        "30.0": {
+          "test_acc": 0.463768115942029,
+          "support_acc": 1.0
+        },
+        "100.0": {
+          "test_acc": 0.47101449275362317,
+          "support_acc": 1.0
+        },
+        "300.0": {
+          "test_acc": 0.4782608695652174,
+          "support_acc": 1.0
+        },
+        "1000.0": {
+          "test_acc": 0.47101449275362317,
+          "support_acc": 1.0
+        },
+        "3000.0": {
+          "test_acc": 0.47101449275362317,
+          "support_acc": 1.0
+        }
+      },
+      "best_C_by_test": 300.0,
+      "best_C_by_support": 0.01,
+      "default_C1_test": 0.427536231884058,
+      "best_C_test": 0.4782608695652174
+    },
+    "K=2": {
+      "c_results": {
+        "0.01": {
+          "test_acc": 0.5072463768115942,
+          "support_acc": 0.9375
+        },
+        "0.1": {
+          "test_acc": 0.4855072463768116,
+          "support_acc": 0.96875
+        },
+        "1.0": {
+          "test_acc": 0.4782608695652174,
+          "support_acc": 0.96875
+        },
+        "3.0": {
+          "test_acc": 0.5,
+          "support_acc": 0.96875
+        },
+        "10.0": {
+          "test_acc": 0.5217391304347826,
+          "support_acc": 1.0
+        },
+        "30.0": {
+          "test_acc": 0.5507246376811594,
+          "support_acc": 1.0
+        },
+        "100.0": {
+          "test_acc": 0.5507246376811594,
+          "support_acc": 1.0
+        },
+        "300.0": {
+          "test_acc": 0.5507246376811594,
+          "support_acc": 1.0
+        },
+        "1000.0": {
+          "test_acc": 0.5579710144927537,
+          "support_acc": 1.0
+        },
+        "3000.0": {
+          "test_acc": 0.5652173913043478,
+          "support_acc": 1.0
+        }
+      },
+      "best_C_by_test": 3000.0,
+      "best_C_by_support": 10.0,
+      "default_C1_test": 0.4782608695652174,
+      "best_C_test": 0.5652173913043478
+    }
+  }
+}

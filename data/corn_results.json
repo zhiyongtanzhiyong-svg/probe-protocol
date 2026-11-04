@@ -1,0 +1,284 @@
+{
+  "data": {
+    "n_images": 3852,
+    "n_classes": 4,
+    "class_names": [
+      "Cercospora (gray) leaf spot on a corn leaf",
+      "common rust on a corn leaf",
+      "northern leaf blight on a corn leaf",
+      "a healthy corn leaf"
+    ],
+    "class_counts": {
+      "Cercospora (gray) leaf spot on a corn leaf": 513,
+      "common rust on a corn leaf": 1192,
+      "northern leaf blight on a corn leaf": 985,
+      "a healthy corn leaf": 1162
+    },
+    "split": {
+      "train": 3159,
+      "val": 347,
+      "test": 346
+    }
+  },
+  "near_dup": {
+    "max_cosine_test_to_train": 0.9897,
+    "frac_test_maxcos_gt_0.99": 0.0,
+    "frac_test_maxcos_gt_0.97": 0.1561,
+    "note": "split-integrity screen mirroring TPDD; >0.99 flagged as true near-duplicate"
+  },
+  "zero_shot": {
+    "a photo of a {x}": {
+      "accuracy": 0.5578,
+      "balanced_accuracy": 0.5432
+    },
+    "{x}": {
+      "accuracy": 0.5578,
+      "balanced_accuracy": 0.539
+    },
+    "a close-up photo of a {x}": {
+      "accuracy": 0.5116,
+      "balanced_accuracy": 0.549
+    },
+    "a corn leaf with {x}": {
+      "accuracy": 0.4595,
+      "balanced_accuracy": 0.3827
+    },
+    "a plant leaf showing {x}": {
+      "accuracy": 0.474,
+      "balanced_accuracy": 0.4014
+    },
+    "__majority_baseline": {
+      "accuracy": 0.3121,
+      "class": "common rust on a corn leaf"
+    },
+    "__uniform_baseline": {
+      "accuracy": 0.25
+    }
+  },
+  "few_shot": {
+    "K=1": {
+      "n_support": 4,
+      "clip_probe_C1": {
+        "mean": 0.7676,
+        "sd": 0.0542,
+        "per_seed": [
+          0.7659,
+          0.8035,
+          0.8208,
+          0.8382,
+          0.7052,
+          0.7168,
+          0.7283,
+          0.8526,
+          0.7197,
+          0.8555,
+          0.7659,
+          0.7803,
+          0.7225,
+          0.7197,
+          0.7197
+        ]
+      },
+      "resnet_finetuned": {
+        "mean": 0.6863,
+        "sd": 0.104,
+        "per_seed": [
+          0.5665,
+          0.8006,
+          0.5145,
+          0.4971,
+          0.7139,
+          0.7023,
+          0.6503,
+          0.8699,
+          0.7832,
+          0.6908,
+          0.7052,
+          0.7601,
+          0.7139,
+          0.7168,
+          0.6098
+        ]
+      },
+      "gap_clip_minus_resnet": 0.0813
+    },
+    "K=5": {
+      "n_support": 20,
+      "clip_probe_C1": {
+        "mean": 0.8414,
+        "sd": 0.0353,
+        "per_seed": [
+          0.8324,
+          0.8786,
+          0.7977,
+          0.7919,
+          0.8208,
+          0.8382,
+          0.8208,
+          0.8757,
+          0.8699,
+          0.7688,
+          0.8728,
+          0.8468,
+          0.8786,
+          0.8671,
+          0.8613
+        ]
+      },
+      "resnet_finetuned": {
+        "mean": 0.8751,
+        "sd": 0.0442,
+        "per_seed": [
+          0.8902,
+          0.9162,
+          0.8988,
+          0.8555,
+          0.922,
+          0.8902,
+          0.8613,
+          0.7717,
+          0.8208,
+          0.9422,
+          0.9017,
+          0.9046,
+          0.8671,
+          0.8439,
+          0.841
+        ]
+      },
+      "gap_clip_minus_resnet": -0.0337
+    },
+    "K=10": {
+      "n_support": 40,
+      "clip_probe_C1": {
+        "mean": 0.8717,
+        "sd": 0.0255,
+        "per_seed": [
+          0.8353,
+          0.8468,
+          0.9075,
+          0.8584,
+          0.8699,
+          0.8844,
+          0.8844,
+          0.8584,
+          0.8786,
+          0.8815,
+          0.8902,
+          0.9075,
+          0.8208,
+          0.8555,
+          0.896
+        ]
+      },
+      "resnet_finetuned": {
+        "mean": 0.9279,
+        "sd": 0.0281,
+        "per_seed": [
+          0.8902,
+          0.922,
+          0.9335,
+          0.9566,
+          0.9393,
+          0.922,
+          0.9335,
+          0.948,
+          0.8642,
+          0.9364,
+          0.9566,
+          0.9653,
+          0.8873,
+          0.9249,
+          0.9393
+        ]
+      },
+      "gap_clip_minus_resnet": -0.0563
+    }
+  },
+  "full_data": {
+    "clip": {
+      "clip_C1": 0.9566,
+      "clip_bestC": 0.9827,
+      "best_C": 30.0,
+      "clip_MLP": 0.9855,
+      "clip_knn1": 0.9422
+    },
+    "resnet": {
+      "mean": 0.9809,
+      "sd": 0.0052,
+      "per_seed": [
+        0.9855,
+        0.9827,
+        0.9798,
+        0.9711,
+        0.9827,
+        0.9827,
+        0.974,
+        0.9798,
+        0.9913,
+        0.9798,
+        0.9884,
+        0.9827,
+        0.9769,
+        0.9769,
+        0.9798
+      ]
+    },
+    "gap_clip_minus_resnet": 0.0018,
+    "n_seeds_done": 15
+  },
+  "cv": {
+    "folds": {
+      "0": {
+        "clip_C1": 0.943,
+        "clip_bestC": 0.9604,
+        "best_C": 3000.0,
+        "resnet": 0.9794,
+        "gap": -0.019
+      },
+      "1": {
+        "clip_C1": 0.943,
+        "clip_bestC": 0.9668,
+        "best_C": 1000.0,
+        "resnet": 0.9842,
+        "gap": -0.0174
+      },
+      "2": {
+        "clip_C1": 0.9415,
+        "clip_bestC": 0.9652,
+        "best_C": 30.0,
+        "resnet": 0.9842,
+        "gap": -0.019
+      },
+      "3": {
+        "clip_C1": 0.9335,
+        "clip_bestC": 0.9652,
+        "best_C": 100.0,
+        "resnet": 0.9763,
+        "gap": -0.0111
+      },
+      "4": {
+        "clip_C1": 0.9239,
+        "clip_bestC": 0.9762,
+        "best_C": 1000.0,
+        "resnet": 0.9715,
+        "gap": 0.0047
+      }
+    },
+    "n_folds_done": 5,
+    "summary": {
+      "clip_bestC_mean": 0.9668,
+      "resnet_mean": 0.9791,
+      "gap_pp_mean": -1.24,
+      "gap_pp_per_fold": [
+        -1.9,
+        -1.74,
+        -1.9,
+        -1.11,
+        0.47
+      ]
+    }
+  },
+  "protocol": "PlantVillage corn 4 classes; fixed stratified 82/9/9 split (seed42); zero-shot DFN-CLIP 5 plain captions; few-shot K=1/5/10 seed-paired CLIP C=1 probe vs fine-tuned ResNet-18 (15 seeds); full-data CLIP best-C probe vs ResNet-18 (15 seeds); 5-fold CV (CLIP best-C vs ResNet 1 seed/fold). Same heads/C-grid/recipe as TPDD.",
+  "elapsed_s": 4064.1
+}

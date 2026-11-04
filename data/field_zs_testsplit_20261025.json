@@ -1,0 +1,393 @@
+{
+ "date": "2026-10-25",
+ "note": "Zero-shot re-evaluated on the 53-image field TEST split (same split as field_finetune.py: stratified_split test_frac=0.25, seed=0), matching the fine-tuned models' evaluation set. Same 5-template scheme and transforms as scripts/field_eval.py. Runs on CPU.",
+ "n_test": 53,
+ "test_ids": [
+  "013.jpg",
+  "012.jpg",
+  "003.webp",
+  "062.jpg",
+  "072.jpg",
+  "016.webp",
+  "040.webp",
+  "053.jpg",
+  "032.png",
+  "018.webp",
+  "092.jpeg",
+  "101.png",
+  "063.webp",
+  "039.webp",
+  "002.webp",
+  "104.jpeg",
+  "033.webp",
+  "024.webp",
+  "011.jpg",
+  "059.jpg",
+  "015.webp",
+  "067.png",
+  "100.jpg",
+  "006_二氯喹啉酸残留药害.jpeg",
+  "189_烟草花叶病.webp",
+  "193_烟草花叶病.png",
+  "107_烟草花叶病毒病.webp",
+  "117_烟叶黑胫病.webp",
+  "123_烟叶黑胫病.jpeg",
+  "133_烟草炭疽病.webp",
+  "132_烟草炭疽病.webp",
+  "140_烟草白粉病.webp",
+  "196_烟草白粉病.jpeg",
+  "150_烟草赤星病初期.webp",
+  "145_烟叶赤星病.jpeg",
+  "173_烟草野火病.jpeg",
+  "222_烟草角斑病_初期.webp",
+  "182_烟草蛙眼病.jpeg",
+  "160_烟草立枯病.webp",
+  "156_烟草立枯病.webp",
+  "227_烟草青枯病.jpeg",
+  "233_烟草青枯病.webp",
+  "170_烟草枯萎病.webp",
+  "165_烟草枯萎病.webp",
+  "177_灰霉病.jpeg",
+  "241_烟草霜霉病.webp",
+  "244_烟草霜霉病.webp",
+  "247_烟草斑点病.webp",
+  "256_烟草黑斑病.jpg",
+  "205_烟草剑叶病.jpg",
+  "216_烟草曲叶病.png",
+  "212_烟草曲叶病.png",
+  "219_烟草曲叶病.png"
+ ],
+ "class_distribution_test": {
+  "healthy": 23,
+  "烟草花叶病": 3,
+  "烟草曲叶病": 3,
+  "烟叶黑胫病": 2,
+  "烟草炭疽病": 2,
+  "烟草白粉病": 2,
+  "烟叶赤星病": 2,
+  "烟草立枯病": 2,
+  "烟草青枯病": 2,
+  "烟草枯萎病": 2,
+  "烟草霜霉病": 2,
+  "二氯喹啉酸残留药害": 1,
+  "烟草野火病": 1,
+  "烟草角斑病": 1,
+  "烟草蛙眼病": 1,
+  "灰霉病": 1,
+  "烟草斑点病": 1,
+  "烟草黑斑病": 1,
+  "烟草剑叶病": 1
+ },
+ "clip_dfn_zeroshot_test53": {
+  "tag": "dfn",
+  "accuracy": 56.6,
+  "n_correct": 30,
+  "n_images": 53,
+  "majority_baseline": 43.4,
+  "per_class": {
+   "healthy": {
+    "n": 23,
+    "correct": 21,
+    "acc": 91.3
+   },
+   "二氯喹啉酸残留药害": {
+    "n": 1,
+    "correct": 0,
+    "acc": 0.0
+   },
+   "灰霉病": {
+    "n": 1,
+    "correct": 1,
+    "acc": 100.0
+   },
+   "烟叶赤星病": {
+    "n": 2,
+    "correct": 1,
+    "acc": 50.0
+   },
+   "烟叶黑胫病": {
+    "n": 2,
+    "correct": 0,
+    "acc": 0.0
+   },
+   "烟草剑叶病": {
+    "n": 1,
+    "correct": 0,
+    "acc": 0.0
+   },
+   "烟草斑点病": {
+    "n": 1,
+    "correct": 1,
+    "acc": 100.0
+   },
+   "烟草曲叶病": {
+    "n": 3,
+    "correct": 0,
+    "acc": 0.0
+   },
+   "烟草枯萎病": {
+    "n": 2,
+    "correct": 0,
+    "acc": 0.0
+   },
+   "烟草炭疽病": {
+    "n": 2,
+    "correct": 0,
+    "acc": 0.0
+   },
+   "烟草白粉病": {
+    "n": 2,
+    "correct": 1,
+    "acc": 50.0
+   },
+   "烟草立枯病": {
+    "n": 2,
+    "correct": 0,
+    "acc": 0.0
+   },
+   "烟草花叶病": {
+    "n": 3,
+    "correct": 1,
+    "acc": 33.3
+   },
+   "烟草蛙眼病": {
+    "n": 1,
+    "correct": 1,
+    "acc": 100.0
+   },
+   "烟草角斑病": {
+    "n": 1,
+    "correct": 0,
+    "acc": 0.0
+   },
+   "烟草野火病": {
+    "n": 1,
+    "correct": 0,
+    "acc": 0.0
+   },
+   "烟草霜霉病": {
+    "n": 2,
+    "correct": 2,
+    "acc": 100.0
+   },
+   "烟草青枯病": {
+    "n": 2,
+    "correct": 1,
+    "acc": 50.0
+   },
+   "烟草黑斑病": {
+    "n": 1,
+    "correct": 0,
+    "acc": 0.0
+   }
+  }
+ },
+ "clip_laion_zeroshot_test53": {
+  "tag": "laion",
+  "accuracy": 39.6,
+  "n_correct": 21,
+  "n_images": 53,
+  "majority_baseline": 43.4,
+  "per_class": {
+   "healthy": {
+    "n": 23,
+    "correct": 15,
+    "acc": 65.2
+   },
+   "二氯喹啉酸残留药害": {
+    "n": 1,
+    "correct": 0,
+    "acc": 0.0
+   },
+   "灰霉病": {
+    "n": 1,
+    "correct": 1,
+    "acc": 100.0
+   },
+   "烟叶赤星病": {
+    "n": 2,
+    "correct": 1,
+    "acc": 50.0
+   },
+   "烟叶黑胫病": {
+    "n": 2,
+    "correct": 0,
+    "acc": 0.0
+   },
+   "烟草剑叶病": {
+    "n": 1,
+    "correct": 0,
+    "acc": 0.0
+   },
+   "烟草斑点病": {
+    "n": 1,
+    "correct": 1,
+    "acc": 100.0
+   },
+   "烟草曲叶病": {
+    "n": 3,
+    "correct": 0,
+    "acc": 0.0
+   },
+   "烟草枯萎病": {
+    "n": 2,
+    "correct": 0,
+    "acc": 0.0
+   },
+   "烟草炭疽病": {
+    "n": 2,
+    "correct": 0,
+    "acc": 0.0
+   },
+   "烟草白粉病": {
+    "n": 2,
+    "correct": 2,
+    "acc": 100.0
+   },
+   "烟草立枯病": {
+    "n": 2,
+    "correct": 0,
+    "acc": 0.0
+   },
+   "烟草花叶病": {
+    "n": 3,
+    "correct": 0,
+    "acc": 0.0
+   },
+   "烟草蛙眼病": {
+    "n": 1,
+    "correct": 1,
+    "acc": 100.0
+   },
+   "烟草角斑病": {
+    "n": 1,
+    "correct": 0,
+    "acc": 0.0
+   },
+   "烟草野火病": {
+    "n": 1,
+    "correct": 0,
+    "acc": 0.0
+   },
+   "烟草霜霉病": {
+    "n": 2,
+    "correct": 0,
+    "acc": 0.0
+   },
+   "烟草青枯病": {
+    "n": 2,
+    "correct": 0,
+    "acc": 0.0
+   },
+   "烟草黑斑病": {
+    "n": 1,
+    "correct": 0,
+    "acc": 0.0
+   }
+  }
+ },
+ "siglip_zeroshot_test53": {
+  "tag": "siglip",
+  "accuracy": 3.8,
+  "n_correct": 2,
+  "n_images": 53,
+  "majority_baseline": 43.4,
+  "per_class": {
+   "healthy": {
+    "n": 23,
+    "correct": 0,
+    "acc": 0.0
+   },
+   "二氯喹啉酸残留药害": {
+    "n": 1,
+    "correct": 0,
+    "acc": 0.0
+   },
+   "灰霉病": {
+    "n": 1,
+    "correct": 0,
+    "acc": 0.0
+   },
+   "烟叶赤星病": {
+    "n": 2,
+    "correct": 0,
+    "acc": 0.0
+   },
+   "烟叶黑胫病": {
+    "n": 2,
+    "correct": 0,
+    "acc": 0.0
+   },
+   "烟草剑叶病": {
+    "n": 1,
+    "correct": 0,
+    "acc": 0.0
+   },
+   "烟草斑点病": {
+    "n": 1,
+    "correct": 1,
+    "acc": 100.0
+   },
+   "烟草曲叶病": {
+    "n": 3,
+    "correct": 0,
+    "acc": 0.0
+   },
+   "烟草枯萎病": {
+    "n": 2,
+    "correct": 0,
+    "acc": 0.0
+   },
+   "烟草炭疽病": {
+    "n": 2,
+    "correct": 0,
+    "acc": 0.0
+   },
+   "烟草白粉病": {
+    "n": 2,
+    "correct": 1,
+    "acc": 50.0
+   },
+   "烟草立枯病": {
+    "n": 2,
+    "correct": 0,
+    "acc": 0.0
+   },
+   "烟草花叶病": {
+    "n": 3,
+    "correct": 0,
+    "acc": 0.0
+   },
+   "烟草蛙眼病": {
+    "n": 1,
+    "correct": 0,
+    "acc": 0.0
+   },
+   "烟草角斑病": {
+    "n": 1,
+    "correct": 0,
+    "acc": 0.0
+   },
+   "烟草野火病": {
+    "n": 1,
+    "correct": 0,
+    "acc": 0.0
+   },
+   "烟草霜霉病": {
+    "n": 2,
+    "correct": 0,
+    "acc": 0.0
+   },
+   "烟草青枯病": {
+    "n": 2,
+    "correct": 0,
+    "acc": 0.0
+   },
+   "烟草黑斑病": {
+    "n": 1,
+    "correct": 0,
+    "acc": 0.0
+   }
+  }
+ }
+}

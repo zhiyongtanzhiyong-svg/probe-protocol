@@ -1,0 +1,32 @@
+[
+  {
+    "template": "EN-Photo (original)",
+    "accuracy": 13.77,
+    "avg_len": 48.1
+  },
+  {
+    "template": "EN-Photo (padded)",
+    "accuracy": 13.77,
+    "avg_len": 70.0
+  },
+  {
+    "template": "EN-Symptom (original)",
+    "accuracy": 8.7,
+    "avg_len": 39.1
+  },
+  {
+    "template": "EN-Symptom (padded)",
+    "accuracy": 8.7,
+    "avg_len": 70.0
+  },
+  {
+    "template": "KG-Symptom (original)",
+    "accuracy": 15.22,
+    "avg_len": 45.9
+  },
+  {
+    "template": "KG-Symptom (padded)",
+    "accuracy": 15.22,
+    "avg_len": 70.0
+  }
+]

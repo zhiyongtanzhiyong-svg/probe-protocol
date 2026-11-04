@@ -1,0 +1,58 @@
+{
+  "C_selection": {
+    "val_accs": {
+      "0.01": 0.1081,
+      "0.1": 0.2046,
+      "1.0": 0.7375,
+      "3.0": 0.8417,
+      "10.0": 0.8687,
+      "30.0": 0.8803,
+      "100.0": 0.8726,
+      "300.0": 0.8726
+    },
+    "best_C": 30.0,
+    "test_best_C": 0.8261,
+    "test_C1": 0.7246,
+    "test_bal": 0.7513,
+    "test_f1": 0.6956
+  },
+  "prompt_selection": {
+    "val_accs": {
+      "EN-Label": 0.0849,
+      "EN-Photo": 0.139,
+      "EN-Symptom": 0.0811,
+      "EN-Disease": 0.0656,
+      "EN-Closeup": 0.1467,
+      "EN-Expert": 0.0811,
+      "CN-Label": 0.0695,
+      "CN-Photo": 0.0541,
+      "CN-Symptom": 0.0502,
+      "CN-Disease": 0.0502,
+      "CN-Closeup": 0.0927,
+      "KG-Symptom": 0.0965,
+      "KG-Condition": 0.1197,
+      "KG-Combined": 0.112
+    },
+    "best_prompt": "EN-Closeup",
+    "test_acc": 0.0942
+  },
+  "matrix": {
+    "clip_linear_C1": 0.7246,
+    "clip_linear_bestC": 0.8261,
+    "clip_mlp": 0.7899,
+    "resnet_linear": 0.681,
+    "resnet_mlp": 0.7464,
+    "resnet_finetuned": 0.864
+  },
+  "tost": {
+    "clip_acc": 0.8261,
+    "resnet_acc": 0.8841,
+    "diff_pp": -5.8,
+    "ci_pp": [
+      -12.32,
+      0.72
+    ],
+    "equiv_5pp": false
+  },
+  "elapsed": 415.9
+}

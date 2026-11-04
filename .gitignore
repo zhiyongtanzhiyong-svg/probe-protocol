@@ -1,0 +1,111 @@
+# .gitignore
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+*.egg-info/
+dist/
+build/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# LaTeX intermediate files
+*.aux
+*.log
+*.out
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.synctex(busy)
+*.bbl
+*.blg
+*.nav
+*.snm
+*.vrb
+*.toc
+*.lof
+*.lot
+*.idx
+*.ilg
+*.ind
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Data files (too large to track)
+*.npz
+*.npy
+*.h5
+*.hdf5
+*.pkl
+*.pickle
+*.csv
+*.tsv
+*.xlsx
+*.xls
+
+# Model files
+*.pt
+*.pth
+*.ckpt
+*.bin
+
+# Environment files
+.env
+
+# ---------------------------------------------------------------------------
+# Datasets are NOT in this repository: the image corpora are too large to
+# track. See README.md "Data" for how to obtain each one.
+# ---------------------------------------------------------------------------
+# TPDD tobacco images (splits 1295/138/138)
+# (image/label manifests ARE tracked: required by the Data Availability Statement)
+data/tpdd/*/*
+!data/tpdd/*/labels.json
+# TLD tobacco-leaf images (178 MB)
+data/tld_images/
+# Field dataset images (available from the authors on request)
+data/field/
+# PlantVillage tomato subset (313 MB)
+data/plantvillage_tomato/
+# Raw corn image subset (58 MB)
+data/plantvillage_corn/
+# 828 MB archive
+data/Plant_leaf_diseases_dataset_without_augmentation.zip
+# superseded outputs, kept out of the audit trail
+data/_stale/
+*.bak
+*.bak-*
+
+# Vendored third-party reference implementations (LP++ etc). These are external
+# code, not ours to version; clone them from their own repositories.
+reference_lpp/
+
+# Generated artifacts. Regenerate with: python3 scripts/generate_figures.py
+manuscript/paper/figures/
+logs/
+
+# ---------------------------------------------------------------------------
+# Local / non-artifact state that should not enter version control.
+# ---------------------------------------------------------------------------
+# Local pre-change snapshots of data stores (kept out of the audit trail,
+# EXCEPT the two review-re-run snapshots which the manuscript cites as
+# pre-re-run provenance)
+data/*.pre_*
+!data/coop_official.json.pre_canonical_store
+!data/lp_plus_plus.json.pre_cache_repoint
+# Transient caches
+data/reference_audit_cache.json

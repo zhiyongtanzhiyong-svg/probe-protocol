@@ -1,0 +1,50 @@
+{
+  "model": "DINOv2 ViT-L/14, 1024-dim CLS, frozen",
+  "resolution": "518px native (Resize518 bicubic -> CenterCrop518; 37x37 pos-embed, no interpolation)",
+  "protocol": "same canonical protocol as canonical_protocol.py; original image fed to 518px transform (no prior 224-crop); held-out test set (138)",
+  "n_train": 1295,
+  "n_test": 138,
+  "n_classes": 16,
+  "full_data": {
+    "linear_C1": {
+      "accuracy": 0.7464,
+      "balanced_accuracy": 0.6709,
+      "macro_f1": 0.6662
+    },
+    "linear_bestC": {
+      "accuracy": 0.8261,
+      "balanced_accuracy": 0.739,
+      "macro_f1": 0.7126
+    },
+    "mlp": {
+      "accuracy": 0.8261,
+      "balanced_accuracy": 0.7432,
+      "macro_f1": 0.7173
+    },
+    "knn1": {
+      "accuracy": 0.6739,
+      "balanced_accuracy": 0.6155,
+      "macro_f1": 0.6145
+    },
+    "best_C": 100.0,
+    "val_accs": {
+      "0.01": 0.139,
+      "0.1": 0.4981,
+      "1.0": 0.7915,
+      "3.0": 0.834,
+      "10.0": 0.8726,
+      "30.0": 0.888,
+      "100.0": 0.8996,
+      "300.0": 0.8958,
+      "1000.0": 0.8919,
+      "3000.0": 0.8958
+    }
+  },
+  "refs": {
+    "dinov2_224px_bestC": 0.7754,
+    "clip_dfn_bestC_full": 0.8623188405797102,
+    "resnet18_finetuned_full": 0.8772946859903381
+  },
+  "elapsed_sec": 219.1,
+  "refs_note": "cross-references refreshed from canonical_fig_artifacts.json; the measured values in this file are unchanged"
+}

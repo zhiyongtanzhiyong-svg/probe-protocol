@@ -1,0 +1,35 @@
+{
+  "n_classes": 16,
+  "singleton_classes": [
+    "anthracnose",
+    "black_shank",
+    "genetic_abnormality",
+    "tswv"
+  ],
+  "gap_all_pp": {},
+  "gap_excl_pp": {},
+  "resnet_source": "15-seed mean per-class recall from canonical_fig_artifacts.json (current images)",
+  "default_C1": {
+    "clip_BA_all_pct": 68.0,
+    "resnet_BA_all_pct": 81.16,
+    "clip_BA_excl_singletons_pct": 74.0,
+    "resnet_BA_excl_singletons_pct": 86.55,
+    "gap_all_pp": 13.16,
+    "gap_excl_pp": 12.55,
+    "clip_excl_class13_pct": 72.53,
+    "resnet_excl_class13_pct": 83.02,
+    "gap_excl_class13_pp": 10.49
+  },
+  "bestC": {
+    "clip_BA_all_pct": 77.62,
+    "resnet_BA_all_pct": 81.16,
+    "clip_BA_excl_singletons_pct": 86.83,
+    "resnet_BA_excl_singletons_pct": 86.55,
+    "gap_all_pp": 3.54,
+    "gap_excl_pp": -0.28,
+    "clip_excl_class13_pct": 82.8,
+    "resnet_excl_class13_pct": 83.02,
+    "gap_excl_class13_pp": 0.22
+  },
+  "note": "BA = macro mean of per-class recall. Excluding singleton (n_test==1) classes shrinks the ResNet-CLIP balanced-accuracy gap, consistent with \"largely driven by the four singleton test classes, with a smaller contribution from a mid-frequency class\"."
+}

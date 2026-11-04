@@ -1,0 +1,10 @@
+{"seed": 5, "best_val": 0.9493, "test": 0.942, "elapsed_s": 1306.9}
+{"seed": 6, "best_val": 0.9565, "test": 0.942, "elapsed_s": 978.5}
+{"seed": 7, "best_val": 0.9275, "test": 0.9348, "elapsed_s": 937.7}
+{"seed": 8, "best_val": 0.942, "test": 0.9203, "elapsed_s": 974.1}
+{"seed": 9, "best_val": 0.9493, "test": 0.9565, "elapsed_s": 982.6}
+{"seed": 10, "best_val": 0.9275, "test": 0.942, "elapsed_s": 964.9}
+{"seed": 11, "best_val": 0.9348, "test": 0.9565, "elapsed_s": 925.2}
+{"seed": 12, "best_val": 0.9348, "test": 0.9638, "elapsed_s": 922.6}
+{"seed": 13, "best_val": 0.942, "test": 0.9638, "elapsed_s": 923.1}
+{"seed": 14, "best_val": 0.9493, "test": 0.942, "elapsed_s": 924.1}

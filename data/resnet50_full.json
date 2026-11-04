@@ -1,0 +1,31 @@
+{
+  "date": "2026-09-30T23:17:49.383420",
+  "backbone": "resnet50",
+  "gpu": "NVIDIA GeForce RTX 4070 Ti",
+  "n_seeds": 5,
+  "epochs": 30,
+  "accs": [
+    0.8768115942028986,
+    0.9347826086956522,
+    0.8913043478260869,
+    0.8913043478260869,
+    0.8623188405797102
+  ],
+  "mean": 0.8913043478260869,
+  "std": 0.027113459324448853,
+  "sem": 0.012125507630928631,
+  "min": 0.8623188405797102,
+  "max": 0.9347826086956522,
+  "elapsed_s": 693.8087191581726,
+  "protocol": "resnet50 ImageNet-pretrained, AdamW lr=3e-4, cosine, bs=32, 30ep, best-val, full TPDD train (1295)/138 test, 5 seeds",
+  "refs": {
+    "resnet18_finetuned": 0.8772946859903381,
+    "clip_finetuned_dfn": 0.9589333333333333,
+    "clip_finetuned_laion": 0.9473333333333334,
+    "clip_frozen_probe_dfn": 0.7681159420289855,
+    "clip_frozen_probe_dfn_bestC": 0.8623188405797102,
+    "clip_frozen_probe_laion": 0.7609,
+    "clip_frozen_probe_laion_bestC": 0.8768
+  },
+  "_ref_refresh": "refs.clip_finetuned_dfn/laion refreshed 2026-10-20 to the n=15 canonical clip_finetune.json (was n=5 snapshot 0.95506/0.94926); ResNet-50 ordering claim unchanged."
+}

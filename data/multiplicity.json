@@ -1,0 +1,76 @@
+{
+  "family": "six few-shot CLIP-probe vs fine-tuned ResNet-18 seed-paired contrasts (K in {1,5,10} x {DFN-CLIP, LAION-2B}); paired-t p-values from data/paired_kshot_a4_both.json",
+  "alpha": 0.05,
+  "n_tests": 6,
+  "n_holm_surviving": 5,
+  "n_bh_surviving": 5,
+  "rows": [
+    {
+      "contrast": "K=1: CLIP (LAION-2B) vs ResNet-18",
+      "clip_acc_pct": 40.1,
+      "resnet_acc_pct": 33.04,
+      "delta_pp": 7.05,
+      "paired_t_p": 0.00015012954960072996,
+      "holm_significant": true,
+      "holm_adjusted_p": 0.00045038864880218984,
+      "bh_fdr_significant": true,
+      "bh_qvalue": 0.00022519432440109492
+    },
+    {
+      "contrast": "K=1: CLIP (DFN-CLIP) vs ResNet-18",
+      "clip_acc_pct": 31.06,
+      "resnet_acc_pct": 33.04,
+      "delta_pp": -1.98,
+      "paired_t_p": 0.14057158504398415,
+      "holm_significant": false,
+      "holm_adjusted_p": 0.14057158504398415,
+      "bh_fdr_significant": false,
+      "bh_qvalue": 0.14057158504398415
+    },
+    {
+      "contrast": "K=5: CLIP (LAION-2B) vs ResNet-18",
+      "clip_acc_pct": 58.41,
+      "resnet_acc_pct": 65.46,
+      "delta_pp": -7.05,
+      "paired_t_p": 0.0010014947629567229,
+      "holm_significant": true,
+      "holm_adjusted_p": 0.0020029895259134458,
+      "bh_fdr_significant": true,
+      "bh_qvalue": 0.0012017937155480675
+    },
+    {
+      "contrast": "K=5: CLIP (DFN-CLIP) vs ResNet-18",
+      "clip_acc_pct": 51.3,
+      "resnet_acc_pct": 65.46,
+      "delta_pp": -14.15,
+      "paired_t_p": 6.669328974490324e-07,
+      "holm_significant": true,
+      "holm_adjusted_p": 2.6677315897961297e-06,
+      "bh_fdr_significant": true,
+      "bh_qvalue": 1.333865794898065e-06
+    },
+    {
+      "contrast": "K=10: CLIP (LAION-2B) vs ResNet-18",
+      "clip_acc_pct": 65.02,
+      "resnet_acc_pct": 75.75,
+      "delta_pp": -10.72,
+      "paired_t_p": 1.531609645012908e-07,
+      "holm_significant": true,
+      "holm_adjusted_p": 7.65804822506454e-07,
+      "bh_fdr_significant": true,
+      "bh_qvalue": 4.594828935038724e-07
+    },
+    {
+      "contrast": "K=10: CLIP (DFN-CLIP) vs ResNet-18",
+      "clip_acc_pct": 58.31,
+      "resnet_acc_pct": 75.75,
+      "delta_pp": -17.44,
+      "paired_t_p": 1.9240764805206383e-10,
+      "holm_significant": true,
+      "holm_adjusted_p": 1.154445888312383e-09,
+      "bh_fdr_significant": true,
+      "bh_qvalue": 1.154445888312383e-09
+    }
+  ],
+  "note": "Holm-Bonferroni controls FWER; Benjamini-Hochberg controls FDR. 5/6 contrasts survive Holm and 5/6 survive BH; the survivors are ['K=1: CLIP (LAION-2B) vs ResNet-18', 'K=5: CLIP (LAION-2B) vs ResNet-18', 'K=5: CLIP (DFN-CLIP) vs ResNet-18', 'K=10: CLIP (LAION-2B) vs ResNet-18', 'K=10: CLIP (DFN-CLIP) vs ResNet-18']. Generated from the current p-values, so this note cannot drift from the table above it."
+}

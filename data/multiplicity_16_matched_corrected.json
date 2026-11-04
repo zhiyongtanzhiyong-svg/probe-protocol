@@ -1,0 +1,199 @@
+{
+  "description": "Corrected 16-contrast multiplicity family with two-sided paired t-test p-values",
+  "n_contrasts": 16,
+  "n_survive_holm": 15,
+  "contrasts": [
+    {
+      "name": "K=10 DFN frozen",
+      "p_two": 9.539114727354018e-12,
+      "delta_pp": -18.213545893719804,
+      "wtl": [
+        0,
+        0,
+        15
+      ],
+      "p_holm": 1.5262583563766428e-10,
+      "survive": true
+    },
+    {
+      "name": "K=10 DFN FT",
+      "p_two": 4.286294577958058e-10,
+      "delta_pp": 10.48133333333333,
+      "wtl": [
+        15,
+        0,
+        0
+      ],
+      "p_holm": 6.429441866937087e-09,
+      "survive": true
+    },
+    {
+      "name": "K=2 DFN FT",
+      "p_two": 2.489316477956188e-09,
+      "delta_pp": 11.061333333333335,
+      "wtl": [
+        15,
+        0,
+        0
+      ],
+      "p_holm": 3.485043069138663e-08,
+      "survive": true
+    },
+    {
+      "name": "K=2 DFN frozen",
+      "p_two": 3.5690696670249282e-09,
+      "delta_pp": -15.942927536231885,
+      "wtl": [
+        0,
+        0,
+        15
+      ],
+      "p_holm": 4.6397905671324065e-08,
+      "survive": true
+    },
+    {
+      "name": "K=5 DFN frozen",
+      "p_two": 3.3000190934711245e-08,
+      "delta_pp": -16.957652173913036,
+      "wtl": [
+        0,
+        0,
+        15
+      ],
+      "p_holm": 3.960022912165349e-07,
+      "survive": true
+    },
+    {
+      "name": "K=10 LAION frozen",
+      "p_two": 6.134248954234884e-08,
+      "delta_pp": -8.165236714975844,
+      "wtl": [
+        0,
+        0,
+        15
+      ],
+      "p_holm": 6.747673849658372e-07,
+      "survive": true
+    },
+    {
+      "name": "K=5 DFN FT",
+      "p_two": 4.916995576459605e-07,
+      "delta_pp": 12.17333333333333,
+      "wtl": [
+        14,
+        0,
+        1
+      ],
+      "p_holm": 4.916995576459606e-06,
+      "survive": true
+    },
+    {
+      "name": "K=5 LAION FT",
+      "p_two": 6.385499670271131e-06,
+      "delta_pp": 10.916666666666664,
+      "wtl": [
+        15,
+        0,
+        0
+      ],
+      "p_holm": 5.746949703244018e-05,
+      "survive": true
+    },
+    {
+      "name": "K=1 DFN frozen",
+      "p_two": 8.168584908833572e-06,
+      "delta_pp": -9.952908212560386,
+      "wtl": [
+        0,
+        0,
+        15
+      ],
+      "p_holm": 6.534867927066857e-05,
+      "survive": true
+    },
+    {
+      "name": "K=1 LAION FT",
+      "p_two": 3.2282284575756474e-05,
+      "delta_pp": 9.70866666666667,
+      "wtl": [
+        14,
+        0,
+        1
+      ],
+      "p_holm": 0.00022597599203029532,
+      "survive": true
+    },
+    {
+      "name": "K=2 LAION FT",
+      "p_two": 4.201321476954676e-05,
+      "delta_pp": 9.904000000000002,
+      "wtl": [
+        14,
+        1,
+        0
+      ],
+      "p_holm": 0.00025207928861728057,
+      "survive": true
+    },
+    {
+      "name": "K=1 DFN FT",
+      "p_two": 8.09711490351915e-05,
+      "delta_pp": 8.452666666666667,
+      "wtl": [
+        15,
+        0,
+        0
+      ],
+      "p_holm": 0.00040485574517595753,
+      "survive": true
+    },
+    {
+      "name": "K=10 LAION FT",
+      "p_two": 0.001744681712988534,
+      "delta_pp": 4.6366666666666685,
+      "wtl": [
+        12,
+        0,
+        3
+      ],
+      "p_holm": 0.006978726851954136,
+      "survive": true
+    },
+    {
+      "name": "K=2 LAION frozen",
+      "p_two": 0.01101133120472738,
+      "delta_pp": -3.6723961352656995,
+      "wtl": [
+        3,
+        0,
+        12
+      ],
+      "p_holm": 0.03303399361418214,
+      "survive": true
+    },
+    {
+      "name": "K=5 LAION frozen",
+      "p_two": 0.015291480424894734,
+      "delta_pp": -4.735429951690824,
+      "wtl": [
+        2,
+        0,
+        13
+      ],
+      "p_holm": 0.03303399361418214,
+      "survive": true
+    },
+    {
+      "name": "K=1 LAION frozen",
+      "p_two": 0.8482393431686801,
+      "delta_pp": -0.291072463768115,
+      "wtl": [
+        7,
+        0,
+        8
+      ],
+      "p_holm": 0.8482393431686801,
+      "survive": false
+    }
+  ]
+}
