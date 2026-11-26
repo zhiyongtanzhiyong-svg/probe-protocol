@@ -92,9 +92,9 @@ Welch p=0.15, not significant). The manuscript discloses this in Appendix A.
 
 ## Dependencies
 
-Python 3.8; `torch`, `torchvision`, `open_clip_torch` (2.32.0), `transformers`,
-`huggingface_hub`, `scikit-learn`, `numpy`, `scipy`, `matplotlib`. Exact versions
-per run are recorded in the `date`/`gpu`/`torch` fields of the JSON outputs.
+Python 3.8. Exact versions of the run environment are in
+`requirements-lock.txt`; MD5 checksums of all tracked `data/` files are in
+`MD5SUMS` (verify with `md5sum -c MD5SUMS`).
 
 ## Citation
 
