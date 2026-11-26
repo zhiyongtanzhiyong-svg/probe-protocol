@@ -1,6 +1,6 @@
 """
 P3b branch decision -- applies the pre-committed rule from
-refine-logs/P3B_KSHOT_PREREGISTRATION.md section 6 to the finished runs.
+the pre-registered branch-decision rule (section 6) to the finished runs.
 
 K-agnostic: pass --k (default 5). File names and the frozen-probe reference are
 derived from K (K=5 keeps the original unsuffixed file names for backward

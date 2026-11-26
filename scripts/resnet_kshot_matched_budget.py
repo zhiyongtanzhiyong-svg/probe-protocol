@@ -12,7 +12,7 @@ defensible if ResNet-18 also gets a search of the same SIZE. This script supplie
 User decision (2026-10-16, pre-run): the matched-budget ResNet value REPLACES the legacy
 single-config value in the manuscript, and is propagated through L249 / Table 1 / Figure 1.
 
-Protocol (see refine-logs/P3B_KSHOT_PREREGISTRATION.md sections 2.1, 5, 6)
+Protocol (pre-registered matched-budget design, sections 2.1, 5, 6)
 ------------------------------------------------------------------------
 * Support indices come from coop_experiment.kshot_subset_idx(y, K, seed+500), which was
   verified index-identical to paired_kshot_a4.KShotSubset. Asserted at run time.

@@ -45,7 +45,7 @@
 
 ### 最终运行记录（2026-11-05，投稿包终检 + 排版修复）
 **状态：交叉验证（实测非仅信 log）+ 修复完成，投稿包自洽可独立编译（31 页版）。**
-交叉验证确认 3 个真实问题并修复（**纯排版，未动任何数字/结论**；`scripts/check_tex_vs_data.py` 仍 34/34 PASS）：
+交叉验证确认 3 个真实问题并修复（**纯排版，未动任何数字/结论**；`tests/check_tex_vs_data.py` 仍 34/34 PASS）：
 1. **p24 Limitation(5) 右溢 62pt**：`\texttt{data/probe_cgrid_15seeds_20261104.json}` 为不可断行单 token，`\emergencystretch=2em` 也救不了（实测正文 xMax=585.96 > 右边界 524）→ 改 `\path{data/probe_cgrid_15seeds_20261104.json}`。**坑：`url` 宏包 `\path` 内必须用原生 `_`，写 `\_` 会渲染出字面反斜杠**（首版误用 `\_` 已纠正）。
 2. **p30 底溢 58pt + p29 底部 129pt 空隙 + 尾部挤到 p31**：Appendix B/C 两张高图（278pt+143pt）`[!ht]` 浮动错位，把 Appendix D 正文顶上图页 → Appendix D 前加 `\clearpage`（图落 p30、D 独立 p31）。修复后全文 0 overfull、无溢出、p29 空隙缩至 56pt。
 3. **投稿包 source 无法独立编译**：包内图为 `Figure_N_*.pdf`，而 source 引用 `figures/fig_*.pdf` → 包内 5 图改名 `fig_*.pdf`（sha256 与主 `figures/` 一致，内容零变化）。现 source 已在干净目录独立编译通过（0 错误 / 0 overfull / 0 undefined / 31 页）。
@@ -79,18 +79,18 @@ Any item fails → fix, then re-run all of 1–16.
 
 ## A. 构建与版面（机器）
 
-- [ ] 1. `latexmk -pdf -interaction=nonstopmode -g probe-protocol.tex`（在 `manuscript/paper/`）exit 0，且 log 中 `!`=0、Overfull=0、undefined=0
+- [ ] 1. `latexmk -pdf -interaction=nonstopmode -g probe-protocol.tex`（在 `paper/`）exit 0，且 log 中 `!`=0、Overfull=0、undefined=0
 - [ ] 2. `pdfinfo probe-protocol.pdf` → 29 页（若内容改动导致页数变化，先向自己说明原因再接受新页数）
 - [ ] 3. 浮动体顺序人工扫一眼 PDF：Fig 1 (p3) → T1 (p9) → T2 (p11, 含 DINOv2-FT 行) → Fig 2 (p12) → T3 (p13) → T4 (p14) → Fig 3 (p15) → Fig 4 (p19) → Cost-weighted (p26) → Fig 5+Appendix C (p27)；无孤行孤标题
 - [ ] 4. `python3 scripts/generate_figures.py` 重跑后 `git status` 无 figures 变化（图与数据零漂移）
 
 ## B. 数值一致性（机器）
 
-- [ ] 5. `python3 scripts/check_tex_vs_data.py` → **N/N All checks passed**（34 项锚点：ZS/few-shot/FT/multiplicity/ECE/LP++/cross-crop/DINOv2-FT）
+- [ ] 5. `python3 tests/check_tex_vs_data.py` → **N/N All checks passed**（34 项锚点：ZS/few-shot/FT/multiplicity/ECE/LP++/cross-crop/DINOv2-FT）
 - [ ] 6. Table 2 五行 × 五列与 `data/*.json` 逐格一致（含 DINOv2-FT: 40.2 / 57.5 / 75.3 / 85.1 / 95.6±1.5）——被 #5 覆盖，人工再抽 3 格
-- [ ] 7. `grep -c "45.5" manuscript/paper/probe-protocol.tex` = 0（旧 cross-check split 的番茄 K=1 值不得出现在正文）
-- [ ] 8. `grep -c "p2_results" manuscript/paper/probe-protocol.tex` = 0（已禁止引用的文件）
-- [ ] 9. `grep -c "REPLACE\|XXXX\|TBD" manuscript/paper/probe-protocol.tex` = 0（无遗留占位符）
+- [ ] 7. `grep -c "45.5" paper/probe-protocol.tex` = 0（旧 cross-check split 的番茄 K=1 值不得出现在正文）
+- [ ] 8. `grep -c "p2_results" paper/probe-protocol.tex` = 0（已禁止引用的文件）
+- [ ] 9. `grep -c "REPLACE\|XXXX\|TBD" paper/probe-protocol.tex` = 0（无遗留占位符）
 
 ## C. Provenance 与可复现（机器）
 
@@ -195,7 +195,7 @@ Any item fails → fix, then re-run all of 1–16.
 - [x] Convert citation style to numbered (if required) — **done** ([1]…[32])
 - [x] Remove all MDPI-specific macros — **done**
 - [x] Re-compile and verify 0 errors, 0 undefined references — **done** (pdflatex ×2, 0 errors)
-- [x] Run `scripts/check_tex_vs_data.py` — confirm 189/189 — **done** (189/189)
+- [x] Run `tests/check_tex_vs_data.py` — confirm 189/189 — **done** (189/189)
 - [x] Create Highlights (`Highlights.txt`) — **done** (5 bullets)
 - [x] Draft cover letter — **done** (`cover_letter_CeA.md`)
 - [ ] Proofread for grammar and style (use `latex-paper-en` grammar module)

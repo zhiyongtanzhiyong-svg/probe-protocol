@@ -94,7 +94,7 @@ data/_stale/
 reference_lpp/
 
 # Generated artifacts. Regenerate with: python3 generate_figures.py
-manuscript/paper/figures/
+paper/figures/
 logs/
 
 # ---------------------------------------------------------------------------
@@ -114,22 +114,22 @@ data/reference_audit_cache.json
 # Raw corn image subset (58 MB) -- obtain per README "Data provenance"
 data/plantvillage_corn/
 # Local review / audit working files (kept out of version control)
-manuscript/paper/KILL_ARGUMENT*
-manuscript/paper/PAPER_CLAIM_AUDIT*
-manuscript/paper/CITATION_AUDIT*
-manuscript/paper/EXPERIMENT_AUDIT*
-manuscript/paper/FIGURE_TABLE_AUDIT.md
-manuscript/paper/CITATION_VERIFICATION.md
-manuscript/paper/REVIEW_2026-*/
-manuscript/paper/probe-protocol-r1.tex
-manuscript/paper/probe-protocol-r1.pdf
-manuscript/paper/FIGURE_TABLE_AUDIT.json
-manuscript/paper/REVIEW_CEA_external_2026-10-30.md
+paper/KILL_ARGUMENT*
+paper/PAPER_CLAIM_AUDIT*
+paper/CITATION_AUDIT*
+paper/EXPERIMENT_AUDIT*
+paper/FIGURE_TABLE_AUDIT.md
+paper/CITATION_VERIFICATION.md
+paper/REVIEW_2026-*/
+paper/probe-protocol-r1.tex
+paper/probe-protocol-r1.pdf
+paper/FIGURE_TABLE_AUDIT.json
+paper/REVIEW_CEA_external_2026-10-30.md
 # Internal review/referee-simulation notes (not part of the manuscript or any
 # submitted artifact). These were working files; the submitted record is the
 # paper, its figures, and the data/code release only.
-manuscript/paper/REVIEW_13th_and_external_*.md
-manuscript/paper/REVIEW_round19_*.md
+paper/REVIEW_13th_and_external_*.md
+paper/REVIEW_round19_*.md
 idea-stage/NOVELTY_DOSSIER.md
 TODO.md
 # Raw field image corpus (78 MB) -- obtain from the authors on request;
@@ -137,3 +137,20 @@ TODO.md
 data/field/
 # Local editor/tool settings (never version these).
 .qoder/
+# Experiment planning / pre-registration working notes.
+refine-logs/
+# Internal experiment working rules.
+RESEARCH_PROTOCOL.md
+
+paper/*.aux
+paper/*.log
+paper/*.fls
+paper/*.fdb_latexmk
+paper/*.bbl
+paper/*.out
+# Local working remnants (kept on disk, never versioned).
+manuscript/
+data/_orig_baseline/
+data/prompt_ablation.SUPERSEDED.md
+submission_package*/
+*.zip

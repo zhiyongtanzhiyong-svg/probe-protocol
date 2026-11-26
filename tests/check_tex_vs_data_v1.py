@@ -5,7 +5,7 @@ enforces that mechanically: it derives every headline number from the JSON
 artifacts and asserts that the same number appears in the .tex. It fails loudly
 rather than warning, so a stale constant cannot survive an edit unnoticed.
 
-Run:  python3 scripts/check_tex_vs_data.py
+Run:  python3 tests/check_tex_vs_data.py
 """
 import json
 import re
@@ -17,7 +17,7 @@ from pathlib import Path
 import numpy as np
 
 ROOT = Path(__file__).resolve().parent.parent
-TEX = ROOT / "manuscript" / "paper" / "probe-protocol.tex"
+TEX = ROOT / "paper" / "probe-protocol.tex"
 DATA = ROOT / "data"
 
 

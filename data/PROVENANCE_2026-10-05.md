@@ -45,8 +45,8 @@ identical at K in {1,2,5,10} for seeds {0,1,7}.
 | `data/cache_freshness.json` | new |
 | `data/clip_fewshot.json.pre_kshot_caliber_fix` | pre-change snapshot |
 | `scripts/check_tex_vs_data.py` | +18 single-caliber checks |
-| `manuscript/paper/clip_vs_resnet_tobacco.tex` | Table 2 (K=2 column, DFN row), abstract, claims (2), Fig 1 caption, Results, RQ2, Discussion, Conclusion, Appendix A |
-| `manuscript/paper/figures/*` | regenerated from the JSON artifacts |
+| `paper/clip_vs_resnet_tobacco.tex` | Table 2 (K=2 column, DFN row), abstract, claims (2), Fig 1 caption, Results, RQ2, Discussion, Conclusion, Appendix A |
+| `paper/figures/*` | regenerated from the JSON artifacts |
 
 ## Corrected numbers
 
@@ -135,7 +135,7 @@ from the old set would show a strongly negative margin.
 `train_labels_full` at line 270. `y_full` is a NameError, so any run raised
 immediately. Fixed, plus the loader now normalises three different npz key
 conventions. A 2-seed/3-epoch smoke test was run before the full job, per
-RESEARCH_PROTOCOL 规程 0.
+实验规程 0（代码走读后再执行）。
 
 **2. `scripts/two_model_e4.py` is self-reproducible but not on the canonical
 path.** Re-running it reproduces `data/two_model_e4.json` to the digit

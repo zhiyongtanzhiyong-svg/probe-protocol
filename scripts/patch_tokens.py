@@ -1,6 +1,6 @@
 """
 Frozen-CLIP patch-token extraction for the foreground-anchored patch-attention
-head (this paper A+B expansion, EXPERIMENT_PLAN block B1/B2).
+head (this paper A+B expansion, pre-registered readout plan B1/B2).
 
 The paper's CLS features are the CLIP embedding `encode_image(img)`. This module
 returns the SAME CLS embedding (byte-identical, verified) together with the 196

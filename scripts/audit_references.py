@@ -12,7 +12,7 @@ each registry returned at fetch time. --refresh forces a live re-fetch.
 
 Outputs:
   data/reference_audit.json                     machine-readable evidence + verdicts
-  manuscript/paper/CITATION_VERIFICATION.md     human report (regenerated)
+  paper/CITATION_VERIFICATION.md     human report (regenerated)
 
 Exit code: 0 = all PASS and parity clean; 1 = any MISMATCH or parity error.
 UNRESOLVED (registry unreachable / no identifier) is a WARN, not a failure.
@@ -40,10 +40,10 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-TEX = ROOT / "manuscript" / "paper" / "probe-protocol.tex"
+TEX = ROOT / "paper" / "probe-protocol.tex"
 CACHE = ROOT / "data" / "reference_audit_cache.json"
 REPORT_JSON = ROOT / "data" / "reference_audit.json"
-REPORT_MD = ROOT / "manuscript" / "paper" / "CITATION_VERIFICATION.md"
+REPORT_MD = ROOT / "paper" / "CITATION_VERIFICATION.md"
 
 # Offline local ground-truth verification for registry-less (community) datasets.
 # key -> manifest that materializes the dataset locally + the numeric claims the

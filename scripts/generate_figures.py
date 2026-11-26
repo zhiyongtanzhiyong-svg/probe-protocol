@@ -3,7 +3,7 @@
 generate_figures.py — SINGLE source of truth for every figure in probe-protocol.tex,
 regenerated from experiment artifacts.
 
-Run once and it (re)generates all four figures into manuscript/paper/figures/:
+Run once and it (re)generates all four figures into paper/figures/:
 
   fig_fewshot_curve.pdf   Fig 1: few-shot accuracy vs K                              [CPU]
   fig_perclass.pdf        Fig 2: per-class recall, CLIP probe vs ResNet-18          [CPU]
@@ -65,7 +65,7 @@ from matplotlib.lines import Line2D
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # repo root (this file lives in scripts/)
 DATA = os.path.join(ROOT, "data")
-OUT = os.path.normpath(os.path.join(ROOT, "manuscript", "paper", "figures"))
+OUT = os.path.normpath(os.path.join(ROOT, "paper", "figures"))
 
 # ---------------------------------------------------------------------------
 # STYLE — journal-grade, sans-serif, greyscale-safe
@@ -695,7 +695,7 @@ JOBS = {
 
 def main():
     ap = argparse.ArgumentParser(
-        description="Generate all paper figures into manuscript/paper/figures/")
+        description="Generate all paper figures into paper/figures/")
     ap.add_argument("--only", nargs="*", choices=list(JOBS.keys()), default=None)
     ap.add_argument("--root", help="repository root containing data/ (default: script directory)")
     ap.add_argument("--data-dir", help="override the experiment data directory")

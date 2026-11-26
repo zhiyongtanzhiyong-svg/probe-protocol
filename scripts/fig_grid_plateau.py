@@ -9,7 +9,7 @@ hard-coded result constants) and renders two 3x3 panels:
 Each cell is a (learning rate, epochs) configuration; the starred cell is the
 validation-selected configuration re-run at n=15 in stage 2.
 
-Outputs: <root>/manuscript/paper/figures/fig_grid_plateau.{pdf,png,svg}
+Outputs: <root>/paper/figures/fig_grid_plateau.{pdf,png,svg}
 """
 import argparse
 import json

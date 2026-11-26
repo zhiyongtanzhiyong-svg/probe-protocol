@@ -16,7 +16,7 @@ is SMALLER than the gain, so if fine-tuning realises anything like its full-data
 LAION-2B overtakes ResNet-18 at K=5 and the paper's crossover bracket (2,5) is void.
 This experiment can invalidate the title claim. It is not confirmatory.
 
-Protocol: refine-logs/P3B_KSHOT_PREREGISTRATION.md sections 2.1, 5, 6, 7, 8.
+Protocol: pre-registered K-shot matched-search design (sections 2.1, 5, 6, 7, 8).
 
 * Support indices from coop_experiment.kshot_subset_idx(y, K, seed+500), asserted
   index-identical to paired_kshot_a4.KShotSubset at RUN TIME (the seed-paired comparison is

@@ -1,7 +1,7 @@
 """Checkpoint-complete multiplicity family for P3c (executed-as-twelve).
 
 Supersedes data/multiplicity_p3b.json (executed-as-ten). P3c (P3C_DFN_FEW_SHOT_FT_
-PREREGISTRATION.md section 5) re-opens the two DFN-CLIP few-shot fine-tune cells
+pre-registration section 5) re-opens the two DFN-CLIP few-shot fine-tune cells
 (K=5, K=10) that P3b deferred, so the matched-budget fine-tune comparison is now
 checkpoint-complete: BOTH CLIP checkpoints have fine-tune cells at K=5/10.
 
