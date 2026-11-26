@@ -37,8 +37,8 @@
 ## FINAL GATE — 20-item quick pass (2026-11-02, paper final: 29 pp)
 
 ### 最终运行记录（2026-11-05 晚，数据可用性 → Zenodo 持久 DOI）
-**变更：公共可引用版本从 GitHub URL 改指 Zenodo 持久 DOI（`10.5281/zenodo.23955318`；记录标题 `zhiyongtanzhiyong-svg/probe-protocol: v1.0.0-CeA_submission_snapshot`）。**
-- DAS（`probe-protocol.tex` L684）+ cover letter（L41）：GitHub URL → `https://doi.org/10.5281/zenodo.23955318`；“public repository” → “public Zenodo release (persistent identifier)”；删除 “exceed comfortable repository size”（Zenodo 能放 2GB，该理由不再成立 → 改中性 “not included in the release”）。
+**变更：公共可引用版本从 GitHub URL 改指 Zenodo 持久 DOI（`10.5281/zenodo.24557268`；记录标题 `zhiyongtanzhiyong-svg/probe-protocol: v1.0.0-CeA_submission_snapshot`）。**
+- DAS（`probe-protocol.tex` L684）+ cover letter（L41）：GitHub URL → `https://doi.org/10.5281/zenodo.24557268`；“public repository” → “public Zenodo release (persistent identifier)”；删除 “exceed comfortable repository size”（Zenodo 能放 2GB，该理由不再成立 → 改中性 “not included in the release”）。
 - **连锁排版**：DAS 变长触发末行 64→1.25pt 溢出 → 将 DAS 内长文件名改为可断行（`data/tpdd/{train,test,validation}/labels.json` 用 `\allowbreak` 分段；`feature_store_audit.json`/`cache_freshness.json` 用 `\path{...}` 原生下划线）。
 - 复验：稿件 0 错误 / **0 overfull** / 0 undefined / 31 页；封面信 0 overfull / 1 页；`check_tex_vs_data.py` 34/34 PASS；双文件 `grep github.com` = 0；包内 source 独立编译 0 overfull / 31 页。投稿包 + zip 已重建（1.9M，`unzip -t` 无错）。
 - **盲审已定（单盲，作者须知确认）**：标题页作者块保留 ✓；Zenodo 记录标题含作者用户名（`zhiyongtanzhiyong-svg/...`）**无碍**——单盲下作者本就对评审可见，无需匿名化（round19 “方案 B 双盲匿名”整条作废）。

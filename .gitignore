@@ -132,3 +132,6 @@ manuscript/paper/REVIEW_13th_and_external_*.md
 manuscript/paper/REVIEW_round19_*.md
 idea-stage/NOVELTY_DOSSIER.md
 TODO.md
+# Raw field image corpus (78 MB) -- obtain from the authors on request;
+# never version the images themselves (DAS: not in the public release).
+data/field/
