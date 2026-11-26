@@ -154,3 +154,8 @@ data/_orig_baseline/
 data/prompt_ablation.SUPERSEDED.md
 submission_package*/
 *.zip
+
+idea-stage/
+
+# Superseded experiment script (imports a removed helper).
+scripts/multimodel_eval.py
