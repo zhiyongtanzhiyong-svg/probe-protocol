@@ -135,3 +135,5 @@ TODO.md
 # Raw field image corpus (78 MB) -- obtain from the authors on request;
 # never version the images themselves (DAS: not in the public release).
 data/field/
+# Local editor/tool settings (never version these).
+.qoder/
