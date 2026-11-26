@@ -25,8 +25,6 @@ from PIL import Image
 from torch.utils.data import DataLoader
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score
-
-sys.path.insert(0, ROOT + '/scripts')
 from dataset import TPDDDataset, EVAL_TRANSFORM
 import open_clip
 

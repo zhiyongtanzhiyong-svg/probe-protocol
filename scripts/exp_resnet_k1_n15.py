@@ -5,8 +5,6 @@ Uses same protocol as this paper CLIP probe experiment.
 """
 import os
 import sys, json, torch, numpy as np, time, os, argparse
-sys.path.insert(0, ROOT + '/scripts')
-
 from dataset import TPDDDataset, TRAIN_TRANSFORM, EVAL_TRANSFORM, worker_init_fn
 from torch.utils.data import DataLoader, Dataset
 from model_zoo import ResNetBaseline, set_seed

@@ -22,7 +22,6 @@ from torch.utils.data import DataLoader, Dataset
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(REPO, "scripts"))
-sys.path.insert(0, ROOT + "/scripts")
 from dataset import TPDDDataset
 from canonical_protocol import run_clip_protocol
 from dinov2_protocol import load_dinov2, PTH, DEVICE

@@ -6,7 +6,6 @@ import os
 import sys, json, time
 import numpy as np, torch
 from PIL import Image
-sys.path.insert(0, ROOT + '/scripts')
 import dataset as D
 TPDDDataset = D.TPDDDataset
 REPO = ROOT

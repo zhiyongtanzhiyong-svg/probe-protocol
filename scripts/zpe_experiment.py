@@ -27,8 +27,6 @@ import sys, json
 import numpy as np
 import torch
 import torch.nn.functional as F
-
-sys.path.insert(0, ROOT + '/scripts')
 import open_clip
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))

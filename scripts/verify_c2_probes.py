@@ -14,9 +14,6 @@ import numpy as np
 import torch
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
-
-sys.path.insert(0, ROOT + '/scripts')
-
 CKPT = 'checkpoints/dfn_clip_vitl14/open_clip_pytorch_model.bin'
 NPZ = ROOT + '/data/clip_features_clean.npz'
 TPD_MAP = ROOT + '/data/tpd_to_kg_map.json'

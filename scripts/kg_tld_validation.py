@@ -5,8 +5,6 @@ Uses TPDD->KG mapping via TLD_TO_TPDD to create KG-augmented prompts for TLD.
 import os
 import sys, json, torch, numpy as np
 from datasets import load_dataset
-sys.path.insert(0, ROOT + '/scripts')
-
 import open_clip
 from dataset import EVAL_TRANSFORM, worker_init_fn
 from PIL import Image

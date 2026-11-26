@@ -16,8 +16,6 @@ import numpy as np
 import torch, torch.nn as nn
 from torch.utils.data import DataLoader
 from sklearn.linear_model import LogisticRegression
-
-sys.path.insert(0, ROOT + '/scripts')
 from dataset import TPDDDataset, TRAIN_TRANSFORM, EVAL_TRANSFORM, worker_init_fn
 from model_zoo import ResNetBaseline, set_seed
 

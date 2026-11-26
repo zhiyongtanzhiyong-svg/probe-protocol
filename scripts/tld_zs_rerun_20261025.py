@@ -6,7 +6,6 @@ import sys, json, time
 from math import comb
 import numpy as np, torch
 from PIL import Image
-sys.path.insert(0, ROOT + '/scripts')
 import dataset as D  # noqa
 REPO = ROOT
 DEVICE = 'cuda' if torch.cuda.is_available() else 'cpu'

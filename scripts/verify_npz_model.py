@@ -2,7 +2,6 @@
 by comparing test-image feature vectors (mean cosine similarity)."""
 import os
 import sys, os, numpy as np, torch
-sys.path.insert(0, ROOT + '/scripts')
 from dataset import TPDDataset, EVAL_TRANSFORM
 import open_clip
 

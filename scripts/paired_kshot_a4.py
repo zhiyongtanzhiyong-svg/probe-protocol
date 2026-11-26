@@ -10,7 +10,6 @@ import os
 import sys, os, json, time
 import numpy as np
 import torch, torch.nn as nn
-sys.path.insert(0, ROOT + '/scripts')
 from dataset import TPDDDataset, TRAIN_TRANSFORM, EVAL_TRANSFORM, worker_init_fn
 from torch.utils.data import DataLoader, Dataset
 from model_zoo import ResNetBaseline, set_seed

@@ -14,9 +14,6 @@ from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 from scipy.spatial.distance import cdist
 from scipy.stats import binomtest, norm
 from sklearn.metrics import silhouette_score
-
-sys.path.insert(0, ROOT + '/scripts')
-
 import open_clip
 from dataset import TPDDDataset, TRAIN_TRANSFORM, EVAL_TRANSFORM, worker_init_fn
 from model_zoo import ResNetBaseline, set_seed

@@ -26,8 +26,6 @@ from sklearn.metrics import accuracy_score, balanced_accuracy_score, f1_score
 from sklearn.model_selection import train_test_split
 from scipy.stats import t as tdist
 from torch.utils.data import DataLoader
-
-sys.path.insert(0, ROOT + '/scripts')
 from dataset import TPDDDataset, TRAIN_TRANSFORM, EVAL_TRANSFORM, worker_init_fn
 import open_clip
 import torch.nn as nn

@@ -4,8 +4,6 @@ FIXED: Chinese fallback for unmatched KG classes (matches prompt_ablation.py beh
 """
 import os
 import sys, json, torch, numpy as np
-sys.path.insert(0, ROOT + '/scripts')
-
 import open_clip
 from sklearn.linear_model import LogisticRegression
 from dataset import TPDDDataset, EVAL_TRANSFORM, TRAIN_TRANSFORM, worker_init_fn

@@ -25,7 +25,6 @@ import sklearn.metrics as M
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(REPO, "scripts"))
-sys.path.insert(0, ROOT + "/scripts")
 from dataset import TPDDDataset, EVAL_TRANSFORM, TRAIN_TRANSFORM, worker_init_fn
 from canonical_protocol import run_clip_protocol, compute_geometry
 

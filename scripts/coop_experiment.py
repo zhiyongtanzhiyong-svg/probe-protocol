@@ -21,8 +21,6 @@ import torch.nn as nn
 import torch.nn.functional as F
 from sklearn.linear_model import LogisticRegression
 from torch.utils.data import DataLoader
-
-sys.path.insert(0, ROOT + '/scripts')
 import open_clip
 from dataset import TPDDDataset, EVAL_TRANSFORM
 

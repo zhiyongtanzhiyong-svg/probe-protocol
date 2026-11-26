@@ -3,7 +3,6 @@ Replaces the 09-28-era ensemble numbers (7.97% DFN / 17.39% LAION) used as the
 CoOp 'zero-shot prior' context in the manuscript."""
 import os
 import sys, json
-sys.path.insert(0, ROOT + '/scripts')
 import dataset as D  # must import BEFORE torch (import-order quirk in this env)
 TPDDDataset = D.TPDDDataset
 import torch  # noqa: E402

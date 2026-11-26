@@ -54,7 +54,6 @@ from torch.utils.data import DataLoader
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(REPO, "scripts"))
-sys.path.insert(0, ROOT + "/scripts")
 import open_clip
 from dataset import TPDDDataset, EVAL_TRANSFORM, TRAIN_TRANSFORM, worker_init_fn
 from lp_plus_plus import (

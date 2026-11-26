@@ -9,8 +9,6 @@ import sys, json, torch, numpy as np, time, os
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import balanced_accuracy_score, f1_score, accuracy_score
 from scipy.stats import binomtest
-sys.path.insert(0, ROOT + '/scripts')
-
 import open_clip
 from dataset import TPDDDataset, TRAIN_TRANSFORM, EVAL_TRANSFORM, worker_init_fn
 from model_zoo import ResNetBaseline, set_seed

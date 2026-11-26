@@ -4,8 +4,6 @@ FIXED: No truncation. Uses a common target length, pads ALL prompts to that leng
 """
 import os
 import sys, json, torch, numpy as np
-sys.path.insert(0, ROOT + '/scripts')
-
 import open_clip
 from dataset import TPDDDataset, EVAL_TRANSFORM, worker_init_fn
 from PIL import Image

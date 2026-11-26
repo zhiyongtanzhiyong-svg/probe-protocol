@@ -5,7 +5,6 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, balanced_accuracy_score, f1_score
 from sklearn.neural_network import MLPClassifier
 from sklearn.model_selection import train_test_split
-sys.path.insert(0, ROOT + '/scripts')
 import open_clip
 from dataset import TPDDDataset, TRAIN_TRANSFORM, EVAL_TRANSFORM, worker_init_fn
 from PIL import Image

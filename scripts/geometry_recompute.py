@@ -38,8 +38,6 @@ import torch
 import torch.nn as nn
 import torchvision.models as models
 from torch.utils.data import DataLoader
-
-sys.path.insert(0, ROOT + '/scripts')
 try:
     from dataset import TPDDDataset, TRAIN_TRANSFORM, EVAL_TRANSFORM, worker_init_fn
 except Exception as e:

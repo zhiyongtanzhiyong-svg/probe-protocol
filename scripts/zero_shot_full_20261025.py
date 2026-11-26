@@ -31,8 +31,6 @@ import numpy as np
 import torch
 from PIL import Image
 from torchvision import transforms
-
-sys.path.insert(0, ROOT + '/scripts')
 import dataset as D
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))

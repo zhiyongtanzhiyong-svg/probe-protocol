@@ -24,8 +24,6 @@ import os
 import sys, json, time
 import numpy as np
 from sklearn.linear_model import LogisticRegression
-
-sys.path.insert(0, ROOT + '/scripts')
 import torch
 import open_clip
 
