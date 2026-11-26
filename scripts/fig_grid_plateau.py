@@ -18,7 +18,12 @@ from pathlib import Path
 import matplotlib
 import numpy as np
 
-from generate_figures import apply_style, C_DFN, C_LAION, GRID
+from generate_figures import apply_style, GRID
+
+# The selected-cell outline marks a *configuration*, not a model or a
+# checkpoint. Use one neutral colour in both panels; reusing the series colours
+# (blue/vermillion) falsely implied that the outline encodes the backbone.
+SEL_OUTLINE = "#000000"
 
 EPOCHS = [30, 100, 300]
 
@@ -91,9 +96,9 @@ def main():
     lrs_clip = sorted({e["vis_lr"] for e in d_clip["stage1_search"]})
     lrs_rn = sorted({e["lr"] for e in d_rn["stage1_search"]})
     im1 = draw_panel(axes[0], vals_clip, lrs_clip, sel_clip,
-                     "(a)  CLIP ViT-L/14 (LAION-2B) encoder fine-tune", C_LAION)
+                     "(a)  CLIP ViT-L/14 (LAION-2B) encoder fine-tune", SEL_OUTLINE)
     im2 = draw_panel(axes[1], vals_rn, lrs_rn, sel_rn,
-                     "(b)  ResNet-18", C_DFN)
+                     "(b)  ResNet-18", SEL_OUTLINE)
     for im in (im1, im2):
         fig.colorbar(im, ax=im.axes, fraction=0.046, pad=0.04)
     fig.text(0.5, 0.005,

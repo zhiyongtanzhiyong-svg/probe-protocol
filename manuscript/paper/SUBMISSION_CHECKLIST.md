@@ -36,6 +36,25 @@
 
 ## FINAL GATE — 20-item quick pass (2026-11-02, paper final: 29 pp)
 
+### 最终运行记录（2026-11-05 晚，数据可用性 → Zenodo 持久 DOI）
+**变更：公共可引用版本从 GitHub URL 改指 Zenodo 持久 DOI（`10.5281/zenodo.23955318`；记录标题 `zhiyongtanzhiyong-svg/probe-protocol: v1.0.0-CeA_submission_snapshot`）。**
+- DAS（`probe-protocol.tex` L684）+ cover letter（L41）：GitHub URL → `https://doi.org/10.5281/zenodo.23955318`；“public repository” → “public Zenodo release (persistent identifier)”；删除 “exceed comfortable repository size”（Zenodo 能放 2GB，该理由不再成立 → 改中性 “not included in the release”）。
+- **连锁排版**：DAS 变长触发末行 64→1.25pt 溢出 → 将 DAS 内长文件名改为可断行（`data/tpdd/{train,test,validation}/labels.json` 用 `\allowbreak` 分段；`feature_store_audit.json`/`cache_freshness.json` 用 `\path{...}` 原生下划线）。
+- 复验：稿件 0 错误 / **0 overfull** / 0 undefined / 31 页；封面信 0 overfull / 1 页；`check_tex_vs_data.py` 34/34 PASS；双文件 `grep github.com` = 0；包内 source 独立编译 0 overfull / 31 页。投稿包 + zip 已重建（1.9M，`unzip -t` 无错）。
+- **盲审已定（单盲，作者须知确认）**：标题页作者块保留 ✓；Zenodo 记录标题含作者用户名（`zhiyongtanzhiyong-svg/...`）**无碍**——单盲下作者本就对评审可见，无需匿名化（round19 “方案 B 双盲匿名”整条作废）。
+
+### 最终运行记录（2026-11-05，投稿包终检 + 排版修复）
+**状态：交叉验证（实测非仅信 log）+ 修复完成，投稿包自洽可独立编译（31 页版）。**
+交叉验证确认 3 个真实问题并修复（**纯排版，未动任何数字/结论**；`scripts/check_tex_vs_data.py` 仍 34/34 PASS）：
+1. **p24 Limitation(5) 右溢 62pt**：`\texttt{data/probe_cgrid_15seeds_20261104.json}` 为不可断行单 token，`\emergencystretch=2em` 也救不了（实测正文 xMax=585.96 > 右边界 524）→ 改 `\path{data/probe_cgrid_15seeds_20261104.json}`。**坑：`url` 宏包 `\path` 内必须用原生 `_`，写 `\_` 会渲染出字面反斜杠**（首版误用 `\_` 已纠正）。
+2. **p30 底溢 58pt + p29 底部 129pt 空隙 + 尾部挤到 p31**：Appendix B/C 两张高图（278pt+143pt）`[!ht]` 浮动错位，把 Appendix D 正文顶上图页 → Appendix D 前加 `\clearpage`（图落 p30、D 独立 p31）。修复后全文 0 overfull、无溢出、p29 空隙缩至 56pt。
+3. **投稿包 source 无法独立编译**：包内图为 `Figure_N_*.pdf`，而 source 引用 `figures/fig_*.pdf` → 包内 5 图改名 `fig_*.pdf`（sha256 与主 `figures/` 一致，内容零变化）。现 source 已在干净目录独立编译通过（0 错误 / 0 overfull / 0 undefined / 31 页）。
+- A.1 ✅ 干净重编译 0 错误 / **0 overfull**（本轮实测确认，非 11-04 记录时的 2 处）/ 0 undefined
+- A.2 ✅ **31 页**（11-04 记录为 30；31 = Appendix A 文本 + B/C 两图 + D 文本 的固有体量，`\clearpage` 使分页干净无溢出；非内容漂移）
+- 投稿包已同步：`01_manuscript.pdf` / `01_manuscript_source.tex` 取最新干净构建；`submission_package.zip` 重建（9 文件 / 1.9M / `unzip -t` 无错）
+- **盲审：单盲已确认（作者须知）**，不再作为开放项
+- 仍未关闭（**人工**）：作者 ORCID（5 人）、最终通读 PDF（Abstract/Conclusion/Appendix）
+
 ### 最终运行记录（2026-11-04，投稿前）
 **状态：机器可验证项全部通过（30 页版）**。逐项：
 - A.1 ✅ compile 0 错误 / 0 overfull / 0 undefined（修复 Appendix D 长文件名 overfull 79.9pt → 花括号集合记法）

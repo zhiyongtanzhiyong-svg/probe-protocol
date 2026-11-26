@@ -410,8 +410,15 @@ def fig_fewshot_curve(formats=("pdf", "svg"), transparent=False):
             r = mult.get(f"{K} {_tag_short[tag]} frozen")
             if r is None or not r.get("survive"):
                 continue
-            ax.text(i, vals[i] + sds[i] + 2.2, stars(r["p_two"]),
-                    ha="center", va="bottom", fontsize=9, color="black", zorder=8)
+            # Anchor the star to its own probe marker: same series colour and a
+            # small right-hand offset. The old `vals + sd + 2.2` placement let a
+            # large SD push the LAION star onto the ResNet curve and the DFN
+            # star onto the LAION curve, implying the wrong contrast; a plain
+            # vertical offset still leaves the star between adjacent series.
+            sc = C_LAION if tag == "LAION-2B" else C_DFN
+            ax.annotate(stars(r["p_two"]), (i, vals[i]), xytext=(5, -2),
+                        textcoords="offset points", ha="left", va="top",
+                        fontsize=9, color=sc, zorder=8)
 
     ax.set_title("(a)  Frozen-feature linear probe vs fine-tuned CNN", loc="left")
     ax.set_ylabel("Test accuracy (%)")

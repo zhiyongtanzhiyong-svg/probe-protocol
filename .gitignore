@@ -125,3 +125,10 @@ manuscript/paper/probe-protocol-r1.tex
 manuscript/paper/probe-protocol-r1.pdf
 manuscript/paper/FIGURE_TABLE_AUDIT.json
 manuscript/paper/REVIEW_CEA_external_2026-10-30.md
+# Internal review/referee-simulation notes (not part of the manuscript or any
+# submitted artifact). These were working files; the submitted record is the
+# paper, its figures, and the data/code release only.
+manuscript/paper/REVIEW_13th_and_external_*.md
+manuscript/paper/REVIEW_round19_*.md
+idea-stage/NOVELTY_DOSSIER.md
+TODO.md

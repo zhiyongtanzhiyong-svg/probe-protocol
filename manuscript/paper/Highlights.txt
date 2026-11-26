@@ -1,5 +1,5 @@
-- Off-the-shelf CLIP is unreliable zero-shot for fine-grained tobacco leaf disorders.
+- Zero-shot CLIP falls below majority-class baselines on two tobacco datasets.
 - With C selected on validation (15 seeds), LAION-2B K=1/2 is a tie; DFN-CLIP trails.
 - Under matched fine-tuning budgets, fine-tuned CLIP leads ResNet-18 at every K.
+- Validation-selected regularization improves frozen CLIP probes on tobacco.
 - ResNet-18 holds a small, sign-stable full-data edge under 5-fold cross-validation.
-- The ordering replicates on tomato and corn (PlantVillage) cross-crop checks.

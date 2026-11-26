@@ -1,0 +1,45 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=0.75in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=black,urlcolor=blue}
+
+\begin{document}
+
+November 25, 2026
+
+The Editor\\
+\emph{Plant Methods}
+
+Dear Editor,
+
+We submit the manuscript ``Fine-Tuning or Frozen Probes? Empirical Applicability Boundaries for Off-the-Shelf CLIP in Tobacco Leaf-Disorder Diagnosis'' for consideration as a Research Article in \emph{Plant Methods}.
+
+Plant-disease image-recognition studies increasingly adopt pretrained vision--language models, but the choice between frozen-feature probing and end-to-end fine-tuning is still usually made without a controlled comparison of adaptation protocols, without accounting for the asymmetric cost of agricultural misdiagnosis, and without measuring deployment-time compute. This manuscript treats that choice as a methodological question: under which binding constraint does each adaptation strategy dominate?
+
+On a 16-class tobacco leaf-disorder dataset (TPDD), we compare two generic CLIP checkpoints (DFN-CLIP, LAION-2B; both ViT-L/14) with a fine-tuned ResNet-18 across zero-shot, few-shot ($K\in\{1,2,5,10\}$, $n{=}15$ seeds) and full-data regimes. The ordering is set by adaptation protocol rather than by data regime: under a matched nine-configuration search (matched search size and selection procedure on the same validation data, \emph{not} equal compute), fine-tuned CLIP leads ResNet-18 at every measured $K$, with all eight seed-paired contrasts surviving Holm--Bonferroni correction within the executed 16-contrast family; frozen linear probes at the default $C{=}1$ tie or trail. Validation-selected $C$ narrows the LAION-2B few-shot gap to a non-significant near-tie; we report those contrasts as nominal and outside the pre-registered family rather than as confirmatory evidence.
+
+Two analyses connect this protocol comparison to agricultural practice. First, because missing a viral or virus-vector disorder carries a different cost than confusing two cosmetic disorders, we score per-class recall under explicit three-tier weights (viral/virus-vector classes $\times3$, severe fast-acting pathogens $\times2$, remaining classes $\times1$; an explicit assumption, not a measured cost matrix): at the default probe, viral-tier recall is $51.2\%$ for DFN-CLIP versus $74.1\%$ for fine-tuned ResNet-18, a gap that narrows after $C$ selection but does not reverse. Second, we measure deployment cost directly on a desktop GPU: fine-tuned ResNet-18 infers approximately 34$\times$ faster ($3{,}900$ vs $116$ images/s) with about 3$\times$ lower peak memory ($1.1$ vs $3.5$ GB) than CLIP. The resulting guidance is to choose by the binding constraint---accuracy, inference cost, or iteration speed---rather than by a single accuracy ranking.
+
+We state the scope explicitly. The boundary we establish is within-crop: tomato and corn checks reproduce only the frozen-probe arm, and a 53-image field split provides directional, underpowered evidence of a ranking reversal, not an external validation. The cost figures come from desktop-GPU measurement, not edge hardware. We therefore present the contribution as a protocol-controlled decision framework for plant-disease imaging under limited annotation and compute budgets, not as a new architecture or a universally transferable boundary. This emphasis on methodological comparison, explicit scope, and reproducibility fits \emph{Plant Methods}' remit: the journal has recently published systematic method comparisons in plant imaging (Smith et al., \emph{Plant Methods} 22:52, 2026), and our study is complementary in comparing adaptation protocols rather than architectures and in reporting per-class diagnostic cost and inference economics rather than data-curation variance.
+
+\noindent\textbf{Declarations.}
+\begin{enumerate}
+\item This manuscript is original, has not been published, and is not under consideration by any other journal or conference.
+\item All authors have read and approved the submitted version.
+\item X.~Luo is employed by China Guangdong Tobacco Meizhou Ltd, and part of this work was supported by the Meizhou Tobacco Science Research Project (Grant~202404); the authors declare no other conflicts of interest.
+\item During the preparation of this work the authors used an LLM coding assistant for drafting and code assistance. After using this tool, the authors reviewed and edited the content as needed, verified every reported statistic against the underlying result files, and take full responsibility for the content of the published article.
+\item The code, per-seed result files, per-split label manifests, and audit files supporting all findings are archived in a public Zenodo release (persistent identifier \url{https://doi.org/10.5281/zenodo.23955318}) for independent re-verification during review; the precomputed feature stores ($\approx$2\,GB), the re-derived TPDD image set, and the 246-image field dataset are available from the authors on request.
+\end{enumerate}
+
+Thank you for your consideration.
+
+Sincerely,
+
+Lizhuo Zhang (on behalf of all co-authors)\\
+College of Information and Intelligence, Hunan Agricultural University, Changsha 410128, China\\
+\texttt{zhanglizhuo@hunau.edu.cn}
+
+\end{document}
