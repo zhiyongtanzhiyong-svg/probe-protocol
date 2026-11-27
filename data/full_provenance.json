@@ -1,4 +1,6 @@
 {
+  "superseded": true,
+  "note": "Pre-rebuild snapshot (low-resolution TPDD archive, no longer available). Current values: data/canonical_results.json. See Appendix A.",
   "date": "2026-09-10",
   "device": "cuda:0",
   "gpu": "NVIDIA GeForce RTX 4070 Ti",

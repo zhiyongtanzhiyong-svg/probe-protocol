@@ -36,7 +36,7 @@ bbddf6f11c340e076b7318b695d966ab  data/field_finetune.json
 5cd2a0f4ae093ea6df9be1fceafc1676  data/field_finetune_cnn.json
 84174ea102b322cb42cea17fe87d4c4c  data/field_results.json
 175c369e3780481cdd6f14fc3f43ba42  data/field_zs_testsplit_20261025.json
-3a973045fe5e65ced8ae628c0e56e91b  data/full_provenance.json
+68029ab5fbf8afec6a753462eb7fe3d3  data/full_provenance.json
 8190000ba3fad4168ab4eb08933a5252  data/geometry_fixed.json
 fb5128ea4a733d0b61901e70ada2844f  data/heads_a7.json
 140a56a3fb247adf9b3030b1db0bc961  data/inverse_norm_sensitivity.json
