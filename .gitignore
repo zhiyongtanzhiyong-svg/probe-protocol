@@ -161,3 +161,5 @@ idea-stage/
 scripts/multimodel_eval.py
 # Editorial correspondence draft (not part of the release).
 editor_query_COMPAG.md
+# Internal submission workflow checklist.
+paper/SUBMISSION_CHECKLIST.md
